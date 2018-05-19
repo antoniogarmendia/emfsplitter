@@ -11,14 +11,16 @@
   <eclipse-repo.url>http://download.eclipse.org/releases/oxygen</eclipse-repo.url>
  </properties>
 
- <repositories>
-  <repository>
-   <id>eclipse-release</id>
-   <url>${eclipse-repo.url}</url>
-   <layout>p2</layout>
-  </repository>
-
- </repositories>
+<!-- Repositories should be commented out to only use the target definition 
+		 <repositories>
+		  <repository>
+		   <id>eclipse-release</id>
+		   <url>${eclipse-repo.url}</url>
+		   <layout>p2</layout>
+		  </repository>
+		
+		 </repositories>
+--> 
 
  <build>
   <plugins>
@@ -47,6 +49,17 @@
     <artifactId>target-platform-configuration</artifactId>
     <version>${tycho.version}</version>
     <configuration>
+    	
+    	<!-- Activates the Target Definition Platform -->
+    	<target> 
+        <artifact>
+            <groupId>org.emfsplitter.project</groupId>
+            <artifactId>org.emfsplitter.target</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </artifact>
+    	</target>
+    	<!-- End -->
+    	
      <environments>
       <environment>
        <os>linux</os>

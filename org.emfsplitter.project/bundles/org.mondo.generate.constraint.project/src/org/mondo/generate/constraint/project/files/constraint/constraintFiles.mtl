@@ -1,0 +1,59 @@
+[comment encoding = UTF-8 /]
+[module constraintFiles('http://mondo.org/runtimePatterns','http://miso.es/constraints')]
+[import org::mondo::generate::constraint::project::request::queries /]
+
+[template public generateconstraintFiles(aPatternInstance : PatternInstance, mmConstraint: MetamodelConstraint)]
+
+[for(c : ClassRoleInstance | aPatternInstance.classInstances)]
+
+[let name : String = c.getName()]
+[let statement : String = c.getStatement()]
+[let message : String = c.getMessage()]
+
+[file ('constraints/'+ c.getName() + '.eol',false, 'UTF-8')]
+
+var result = Sequence{};
+var emfTool : new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+var ecoreUtil = emfTool.ecoreUtil;
+var queryTool : new Native("org.miso.wind.turbine.cs.constraint.builder.ConstraintQueryTool");
+
+var listOfObjects = queryTool.getListToExecuteConstraint(Model.resource,"[c.element.name/]");
+
+for (element in listOfObjects) {
+	var check = element.constraint();
+	if (check == false) {
+		result.add(Sequence{ecoreUtil.getURI(element).toString(),element.message()});		
+	}				
+}
+
+return result;
+
+operation [c.element.name/] constraint() : Boolean {
+	return [c.getStatement()/]
+}
+
+operation [c.element.name/] message() : String {
+	return [c.getMessage()/]	
+}
+[/file]
+
+
+[/let]
+[/let]
+[/let]
+
+[/for]
+
+[for(cons : Constraint | mmConstraint.constraints)]
+
+[if (cons.eClass = null)]
+[file ('constraints/'+ cons.name + '.eol',false, 'UTF-8')]
+return [cons.statement/]
+[/file]
+[/if]
+
+[/for]
+
+
+
+[/template]

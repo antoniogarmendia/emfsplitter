@@ -1,0 +1,180 @@
+[comment encoding = UTF-8 /]
+[module constraintIncrementalProjectBuilderFile('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns')]
+[import org::mondo::generate::constraint::project::request::queries /]
+
+[template public generateConstraintIncrementalProjectBuilderFile(anProjectName : String, pathEcore : String, modularPatternInstance : PatternInstance)]
+
+[file ('src/'.concat(anProjectName.toLower() + '.' + getProperty('prefix_name')).replaceAll('\\.','/').concat('/builder/').concat('ConstraintIncrementalProjectBuilder.java'),false, 'UTF-8')]
+package [anProjectName/].[getProperty('prefix_name')/].builder;
+
+import java.util.Map;
+
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.IResourceVisitor;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.mondo.generate.modular.project.ext.IModularBuilder;
+
+public class ConstraintIncrementalProjectBuilder implements IModularBuilder {
+	
+	private final ConstraintScopeCategorizer categorizer = new ConstraintScopeCategorizer();
+	
+	private final ExecuteEOLConstraint executeConstraint = new ExecuteEOLConstraint();
+
+	
+	@Override
+	public IProject['['/]] build(int kind, Map<String, String> args, IncrementalProjectBuilder builder, IProgressMonitor monitor) {
+		
+		if (kind == IncrementalProjectBuilder.FULL_BUILD) {
+			fullBuild(builder.getProject(),monitor);
+	      } else {
+	         IResourceDelta delta = builder.getDelta(builder.getProject());	        		 
+	         if (delta == null) {
+	        	 fullBuild(builder.getProject(),monitor);
+	         } else {
+	        	 incrementalBuild(delta, monitor);
+	         }
+	      }
+	    
+		return null;
+	}
+
+	private void executeUpdate() {
+		
+		String extension = Activator.getDefault().getPreferenceStore().getString(PreferenceOptions.ENGINE_CHOICE);
+		EvaluateConstraintEngineContributor eval = new EvaluateConstraintEngineContributor();
+		eval.executeUpdate(Platform.getExtensionRegistry(), extension);
+	}
+
+	public void fullBuild(IProject iProject,IProgressMonitor monitor) {
+		
+		try {
+			executeUpdate();
+			 iProject.accept(new IResourceVisitor() {
+				
+				@Override
+				public boolean visit(IResource resource) throws CoreException {
+						
+					return buildResource(resource);				
+				}
+			});
+	      }
+		 catch (CoreException e) { }
+		System.out.println("Full Build");
+	}	
+	
+	private void incrementalBuild(IResourceDelta delta, final IProgressMonitor monitor) {
+		
+		try {
+			executeUpdate();
+			delta.accept(new IResourceDeltaVisitor() {
+				
+				@Override
+				public boolean visit(IResourceDelta delta) throws CoreException {
+					
+					if (!(delta.getKind() == IResourceDelta.REMOVED && delta.getMovedToPath() == null)) {
+
+						IResource deltaResource = delta.getResource();
+						if (delta.getKind() > 0 && delta.getKind() <= 4) {
+							return buildResource(deltaResource);					
+						}						
+					}
+					return true; // visit children too					
+				}
+			});
+		} catch (CoreException e) {			
+			e.printStackTrace();
+		}		
+		System.out.println("Incremental Build");
+	}
+	
+	public boolean buildResource(IResource resource) {
+		
+		if (resource instanceof IProject) {
+			
+			IResource representedFile = ((IProject) resource).findMember(resource.getName() + ".xmi");
+			executeConstraint.executeGlobalQueries(representedFile);			
+			return checkConstraintsGlobal();												
+		} else if (resource instanceof IFolder) {
+			
+			IResource representedFile = getRepresentedFile((IFolder) resource);
+			
+			if (categorizer.isRootPackage(representedFile) == true) {
+				executeConstraint.executeRootPackageQueries(representedFile);
+				executeConstraint.executePackageQueries(representedFile);
+				return checkConstraintsSameRootPackage();
+			} else {
+				executeConstraint.executePackageQueries(representedFile);	
+				return checkConstraintsSamePackage();
+			}						
+									
+		} else if (resource instanceof IFile) {						
+			
+			IFile file = (IFile) resource;
+			String name = file.getName();
+			if(name.equals(".project"))
+				return true;
+			
+			if (isRepresentedFile(file) == true)
+				return true;
+			else {
+				if (categorizer.isUnit(resource) == true)
+					executeConstraint.executeUnitQueries(resource);
+				return true;
+			}						
+		}		
+		return true;
+	}
+
+	public IFile getRepresentedFile(IFolder folder) {
+		
+		for (int i = 1; i <= [Get_FolderClassRoleInstance(modularPatternInstance)->size()/]; i++) {
+			
+			IFile file = folder.getFile(folder.getName() + "." + i);
+			if (file.exists())
+				return file;			
+		}
+		return null;		
+	}
+
+	public boolean isRepresentedFile(IFile file) {
+			
+			IContainer container = file.getParent();
+			String containerName = container.getName();
+			String fileName = file.getFullPath().removeFileExtension().lastSegment();
+			if (fileName.equals(containerName))
+				return true;		
+			return false;
+	}
+	
+	public boolean checkConstraintsGlobal() {
+		
+		if (executeConstraint.getRootPackageQueries().size() == 0)
+			return checkConstraintsSameRootPackage();		
+		return true;
+	}
+	
+	public boolean checkConstraintsSameRootPackage() {
+		
+		if (executeConstraint.getPackageQueries().size() == 0)
+			return checkConstraintsSamePackage();
+		return true;
+	}
+	
+	public boolean checkConstraintsSamePackage() {
+		
+		if (executeConstraint.getUnitQueries().size() == 0)
+			return false;		
+		return true;
+	}
+}
+
+[/file]
+[/template]

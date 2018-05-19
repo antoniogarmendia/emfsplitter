@@ -1,0 +1,49 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.emfsplitter.project</groupId>
+    <artifactId>org.emfsplitter.project.bundles</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.emfsplitter.project</groupId>
+        <artifactId>org.emfsplitter.project.root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>org.eclipse.m2m.atl.graphictoviewpoint</module>
+        <module>org.miso.ecore.statistics</module>
+        <module>org.miso.wizard.instantiate.modular.pattern</module>
+        <module>org.model.filters</module>
+        <module>org.mondo.emf.splitter</module>
+        <module>org.mondo.emf.splitter.library</module>
+        <module>org.mondo.generate.constraint.project</module>
+        <module>org.mondo.generate.filter.project</module>
+        <module>org.mondo.generate.index.project</module>
+        <module>org.mondo.generate.modular.project</module>
+        <module>org.mondo.generate.modular.project.general</module>
+        <module>org.mondo.generate.scope.project</module>
+        <module>org.mondo.generate.sirius</module>
+        <module>org.mondo.generate.visibility.project</module>
+        <module>org.mondo.graphic.representation</module>
+        <module>org.mondo.miso.table.ui</module>
+        <module>org.mondo.mm.heuristic.visualization</module>
+        <module>org.mondo.modular.constraint.ext</module>
+        <module>org.mondo.modular.filterui.ext</module>
+        <module>org.mondo.modular.references.ext</module>
+        <module>org.mondo.modular.sirius.ext</module>
+        <module>org.mondo.sirius.model</module>
+        <module>org.mondo.visualization.ui</module>
+        <module>org.uam.eps.miso.diagram.editor.jersey</module>
+        <module>org.uam.eps.miso.diagram.editor.json</module>
+        <module>org.uam.eps.miso.diagram.editor.mobile</module>
+        <module>org.uam.eps.modular.constraints.dialog</module>
+        <module>org.uam.eps.modular.contraints</module>
+        <module>org.uam.eps.modular.index</module>
+        <module>org.uam.eps.modular.index.wizard</module>
+        <module>org.uam.eps.modular.scope.wizard</module>
+        <module>org.uam.eps.modular.visibility</module>
+        <module>org.uam.eps.modular.visibility.wizard</module>         
+    </modules>
+</project>
