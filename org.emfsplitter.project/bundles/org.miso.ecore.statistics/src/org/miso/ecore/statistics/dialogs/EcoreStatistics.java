@@ -70,7 +70,6 @@ public class EcoreStatistics {
 	}
 
 	public EList<EClass> getList_classes() {
-		// TODO Auto-generated method stub
 		if(getResource()!=null)
 		{
 			if(listEClasses==null)
