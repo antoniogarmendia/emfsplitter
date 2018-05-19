@@ -10,7 +10,7 @@ cache:
   - $HOME/.m2
  
 script: 
-  - mvn -f com.helloworld.tycho/pom.xml --quiet clean install
+  - mvn -f org.emfsplitter.project/pom.xml --quiet clean install
 
 deploy:
   provider: pages
