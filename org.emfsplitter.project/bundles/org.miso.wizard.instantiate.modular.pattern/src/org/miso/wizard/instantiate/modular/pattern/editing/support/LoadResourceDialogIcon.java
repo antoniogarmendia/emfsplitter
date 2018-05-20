@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URI;
 
 import org.eclipse.core.filesystem.EFS;
-import org.eclipse.core.internal.filesystem.local.LocalFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -28,7 +27,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.mondo.visualization.ui.wizard.ImageSelection;
+import org.mondo.visualization.ui.wizard.WorkspaceAndPluginsResourceDialog;
 
 public class LoadResourceDialogIcon extends ResourceDialog{
 
@@ -93,70 +92,14 @@ public class LoadResourceDialogIcon extends ResourceDialog{
 	@Override
 	protected void prepareBrowseWorkspaceButton(Button browseWorkspaceButton) {
 		
-		EList<String> listOfExtensions = new BasicEList<String>();
-		listOfExtensions.add("jpg");
-		listOfExtensions.add("png");
-		listOfExtensions.add("gif");
-		listOfExtensions.add("jpeg");
-		listOfExtensions.add("tiff");
-		listOfExtensions.add("svg");
-		
 		browseWorkspaceButton.addSelectionListener(new SelectionAdapter() {
 
 			@Override
-			public void widgetSelected(SelectionEvent e) {
+			public void widgetSelected(SelectionEvent e) {				
 				
-				ImageSelection selec = new ImageSelection(getParentShell(), new FileProviderImage(), 
-						new FileImageContentProvider((IResource.FOLDER | IResource.FILE | SWT.APPLICATION_MODAL & IResource.FILE) != 0));
-				selec.setTitle("File Selection");
-				
-				File rootFile = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
-				URI fileURI = URI.create(rootFile.toURI().toString());
-				
-				try {
-					selec.setInput(EFS.getStore(fileURI));
-				} catch (CoreException e1) {
-					
-					e1.printStackTrace();
-				}
-				selec.setMessage("Select Image...");
-				
-				selec.addFilter(new ViewerFilter() {
-					
-					@Override
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						// TODO Auto-generated method stub
-						LocalFile fil = (LocalFile) element;
-												
-						//Start with dot
-						if(fil.getName().charAt(0)=='.')
-							return false;
-						//End
-						if (!fil.fetchInfo().isDirectory()) {
-							String name = fil.getName();
-							int ext = name.lastIndexOf(".");
-							String ext_str = name.substring(ext + 1);
-							if(listOfExtensions.indexOf(ext_str)!=-1)
-								return true;
-							else
-								return false;
-						}
-						return true;
-					}
-				});
-				
-				if (selec.open() == ImageSelection.OK){
-					Object[] result = selec.getResult();
-					if (result.length == 1) {
-						LocalFile loc_file = ((LocalFile) result[0]);
-						URIConverter converter = new ExtensibleURIConverterImpl();
-						org.eclipse.emf.common.util.URI platformURI = org.eclipse.emf.common.util.URI.createPlatformResourceURI("/", false);
-						org.eclipse.emf.common.util.URI fileUri = org.eclipse.emf.common.util.URI.createFileURI(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator);
-						converter.getURIMap().put(fileUri, platformURI);
-						org.eclipse.emf.common.util.URI anfileURI = converter.normalize(org.eclipse.emf.common.util.URI.createURI(loc_file.toURI().toString()));
-						txURI.setText(anfileURI.toPlatformString(true));							
-					}						
-				}
+				String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(getShell());
+				if (imagePath != null)
+					txURI.setText(imagePath);
 			}				
 		});	
 	}

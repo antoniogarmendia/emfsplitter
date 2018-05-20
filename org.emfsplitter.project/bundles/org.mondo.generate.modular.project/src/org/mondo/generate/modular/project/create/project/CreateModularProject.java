@@ -336,6 +336,15 @@ public class CreateModularProject extends CreateEclipseProjectImpl{
 		}		
 	}
 	
+	public String getImageLocationByInstValue(String featValue) {
+		
+		String path = "";
+		
+		
+		
+		return path;
+	}
+	
 	public String GetModel(){
 		//Runtime patterns model(http://mondo.org/runtimePatterns) runtime_pattern_ext
 		//Same name, but different extension

@@ -345,7 +345,6 @@ public class CreateEclipseProjectImpl extends MinimalEObjectImpl.Container imple
 	 * @generated NOT
 	 */
 	public Boolean Create_Src_Classpath(IJavaProject anJavaProject, IProgressMonitor monitor, EList<IClasspathEntry> classEntries) {
-		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (isMavenProject)
 		{

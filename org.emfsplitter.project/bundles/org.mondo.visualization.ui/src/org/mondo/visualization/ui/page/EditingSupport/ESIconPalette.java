@@ -1,20 +1,8 @@
 package org.mondo.visualization.ui.page.EditingSupport;
 
-import java.io.File;
-import java.net.URI;
-
-import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
-import org.eclipse.core.internal.filesystem.local.LocalFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.DialogCellEditor;
@@ -22,13 +10,10 @@ import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -42,7 +27,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.ide.dialogs.IDEResourceInfoUtils;
 import org.eclipse.ui.internal.ide.dialogs.IFileStoreFilter;
-import org.mondo.visualization.ui.wizard.ImageSelection;
+import org.mondo.visualization.ui.wizard.WorkspaceAndPluginsResourceDialog;
 
 import graphic_representation.DiagramElement;
 
@@ -191,75 +176,10 @@ public class ESIconPalette extends EditingSupport{
 			return container;
 		}
 		
-		public void prepareBrowseWorkspaceButton(Button btn_selectWorkspace)
-		{
-			
-			EList<String> listOfExtensions = new BasicEList<String>();
-			listOfExtensions.add("jpg");
-			listOfExtensions.add("png");
-			listOfExtensions.add("gif");
-			listOfExtensions.add("jpeg");
-			listOfExtensions.add("tiff");
-			listOfExtensions.add("svg");
-			
-			btn_selectWorkspace.addSelectionListener(new SelectionAdapter() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					
-					ImageSelection selec = new ImageSelection(getParentShell(), new FileProvider(), 
-							new FileContentProvider((IResource.FOLDER | IResource.FILE | SWT.APPLICATION_MODAL & IResource.FILE) != 0));
-					selec.setTitle("File Selection");
-					
-					File rootFile = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
-					URI fileURI = URI.create(rootFile.toURI().toString());
-					
-					try {
-						selec.setInput(EFS.getStore(fileURI));
-					} catch (CoreException e1) {
-						
-						e1.printStackTrace();
-					}
-					selec.setMessage("Select Image...");
-					
-					selec.addFilter(new ViewerFilter() {
-						
-						@Override
-						public boolean select(Viewer viewer, Object parentElement, Object element) {
-							
-							LocalFile fil = (LocalFile) element;
-													
-							//Start with dot
-							if(fil.getName().charAt(0)=='.')
-								return false;
-							//End
-							if (!fil.fetchInfo().isDirectory()) {
-								String name = fil.getName();
-								int ext = name.lastIndexOf(".");
-								String ext_str = name.substring(ext + 1);
-								if(listOfExtensions.indexOf(ext_str)!=-1)
-									return true;
-								else
-									return false;
-							}
-							return true;
-						}
-					});
-					
-					if (selec.open() == ImageSelection.OK){
-						Object[] result = selec.getResult();
-						if (result.length == 1) {
-							LocalFile loc_file = ((LocalFile) result[0]);
-							URIConverter converter = new ExtensibleURIConverterImpl();
-							org.eclipse.emf.common.util.URI platformURI = org.eclipse.emf.common.util.URI.createPlatformResourceURI("/", false);
-							org.eclipse.emf.common.util.URI fileUri = org.eclipse.emf.common.util.URI.createFileURI(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator);
-							converter.getURIMap().put(fileUri, platformURI);
-							org.eclipse.emf.common.util.URI anfileURI = converter.normalize(org.eclipse.emf.common.util.URI.createURI(loc_file.toURI().toString()));
-							txURI.setText(anfileURI.toPlatformString(true));							
-						}						
-					}
-				}				
-			});			
+		public void prepareBrowseWorkspaceButton(Button btn_selectWorkspace) {
+			String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(getShell());
+			if (imagePath != null)
+				txURI.setText(imagePath);
 		}
 		
 		public static class FileProvider extends LabelProvider{

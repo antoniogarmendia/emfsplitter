@@ -18,7 +18,12 @@ Require-Bundle: org.eclipse.ui,
  org.mondo.dsl;bundle-version="0.1.0",
  org.mondo.generate.modular.project,
  org.eclipse.core.filesystem;bundle-version="1.5.0",
- org.mondo.graphic.representation
+ org.mondo.graphic.representation,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.ide,
+ org.eclipse.pde.core;bundle-version="3.11.101",
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.equinox.frameworkadmin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.mondo.visualization.ui.libraryrtpat,
