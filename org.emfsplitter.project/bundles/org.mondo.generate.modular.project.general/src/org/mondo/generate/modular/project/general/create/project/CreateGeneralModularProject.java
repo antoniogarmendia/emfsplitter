@@ -11,7 +11,9 @@ import java.util.Properties;
 
 import org.eclipse.acceleo.common.preference.AcceleoPreferences;
 import org.eclipse.core.resources.ICommand;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -230,8 +232,6 @@ public class CreateGeneralModularProject extends CreateEclipseProjectImpl{
 		final String workspacePath = CreateGeneralModularProject.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		Copy_Image(workspacePath.concat("icons/Pro.png"),"Pro.png", "icons");	
 		
-		String currentPlugPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-		
 		EObject rootEObject = getEObject();
 		if(rootEObject instanceof PatternInstances){
 			
@@ -259,7 +259,7 @@ public class CreateGeneralModularProject extends CreateEclipseProjectImpl{
 											
 											if(!(instFeature.getValue().equals("/root") || instFeature.getValue().equals(""))){
 												String source = instFeature.getValue().subSequence(instFeature.getValue().lastIndexOf('/')+1, instFeature.getValue().length()).toString();
-												Copy_Image(currentPlugPath.concat("/" + instFeature.getValue()),source, "icons");
+												Copy_Image(getImageLocationByInstValue(instFeature.getValue()),source, "icons");
 											}
 										}
 									}									
@@ -271,6 +271,15 @@ public class CreateGeneralModularProject extends CreateEclipseProjectImpl{
 			
 			System.out.println("CopyIcons!");
 		}		
+	}
+	
+	public String getImageLocationByInstValue(String featValue) {
+		
+		String projectName = featValue.substring(1, featValue.indexOf("/",1));
+		String filePath = featValue.substring(featValue.indexOf("/",1), featValue.length());
+		IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		IFile fileImage = iProject.getFile(filePath);
+		return fileImage.getLocation().toString();
 	}
 	
 	private boolean existInstanceFeature(EList<EAttribute> list, String feat)

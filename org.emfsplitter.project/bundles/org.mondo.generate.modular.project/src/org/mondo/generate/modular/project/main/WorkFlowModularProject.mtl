@@ -27,7 +27,7 @@
 	
 	[let anProjectInstance : ClassRoleInstance = anPatternInstance.Get_ProjectClassRoleInstance()]
 	
-	[METAINF(anProjectName,anProjectInstance) /]
+	[METAINF(anProjectName,anProjectInstance,anEObjectGenModel) /]
 	[Activatorjava(anProjectName,anProjectInstance) /]
     [generateinitFile(anProjectName, anPatternInstance, anPackageName, anEObjectGenModel)/]
 	[PluginXML(anProjectName,anPatternInstance,anEObjectGenModel) /]

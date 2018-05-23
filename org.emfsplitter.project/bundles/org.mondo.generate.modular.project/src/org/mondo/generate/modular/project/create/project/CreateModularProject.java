@@ -11,7 +11,9 @@ import java.util.Properties;
 
 import org.eclipse.acceleo.common.preference.AcceleoPreferences;
 import org.eclipse.core.resources.ICommand;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -276,7 +278,6 @@ public class CreateModularProject extends CreateEclipseProjectImpl{
 		boolean folder_img = false;
 		boolean file_img = false;
 		
-		String currentPlugPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 		while(tree.hasNext()){
 			obj = tree.next();
 			if(obj instanceof ClassRoleInstance){
@@ -294,7 +295,7 @@ public class CreateModularProject extends CreateEclipseProjectImpl{
 								{
 									if(!(inst_feat.getValue().equals("/root") || inst_feat.getValue().equals(""))){
 										String source = inst_feat.getValue().subSequence(inst_feat.getValue().lastIndexOf('/')+1, inst_feat.getValue().length()).toString();
-										Copy_Image(currentPlugPath.concat("/" + inst_feat.getValue()),source, "icons");
+										Copy_Image(getImageLocationByInstValue(inst_feat.getValue()),source, "icons");
 									}
 								else 
 									{
@@ -338,11 +339,11 @@ public class CreateModularProject extends CreateEclipseProjectImpl{
 	
 	public String getImageLocationByInstValue(String featValue) {
 		
-		String path = "";
-		
-		
-		
-		return path;
+		String projectName = featValue.substring(1, featValue.indexOf("/",1));
+		String filePath = featValue.substring(featValue.indexOf("/",1), featValue.length());
+		IProject iProject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		IFile fileImage = iProject.getFile(filePath);
+		return fileImage.getLocation().toString();
 	}
 	
 	public String GetModel(){

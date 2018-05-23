@@ -1,8 +1,8 @@
 [comment encoding = UTF-8 /]
-[module METAINF('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns')]
+[module METAINF('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns','http://www.eclipse.org/emf/2002/GenModel')]
 
 
-[template public METAINF(anProjectName : EString,anProjectInstance : ClassRoleInstance)]
+[template public METAINF(anProjectName : EString,anProjectInstance : ClassRoleInstance, anEObjectGenModel : GenModel)]
 
 [file ('META-INF/MANIFEST.MF',false, 'UTF-8')]
 Manifest-Version: 1.0
@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,
  org.eclipse.core.resources,	
  org.eclipse.ui.ide,
  [anProjectName/],
- [anProjectName/].editor,
+ [anEObjectGenModel.editorPluginID/],
  org.model.filters,
  org.mondo.modular.sirius.ext,
  org.mondo.generate.modular.project.general,

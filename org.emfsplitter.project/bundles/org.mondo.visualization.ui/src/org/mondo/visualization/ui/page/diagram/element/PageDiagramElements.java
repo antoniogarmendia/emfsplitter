@@ -321,11 +321,7 @@ public class PageDiagramElements extends WizardPage {
 	
 	public void Fill_Tree(){
 		
- 		EObject asd = (EObject)getGraphicRepresentation();
-		
- 		Object asd1 = asd.eResource();
- 		
-		EClass rootEClass = ((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(getCurrentRepresentation())).getRoot().getAnEClass();
+ 		EClass rootEClass = ((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(getCurrentRepresentation())).getRoot().getAnEClass();
 		if(rootEClass != null)
 		{
 			root_class.setText(rootEClass.getName());			
@@ -486,11 +482,12 @@ public class PageDiagramElements extends WizardPage {
 	
 	public void CreateMenu()
 	{
-		
+		/*
 		ActionTreePageDiagramElements allActions = new ActionTreePageDiagramElements(getTreeViewer(), "com.wizard.visualization",
 							getShell(), getHeuristicStrategy(), getHeuristicStrategySettings(),getGraphicRepresentation().getListRepresentations().get(getCurrentRepresentation())
 							,listOfWarning);		
-		allActions.Execute();		
+		allActions.Execute();	
+		*/	
 	}
 	
 	

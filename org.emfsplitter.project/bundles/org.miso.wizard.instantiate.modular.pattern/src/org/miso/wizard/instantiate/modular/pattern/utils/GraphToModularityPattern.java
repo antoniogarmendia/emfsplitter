@@ -94,6 +94,16 @@ public class GraphToModularityPattern {
 								
 			//Add Project Class Role Instance
 			ClassRoleInstance rootInstance = addClassRoleInstance(rootNode, modularInstance, project);
+			
+			//add class instance if project has been also defined as Package
+			ClassRoleInstance p = addAdditionalClassInstanceforProject(rootNode,modularInstance);	
+			
+			EList<ClassRoleInstance> rootRoleInstances = new BasicEList<ClassRoleInstance>();
+			rootRoleInstances.add(rootInstance);
+			
+			if (p != null) {
+				rootRoleInstances.add(p);
+			}
 						
 			//Add Modular Pattern to Applied Patterns
 			patternInstances.getAppliedPatterns().add(modularInstance);			
@@ -103,14 +113,36 @@ public class GraphToModularityPattern {
 			visitedNodes.add(rootNode);
 			
 			//set packages and units
-			setPackagesAndUnits(subGraph,modularInstance, rootNode,rootInstance,visitedNodes);			
-								
+			setPackagesAndUnits(subGraph,modularInstance, rootNode,rootRoleInstances,visitedNodes);
+											
 			System.out.println("Transformation Graph to Runtime Patterns");
 		}	
 	}
 			
 	
-	private void setPackagesAndUnits(SubGraph subGraph, PatternInstance patternInstance, Node rootNode, ClassRoleInstance rootInstance, EList<Node> visitedNodes) {
+	private ClassRoleInstance addAdditionalClassInstanceforProject(Node rootNode, PatternInstance modularInstance) {
+		
+		ClassRoleInstance p = null;
+		Iterator<EnumModular> itNotations = rootNode.getEnumModularNotation().iterator();
+		while (itNotations.hasNext()) {
+			EnumModular enumModular = (EnumModular) itNotations.next();
+			if (enumModular!=EnumModular.PROJECT) {
+				ClassInterface cInterface = null;
+				if (enumModular==EnumModular.PACKAGE) {
+					cInterface = pack;
+					p = addClassRoleInstance(rootNode, modularInstance, cInterface);
+				}
+				else if (enumModular==EnumModular.UNIT) {
+					cInterface = unit;
+				    addClassRoleInstance(rootNode, modularInstance, cInterface);	
+				}
+			}
+		}
+		
+		return p;		
+	}
+
+	private void setPackagesAndUnits(SubGraph subGraph, PatternInstance patternInstance, Node rootNode, EList<ClassRoleInstance> rootRoleInstances, EList<Node> visitedNodes) {
 		
 		Iterator<Composition> itComposition = rootNode.getCompositions().iterator();
 		boolean pack = false;
@@ -131,11 +163,13 @@ public class GraphToModularityPattern {
 				if(pack == true){
 					
 					parentRoleInstance = addClassRoleInstance(currentNode,patternInstance,this.pack);
-					addReferenceInstance(composition, rootInstance);
+					addReferenceInstance(composition, rootRoleInstances);
 					
 					visitedNodes.add(currentNode);
 					// recursive
-					setPackagesAndUnits(subGraph, patternInstance, currentNode, parentRoleInstance, visitedNodes);
+					EList<ClassRoleInstance> listOfParents = new BasicEList<ClassRoleInstance>();
+					listOfParents.add(parentRoleInstance);
+					setPackagesAndUnits(subGraph, patternInstance, currentNode, listOfParents, visitedNodes);
 				}
 				
 				//Unit
@@ -143,7 +177,7 @@ public class GraphToModularityPattern {
 				if(unit == true){
 					
 					addClassRoleInstance(currentNode,patternInstance,this.unit);
-					addReferenceInstance(composition, rootInstance);				
+					addReferenceInstance(composition, rootRoleInstances);				
 				}
 				
 				//SubClasses
@@ -164,10 +198,12 @@ public class GraphToModularityPattern {
 							if(pack == true){
 								
 								parentRoleInstance = addClassRoleInstance(currentNode,patternInstance,this.pack);
-								addReferenceInstance(composition, rootInstance);
+								addReferenceInstance(composition, rootRoleInstances);
 								
 								// recursive
-								setPackagesAndUnits(subGraph, patternInstance, currentNode, parentRoleInstance, visitedNodes);
+								EList<ClassRoleInstance> listOfParents = new BasicEList<ClassRoleInstance>();
+								listOfParents.add(parentRoleInstance);
+								setPackagesAndUnits(subGraph, patternInstance, currentNode, listOfParents, visitedNodes);
 							}
 							
 							//Unit
@@ -175,14 +211,14 @@ public class GraphToModularityPattern {
 							if(unit == true){
 								
 								addClassRoleInstance(currentNode,patternInstance,this.unit);
-								addReferenceInstance(composition, rootInstance);				
+								addReferenceInstance(composition, rootRoleInstances);				
 							}							
 						}
 						else{
 							// the node has been visited, so only the containment reference must be added
 							//if the node is unit or package
 							if(isUnitPackage(currentNode)==true)
-								addReferenceInstance(composition, rootInstance);
+								addReferenceInstance(composition, rootRoleInstances);
 						}
 					}
 				}
@@ -192,7 +228,7 @@ public class GraphToModularityPattern {
 				// the node has been visited, so only the containment reference must be added
 				//if the node is unit or package
 				if(isUnitPackage(currentNode)==true)
-					addReferenceInstance(composition, rootInstance);
+					addReferenceInstance(composition, rootRoleInstances);
 			}
 		}
 		
@@ -236,20 +272,24 @@ public class GraphToModularityPattern {
 			classInstance.getFeatureInstances().add(extFeat);
 		}	
 		
-		patternInstance.getClassInstances().add(classInstance);
+		patternInstance.getClassInstances().add(classInstance);		
 		
 		return classInstance;
 	}	
 	
-	private void addReferenceInstance(Composition composition, ClassRoleInstance rootInstance){
+	private void addReferenceInstance(Composition composition, EList<ClassRoleInstance> rootInstances){
 		
 		// add containment reference
 		ReferenceRoleInstance referenceContainee = RuntimePatternsFactoryImpl.eINSTANCE.createReferenceRoleInstance();
 		referenceContainee.setRole(this.containmentReference);
 		referenceContainee.setElement(composition.getEReference());
 				
-		rootInstance.getReferenceInstances().add(referenceContainee);		
+		Iterator<ClassRoleInstance> roleInstances = rootInstances.iterator();
 		
+		while (roleInstances.hasNext()) {
+			ClassRoleInstance classRoleInstance = (ClassRoleInstance) roleInstances.next();
+			classRoleInstance.getReferenceInstances().add(referenceContainee);
+		}		
 	}
 	
 	private boolean isPackage(Node node){

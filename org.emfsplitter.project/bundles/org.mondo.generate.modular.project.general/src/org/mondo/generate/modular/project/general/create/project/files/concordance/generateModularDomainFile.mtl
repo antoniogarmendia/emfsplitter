@@ -28,7 +28,7 @@ public class ModularDomain extends ConcordanceModelBase{
 	public URI modelURI;	
 	
 	public ModularDomain(IPath path) {
-		this(URI.createPlatformResourceURI(path.toString(),true));
+		this(URI.createPlatformResourceURI(path.toString(),false));
 	}
 
 	public ModularDomain(URI uri) {

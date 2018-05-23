@@ -200,10 +200,17 @@ public class PageStrategySettings extends WizardPage{
 		else
 			btn_noparroot.setSelection(true);	
 		
+		if (((WizardConcreteVisualization)getWizard()).isModularPattern() == true) {
+			EList<MMGraphic_Representation> mmRepresentation = getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation();
+			ClassRoleInstanceToMMGraphicRepresentation(getListUnitClassRoleInstance(), mmRepresentation);		
+		}
+		/*
+		 * Fix this
 		if (((WizardConcreteVisualization)getWizard()).isUpdateGraphicR() == false) {
 			EList<MMGraphic_Representation> mmRepresentation = getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation();
 			ClassRoleInstanceToMMGraphicRepresentation(getListUnitClassRoleInstance(), mmRepresentation);
 		}
+		*/
 		//End Group Root		
 	}
 	
@@ -581,6 +588,7 @@ public class PageStrategySettings extends WizardPage{
 	public void setVisible(boolean visible) {
 		
 		super.setVisible(visible);
+		/*
 		if(visible==false)
 		{
 			if(!(getCurrentMMGR()==0))
@@ -645,7 +653,9 @@ public class PageStrategySettings extends WizardPage{
 				getHeuristicStrategy().setCurrentMMGR(0);
 				getHeuristicStrategy().ExecuteHeuristics();
 			}
-		}		
+		}
+		*/	
+		
 	}	
 	
 	public int getRepresentation() {

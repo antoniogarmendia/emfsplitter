@@ -52,11 +52,13 @@ public class WizardConcreteVisualization extends Wizard{
 	private EList<ClassRoleInstance> listUnitClassRoleInstance;
 	
 	private boolean updateGraphicR;
+	private boolean modularPattern;
 	
 	public WizardConcreteVisualization() {
 		super();
 		this.fileUri = null;	
 		this.updateGraphicR = true;
+		this.modularPattern = true;
 	}
 	
 	public void initEcore(String paramfileUri,EList<ClassRoleInstance> paramlistUnitClassRoleInstance)
@@ -125,10 +127,12 @@ public class WizardConcreteVisualization extends Wizard{
 	@Override
 	public IWizardPage getStartingPage() {
 		
+		/*
+		
 		if(isUpdateGraphicR()) {
 			return pageElements;
 		}
-		
+		*/
 		return super.getStartingPage();
 	}
 	
@@ -380,5 +384,13 @@ public class WizardConcreteVisualization extends Wizard{
 	
 	public boolean isUpdateGraphicR() {
 		return updateGraphicR;
+	}
+	
+	public void setModularPattern(boolean modularPattern) {
+		this.modularPattern = modularPattern;
+	}
+	
+	public boolean isModularPattern() {
+		return modularPattern;
 	}
 }
