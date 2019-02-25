@@ -43,6 +43,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyle" upperBound="-1"
         eType="#//ConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="presentation" eType="#//ChildrenPresentation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="virtualCompartments" upperBound="-1"
+        eType="#//VirtualCompartment" eOpposite="#//VirtualCompartment/node"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IconElement" eSuperTypes="#//Shape">
     <eOperations name="ImageBase64"/>
@@ -57,7 +59,8 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node_Element">
-    <eOperations name="isCompartment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isOnlyCompartment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isCompartmentAffixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="LabelanEAttribute" upperBound="-1"
         eType="#//LabelEAttribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="linkPalette" upperBound="-1"
@@ -66,6 +69,8 @@
         upperBound="-1" eType="#//AffixedCompartmentElement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expandableItems" upperBound="-1"
         eType="#//ExpandableItem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="virtualCompartment" upperBound="-1"
+        eType="#//VirtualCompartment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpandableItem">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -161,7 +166,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="DefaultLayer" eSuperTypes="#//Layer"/>
   <eClassifiers xsi:type="ecore:EClass" name="AdditionalLayer" eSuperTypes="#//Layer"/>
   <eClassifiers xsi:type="ecore:EClass" name="AffixedElement" eSuperTypes="#//AffixedCompartmentElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CompartmentElement" eSuperTypes="#//AffixedCompartmentElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompartmentElement" eSuperTypes="#//AffixedCompartmentElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="compartmentView" eType="#//CompartmentView"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Shape" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initToFirst" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeToNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeToEnd" eType="#//CompartmentEdge"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AffixedCompartmentElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="anEReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
@@ -252,5 +271,31 @@
     <eLiterals name="LIST" value="1"/>
     <eLiterals name="HORIZONTALSTACK" value="2"/>
     <eLiterals name="VERTICALSTACK" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualCompartment" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//Node" eOpposite="#//Node/virtualCompartments"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualCompartmentReference" eSuperTypes="#//VirtualCompartment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containerReference" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="virtualReference" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VirtualCompartmentOCL" eSuperTypes="#//VirtualCompartment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oclExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompartmentEdge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge_style" lowerBound="1"
+        eType="#//Edge_Style" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//CompartmentLink"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//CompartmentLink"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompartmentLink">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decoratorName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="NoDecoration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CompartmentView">
+    <eLiterals name="None" literal="None"/>
+    <eLiterals name="LinkedList" value="1" literal="Linked List"/>
   </eClassifiers>
 </ecore:EPackage>

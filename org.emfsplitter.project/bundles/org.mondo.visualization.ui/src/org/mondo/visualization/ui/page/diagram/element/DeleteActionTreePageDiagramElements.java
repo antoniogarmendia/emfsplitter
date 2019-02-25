@@ -29,13 +29,17 @@ import graphic_representation.Node;
 import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
 
 public class DeleteActionTreePageDiagramElements extends AActionPageDiagramElements{
 
 	//Delete Actions
 	private Action actionNameDelete;
 	private Action actionLinkDelete;
-	private Action actionCompartmentsDelete;	
+	private Action actionCompartmentsDelete;
+	private Action actionVirtualCompartmentDelete;
+	private Action actionVirtualCompartmentOclDelete;
 	private Action actionAffixedDelete;
 	private Action actionLayerDelete;
 	private Action actionNodeDelete;
@@ -56,6 +60,8 @@ public class DeleteActionTreePageDiagramElements extends AActionPageDiagramEleme
 		makeActionNameDelete();
 		makeActionLinkDelete();
 		makeActionCompartmentsDelete();	
+		makeActionVirtualCompartmentDelete();
+		makeActionVirtualCompartmentOclDelete();
 		makeActionAffixedDelete();
 		makeActionLayerDelete();
 		makeActionNodeDelete();
@@ -140,7 +146,6 @@ public class DeleteActionTreePageDiagramElements extends AActionPageDiagramEleme
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				Object obj = GetSelectedTreeViewerObject();
 				if(obj instanceof CompartmentElement)
 				{
@@ -155,6 +160,45 @@ public class DeleteActionTreePageDiagramElements extends AActionPageDiagramEleme
 		actionCompartmentsDelete.setText("Delete Compartment");
 		actionCompartmentsDelete.setToolTipText("Delete Compartment");
 	}
+	
+	private void makeActionVirtualCompartmentDelete() {
+		//Delete Virtual Compartment
+		actionVirtualCompartmentDelete = new Action() {
+			@Override
+			public void run() {
+				
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof VirtualCompartment) {
+					VirtualCompartment virtualCompart = (VirtualCompartment) obj;
+					EcoreUtil.remove(virtualCompart);
+					getTreeViewer().remove(obj);//Update Tree Viewer
+				}				
+			}
+		};
+		actionVirtualCompartmentDelete.setId("com.wizard.visualization.DeleteVirtualCompartmentReference");
+		actionVirtualCompartmentDelete.setText("Delete Virtual Compartment");
+		actionVirtualCompartmentDelete.setToolTipText("Delete Virtual Compartment");
+	}
+	
+	private void makeActionVirtualCompartmentOclDelete() {
+		//Delete Virtual Compartment Ocl
+		actionVirtualCompartmentOclDelete = new Action() {
+			@Override
+			public void run() {
+				
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof VirtualCompartmentOCL) {
+					VirtualCompartmentOCL virtualCompart = (VirtualCompartmentOCL) obj;
+					EcoreUtil.remove(virtualCompart);
+					getTreeViewer().remove(obj);//Update Tree Viewer
+				}				
+			}
+		};
+		actionVirtualCompartmentOclDelete.setId("com.wizard.visualization.DeleteVirtualCompartmentReferenceOCl");
+		actionVirtualCompartmentOclDelete.setText("Delete Virtual Compartment OCl");
+		actionVirtualCompartmentOclDelete.setToolTipText("Delete Virtual Compartment OCl");
+	}
+	
 	
 	private void makeActionAffixedDelete() {
 		
@@ -396,6 +440,14 @@ public class DeleteActionTreePageDiagramElements extends AActionPageDiagramEleme
 
 	public Action getActionCompartmentsDelete() {
 		return actionCompartmentsDelete;
+	}
+	
+	public Action getActionVirtualCompartmentDelete() {
+		return actionVirtualCompartmentDelete;
+	}
+	
+	public Action getActionVirtualCompartmentOclDelete() {
+		return actionVirtualCompartmentOclDelete;
 	}
 
 	public Action getActionAffixedDelete() {

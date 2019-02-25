@@ -18,6 +18,8 @@ import graphic_representation.AffixedCompartmentElement;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Layer;
 import graphic_representation.PaletteDescriptionLink;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentReference;
 
 public abstract class AActionPageDiagramElements {
 	
@@ -60,12 +62,14 @@ public abstract class AActionPageDiagramElements {
 		this.treeViewer = treeViewer;
 	}
 	
-	public int MissingEReference(EList<EReference> fulllist, EList<PaletteDescriptionLink> list, EList<AffixedCompartmentElement> listAffixedCompartment)
+	public int MissingEReference(EList<EReference> fulllist, EList<PaletteDescriptionLink> list, 
+			EList<AffixedCompartmentElement> listAffixedCompartment, EList<VirtualCompartment> listVirtualCompartments)
 	{
 		
 		int count_list = list.size();
 		int count_fulllist = fulllist.size();
 		int count_listAffixedCompartment = listAffixedCompartment.size();
+		int sizeVirtualCompartments = listVirtualCompartments.size();
 		boolean find = false;
 		boolean findaffixedcompartment = false;
 		for (int i = 0; i < count_fulllist; i++) {
@@ -79,6 +83,21 @@ public abstract class AActionPageDiagramElements {
 				}				
 							
 			}
+			if (findaffixedcompartment==false) {
+				
+				for (int j = 0; j < sizeVirtualCompartments; j++) {
+					
+					if(listVirtualCompartments.get(j) instanceof VirtualCompartmentReference) {
+						
+						if (((VirtualCompartmentReference)listVirtualCompartments.get(j)).getVirtualReference().equals(fulllist.get(i))==true) {
+							findaffixedcompartment = true;
+							break;
+						}						
+					}
+				}
+				
+			}
+			
 			if(findaffixedcompartment==false)
 			{
 				for (int j = 0; j < count_list; j++) {

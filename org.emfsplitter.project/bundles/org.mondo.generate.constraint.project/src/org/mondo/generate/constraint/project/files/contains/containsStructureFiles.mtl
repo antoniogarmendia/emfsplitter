@@ -17,28 +17,40 @@ import org.eclipse.emf.ecore.EClass;
 
 [let genPackage : GenPackage =  getGenClassFromEClass(packUnit.anEClass,anEObjectGenModel).eContainer().oclAsType(GenPackage) ]
 
-import [getRootFactoryClass(genPackage, anEObjectGenModel,packUnit.anEClass)/].[getRootFactoryClass(genPackage, anEObjectGenModel,packUnit.anEClass)/]Factory;
+[comment Factory/]
+[if (anEObjectGenModel.genPackages.classPackageSuffix->isEmpty() = true) and genPackage.basePackage->isEmpty() = false /]
+import [genPackage.basePackage/].[generateEClassImportFactory(packUnit.anEClass, genPackage.prefix)/];
+[if/]
+
+[for (usedGenPackages : GenPackage | anEObjectGenModel.usedGenPackages->asSequence())]
+import [usedGenPackages.basePackage/].[usedGenPackages.prefix.toLowerCase()/][generateImportFactory(usedGenPackages)/]; 
+[/for]
+[comment End Impor Factory/]
+
 
 
 public class [packUnit.getClassContainsName()/] {
 
 	public static final EClass getRoot() {
 		
-		return [getRootFactoryClass(genPackage, anEObjectGenModel,packUnit.anEClass)/]Factory.eINSTANCE.get[getRootFactoryClass(genPackage, anEObjectGenModel,packUnit.anEClass)/]Package()
+		return [genPackage.prefix/]Factory.eINSTANCE.get[genPackage.prefix/]Package()
 					.get[packUnit.anEClass.name/]();	
 	}
 
 	public static final EList<EClass> listOfContains = ECollections.
 			
 			asEList(
-					[for (c : EClass | packUnit.contains)]
-						[getRootFactoryClass(genPackage, anEObjectGenModel,packUnit.anEClass)/]Factory.eINSTANCE.
-									get[getRootFactoryClass(genPackage, anEObjectGenModel,packUnit.anEClass)/]Package().
-								get[c.name/]()
-						[if (not (packUnit.contains->asSequence()->size() = i) )]
-							,
-						[/if]
-					[/for]				
+
+				[for (c : EClass | packUnit.contains)]
+												
+					[getGenModelPackageByEClass(anEObjectGenModel,c).prefix/]Factory.eINSTANCE.
+								get[getGenModelPackageByEClass(anEObjectGenModel,c).prefix/]Package().
+							get[c.name/]() 
+					[if (not (packUnit.contains->asSequence()->size() = i) )]
+						,
+					[/if]						
+				[/for]
+							
 			);
 	
 }

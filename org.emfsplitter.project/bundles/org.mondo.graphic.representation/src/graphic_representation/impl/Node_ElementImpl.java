@@ -9,6 +9,7 @@ import graphic_representation.Graphic_representationPackage;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Node_Element;
 import graphic_representation.PaletteDescriptionLink;
+import graphic_representation.VirtualCompartment;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link graphic_representation.impl.Node_ElementImpl#getLinkPalette <em>Link Palette</em>}</li>
  *   <li>{@link graphic_representation.impl.Node_ElementImpl#getAffixedCompartmentElements <em>Affixed Compartment Elements</em>}</li>
  *   <li>{@link graphic_representation.impl.Node_ElementImpl#getExpandableItems <em>Expandable Items</em>}</li>
+ *   <li>{@link graphic_representation.impl.Node_ElementImpl#getVirtualCompartment <em>Virtual Compartment</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +79,16 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	 * @ordered
 	 */
 	protected EList<ExpandableItem> expandableItems;
+
+	/**
+	 * The cached value of the '{@link #getVirtualCompartment() <em>Virtual Compartment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVirtualCompartment()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<VirtualCompartment> virtualCompartment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,17 +160,45 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<VirtualCompartment> getVirtualCompartment() {
+		if (virtualCompartment == null) {
+			virtualCompartment = new EObjectContainmentEList<VirtualCompartment>(VirtualCompartment.class, this, Graphic_representationPackage.NODE_ELEMENT__VIRTUAL_COMPARTMENT);
+		}
+		return virtualCompartment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean isCompartment() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+	public boolean isOnlyCompartment() {
+		
 		Iterator<AffixedCompartmentElement> itAffixedCompartment = getAffixedCompartmentElements().iterator();
 		while (itAffixedCompartment.hasNext()) {
 			AffixedCompartmentElement type = (AffixedCompartmentElement) itAffixedCompartment.next();
 			if(type instanceof CompartmentElement)
 				return true;
 		}
+		
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isCompartmentAffixed() {
+		
+		if (getAffixedCompartmentElements().size()>0)
+			return true;
+				
+		if(getVirtualCompartment().size()>0)
+			return true;
+		
 		return false;
 	}
 
@@ -178,6 +218,8 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 				return ((InternalEList<?>)getAffixedCompartmentElements()).basicRemove(otherEnd, msgs);
 			case Graphic_representationPackage.NODE_ELEMENT__EXPANDABLE_ITEMS:
 				return ((InternalEList<?>)getExpandableItems()).basicRemove(otherEnd, msgs);
+			case Graphic_representationPackage.NODE_ELEMENT__VIRTUAL_COMPARTMENT:
+				return ((InternalEList<?>)getVirtualCompartment()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -198,6 +240,8 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 				return getAffixedCompartmentElements();
 			case Graphic_representationPackage.NODE_ELEMENT__EXPANDABLE_ITEMS:
 				return getExpandableItems();
+			case Graphic_representationPackage.NODE_ELEMENT__VIRTUAL_COMPARTMENT:
+				return getVirtualCompartment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -227,6 +271,10 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 				getExpandableItems().clear();
 				getExpandableItems().addAll((Collection<? extends ExpandableItem>)newValue);
 				return;
+			case Graphic_representationPackage.NODE_ELEMENT__VIRTUAL_COMPARTMENT:
+				getVirtualCompartment().clear();
+				getVirtualCompartment().addAll((Collection<? extends VirtualCompartment>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -251,6 +299,9 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 			case Graphic_representationPackage.NODE_ELEMENT__EXPANDABLE_ITEMS:
 				getExpandableItems().clear();
 				return;
+			case Graphic_representationPackage.NODE_ELEMENT__VIRTUAL_COMPARTMENT:
+				getVirtualCompartment().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -271,6 +322,8 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 				return affixedCompartmentElements != null && !affixedCompartmentElements.isEmpty();
 			case Graphic_representationPackage.NODE_ELEMENT__EXPANDABLE_ITEMS:
 				return expandableItems != null && !expandableItems.isEmpty();
+			case Graphic_representationPackage.NODE_ELEMENT__VIRTUAL_COMPARTMENT:
+				return virtualCompartment != null && !virtualCompartment.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -283,8 +336,10 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case Graphic_representationPackage.NODE_ELEMENT___IS_COMPARTMENT:
-				return isCompartment();
+			case Graphic_representationPackage.NODE_ELEMENT___IS_ONLY_COMPARTMENT:
+				return isOnlyCompartment();
+			case Graphic_representationPackage.NODE_ELEMENT___IS_COMPARTMENT_AFFIXED:
+				return isCompartmentAffixed();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

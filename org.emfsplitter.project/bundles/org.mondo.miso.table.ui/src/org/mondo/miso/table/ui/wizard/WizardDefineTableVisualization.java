@@ -1,6 +1,7 @@
 package org.mondo.miso.table.ui.wizard;
 
 import java.io.IOException;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -46,22 +47,33 @@ public class WizardDefineTableVisualization extends Wizard{
 
 	@Override
 	public void addPages() {
-		// TODO Auto-generated method stub
+		
 		super.addPages();	
 		this.setForcePreviousAndNextButtons(true);
 		
-		RepresentationTable representationTable = Graphic_representationFactory.eINSTANCE.createRepresentationTable();
-		representationTable.setRootTable(getRoot());
-		listRepresentations.add(representationTable);
-		pageDefineTable = new PageDefineTableRepresentation("Create Table Representation");
-		pageDefineTable.setPos(listRepresentations.indexOf(representationTable));
-		addPage(pageDefineTable);
+		int tableRepresentationSize = listRepresentations.size(); 
 		
+		if (tableRepresentationSize>0) {
+			
+			for (int i = 0; i < tableRepresentationSize; i++) {
+				PageDefineTableRepresentation pageTable = new PageDefineTableRepresentation("Create Table Representation");
+				pageTable.setPos(i);
+				addPage(pageTable);
+			}
+			
+		} else {		
+			RepresentationTable representationTable = Graphic_representationFactory.eINSTANCE.createRepresentationTable();
+			representationTable.setRootTable(getRoot());
+			listRepresentations.add(representationTable);
+			pageDefineTable = new PageDefineTableRepresentation("Create Table Representation");
+			pageDefineTable.setPos(listRepresentations.indexOf(representationTable));
+			addPage(pageDefineTable);
+		}
 	}
 
 	@Override
 	public boolean performFinish() {
-		// TODO Auto-generated method stub
+		
 		IWizardPage[] pages = getPages();
 		int count = pages.length;
 		for (int i = 0; i < count; i++) {
@@ -98,7 +110,7 @@ public class WizardDefineTableVisualization extends Wizard{
 	    	try {
 				res.save(null);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 	    }
@@ -172,8 +184,12 @@ public class WizardDefineTableVisualization extends Wizard{
 	public EList<RepresentationTable> getListRepresentationTable()
 	{
 		return listRepresentations;
-	}
+	}	
 	
+	public void setListRepresentations(EList<RepresentationTable> listRepresentations) {
+		this.listRepresentations = listRepresentations;
+	}
+
 	public EClass getRoot()
 	{
 		//Select Table Root

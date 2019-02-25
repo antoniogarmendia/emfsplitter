@@ -37,6 +37,18 @@ public class PerformantXMIUtils {
 	}
 	
 	/*
+	 * Get XMI Resource using PerformantXMIResourceImpl using the ResourceSet
+	 * */
+	public static Resource getPerformantResource(URI uri, boolean loadOnDemand, ResourceSet reset) {
+		
+		reset.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+				Resource.Factory.Registry.DEFAULT_EXTENSION, new PerformantXMIResourceFactoryImpl());
+		
+		return reset.getResource(uri, loadOnDemand);
+	}
+	
+	
+	/*
 	 * Get XMI Resource using PerformantXMIResourceImpl 
 	 */	 
 	public static Resource getPerformantResource(URI uri){

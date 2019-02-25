@@ -269,6 +269,13 @@
 				String = invoke('org.mondo.generate.modular.project.create.project.LibraryModular', 
 				'generateEClassImportBasePackage(org.eclipse.emf.ecore.EClassifier)',Sequence{anEClass}).oclAsType(String)/]
 
+[comment Searcg GenModel return GenClass/]
+[query public searchGenClass(eClassifier : EClassifier) : 
+			  GenClassifier = invoke('org.mondo.generate.modular.project.create.project.LibraryModular', 
+						'searchGenClass(org.eclipse.emf.ecore.EClassifier)', Sequence{eClassifier}).oclAsType(GenClassifier)
+/]
+
+
 [query public generateEClassImport(anEClass : EClassifier) :
 				String = invoke('org.mondo.generate.modular.project.create.project.LibraryModular', 
 				'generateEClassImport(org.eclipse.emf.ecore.EClassifier)',Sequence{anEClass}).oclAsType(String)/]
@@ -296,13 +303,20 @@
 				'getIconPath(java.lang.String)',Sequence{anPath}).oclAsType(String)/]
 
 [query public getGenClassFromEClass (anEClass : EClass, anEObjectGenModel : GenModel) :
-		  GenClass = getClosureGenPackages(anEObjectGenModel.genPackages->asSequence())
+		  GenClass =  if (getClosureGenPackages(anEObjectGenModel.genPackages->asSequence())
 							->union(anEObjectGenModel.genPackages->asSequence())
 							->collect(anGenPackage : GenPackage | anGenPackage.genClasses)->asSet()
 							->select(anGenClass : GenClass | anGenClass.ecoreClass = anEClass)
-							->asSequence()->first()					
-							
-	/]
+							->asSequence()->size() > 0) then
+						getClosureGenPackages(anEObjectGenModel.genPackages->asSequence())
+							->union(anEObjectGenModel.genPackages->asSequence())
+							->collect(anGenPackage : GenPackage | anGenPackage.genClasses)->asSet()
+							->select(anGenClass : GenClass | anGenClass.ecoreClass = anEClass)
+							->asSequence()->first()
+						else
+							null
+						endif
+/]
 
 	[query public getClosureGenPackages(genPackages : Sequence(GenPackage)) : 
 		  Sequence(GenPackage) = genPackages->closure(anPackage : GenPackage | anPackage.nestedGenPackages)

@@ -337,6 +337,42 @@ public interface Graphic_representationFactory extends EFactory {
 	ConditionalStyle createConditionalStyle();
 
 	/**
+	 * Returns a new object of class '<em>Virtual Compartment Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Virtual Compartment Reference</em>'.
+	 * @generated
+	 */
+	VirtualCompartmentReference createVirtualCompartmentReference();
+
+	/**
+	 * Returns a new object of class '<em>Virtual Compartment OCL</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Virtual Compartment OCL</em>'.
+	 * @generated
+	 */
+	VirtualCompartmentOCL createVirtualCompartmentOCL();
+
+	/**
+	 * Returns a new object of class '<em>Compartment Edge</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Compartment Edge</em>'.
+	 * @generated
+	 */
+	CompartmentEdge createCompartmentEdge();
+
+	/**
+	 * Returns a new object of class '<em>Compartment Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Compartment Link</em>'.
+	 * @generated
+	 */
+	CompartmentLink createCompartmentLink();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

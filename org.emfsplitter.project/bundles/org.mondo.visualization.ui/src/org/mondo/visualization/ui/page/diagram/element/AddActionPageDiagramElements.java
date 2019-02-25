@@ -26,6 +26,7 @@ import graphic_representation.Edge;
 import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.Edge_Direction;
 import graphic_representation.Graphic_representationFactory;
+import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Layer;
 import graphic_representation.Link;
@@ -35,7 +36,12 @@ import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.Rectangle;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
+import graphic_representation.Shape;
+import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.ShapeCompartmentParallelogram;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.VirtualCompartmentReference;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 public class AddActionPageDiagramElements extends AActionPageDiagramElements{
@@ -44,6 +50,8 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 	private Action actionName;
 	private Action actionLink;
 	private Action actionCompartment;
+	private Action actionVirtualCompartment;
+	private Action actionVirtualCompartmentOCL;
 	private Action actionAffixed;//Bordered Node
 	private Action actionAddAllAffixed;
 	private Action actionLayer;
@@ -63,6 +71,8 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 		makeActionName();
 		makeActionLink();
 		makeActionCompartment();
+		makeActionVirtualCompartmentReference();
+		makeActionVirtualCompartmentReferenceOCL();
 		makeActionAffixed();//Bordered Node	
 		makeActionAddAllAffixed();
 		makeActionLayer();		
@@ -98,8 +108,7 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 		
 		actionNameEdge.setId("com.wizard.visualization.addNameEdge");
 		actionNameEdge.setText("Add Edge Name");
-		actionNameEdge.setToolTipText("Add Edge Name");
-		
+		actionNameEdge.setToolTipText("Add Edge Name");		
 	}	
 
 	public void makeActionName(){
@@ -185,6 +194,8 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 					int countLinks = list.size();
 					EList<AffixedCompartmentElement> listAffixedCompartment = nodElement.getAffixedCompartmentElements();
 					int countReferences = full_list_references.size();
+					//Virtual Compartments
+					EList<VirtualCompartment> listVirtualCompartments = nodElement.getVirtualCompartment();
 					if(countReferences==0)
 					{
 						MessageDialog.openInformation(getShell(),"Information about addition of links",
@@ -198,7 +209,7 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 						return;
 					}
 					else{
-						int index = MissingEReference(full_list_references, list,listAffixedCompartment);
+						int index = MissingEReference(full_list_references, list,listAffixedCompartment, listVirtualCompartments);
 						if(index!=-1){
 							PaletteDescriptionLink newlink = Graphic_representationFactoryImpl.eINSTANCE.createPaletteDescriptionLink();
 							newlink.setAnEReference(full_list_references.get(index));
@@ -240,49 +251,151 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 						nodElement = root.getRoot_node_elements();
 					}					
 					
-					EList<EReference> full_list_references = anEClass.getEAllContainments();					
+					EList<EReference> full_list_references = anEClass.getEAllReferences();					
 					EList<PaletteDescriptionLink> listLinks = nodElement.getLinkPalette();				
 					int count_full_list_references = full_list_references.size();					
 					int countAllReferences = anEClass.getEAllReferences().size(); 
 					int countLinks = listLinks.size();
 					EList<AffixedCompartmentElement> listAffixedCompartment = nodElement.getAffixedCompartmentElements();
 					int countAffixedCompartment = listAffixedCompartment.size();
+					//Virtual Compartments
+					EList<VirtualCompartment> listVirtualCompartments = nodElement.getVirtualCompartment();
+					int sizeVirtualCompartments = listVirtualCompartments.size();	
+					
 					if(count_full_list_references==0)
 					{
 						MessageDialog.openInformation(getShell(),"Information about addition of Compartments",
-								"There are Non-Containment References in the EClass");
+								"There are no References in the EClass");
 						return;
 					}			
-					if(countLinks + countAffixedCompartment == countAllReferences)
+					if(countLinks + countAffixedCompartment + sizeVirtualCompartments == countAllReferences)
 					{
 						MessageDialog.openInformation(getShell(),"Information about addition of Compartments",
 								"All References have been selected");
 						return;
 					}
-					if(countAffixedCompartment<count_full_list_references){
-						
-						int index = MissingEReference(full_list_references,listLinks ,listAffixedCompartment);
-						if(index!=-1){
+					int index = MissingEReference(full_list_references,listLinks ,listAffixedCompartment,listVirtualCompartments);
+					if(index!=-1){
 							CompartmentElement compart = Graphic_representationFactory.eINSTANCE.createCompartmentElement();
 							compart.setAnEReference(full_list_references.get(index));							
 							nodElement.getAffixedCompartmentElements().add(compart);
+							if(obj instanceof Node) {
+								Node node = (Node) obj;
+								Shape shape = node.getNode_shape();
+								boolean shapeIsCompartment = isShapeCompartment(shape);
+								if (shapeIsCompartment == false)
+									((Node) obj).setNode_shape(Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram());
+								System.out.println("asda");
+							}
 							getTreeViewer().refresh(obj);
-						}
-						else
-							MessageDialog.openInformation(getShell(),"Information about addition of links",
-									"All Containment References have already been selected");
-					}
-					else
-						MessageDialog.openInformation(getShell(),"Information about addition of links",
-								"All Containment References have already been selected");
+					}					
 				}				
-			}
+			}			
 		};
 		
 		actionCompartment.setId("com.wizard.visualization.addCompartment");
 		actionCompartment.setText("Add Compartment");
 		actionCompartment.setToolTipText("Add Compartment");
 	};
+	
+	private boolean isShapeCompartment(Shape shape) {
+		
+		if (shape instanceof IconElement || shape instanceof ShapeCompartmentGradient || 
+				shape instanceof ShapeCompartmentParallelogram) 
+			return true;
+		
+		return false;
+	}
+	
+	public void makeActionVirtualCompartmentReference() {
+		
+		actionVirtualCompartment = new Action() {//Add EReference Virtual Compartments
+			
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof Node) {
+					Node node = (Node) obj;
+					EClass anEClass = node.getAnEClass();
+					//All References
+					EList<EReference> allReferences = anEClass.getEAllReferences();
+					int sizeAllReferences = allReferences.size();
+					//Containment References
+					EList<EReference> allContainmentReferences = anEClass.getEAllContainments();					
+					int sizeOfAllContainmentReferences = allContainmentReferences.size();
+					//Palette Link
+					EList<PaletteDescriptionLink> listLinks = node.getNode_elements().getLinkPalette();
+					int sizeOflLinks = listLinks.size();
+					//Affixed Compartments
+					EList<AffixedCompartmentElement> listAffixedCompartment = node.getNode_elements().getAffixedCompartmentElements();
+					int sizeAffixedCompartment = listAffixedCompartment.size();	
+					//Virtual Compartments
+					EList<VirtualCompartment> listVirtualCompartments = node.getNode_elements().getVirtualCompartment();
+					int sizeVirtualCompartments = listVirtualCompartments.size();		
+					
+					if(sizeOfAllContainmentReferences==0)
+					{
+						MessageDialog.openInformation(getShell(),"Information about addition of a Virtual Compartment",
+								"There are Non-Containment References in the EClass");
+						return;
+					}	
+					if(sizeOflLinks + sizeAffixedCompartment + sizeVirtualCompartments == sizeAllReferences)
+					{
+						MessageDialog.openInformation(getShell(),"Information about addition of Virtual Compartment",
+								"All References have been selected");
+						return;
+					}
+					if(sizeAffixedCompartment<sizeAllReferences){
+						
+						int index = MissingEReference(allReferences,listLinks ,listAffixedCompartment, listVirtualCompartments);						
+						VirtualCompartmentReference virtualCompartment = Graphic_representationFactory.eINSTANCE.createVirtualCompartmentReference();
+						virtualCompartment.setVirtualReference(allReferences.get(index));											
+						node.getNode_elements().getVirtualCompartment().add(virtualCompartment);
+						Shape shape = node.getNode_shape();
+						boolean shapeIsCompartment = isShapeCompartment(shape);
+						if (shapeIsCompartment == false)
+							((Node) obj).setNode_shape(Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram());				
+						
+						getTreeViewer().refresh(obj);
+						
+					} else
+						MessageDialog.openInformation(getShell(),"Information about addition of Virtual Compartments",
+								"All Containment References have already been selected");
+				}
+			}			
+		};
+		
+		actionVirtualCompartment.setId("com.wizard.visualization.addVirtualCompartment");
+		actionVirtualCompartment.setText("Add Virtual Compartment Reference");
+		actionVirtualCompartment.setToolTipText("Add Virtual Compartment Reference");		
+	}
+	
+	
+	public void makeActionVirtualCompartmentReferenceOCL() {
+		
+		
+		actionVirtualCompartmentOCL = new Action() {//Add EReference Virtual Compartments
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof Node) {
+					Node node = (Node) obj;
+									
+					VirtualCompartmentOCL virtualCompartment = Graphic_representationFactory.eINSTANCE.createVirtualCompartmentOCL();
+					node.getNode_elements().getVirtualCompartment().add(virtualCompartment);
+					Shape shape = node.getNode_shape();
+					boolean shapeIsCompartment = isShapeCompartment(shape);
+					if (shapeIsCompartment == false)
+						((Node) obj).setNode_shape(Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram());				
+					
+					getTreeViewer().refresh(obj);
+				}				
+			}			
+		};	
+		
+		actionVirtualCompartmentOCL.setId("com.wizard.visualization.addVirtualCompartment");
+		actionVirtualCompartmentOCL.setText("Add Virtual Compartment Reference OCL");
+		actionVirtualCompartmentOCL.setToolTipText("Add Virtual Compartment Reference OCL");		
+	}
 	
 	public void makeActionAffixed(){
 		
@@ -316,14 +429,9 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 					int countLinks = listLinks.size();
 					EList<AffixedCompartmentElement> listAffixedCompartment = nodElement.getAffixedCompartmentElements();
 					int countAffixedCompartment = listAffixedCompartment.size();
-					/*
-					if(count_full_list_references==0)
-					{
-						MessageDialog.openInformation(getShell(),"Information about addition of Compartments",
-								"There are Non-Containment References in the EClass");
-						return;
-					}
-					*/					
+					//Virtual Compartments
+					EList<VirtualCompartment> listVirtualCompartments = nodElement.getVirtualCompartment();
+									
 	 				if(countLinks + countAffixedCompartment == countAllReferences)
 					{
 						MessageDialog.openInformation(getShell(),"Information about addition of Affixed",
@@ -331,7 +439,7 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 						return;
 					}
 					//if(countAffixedCompartment<count_full_list_references){
-						int index = MissingEReference(full_list_references,listLinks ,listAffixedCompartment);
+						int index = MissingEReference(full_list_references,listLinks ,listAffixedCompartment, listVirtualCompartments);
 						if(index!=-1){
 							AffixedElement affixed = Graphic_representationFactory.eINSTANCE.createAffixedElement();
 							affixed.setAnEReference(full_list_references.get(index));
@@ -643,6 +751,14 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 
 	public Action getActionCompartment() {
 		return actionCompartment;
+	}
+	
+	public Action getActionVirtualCompartment() {
+		return actionVirtualCompartment;
+	}
+	
+	public Action getActionVirtualCompartmentOcl() {
+		return actionVirtualCompartmentOCL;
 	}
 
 	public Action getActionAffixed() {

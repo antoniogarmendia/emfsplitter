@@ -3,6 +3,7 @@ package org.mondo.visualization.ui.page.diagram.decorator;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.gmf.runtime.notation.Compartment;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -14,9 +15,12 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
+import graphic_representation.CompartmentEdge;
+import graphic_representation.CompartmentElement;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.DiagramElement;
 import graphic_representation.Node;
+import graphic_representation.Shape;
 
 public class ActionPageDiagramDecorator {
 	
@@ -27,6 +31,8 @@ public class ActionPageDiagramDecorator {
 	
 	//Add Node Actions
 	private AddNodeActionPageDiagramDecorator addNodeActions;
+	
+	//
 
 	public ActionPageDiagramDecorator(TreeViewer treeViewer,Shell shell) {
 		super();
@@ -84,8 +90,27 @@ public class ActionPageDiagramDecorator {
 			manager.add(addNodeActions.getAddConditionalStyle());			
 		} else if(obj instanceof ConditionalStyle) {
 			manager.add(addNodeActions.getActionDeleteConditionalStyle());
-		}
-			
+		} else if (obj instanceof CompartmentElement) {
+			CompartmentElement compart = (CompartmentElement) obj;
+			if (compart.getAnEReference().isContainment() == false) {
+				if (compart.getInit() == null)
+					manager.add(addNodeActions.getActionAddInitShape());
+				if (compart.getNodeShape() == null)				
+					manager.add(addNodeActions.getActionAddNodeShape());
+				if (compart.getEnd() == null)				
+					manager.add(addNodeActions.getActionAddEndShape());
+				if (compart.getInitToFirst() == null)				
+					manager.add(addNodeActions.getActionAddInitToFirst());
+				if (compart.getNodeToNode() == null)					
+					manager.add(addNodeActions.getActionAddNodeToNode());
+				if (compart.getNodeToEnd() == null)	
+					manager.add(addNodeActions.getActionAddNodeToEnd());				
+			}
+		} else if (obj instanceof Shape) {
+			manager.add(addNodeActions.getActionDeleteShape());
+		} else if (obj instanceof CompartmentEdge) {
+			manager.add(addNodeActions.getActionDeleteCompartmentEdge());
+		}			
 	}
 
 	private Object GetSelectedTreeViewerObject() {

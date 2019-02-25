@@ -23,6 +23,10 @@
       <genEnumLiterals ecoreEnumLiteral="Graphic_Representation.ecore#//ChildrenPresentation/HORIZONTALSTACK"/>
       <genEnumLiterals ecoreEnumLiteral="Graphic_Representation.ecore#//ChildrenPresentation/VERTICALSTACK"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Graphic_Representation.ecore#//CompartmentView">
+      <genEnumLiterals ecoreEnumLiteral="Graphic_Representation.ecore#//CompartmentView/None"/>
+      <genEnumLiterals ecoreEnumLiteral="Graphic_Representation.ecore#//CompartmentView/LinkedList"/>
+    </genEnums>
     <genClasses ecoreClass="Graphic_Representation.ecore#//MMGraphic_Representation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//MMGraphic_Representation/extension"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//MMGraphic_Representation/listRepresentations"/>
@@ -52,6 +56,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//Node/expandable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//Node/conditionalStyle"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//Node/presentation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//Node/virtualCompartments"/>
     </genClasses>
     <genClasses ecoreClass="Graphic_Representation.ecore#//IconElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//IconElement/filepath"/>
@@ -68,7 +73,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//Node_Element/linkPalette"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//Node_Element/affixedCompartmentElements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//Node_Element/expandableItems"/>
-      <genOperations ecoreOperation="Graphic_Representation.ecore#//Node_Element/isCompartment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//Node_Element/virtualCompartment"/>
+      <genOperations ecoreOperation="Graphic_Representation.ecore#//Node_Element/isOnlyCompartment"/>
+      <genOperations ecoreOperation="Graphic_Representation.ecore#//Node_Element/isCompartmentAffixed"/>
     </genClasses>
     <genClasses ecoreClass="Graphic_Representation.ecore#//ExpandableItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//ExpandableItem/index"/>
@@ -137,7 +144,15 @@
     <genClasses ecoreClass="Graphic_Representation.ecore#//DefaultLayer"/>
     <genClasses ecoreClass="Graphic_Representation.ecore#//AdditionalLayer"/>
     <genClasses ecoreClass="Graphic_Representation.ecore#//AffixedElement"/>
-    <genClasses ecoreClass="Graphic_Representation.ecore#//CompartmentElement"/>
+    <genClasses ecoreClass="Graphic_Representation.ecore#//CompartmentElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//CompartmentElement/compartmentView"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentElement/init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentElement/nodeShape"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentElement/end"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentElement/initToFirst"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentElement/nodeToNode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentElement/nodeToEnd"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="Graphic_Representation.ecore#//AffixedCompartmentElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//AffixedCompartmentElement/anEReference"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//AffixedCompartmentElement/nodes"/>
@@ -198,6 +213,24 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//ConditionalStyle/eAttribute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//ConditionalStyle/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//ConditionalStyle/conditionalStyle"/>
+    </genClasses>
+    <genClasses ecoreClass="Graphic_Representation.ecore#//VirtualCompartment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//VirtualCompartment/node"/>
+    </genClasses>
+    <genClasses ecoreClass="Graphic_Representation.ecore#//VirtualCompartmentReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//VirtualCompartmentReference/containerReference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//VirtualCompartmentReference/virtualReference"/>
+    </genClasses>
+    <genClasses ecoreClass="Graphic_Representation.ecore#//VirtualCompartmentOCL">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//VirtualCompartmentOCL/oclExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="Graphic_Representation.ecore#//CompartmentEdge">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentEdge/edge_style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentEdge/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Graphic_Representation.ecore#//CompartmentEdge/target"/>
+    </genClasses>
+    <genClasses ecoreClass="Graphic_Representation.ecore#//CompartmentLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Graphic_Representation.ecore#//CompartmentLink/decoratorName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

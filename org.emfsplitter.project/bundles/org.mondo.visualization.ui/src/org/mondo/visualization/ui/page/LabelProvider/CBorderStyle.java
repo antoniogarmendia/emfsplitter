@@ -3,6 +3,7 @@ package org.mondo.visualization.ui.page.LabelProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 
 import graphic_representation.Border;
+import graphic_representation.CompartmentEdge;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Edge;
 import graphic_representation.Node;
@@ -22,9 +23,13 @@ public class CBorderStyle extends ColumnLabelProvider {
 			sh = ((Root) element).getRoot_shape();	
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if (element instanceof Edge)
 			return ((Edge) element).getEdge_style().getLineStyle();
+		if (element instanceof CompartmentEdge)
+			return ((CompartmentEdge) element).getEdge_style().getLineStyle();
 			
 		else if (sh instanceof Border)
 			return ((Border) sh).getBorderStyle();		

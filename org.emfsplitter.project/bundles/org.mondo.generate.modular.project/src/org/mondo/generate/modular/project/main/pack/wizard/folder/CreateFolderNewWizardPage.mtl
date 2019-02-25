@@ -6,7 +6,8 @@
 
 [for(c : ClassRoleInstance | anPatternInstance.Get_FolderClassRoleInstance()->union(anPatternInstance.Get_ProjectClassRoleInstance()
 																						 ->select(anClassRoleInstance : ClassRoleInstance | anClassRoleInstance.referenceInstances
-																						 ->select(ref : ReferenceRoleInstance | ref.element.eType.name.toString() = anClassRoleInstance.element.name.toString())->size() > 0)->asSequence()))]) ] 
+																						 ->select(ref : ReferenceRoleInstance | ref.element.eType.name.toString() = anClassRoleInstance.element.name.toString())->size() > 0)->asSequence())
+	->excluding(anPatternInstance.Get_ProjectClassRoleInstance())) ] 
 
 [file ('src/'.concat(anProjectName.toLower() + '.' + anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase() + getProperty('prefix_name')).replaceAll('\\.','/').concat('/wizard/folder/').concat(c.element.name.toString()).concat('CreateFolderWizardPage.java'),false, 'UTF-8')]
 package [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].wizard.folder;

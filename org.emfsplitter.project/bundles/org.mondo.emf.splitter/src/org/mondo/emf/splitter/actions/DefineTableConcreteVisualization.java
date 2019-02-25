@@ -30,7 +30,7 @@ public class DefineTableConcreteVisualization implements IHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		// TODO Auto-generated method stub
+		
 		System.out.println("Execute Wizard to Define Table Concrete Visualization");
 		
 		IStructuredSelection selection = (TreeSelection)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();

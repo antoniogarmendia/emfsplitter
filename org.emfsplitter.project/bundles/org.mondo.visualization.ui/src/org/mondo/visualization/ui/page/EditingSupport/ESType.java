@@ -1,10 +1,17 @@
 package org.mondo.visualization.ui.page.EditingSupport;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import graphic_representation.CompartmentEdge;
+import graphic_representation.CompartmentElement;
+import graphic_representation.CompartmentView;
 import graphic_representation.DiagramElement;
 import graphic_representation.Edge;
 import graphic_representation.Edge_Direction;
+import graphic_representation.Edge_Style;
+import graphic_representation.Ellipse;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.Layer;
 import graphic_representation.Link;
@@ -13,6 +20,7 @@ import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
@@ -25,23 +33,41 @@ import org.eclipse.ui.PlatformUI;
 public class ESType extends EditingSupport{
 
 	private ComboBoxCellEditor cellEditor;
+	private ComboBoxCellEditor cellTypeCompartment;
+	
 	
 	public ESType(ColumnViewer viewer) {
 		
 		super(viewer);		
-		cellEditor = new ComboBoxCellEditor((Composite) getViewer().getControl(), new String[]{"Node","Edge"});	
+		cellEditor = new ComboBoxCellEditor((Composite) getViewer().getControl(), new String[]{"Node","Edge"});
+		cellTypeCompartment = new ComboBoxCellEditor((Composite) getViewer().getControl(), 
+				getCompartmentViewStrings().toArray(new String[getCompartmentViewStrings().size()]));		
+	}
+	
+	public List<String> getCompartmentViewStrings() {
+		
+		List<String> result = new ArrayList<String>();
+		Iterator<CompartmentView> it = CompartmentView.VALUES.iterator();
+		while (it.hasNext()) {
+			CompartmentView compartmentView = (CompartmentView) it.next();
+			result.add(compartmentView.getLiteral());
+		}
+		return result;
 	}
 
 	@Override
 	protected CellEditor getCellEditor(Object element) {
 		
-		return cellEditor;		 
+		if (element instanceof CompartmentElement)
+			return cellTypeCompartment;
+		else
+			return cellEditor;		 
 	}
 
 	@Override
 	protected boolean canEdit(Object element) {
 		
-		if(element instanceof DiagramElement)
+		if(element instanceof DiagramElement || element instanceof CompartmentElement)
 			return true;
 		else
 			return false;
@@ -54,6 +80,10 @@ public class ESType extends EditingSupport{
 			return 0;
 		if(element instanceof Edge)
 			return 1;
+		if (element instanceof CompartmentElement) {
+			CompartmentElement compart = (CompartmentElement) element;
+			return compart.getCompartmentView().getValue();
+		}		
 		return 0;
 	}
 
@@ -62,6 +92,19 @@ public class ESType extends EditingSupport{
 		
 		if(value instanceof Integer){
 			int val = (Integer)value;
+			if (element instanceof CompartmentElement) {
+				CompartmentElement compartElement = (CompartmentElement) element;
+				CompartmentView oldView = compartElement.getCompartmentView();
+				CompartmentView newView = CompartmentView.get(val);
+				if (!oldView.equals(newView)) {
+					compartElement.setCompartmentView(newView);
+					if (newView.equals(CompartmentView.LINKED_LIST)) {
+						createNonContainmentFeatures(compartElement);						
+					}
+					getViewer().refresh(element);
+				}
+			}		
+			
 			if(val==0 && element instanceof Edge){
 				Edge edg = (Edge)element;
 				Node nod = Graphic_representationFactoryImpl.eINSTANCE.createNode();
@@ -74,7 +117,7 @@ public class ESType extends EditingSupport{
 				nod.setNode_shape(Graphic_representationFactory.eINSTANCE.createRectangle());
 				SetOldToNewEObject((Edge)element, nod);				
 			}
-			else if(val==1 && element instanceof Node){
+			else if (val==1 && element instanceof Node) {
 				Node nod = (Node)element;
 				Edge edg = Graphic_representationFactoryImpl.eINSTANCE.createEdge();
 				edg.getContainerReference().clear();
@@ -121,6 +164,29 @@ public class ESType extends EditingSupport{
 				}
 			}		
 		}		
+	}
+	
+	public static void createNonContainmentFeatures(CompartmentElement compart) {
+		
+		Ellipse ellipse = Graphic_representationFactory.eINSTANCE.createEllipse();
+		ellipse.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderStyle("solid");
+		//Nodes
+		compart.setInit(ellipse);
+		compart.setNodeShape(EcoreUtil.copy(ellipse));
+		compart.setEnd(EcoreUtil.copy(ellipse));
+		//Edges
+		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
+		Edge_Style edgeStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
+		edgeStyle.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		compartEdge.setEdge_style(edgeStyle);
+		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		
+		compart.setInitToFirst(compartEdge);
+		compart.setNodeToNode(EcoreUtil.copy(compartEdge));
+		compart.setNodeToEnd(EcoreUtil.copy(compartEdge));
 	}
 	
 	private void SetOldToNewEObject(DiagramElement element, DiagramElement newElement) {

@@ -35,6 +35,9 @@ import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.Representation;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.VirtualCompartmentReference;
 
 public class ActionTreePageDiagramElements {
 	
@@ -112,18 +115,15 @@ public class ActionTreePageDiagramElements {
 		registerContextMenu(menuMgr, treeViewer);
 	}
 
-	private Representation getRepresentation() {
-		// TODO Auto-generated method stub
+	private Representation getRepresentation() {		
 		return this.representation;
 	}
 
-	private HeuristicStrategy getHeuristicStrategy() {
-		// TODO Auto-generated method stub
+	private HeuristicStrategy getHeuristicStrategy() {		
 		return this.heuristicStrategy;
 	}
 
-	protected void fillContextMenu(IMenuManager manager) {
-		// TODO Auto-generated method stub
+	protected void fillContextMenu(IMenuManager manager) {		
 		Object obj = this.GetSelectedTreeViewerObject();
 		if(obj instanceof StructuredSelection)
 		{
@@ -158,6 +158,8 @@ public class ActionTreePageDiagramElements {
 			manager.add(actionsDiagramElements.getActionName());
 			manager.add(actionsDiagramElements.getActionLink());
 			manager.add(actionsDiagramElements.getActionCompartment());
+			manager.add(actionsDiagramElements.getActionVirtualCompartment());
+			manager.add(actionsDiagramElements.getActionVirtualCompartmentOcl());
 			manager.add(actionsDiagramElements.getActionAffixed());
 			manager.add(deleteDiagramElements.getActionNodeDelete());
 			manager.add(actionsDiagramElements.getActionAddAllAffixed());
@@ -184,6 +186,12 @@ public class ActionTreePageDiagramElements {
 			manager.add(deleteDiagramElements.getActionCompartmentsDelete());
 			manager.add(changeDiagramElements.getActionChangeToAffixed());
 			manager.add(changeDiagramElements.getActionChangeToLink());
+		}
+		else if (obj instanceof VirtualCompartmentReference) {
+			manager.add(deleteDiagramElements.getActionVirtualCompartmentDelete());			
+		}
+		else if (obj instanceof VirtualCompartmentOCL) {
+			manager.add(deleteDiagramElements.getActionVirtualCompartmentOclDelete());
 		}
 		else if(obj instanceof AffixedElement)
 		{

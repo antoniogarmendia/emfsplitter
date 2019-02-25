@@ -330,7 +330,6 @@ public class GenModelEMFImpl extends MinimalEObjectImpl.Container implements Gen
 	 * @generated NOT
 	 */
 	public Boolean CreateGenModel() {
-		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		genModel = GenModelFactory.eINSTANCE.createGenModel();
 		

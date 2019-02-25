@@ -53,7 +53,7 @@ public class ESDiagramElement extends EditingSupport {
 		if(element instanceof ConditionalStyle) {
 			return true;
 		} else if (element instanceof Node) {
-			return ((Node) element).getNode_elements().isCompartment();
+			return ((Node) element).getNode_elements().isCompartmentAffixed();
 		}
 		return false;
 	}

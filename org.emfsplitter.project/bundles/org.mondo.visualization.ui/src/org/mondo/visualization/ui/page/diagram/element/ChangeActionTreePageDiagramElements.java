@@ -32,6 +32,7 @@ import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.Rectangle;
 import graphic_representation.Root;
 import graphic_representation.ShapeCompartmentGradient;
+import graphic_representation.ShapeCompartmentParallelogram;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 public class ChangeActionTreePageDiagramElements extends AActionPageDiagramElements{
@@ -91,10 +92,10 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 					EObject parent = node_Element.eContainer();
 					if(parent instanceof Node)
 					{
-						Ellipse elli = Graphic_representationFactoryImpl.eINSTANCE.createEllipse();
-						elli.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						elli.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						((Node) parent).setNode_shape(elli);
+						ShapeCompartmentParallelogram parallelogram = Graphic_representationFactoryImpl.eINSTANCE.createShapeCompartmentParallelogram();
+						parallelogram.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+						parallelogram.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+						((Node) parent).setNode_shape(parallelogram);
 					}					
 					EcoreUtil.remove((EObject) obj);				
 					getTreeViewer().remove(obj);

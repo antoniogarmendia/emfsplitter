@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 import org.eclipse.core.runtime.Platform;
+import [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].ext.EvaluateModularBuilder;
 
 public class ModularIncrementalProjectBuilder extends IncrementalProjectBuilder  {
 

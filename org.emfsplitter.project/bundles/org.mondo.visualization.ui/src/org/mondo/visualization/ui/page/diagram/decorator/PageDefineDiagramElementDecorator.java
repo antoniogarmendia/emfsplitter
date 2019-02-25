@@ -3,6 +3,7 @@ package org.mondo.visualization.ui.page.diagram.decorator;
 import graphic_representation.Layer;
 import graphic_representation.MMGraphic_Representation;
 import graphic_representation.RepresentationDD;
+import graphic_representation.Root;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 import java.util.ArrayList;
@@ -303,20 +304,23 @@ public class PageDefineDiagramElementDecorator extends WizardPage{
 		//All Diagram Elements of all layers
 		ArrayList<EObject> allDiagramElements = new ArrayList<EObject>();
 		Iterator<Layer> itAllLayers = ((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(getRepresentation())).getLayers().iterator();
-		Layer lay = ((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(0)).getRoot().getRootLayer();
-		if(lay != null)
-			allDiagramElements.add(((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(getRepresentation())).getRoot());
-		while (itAllLayers.hasNext()) {
-			Layer layer = (Layer) itAllLayers.next();
-			allDiagramElements.addAll(layer.getElements());			
-		}			
-		//End
-		treeViewer.setContentProvider(new GraphicDiagramElementContentProvider());
-		
-		treeViewer.setInput(allDiagramElements.toArray());
-		
-		sc.setMinSize(tree.computeSize(SWT.DEFAULT, SWT.DEFAULT));	
-		clientwidth = tree.getSize().x;
+		Root root = ((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(0)).getRoot();
+		if (root != null) {
+			Layer lay = ((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(0)).getRoot().getRootLayer();
+			if(lay != null)
+				allDiagramElements.add(((RepresentationDD)getGraphicRepresentation().getListRepresentations().get(getRepresentation())).getRoot());
+			while (itAllLayers.hasNext()) {
+				Layer layer = (Layer) itAllLayers.next();
+				allDiagramElements.addAll(layer.getElements());			
+			}			
+			//End
+			treeViewer.setContentProvider(new GraphicDiagramElementContentProvider());
+			
+			treeViewer.setInput(allDiagramElements.toArray());
+			
+			sc.setMinSize(tree.computeSize(SWT.DEFAULT, SWT.DEFAULT));	
+			clientwidth = tree.getSize().x;
+		}
 	}	
 
 	public void Delete_Tree()

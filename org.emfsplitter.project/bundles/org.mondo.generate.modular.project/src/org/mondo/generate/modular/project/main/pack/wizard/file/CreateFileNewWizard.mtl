@@ -30,13 +30,23 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.common.util.URI;
-import org.mondo.modular.sirius.ext.EvaluateSiriusProjectCreation;
+
+[if (c.element.instanceTypeName.oclIsInvalid() = false and 	c.element.instanceTypeName.equalsIgnoreCase('java.util.Map$Entry').oclIsInvalid() = false)]
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
+[else]
 
 [let genPackage : GenPackage =  getGenClassFromEClass(c.element,anEObjectGenModel).eContainer().oclAsType(GenPackage) ]
 [if (genPackage.basePackage->isEmpty() = true)]
 import [generateEClassImport(c.element)/];
 [else]
-import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/][generateEClassImportBasePackage(c.element)/];
+[if (genPackage.interfacePackageSuffix = '')]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[generateEClassImportBasePackage(c.element)/];
+[else]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/].[generateEClassImportBasePackage(c.element)/];
+[/if]
 [/if]
 [comment EEnum Classes/]
 [for (attr : EAttribute | c.element.eAllAttributes)]
@@ -61,6 +71,8 @@ import [generateEClassImportFactoryImpl(c.element)/];
 [elseif (anEObjectGenModel.genPackages.classPackageSuffix->isEmpty() = false) and 
 	genPackage.basePackage->isEmpty() = true ]
 import [getRootPackageString(c.element)/].[anEObjectGenModel.genPackages->first().classPackageSuffix/].[genPackage.prefix.concat('FactoryImpl')/];
+[/if]
+[/let]
 [/if]
 
 
@@ -158,8 +170,14 @@ public class [c.element.name/]CreateFileWizard extends Wizard implements INewWiz
 		URI fileURI = URI.createPlatformResourceURI(resource.getFullPath().toString().concat("/").concat(fileName), true);
 			
 		//Add the root to the object
-		[c.element.name /] rootObject = [genPackage.prefix /]FactoryImpl.eINSTANCE.create[c.element.name /]();
+		[if (c.element.instanceTypeName.oclIsInvalid() = false and 	c.element.instanceTypeName.equalsIgnoreCase('java.util.Map$Entry').oclIsInvalid() = false)]
+		EMap<String, String> rootObject = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
+													EStringToStringMapEntryImpl.class, null);
+		[else]		
+		[let genPackageElement : GenPackage =  getGenClassFromEClass(c.element,anEObjectGenModel).eContainer().oclAsType(GenPackage) ]
+		[c.element.name /] rootObject = [genPackageElement.prefix /]FactoryImpl.eINSTANCE.create[c.element.name /]();
 		[/let]
+		[/if]
 		//Set the Attributes
 		[for (attr : EAttribute | c.element.eAllAttributes->select(attr : EAttribute | attr.upperBound=1))]
 		[if (attr.derived = false)]
@@ -211,18 +229,23 @@ public class [c.element.name/]CreateFileWizard extends Wizard implements INewWiz
 				}
 			}
 		});
-		new EvaluateSiriusProjectCreation().executeFile(Platform.getExtensionRegistry(),fileURI);
 		monitor.worked(1);
 	}
 	
 	private IFile getParentFile(IContainer folder) {
 		
-		for (int i = 1; i <=  [anPatternInstance.Get_FolderClassRoleInstance()->size()/]; i++) {
-			IFile file = folder.getFile(new Path(folder.getName().concat("." + i)));
+		if (folder instanceof IProject) {
+			IFile file = folder.getFile(new Path(folder.getName().concat(".xmi")));
 			if (file.exists())
-				return file;						
-		}		
-		return null;
+				return file;
+		} else {
+			for (int i = 1; i <=  [anPatternInstance.Get_FolderClassRoleInstance()->size()/]; i++) {
+				IFile file = folder.getFile(new Path(folder.getName().concat("." + i)));
+				if (file.exists())
+					return file;						
+			}	
+		}
+		return null;	
 	}
 	
 	/**

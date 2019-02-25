@@ -37,7 +37,11 @@ import org.eclipse.emf.edapt.internal.common.URIUtils;
 [if (genPackage.basePackage->isEmpty() = true)]
 import [generateEClassImport(c.element)/];
 [else]
-import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/][generateEClassImportBasePackage(c.element)/];
+[if (genPackage.interfacePackageSuffix = '')]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[generateEClassImportBasePackage(Get_ProjectClass(anPatternInstance))/];
+[else]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/].[generateEClassImportBasePackage(Get_ProjectClass(anPatternInstance))/];
+[/if]
 [/if]
 [comment EEnum Classes/]
 [for (attr : EAttribute | c.element.eAllAttributes)]
@@ -55,7 +59,7 @@ import [generateEClassImport(attr.eType)/];
 import [genPackage.basePackage/].[generateEClassImportFactoryImpl(c.element)/];
 [elseif (anEObjectGenModel.genPackages.classPackageSuffix->isEmpty() = false) and 
 	genPackage.basePackage->isEmpty() = false ]
-import [genPackage.basePackage/].[getRootPackageString(c.element)/].[anEObjectGenModel.genPackages.classPackageSuffix/].[genPackage.prefix.concat('FactoryImpl')/];
+import [genPackage.basePackage/].[getRootPackageString(c.element).toString().toLowerCase()/].[anEObjectGenModel.genPackages.classPackageSuffix/].[genPackage.prefix.concat('FactoryImpl')/];
 [elseif (anEObjectGenModel.genPackages.classPackageSuffix->isEmpty() = true) and 
 	genPackage.basePackage->isEmpty() = true ]
 import [generateEClassImportFactoryImpl(c.element)/];
@@ -100,20 +104,20 @@ import [getRootPackageString(d.element)/].[anEObjectGenModel.genPackages->first(
 
 public class [c.element.name/]NewProjectInfo {
 
-	private [c.element.name/]ProjectFeatures features; 
+	private [Get_ProjectClass(anPatternInstance).name/] root; 
 	private IProject project;
 	private Resource reverseModel;
 
 	public static final String CONCORDANCE_ID = "org.eclipse.epsilon.concordance.nature.ConcordanceNature";
 	
-	public [c.element.name/]NewProjectInfo([c.element.name/]ProjectFeatures feat){
-		this.features = feat;
+	public [c.element.name/]NewProjectInfo([Get_ProjectClass(anPatternInstance).name/] root){
+		this.root = root;
 		this.project = null;
 	}
 	
-	public [c.element.name/]NewProjectInfo([c.element.name/]ProjectFeatures feat,Resource reverseModel)
+	public [c.element.name/]NewProjectInfo([Get_ProjectClass(anPatternInstance).name/] root,Resource reverseModel)
 	{
-		this.features = feat;
+		this.root = root;
 		this.project = null;
 		this.reverseModel = reverseModel;
 	}
@@ -126,9 +130,9 @@ public class [c.element.name/]NewProjectInfo {
 		public void run(IProgressMonitor monitor) throws CoreException {
 		
 		[if (c.HasTypeFeature_EAttribute('name')=true)]
-		project = ResourcesPlugin.getWorkspace().getRoot().getProject(features.Get_[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name/]());
+		project = ResourcesPlugin.getWorkspace().getRoot().getProject(root.get[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name.toUpperFirst()/]());
 		[else]
-		project = ResourcesPlugin.getWorkspace().getRoot().getProject(features.get_ProjectName());
+		project = ResourcesPlugin.getWorkspace().getRoot().getProject(checkFileName(null, "[c.element.name/]"));
 		[/if]
 		if (!project.exists()) {
 		    project.create(null);
@@ -173,9 +177,11 @@ public class [c.element.name/]NewProjectInfo {
 
 	public IContainer createFolder(){
 		
-		
-		String folderName = checkFileName(features.Get_[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name/](), "[c.element.name/]");
-		
+		[if (c.HasTypeFeature_EAttribute('name') = false)]
+		String folderName = checkFileName(null, "[c.element.name/]");
+		[else]
+		String folderName = checkFileName(root.get[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name.toUpperFirst()/](), "[c.element.name/]");
+		[/if]
 		IFolder newFolder = project.getFolder(folderName);
 		if(newFolder.exists()==false){
 			try {
@@ -218,33 +224,10 @@ public class [c.element.name/]NewProjectInfo {
 		// Get the URI of the model file.
 		URI fileURI = URI.createPlatformResourceURI(container.getFullPath().toString().concat("/").concat(container.getName()+".xmi"), true);
 		if(reverseModel == null)
-		{	
-		//Add the root to the object
-		[c.element.name /] root = [genPackage.prefix/]FactoryImpl.eINSTANCE.create[c.element.name /]();
+		{		
 [/let]
-		//Set the Attributes
-		[for (attr : EAttribute | c.element.eAllAttributes)]
-		[if (attr.derived = false)]
-		[if (c.HasTypeFeature_EAttribute('name')=true)]
-			[if(c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name<>attr.name)]
-				[if(attr.eType.name='EString')]
-				root.set[attr.name.toUpperFirst() /](features.Get_[attr.name /]());
-				[else]
-				root.set[attr.name.toUpperFirst() /](['features.Get_'.concat(attr.name).concat('()')/]);						
-			[/if]	
-			[else]
-				root.set[attr.name.toUpperFirst() /](container.getName());
-			[/if]
-		[else]
-			[if(attr.eType.name='EString')]
-				root.set[attr.name.toUpperFirst() /](features.Get_[attr.name /]());
-				[else]
-				root.set[attr.name.toUpperFirst() /](['features.Get_'.concat(attr.name).concat('()')/]);						
-			[/if]	
-		[/if]
-		[/if]
-		[/for]
-			Resource resource = PerformantXMIUtils.createResourceRoot(fileURI, root);
+		
+			Resource resource = PerformantXMIUtils.createResourceRoot(fileURI, this.root);
 			resource.save(null);
 			resource.unload();		
 		}
@@ -610,7 +593,11 @@ public class [c.element.name/]NewProjectInfo {
 		
 		[for (c : ClassRoleInstance | anPatternInstance.Get_FolderClassRoleInstance()) ]
 		 if(eObject instanceof [c.element.name.concat('Impl')/])
-				return (([c.element.name.concat('Impl')/])eObject).get[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name.toUpperFirst()/]().toString();	
+				[if (c.HasTypeFeature_EAttribute('name') = true)]
+				return checkFileName((([c.element.name.concat('Impl')/])eObject).get[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name.toUpperFirst()/]().toString(),"[c.element.name/]");
+				[else]
+				return checkFileName(null,"[c.element.name/]");	
+				[/if]
 			 [/for]
 		return null;
 	}
@@ -620,7 +607,11 @@ public class [c.element.name/]NewProjectInfo {
 		
 		[for(c : ClassRoleInstance | anPatternInstance.Get_FileClassRoleInstance())]
 		if(eObject instanceof [c.element.name.concat('Impl') /])
-			return checkFileName((([c.element.name.concat('Impl') /]) eObject).get[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name.toString().toUpperFirst()/](),"[c.element.name/]").concat(".[c.Get_ClassRoleInstance_EAttribute('extension')/]");						
+			[if (c.HasTypeFeature_EAttribute('name') = true)]
+			return checkFileName((([c.element.name.concat('Impl') /]) eObject).get[c.Get_ClassRoleInstance_TypeFeature_EAttribute('name').name.toString().toUpperFirst()/](),"[c.element.name/]").concat(".[c.Get_ClassRoleInstance_EAttribute('extension')/]");
+			[else]
+			return checkFileName(null,"[c.element.name/]").concat(".[c.Get_ClassRoleInstance_EAttribute('extension')/]");
+			[/if]						
 		[/for]		
 		
 		return null;

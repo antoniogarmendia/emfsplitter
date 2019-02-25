@@ -1,8 +1,8 @@
 [comment encoding = UTF-8 /]
-[module METAINF('http://www.eclipse.org/emf/2002/Ecore')]
+[module METAINF('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns')]
+[import org::mondo::acceleo::generate::sirius::requests::queries/]
 
-
-[template public METAINF(anProjectName : String)]
+[template public METAINF(anProjectName : String, modularInstance : PatternInstance)]
 
 [file ('META-INF/MANIFEST.MF',false, 'UTF-8')]
 Manifest-Version: 1.0
@@ -16,9 +16,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius;bundle-version="1.0.1",
  org.eclipse.sirius.ui;bundle-version="1.0.1",
  org.eclipse.emf.transaction;bundle-version="1.8.0",
- org.eclipse.core.resources,
- org.mondo.modular.sirius.ext,
- com.google.guava;bundle-version="15.0.0"
+ org.eclipse.core.resources, 
+ [for (c :  ClassRoleInstance | modularInstance.Get_ProjectClassRoleInstance())]
+ [anProjectName/].[getProperty('modular_prefix')/].[c.element.name.toLower()/], 
+ [/for]
+ com.google.guava;bundle-version="15.0.0",
+ org.eclipse.sirius.diagram;bundle-version="5.1.1",
+ org.mondo.generate.modular.project;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 [/file]

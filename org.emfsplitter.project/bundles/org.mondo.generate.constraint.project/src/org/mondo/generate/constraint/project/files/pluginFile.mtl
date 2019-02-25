@@ -70,7 +70,7 @@
       </super>
    </extension>
    <extension
-         point="org.miso.wind.turbine.cs.modular.wtcomponents.WTComponentsModularBuilders">
+         point="[anProjectName/].[getProperty('modular_prefix')/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name/]ModularBuilders">
       <client
             class="[anProjectName/].[getProperty('prefix_name')/].builder.ConstraintIncrementalProjectBuilder"></client>
    </extension> 

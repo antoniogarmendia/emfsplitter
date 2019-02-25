@@ -58,7 +58,7 @@ public class WizardConcreteVisualization extends Wizard{
 		super();
 		this.fileUri = null;	
 		this.updateGraphicR = true;
-		this.modularPattern = true;
+		this.modularPattern = false;
 	}
 	
 	public void initEcore(String paramfileUri,EList<ClassRoleInstance> paramlistUnitClassRoleInstance)
@@ -105,7 +105,7 @@ public class WizardConcreteVisualization extends Wizard{
 		}
 	    		
 		return true;
-	}	
+	}
 
 	@Override
 	public void addPages() {
@@ -127,12 +127,11 @@ public class WizardConcreteVisualization extends Wizard{
 	@Override
 	public IWizardPage getStartingPage() {
 		
-		/*
-		
 		if(isUpdateGraphicR()) {
+			pageSettings.getExecuteHeuristics().setSelection(false);
 			return pageElements;
 		}
-		*/
+				
 		return super.getStartingPage();
 	}
 	
@@ -194,84 +193,87 @@ public class WizardConcreteVisualization extends Wizard{
 			MMGraphic_Representation mmRepresentation = (MMGraphic_Representation) graph.next();
 			Iterator<Representation> itRepresentations = mmRepresentation.getListRepresentations().iterator();
 			while (itRepresentations.hasNext()) {
-				RepresentationDD representation = (RepresentationDD) itRepresentations.next();
-				Iterator<Layer> layers = representation.getLayers().iterator();
-				while (layers.hasNext()) {
-					Layer lay = (Layer) layers.next();
-					Iterator<AllElements> diagElements = lay.getElements().iterator();
-					while (diagElements.hasNext()) {
-						AllElements diag = (AllElements) diagElements.next();
-						if(diag instanceof Node)
-						{
-							Iterator<AffixedCompartmentElement> itAffixedCompartment = ((Node) diag).getNode_elements().getAffixedCompartmentElements().iterator();
-										
-							while (itAffixedCompartment.hasNext()) {
-								AffixedCompartmentElement affixedCompartment = (AffixedCompartmentElement) itAffixedCompartment.next();
-								EReference ref = affixedCompartment.getAnEReference();
-								EClass anRefEClass = (EClass) ref.getEType();
-								
-								EList<AllElements> DiagElements = new BasicEList<AllElements>();
-								Iterator<Layer> itlayers = representation.getLayers().iterator();
-								while (itlayers.hasNext()) {
-									Layer layer = (Layer) itlayers.next();
-									DiagElements.addAll(layer.getElements());
+				Representation repre = itRepresentations.next();
+				if(repre instanceof RepresentationDD) {
+					RepresentationDD representation = (RepresentationDD) repre;
+					Iterator<Layer> layers = representation.getLayers().iterator();
+					while (layers.hasNext()) {
+						Layer lay = (Layer) layers.next();
+						Iterator<AllElements> diagElements = lay.getElements().iterator();
+						while (diagElements.hasNext()) {
+							AllElements diag = (AllElements) diagElements.next();
+							if(diag instanceof Node)
+							{
+								Iterator<AffixedCompartmentElement> itAffixedCompartment = ((Node) diag).getNode_elements().getAffixedCompartmentElements().iterator();
+											
+								while (itAffixedCompartment.hasNext()) {
+									AffixedCompartmentElement affixedCompartment = (AffixedCompartmentElement) itAffixedCompartment.next();
+									EReference ref = affixedCompartment.getAnEReference();
+									EClass anRefEClass = (EClass) ref.getEType();
+									
+									EList<AllElements> DiagElements = new BasicEList<AllElements>();
+									Iterator<Layer> itlayers = representation.getLayers().iterator();
+									while (itlayers.hasNext()) {
+										Layer layer = (Layer) itlayers.next();
+										DiagElements.addAll(layer.getElements());
+									}
+									
+									Iterator<AllElements> compareDiagElements = DiagElements.iterator();
+									while (compareDiagElements.hasNext()) {
+										AllElements typediagElement = (AllElements) compareDiagElements.next();
+										if(typediagElement instanceof Node)
+										{
+											
+												//Composition Relation-ship
+												if(((Node)typediagElement).getAnEClass().equals(anRefEClass))
+													affixedCompartment.getNodes().add((Node)typediagElement);
+												else{
+													//Inheritance Relation-ship
+													EList<EClass> allClasses = ((Node)typediagElement).getAnEClass().getEAllSuperTypes();
+													int index = allClasses.indexOf(anRefEClass);
+													if(index!=-1)
+													  affixedCompartment.getNodes().add((Node)typediagElement);
+												}									
+										}
+									}							
 								}
 								
-								Iterator<AllElements> compareDiagElements = DiagElements.iterator();
-								while (compareDiagElements.hasNext()) {
-									AllElements typediagElement = (AllElements) compareDiagElements.next();
-									if(typediagElement instanceof Node)
-									{
-										
+								Iterator<PaletteDescriptionLink> itPaletteDescrition = ((Node) diag).getNode_elements().getLinkPalette().iterator();
+								while (itPaletteDescrition.hasNext()) {
+									PaletteDescriptionLink paletteDescription = (PaletteDescriptionLink) itPaletteDescrition.next();
+									EReference ref = paletteDescription.getAnEReference();
+									EClass anRefEClass = (EClass) ref.getEType();
+									
+									EList<AllElements> DiagElements = new BasicEList<AllElements>();
+									Iterator<Layer> itlayers = representation.getLayers().iterator();
+									while (itlayers.hasNext()) {
+										Layer layer = (Layer) itlayers.next();
+										DiagElements.addAll(layer.getElements());
+									}
+									
+									Iterator<AllElements> compareDiagElements = DiagElements.iterator();
+									while (compareDiagElements.hasNext()) {
+										DiagramElement typediagElement = (DiagramElement) compareDiagElements.next();
+										if(typediagElement instanceof Node)
+										{
 											//Composition Relation-ship
-											if(((Node)typediagElement).getAnEClass().equals(anRefEClass))
-												affixedCompartment.getNodes().add((Node)typediagElement);
-											else{
+											if(typediagElement.getAnEClass().equals(anRefEClass))
+												paletteDescription.getAnDiagramElement().add((Node)typediagElement);
+											else
+											{
 												//Inheritance Relation-ship
-												EList<EClass> allClasses = ((Node)typediagElement).getAnEClass().getEAllSuperTypes();
+												EList<EClass> allClasses = typediagElement.getAnEClass().getEAllSuperTypes();
 												int index = allClasses.indexOf(anRefEClass);
 												if(index!=-1)
-												  affixedCompartment.getNodes().add((Node)typediagElement);
-											}									
-									}
-								}							
-							}
-							
-							Iterator<PaletteDescriptionLink> itPaletteDescrition = ((Node) diag).getNode_elements().getLinkPalette().iterator();
-							while (itPaletteDescrition.hasNext()) {
-								PaletteDescriptionLink paletteDescription = (PaletteDescriptionLink) itPaletteDescrition.next();
-								EReference ref = paletteDescription.getAnEReference();
-								EClass anRefEClass = (EClass) ref.getEType();
-								
-								EList<AllElements> DiagElements = new BasicEList<AllElements>();
-								Iterator<Layer> itlayers = representation.getLayers().iterator();
-								while (itlayers.hasNext()) {
-									Layer layer = (Layer) itlayers.next();
-									DiagElements.addAll(layer.getElements());
-								}
-								
-								Iterator<AllElements> compareDiagElements = DiagElements.iterator();
-								while (compareDiagElements.hasNext()) {
-									DiagramElement typediagElement = (DiagramElement) compareDiagElements.next();
-									if(typediagElement instanceof Node)
-									{
-										//Composition Relation-ship
-										if(typediagElement.getAnEClass().equals(anRefEClass))
-											paletteDescription.getAnDiagramElement().add((Node)typediagElement);
-										else
-										{
-											//Inheritance Relation-ship
-											EList<EClass> allClasses = typediagElement.getAnEClass().getEAllSuperTypes();
-											int index = allClasses.indexOf(anRefEClass);
-											if(index!=-1)
-												paletteDescription.getAnDiagramElement().add((Node)typediagElement);
+													paletteDescription.getAnDiagramElement().add((Node)typediagElement);
+											}
 										}
-									}
-								}							
+									}							
+								}
 							}
 						}
 					}
-				}				
+				 }
 			}
 		}
 	}	
@@ -295,31 +297,19 @@ public class WizardConcreteVisualization extends Wizard{
 							AllElements element = (AllElements) all.next();
 							if(element instanceof Node)
 							{
-								//if(((Node) element).getContainerReference() == null)
-								//{
 									int index = getNemf().getList_classes().indexOf(((Node) element).getAnEClass());
 									if (index == -1) //Do it by Name
 										index = ActionTreePageDiagramElements.searchByName(((Node)element).getAnEClass(), getNemf().getList_classes());
 									EList<Integer> listOfParents = getHeuristicStrategy().getEcoreContainment().getAllParents(index);
 									Iterator<Integer> itParents = listOfParents.iterator();
+									((Node) element).getContainerReference().clear();
 									while (itParents.hasNext()) {
 										Integer parentIndex = (Integer) itParents.next();
 										EReference ref = GetFeatureNameContainment(getNemf().getList_classes().get(parentIndex)
 																							, ((Node) element).getAnEClass());
-										if(ref!=null)
-											((Node) element).getContainerReference().add(ref);
-									}
-									
-									//int getParentIndex = getHeuristicStrategy().getEcoreContainment().GetParent(index);									
-									//if(getParentIndex!=-1)
-									//{
-									//EReference ref = GetFeatureNameContainment(getNemf().getList_classes().get(getParentIndex)
-									//											, ((Node) element).getAnEClass());
-									//		if(ref!=null)
-									//			((Node) element).getContainerReference().add(ref);
-												//((Node) element).setContainerReference(ref);	
-									//}
-								//}
+										if(ref!=null) 					
+											((Node) element).getContainerReference().add(ref);										
+									}								
 							}
 							else if(element instanceof Edge)
 							{
@@ -328,6 +318,7 @@ public class WizardConcreteVisualization extends Wizard{
 									index = ActionTreePageDiagramElements.searchByName(((Edge)element).getAnEClass(), getNemf().getList_classes());
 								EList<Integer> listOfParents = getHeuristicStrategy().getEcoreContainment().getAllParents(index);
 								Iterator<Integer> itParents = listOfParents.iterator();
+								((Edge) element).getContainerReference().clear();
 								while (itParents.hasNext()) {
 									
 									Integer parentIndex = (Integer) itParents.next();
@@ -335,17 +326,7 @@ public class WizardConcreteVisualization extends Wizard{
 																						, ((Edge) element).getAnEClass());
 									if(ref!=null)
 										((Edge) element).getContainerReference().add(ref);
-								}		
-								
-								//int getParentIndex = getHeuristicStrategy().getEcoreContainment().GetParent(index);
-								//if(getParentIndex!=-1)
-								//{
-								//EReference ref = GetFeatureNameContainment(getNemf().getList_classes().get(getParentIndex)
-								//													, ((Edge) element).getAnEClass());
-								//		if(ref!=null)
-								//			((Edge) element).getContainerReference().add(ref);
-											//((Edge) element).setContainerReference(ref);
-								//}
+								}								
 							}
 						}
 					}
@@ -361,7 +342,8 @@ public class WizardConcreteVisualization extends Wizard{
 		int listEReferences = listReferences.size();
 		//Direct Containments
 		for (int i = 0; i < listReferences.size(); i++) {
-			if(listReferences.get(i).getEType().equals(childEClass)==true)
+			if(listReferences.get(i).getEType().equals(childEClass)==true || 
+					listReferences.get(i).getEType().getName().equals(childEClass.getName()))
 				return listReferences.get(i);
 		}
 		
@@ -370,13 +352,44 @@ public class WizardConcreteVisualization extends Wizard{
 		//Inheritance Containments
 		for (int i = 0; i < listAllSuperTypes; i++) {
 			for (int j = 0; j < listEReferences; j++) {
-				if(listReferences.get(j).getEType().equals(childEClassEAllSuperTypes.get(i)))
+				if(listReferences.get(j).getEType().equals(childEClassEAllSuperTypes.get(i)) ||
+						listReferences.get(j).getEType().getName().equals(childEClassEAllSuperTypes.get(i).getName()))
 					return listReferences.get(j);
 			}
 		}
 		//Didn't find the containment reference
 		return null;
-	}	
+	}
+	
+	public EList<EReference> getFeatureNameContainment(EClass parentEClass, EClass childEClass) {
+		
+		EList<EReference> listReferences = parentEClass.getEAllContainments();
+		EList<EReference> listOfresults = new BasicEList<EReference>();
+		int listEReferences = listReferences.size();
+		//Direct Containments
+		for (int i = 0; i < listReferences.size(); i++) {
+			if(listReferences.get(i).getEType().equals(childEClass)==true || 
+					listReferences.get(i).getEType().getName().equals(childEClass.getName()))
+				listOfresults.add(listReferences.get(i));
+		}
+		
+		EList<EClass> childEClassEAllSuperTypes = childEClass.getEAllSuperTypes();
+		int listAllSuperTypes = childEClassEAllSuperTypes.size();
+		//Inheritance Containments
+		for (int i = 0; i < listAllSuperTypes; i++) {
+			for (int j = 0; j < listEReferences; j++) {
+				if(listReferences.get(j).getEType().equals(childEClassEAllSuperTypes.get(i)))
+					listOfresults.add(listReferences.get(i));
+			}
+		}
+		//Didn't find the containment reference
+		return listOfresults;
+	}
+	
+	
+	
+	
+	
 	
 	public void setUpdateGraphicR(boolean updateGraphicR) {
 		this.updateGraphicR = updateGraphicR;

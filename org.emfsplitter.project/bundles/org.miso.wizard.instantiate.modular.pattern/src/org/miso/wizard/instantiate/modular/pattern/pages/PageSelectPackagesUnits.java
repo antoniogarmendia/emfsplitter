@@ -603,7 +603,7 @@ public class PageSelectPackagesUnits extends WizardPage{
 		ArrayList<Object> arrayObjects = new ArrayList<Object>();
 		arrayObjects.add(this.subGraph.getRoot());
 		arrayObjects.addAll(this.subGraph.getRoot().getCompositions());
-		
+				
 		this.eTreeViewer.setInput(arrayObjects.toArray());
 			
 		this.eTreeViewer.expandToLevel(2);

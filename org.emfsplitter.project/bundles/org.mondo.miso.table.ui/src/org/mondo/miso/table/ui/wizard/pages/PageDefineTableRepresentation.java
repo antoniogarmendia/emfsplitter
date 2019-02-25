@@ -10,6 +10,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.ITreeSelection;
+import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.wizard.WizardPage;
@@ -29,12 +32,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.mondo.miso.table.ui.wizard.WizardDefineTableVisualization;
 import org.mondo.miso.table.ui.wizard.pages.editing.support.ESFeatureColumn;
 import org.mondo.miso.table.ui.wizard.pages.labelProvider.CFeatureColumn;
 
 import graphic_representation.Graphic_representationFactory;
+import graphic_representation.Line;
 import graphic_representation.LineGroup;
 import graphic_representation.RepresentationTable;
 import splitterLibrary.EcoreEMF;
@@ -49,16 +54,20 @@ public class PageDefineTableRepresentation extends WizardPage{
 	//Columns
 	private TreeViewerColumn col_LinesColumns;
 	
+	//List of Line to check
+	private EList<Line> listOfLines;
+	
 	public PageDefineTableRepresentation(String pageName) {
 		
 		super(pageName);		
 		setTitle("Define Table Elements for MetaModel");
 		setDescription("Select the Table Representation");
+		listOfLines = new BasicEList<Line>();
 	}
 
 	@Override
 	public void createControl(Composite parent) {
-		// TODO Auto-generated method stub
+		
 		Composite container = new Composite(parent, SWT.NONE);
 		
 		GridLayout layout = new GridLayout(3,true);
@@ -79,7 +88,7 @@ public class PageDefineTableRepresentation extends WizardPage{
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
+				
 				ElementListSelectionDialog dlgElements = new ElementListSelectionDialog(getShell(), Get_LabelProvider());
 				dlgElements.setTitle("Select Table Class");
 				dlgElements.setMessage("Select a String (* = any string, ? = any char):");
@@ -107,9 +116,10 @@ public class PageDefineTableRepresentation extends WizardPage{
 		
 		Create_Tree(treeContainer);
 		Fill_Tree();
+		checkLine();
 		setControl(container);	
 		setPageComplete(false);
-	}
+	}	
 	
 	public void Create_Tree(Composite parent)
 	{
@@ -158,15 +168,62 @@ public class PageDefineTableRepresentation extends WizardPage{
 					 UnCheckAllParent(item);
 					 UnCheckAllChildren(item);
 				 }				 
-				 //System.out.println("Check!!");
 			 }
-		});			
+		});	
+		
 		sc.setExpandHorizontal(true);
 		sc.setExpandVertical(true);
 		sc.setAlwaysShowScrollBars(true);
 		sc.setContent(tree);
 			
 	}	
+	
+	private void checkLine() {
+		
+		//Expand all elements
+		treeViewer.getTree().setRedraw(false);
+		treeViewer.expandAll();
+		
+		TreeItem[] treeItems = tree.getItems();
+		for (int i = 0; i < treeItems.length; i++) {
+			TreeItem currentItem = treeItems[i];
+			Object object = currentItem.getData();
+			if (object instanceof LineGroup) {
+				LineGroup lineGroup = (LineGroup) object;
+				int pos = listOfLines.indexOf(lineGroup);
+				if (pos != -1) {
+					currentItem.setChecked(true);
+					TreeItem[] items = currentItem.getItems();
+					for (int j = 0; j < items.length; j++) {
+						TreeItem subItem = items[j];
+						Object subObject = subItem.getData();
+						if (subObject instanceof EClass) {
+							EClass eClass = (EClass) subObject;
+							int posEClass = lineGroup.getListEClasses().indexOf(eClass);
+							if (posEClass != -1) {
+								subItem.setChecked(true);
+								TreeItem[] subSubItem = subItem.getItems();
+								for (int k = 0; j < subSubItem.length; j++) {
+									TreeItem subSubTreeItem = subSubItem[k];
+									Object subSubObject = subSubTreeItem.getData();
+									if (subSubObject instanceof EAttribute) {
+										EAttribute eAttribute = (EAttribute) subSubObject;
+										int posEAttribute = getRepresentationTable().getColumns().indexOf(eAttribute);
+										if (posEAttribute != -1) {
+											subSubTreeItem.setChecked(true);
+										}
+									}
+									System.out.println("adssadas");
+								}
+							}
+						}						
+					}							
+				}
+			}
+		}		
+		//treeViewer.collapseAll();
+		treeViewer.getTree().setRedraw(true);		
+	}
 	
 	public void UnCheckAllChildren(TreeItem item)
 	{
@@ -177,7 +234,7 @@ public class PageDefineTableRepresentation extends WizardPage{
 			UnCheckAllChildren(treeItem);
 		}
 	}
-	
+
 	public void CheckPageComplete()
 	{
 		TreeItem[] items = tree.getItems();
@@ -263,15 +320,32 @@ public class PageDefineTableRepresentation extends WizardPage{
 	
 	public void RefreshRepresentationTable()
 	{
+		
 		Iterator<EReference> itReferences = getRepresentationTable().getRootTable().getEAllReferences().iterator();
 		while (itReferences.hasNext()) {
-			EReference eReference = (EReference) itReferences.next();
-			LineGroup l = Graphic_representationFactory.eINSTANCE.createLineGroup();
-			l.setFeatureReference(eReference);
-			l.getListEClasses().addAll(getEAllChildrenClasses(getEcoreEMF().getList_classes(), (EClass) eReference.getEType()));
-			l.getListEClasses().add((EClass)eReference.getEType());
+			EReference eReference = (EReference) itReferences.next();			
+			Line l = getLineGroupByReference(eReference);
+			if (l==null) {
+				l = Graphic_representationFactory.eINSTANCE.createLineGroup();
+				l.setFeatureReference(eReference);
+				l.getListEClasses().addAll(getEAllChildrenClasses(getEcoreEMF().getList_classes(), (EClass) eReference.getEType()));
+				l.getListEClasses().add((EClass)eReference.getEType());
+			} else {
+				listOfLines.add(l);
+			}			
 			getRepresentationTable().getLines().add(l);			
 		}		
+	}
+	
+	public Line getLineGroupByReference(EReference eReference) {
+		
+		Iterator<Line> itLines = getRepresentationTable().getLines().iterator();
+		while (itLines.hasNext()) {
+			Line line = (Line) itLines.next();
+			if (line.getFeatureReference().equals(eReference))
+				return line;
+		}			
+		return null;
 	}
 	
 	public RepresentationTable getRepresentationTable()
@@ -337,7 +411,7 @@ public class PageDefineTableRepresentation extends WizardPage{
 
 			@Override
 			public String getText(Object element) {
-				// TODO Auto-generated method stub
+				
 				EClass anEClass = (EClass) element;
 				return anEClass.getName();
 			}			
@@ -346,7 +420,7 @@ public class PageDefineTableRepresentation extends WizardPage{
 
 	@Override
 	public void setVisible(boolean visible) {
-		// TODO Auto-generated method stub
+		
 		super.setVisible(visible);
 		if(visible == false)
 		{

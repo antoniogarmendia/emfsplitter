@@ -1,9 +1,11 @@
 package org.mondo.visualization.ui.page.LabelProvider;
 
 import graphic_representation.Color;
+import graphic_representation.CompartmentEdge;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Edge;
 import graphic_representation.Edge_Style;
+import graphic_representation.Graphic_representationFactory;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Node;
 import graphic_representation.PaletteDescriptionLink;
@@ -36,9 +38,15 @@ public class CColor extends ColumnLabelProvider{
 				if(color instanceof SiriusSystemColors)
 					return ((SiriusSystemColors) color).getName();			
 		}
+		else if (element instanceof CompartmentEdge) {
+			Edge_Style edgStyle = ((CompartmentEdge) element).getEdge_style();
+			Color color = edgStyle.getColor();
+			if(color instanceof SiriusSystemColors)
+				return ((SiriusSystemColors) color).getName();
+		}				
 		else if(element instanceof Root)
 			sh = ((Root)element).getRoot_shape();
-		else if(element instanceof LabelEAttribute)
+		else if(element instanceof LabelEAttribute) 
 			return ((LabelEAttribute) element).getColor() instanceof SiriusSystemColors? 
 					((SiriusSystemColors)((LabelEAttribute) element).getColor()).getName(): "";
 					else if(element instanceof PaletteDescriptionLink)
@@ -46,7 +54,9 @@ public class CColor extends ColumnLabelProvider{
 						Color color = ((PaletteDescriptionLink) element).getColor();
 						if(color instanceof SiriusSystemColors)
 							return ((SiriusSystemColors) color).getName();	
-					}				
+					}	
+					else if (element instanceof Shape)
+						sh = (Shape) element;
 					
 		return getColorShape(sh);
 	}	

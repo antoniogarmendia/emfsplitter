@@ -8,6 +8,7 @@ import graphic_representation.Graphic_representationPackage;
 import graphic_representation.Node;
 import graphic_representation.Node_Element;
 import graphic_representation.Shape;
+import graphic_representation.VirtualCompartment;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -31,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link graphic_representation.impl.NodeImpl#isExpandable <em>Expandable</em>}</li>
  *   <li>{@link graphic_representation.impl.NodeImpl#getConditionalStyle <em>Conditional Style</em>}</li>
  *   <li>{@link graphic_representation.impl.NodeImpl#getPresentation <em>Presentation</em>}</li>
+ *   <li>{@link graphic_representation.impl.NodeImpl#getVirtualCompartments <em>Virtual Compartments</em>}</li>
  * </ul>
  *
  * @generated
@@ -105,6 +108,16 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 	 * @ordered
 	 */
 	protected ChildrenPresentation presentation = PRESENTATION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getVirtualCompartments() <em>Virtual Compartments</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVirtualCompartments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<VirtualCompartment> virtualCompartments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,6 +283,33 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<VirtualCompartment> getVirtualCompartments() {
+		if (virtualCompartments == null) {
+			virtualCompartments = new EObjectWithInverseResolvingEList<VirtualCompartment>(VirtualCompartment.class, this, Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS, Graphic_representationPackage.VIRTUAL_COMPARTMENT__NODE);
+		}
+		return virtualCompartments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getVirtualCompartments()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -279,6 +319,8 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 				return basicSetNode_shape(null, msgs);
 			case Graphic_representationPackage.NODE__CONDITIONAL_STYLE:
 				return ((InternalEList<?>)getConditionalStyle()).basicRemove(otherEnd, msgs);
+			case Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS:
+				return ((InternalEList<?>)getVirtualCompartments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -301,6 +343,8 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 				return getConditionalStyle();
 			case Graphic_representationPackage.NODE__PRESENTATION:
 				return getPresentation();
+			case Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS:
+				return getVirtualCompartments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -330,6 +374,10 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 			case Graphic_representationPackage.NODE__PRESENTATION:
 				setPresentation((ChildrenPresentation)newValue);
 				return;
+			case Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS:
+				getVirtualCompartments().clear();
+				getVirtualCompartments().addAll((Collection<? extends VirtualCompartment>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -357,6 +405,9 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 			case Graphic_representationPackage.NODE__PRESENTATION:
 				setPresentation(PRESENTATION_EDEFAULT);
 				return;
+			case Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS:
+				getVirtualCompartments().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -379,6 +430,8 @@ public class NodeImpl extends DiagramElementImpl implements Node {
 				return conditionalStyle != null && !conditionalStyle.isEmpty();
 			case Graphic_representationPackage.NODE__PRESENTATION:
 				return presentation != PRESENTATION_EDEFAULT;
+			case Graphic_representationPackage.NODE__VIRTUAL_COMPARTMENTS:
+				return virtualCompartments != null && !virtualCompartments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

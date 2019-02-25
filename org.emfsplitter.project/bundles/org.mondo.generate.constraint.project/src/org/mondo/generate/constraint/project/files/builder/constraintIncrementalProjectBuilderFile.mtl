@@ -20,7 +20,13 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.mondo.generate.modular.project.ext.IModularBuilder;
+import org.mondo.modular.constraint.ext.def.EvaluateConstraintEngineContributor;
+[for (c :  ClassRoleInstance | modularPatternInstance.Get_ProjectClassRoleInstance())]
+import [anProjectName/].[c.element.name.toLower()/][getProperty('modular_prefix')/].Activator; 
+import [anProjectName/].[c.element.name.toLower()/][getProperty('modular_prefix')/].preferences.PreferenceOptions;
+ [/for]
 
 public class ConstraintIncrementalProjectBuilder implements IModularBuilder {
 	

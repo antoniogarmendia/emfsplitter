@@ -15,7 +15,7 @@ public class AllConstraint {
 	public static String [c.getName()/] = "var result = Sequence{};"
 			+ "var emfTool : new Native(\"org.eclipse.epsilon.emc.emf.tools.EmfTool\");"
 			+ "var ecoreUtil = emfTool.ecoreUtil;"
-			+ "var queryTool : new Native(\"org.miso.wind.turbine.cs.constraint.builder.ConstraintQueryTool\");"
+			+ "var queryTool : new Native(\"[anProjectName/].[getProperty('prefix_name')/].builder.ConstraintQueryTool\");"
 			+ "var listOfObjects = queryTool.getListToExecuteConstraint(Model.resource,\"[c.element.name/]\");"
 			+ "for (element in listOfObjects) {"
 			+	"var check = element.constraint();"

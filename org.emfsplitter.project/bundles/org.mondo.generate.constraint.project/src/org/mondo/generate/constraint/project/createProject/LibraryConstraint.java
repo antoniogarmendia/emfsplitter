@@ -1,32 +1,31 @@
 package org.mondo.generate.constraint.project.createProject;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.eclipse.acceleo.common.utils.ModelUtils;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 
 public class LibraryConstraint {
 	
 	// load genmodel
-	public EObject Load(String filepath, Resource res){
+	public GenModel Load(String filepath, Resource res){
 		
 		ResourceSet rs = res.getResourceSet();
 		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put( 
 				"genmodel", new EcoreResourceFactoryImpl()); 
-		EObject model = null;
-		try {
-			model = ModelUtils.load(new File(filepath), rs);			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}		
+		rs.getPackageRegistry().put(GenModelPackage.eNS_URI , 
+				GenModelPackage.eINSTANCE);	
+		GenModel model = (GenModel)rs.getResource(URI.createFileURI(filepath), 
+				true).getContents().get(0);		
+		EcoreUtil.resolveAll(model);
 		return model;
 	} 
 	
@@ -35,6 +34,18 @@ public class LibraryConstraint {
 		String factory = ((EPackage)anEClass.eContainer()).getName().substring(0, 1).toUpperCase();
 		factory += ((EPackage)anEClass.eContainer()).getName().substring(1) + "FactoryImpl";
 		return generateEClassGeneralImport(anEClass) + ".impl." + factory;
+	}
+	
+	public String generateEClassImportFactory(EClass eClass, String prefix) {
+		
+		String factory = prefix + "Factory";				
+		return generateEClassGeneralImport(eClass) + "." + factory;		
+	}
+	
+	public String generateImportFactory(GenPackage genPackage) {
+		
+		String factory = genPackage.getPrefix() + "Factory";		
+		return generateGeneralImport(genPackage) + "." + factory;
 	}
 	
 	private String generateEClassGeneralImport(EClassifier anEClass){
@@ -57,6 +68,26 @@ public class LibraryConstraint {
 		}
 		
 		return result;		
+	}
+	
+	private String generateGeneralImport(GenPackage genPackage) {
+		
+		String result = "";
+		EObject eObject = genPackage.eContainer();
+		
+		while(eObject.eContainer()!=null){
+			
+			EObject currentEObject = eObject.eContainer();
+			if(currentEObject instanceof EPackage) {
+				GenPackage currentGenPackage = (GenPackage)currentEObject;
+				if(result.equals(""))
+					result = currentGenPackage.getNSName();
+				else
+					result = currentGenPackage.getNSName() + "." + result;
+			}			
+		}		
+		
+		return result;
 	}
 	
 	public String getRootPackageString(EClass eClass) {

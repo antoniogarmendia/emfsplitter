@@ -19,6 +19,10 @@
 [import org::mondo::generate::modular::project::main::OpenWith /]
 [import org::mondo::generate::modular::project::main::initFile /]
 [import org::mondo::generate::modular::project::main::schemaFile /]
+[import org::mondo::generate::modular::project::main::schemListenerFile /]
+[import org::mondo::generate::modular::project::main::pack::ext::modularInterfaceBuilderFile /]
+[import org::mondo::generate::modular::project::main::pack::ext::evaluateModularBuilderFile /]
+[import org::mondo::generate::modular::project::main::pack::ext::evaluateModularListenerFile /] 
 
 [template public WorkFlowModularProject(anPatternInstance : PatternInstance, anProjectName : String, anPackageName : String, genModelPath : String)]
 [comment @main /]
@@ -37,9 +41,15 @@
     [CreateMenuJava(anProjectName, anPatternInstance,anPackageName,anEObjectGenModel) /]
 	[generateOpenWith(anProjectName,anProjectInstance)/]  
 	[generateSchemaFile(anProjectName, anPatternInstance, anEObjectGenModel)/]  
+	[generateSchemaListenerFile(anProjectName, anPatternInstance, anEObjectGenModel)/]
+	
+	[comment Package ext/]
+	[generateIModularBuilder(anProjectName, anPatternInstance.Get_ProjectClassRoleInstance()) /]
+	[generateEvaluateModularBuilder(anProjectName, anPackageName, anPatternInstance, anPatternInstance.Get_ProjectClassRoleInstance(), anEObjectGenModel)/]
+	[generateEvaluateModularListener(anProjectName, anPackageName, anPatternInstance, anPatternInstance.Get_ProjectClassRoleInstance(), anEObjectGenModel)/]
 
 	[comment Package actions /]
-	[generatePackageactions(anProjectName,anPackageName, anPatternInstance)/]
+	[generatePackageactions(anProjectName,anPackageName, anPatternInstance, anEObjectGenModel)/]
 
 	[comment Package decorator /]
 	[generatePackagedecorator(anProjectName, anPackageName, anPatternInstance,anEObjectGenModel)/]

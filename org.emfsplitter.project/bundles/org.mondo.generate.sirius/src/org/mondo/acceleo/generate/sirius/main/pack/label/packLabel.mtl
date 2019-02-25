@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[module packLabel('http://www.eclipse.org/emf/2002/Ecore')]
+[import org::mondo::acceleo::generate::sirius::main::pack::label::labelProviderDescription/]
+[import org::mondo::acceleo::generate::sirius::main::pack::label::labelProviderDiagram /]
+[import org::mondo::acceleo::generate::sirius::main::pack::label::labelProviderDRepresentation/]
+
+[template public generatePackLabel(anProjectName : String)]
+
+[generateLabelProviderDescription(anProjectName)/]
+[generateLabelProviderDiagram(anProjectName)/]
+[generateLabelProviderDRepresentation(anProjectName)/]
+
+[/template]

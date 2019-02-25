@@ -86,3 +86,13 @@
 		  Sequence(GenPackage) = genPackages->closure(anPackage : GenPackage | anPackage.nestedGenPackages)
 							->flatten()->asSequence()
 	/]
+
+[query public Get_ProjectClass(anPatternInstance : PatternInstance) : 
+			EClass = anPatternInstance.GetClassRoleIntancebyName('Project')->first().element /]
+
+[query public GetClassRoleIntancebyName(anPatternInstance : PatternInstance, anClassName : EString) : 
+			  Sequence(ClassRoleInstance) = anPatternInstance.eContents(ClassRoleInstance)
+											 ->select(anClassRoleInstance : ClassRoleInstance | 
+												anClassRoleInstance.role.ref->asSequence()
+											 ->select(anEClass : EClass | anEClass.name = anClassName)
+											 ->asSequence()->size()>0)/]

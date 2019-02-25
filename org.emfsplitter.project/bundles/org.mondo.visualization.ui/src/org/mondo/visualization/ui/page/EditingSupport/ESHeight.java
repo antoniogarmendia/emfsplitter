@@ -44,6 +44,8 @@ public class ESHeight extends EditingSupport{
 			shape = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			shape = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			shape = (Shape) element;
 			
 		if(shape instanceof IconElement || shape instanceof Diamond || shape instanceof Note)
 			return false;
@@ -64,6 +66,8 @@ public class ESHeight extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		return this.GetTextHeight(sh);		
 	}
@@ -78,6 +82,8 @@ public class ESHeight extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if(element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 				
 		if(sh instanceof Rectangle)
 			((Rectangle)sh).setHeight(Integer.parseInt((String)value));

@@ -6,6 +6,11 @@
 [file ('src/'.concat(anProjectName.toLower() + '.' + getProperty('prefix_name')).replaceAll('\\.','/').concat('/Activator.java'),false, 'UTF-8')]
 package [anProjectName.toLower()/].[getProperty('prefix_name')/];
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -19,6 +24,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+
+	private static Set<Viewpoint> viewpoints; 
 	
 	/**
 	 * The constructor
@@ -33,6 +40,10 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+ 		viewpoints = new HashSet<Viewpoint>();
+	    viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/[anProjectName/].odesign"));
+		
 	}
 
 	/*

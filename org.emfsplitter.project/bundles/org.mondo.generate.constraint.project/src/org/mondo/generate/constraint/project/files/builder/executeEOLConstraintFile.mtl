@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.epsilon.eol.types.EolSequence;
-import org.miso.wind.turbine.cs.constraint.dialog.ConstraintMarkerManager;
-import org.miso.wind.turbine.cs.constraint.dialog.ConstraintResourceMarker;
+import [anProjectName/].[getProperty('prefix_name')/].dialog.ConstraintMarkerManager;
+import [anProjectName/].[getProperty('prefix_name')/].dialog.ConstraintResourceMarker;
 [for (c :  ClassRoleInstance | modularPatternInstance.Get_ProjectClassRoleInstance())]
 import [anProjectName/].[c.element.name.toLower()/][getProperty('modular_prefix')/].Activator; 
 import [anProjectName/].[c.element.name.toLower()/][getProperty('modular_prefix')/].preferences.PreferenceOptions;
@@ -56,7 +56,7 @@ import constraints.MetamodelConstraint;
 [if (genPackage.basePackage->isEmpty() = true)]
 import [generateEClassImport(c.element)/];
 [else]
-import [genPackage.basePackage/].[generateEClassImportBasePackage(c.element)/];
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/][generateEClassImportBasePackage(c.element)/];
 [/if]
 [/let]
 
@@ -105,7 +105,7 @@ public class ExecuteEOLConstraint {
 		try {
 			String projectMMString = ExecuteEOLConstraint.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
 			IPath pathMM = new Path(projectMMString);
-			pathMM = pathMM.removeLastSegments(1).append("org.miso.wind.turbine.cs/WT_DesignPatterns.ecore");// Change! [pathEcore.toString()/]
+			pathMM = pathMM.removeLastSegments(1).append("[pathEcore.toString()/]");
 			this.metaModelUri = java.net.URI.create(pathMM.toString());
 			
 		} catch (URISyntaxException e) {			

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -37,6 +38,9 @@ import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.m2m.atl.graphictoviewpoint.files.GraphicToViewPoint;
 
 import org.mondo.acceleo.generate.sirius.main.WorkFlowSiriusProject;
+
+import runtimePatterns.PatternInstance;
+import runtimePatterns.PatternInstances;
 import splitterLibrary.EcoreEMF;
 import splitterLibrary.impl.CreateEclipseProjectImpl;
 
@@ -52,8 +56,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	
 
 	public CreateSiriusPluginProject() {
-		super();
-		// TODO Auto-generated constructor stub		
+		super();				
 	}	
 	
 	public CreateSiriusPluginProject(String anprojectname,EcoreEMF annemf, IProgressMonitor anmonitor){
@@ -71,7 +74,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 			this.isMavenProject = false;
 			this.nemf = annemf;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}		
 		
@@ -184,12 +187,18 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	
 	public void Generate_Files(){
 		
+		/*
+		 * Get the data of what are the classes inside the package and the units.
+		 * */
+		PatternInstance modularPattern = this.getModularPattern();
+		
 		//Get Workspace Path
 		File targetFolder = new File(plug_path + '/' + project.getName() + "/");
 		try {
-			final List<String> generatorargs = new ArrayList<String>();
+			final List<Object> generatorargs = new ArrayList<Object>();
 			generatorargs.add(current_project_name);
 			generatorargs.add(nemf.GetIFile().getFullPath().toString());
+			generatorargs.add(modularPattern);
 			WorkFlowSiriusProject sirius_files = null;
 			sirius_files = new WorkFlowSiriusProject(getLoadModel(), targetFolder,generatorargs);
 					
@@ -201,15 +210,32 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 		
 	}
 	
+	private PatternInstance getModularPattern() {
+		URI rtpatUri = URI.createURI(nemf.getRs().getURI().toString().substring(0, nemf.getFileuri().lastIndexOf('.')).concat(".rtpat"));		
+		ResourceSet reset = new ResourceSetImpl();
+		Resource res = reset.getResource(rtpatUri,true);
+		
+		PatternInstances instances = (PatternInstances) res.getContents().get(0);
+		
+		Iterator<PatternInstance> itPatterns = instances.getAppliedPatterns().iterator();
+		while (itPatterns.hasNext()) {
+			PatternInstance patternInstance = (PatternInstance) itPatterns.next();
+			if (patternInstance.getIdent().equals("Modularity"))
+				return patternInstance;
+		}
+		
+		return null;
+	}
+
 	public void Execute_Transformation(){
 			//Run ATL Transformation Java			
 			try {
 			GraphicToViewPoint cgraph = new GraphicToViewPoint();
 			
-			cgraph.loadModels(GetGraphicRepresentationModel());//"file:/D:/workspace_runtime/runtime_mondov01/WT/WindTurbines.graphicR"
+			cgraph.loadModels(GetGraphicRepresentationModel());
 			cgraph.doGraphicToViewPoint(monitor);
 			cgraph.saveModels(project.getFullPath().toString().
-						concat("/description/"+current_project_name+".odesign"));//"file:/D:/workspace_runtime/runtime_mondov01/WT.sirius/description/test.odesign"
+						concat("/description/"+current_project_name+".odesign"));
 			} catch (ATLCoreException | ATLExecutionException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

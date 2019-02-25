@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.acceleo.common.preference.AcceleoPreferences;
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFolder;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
@@ -303,8 +305,12 @@ public class CreateConstraintProject extends CreateEclipseProjectImpl{
 		HeuristicStrategy heur = DslHeuristicVisualizationFactoryImpl.eINSTANCE.createHeuristicStrategy();
 		heur.setNemf(nemf);
 		heur.ExecuteDirectPathMatrix();
-				
+		
 		ContainStructure containsStructure = DataStructureContainFactoryImpl.eINSTANCE.createContainStructure();
+		ResourceSet reset = new ResourceSetImpl();
+		Resource resStructure = reset.createResource(URI.createURI(getConstraintStructure(modularPattern)));
+		resStructure.getContents().add(containsStructure);	
+		
 		Iterator<ClassRoleInstance> itClassInstances = modularPattern.getClassInstances().iterator();
 		while (itClassInstances.hasNext()) {
 			ClassRoleInstance classRoleInstance = (ClassRoleInstance) itClassInstances.next();
@@ -328,7 +334,7 @@ public class CreateConstraintProject extends CreateEclipseProjectImpl{
 								containClasses.getContains().add(containEClass);						
 						}				
 					}
-					addEAllSuperTypes(containClasses);
+					addEAllSuperTypes(containClasses,res.getResourceSet());
 					containsStructure.getPackagesUnits().add(containClasses);
 				}				
 			}		
@@ -339,7 +345,7 @@ public class CreateConstraintProject extends CreateEclipseProjectImpl{
 	/*
 	 * Add the Super Types EClasses
 	 * */	
-	private void addEAllSuperTypes(PackageUnit containClasses) {
+	private void addEAllSuperTypes(PackageUnit containClasses, ResourceSet reset) {
 		
 		EList<EClass> superTypes = new BasicEList<EClass>();
 		Iterator<EClass> itContainClasses = containClasses.getContains().iterator();
@@ -348,7 +354,14 @@ public class CreateConstraintProject extends CreateEclipseProjectImpl{
 			Iterator<EClass> itOfEAllSuperTypes = eClass.getEAllSuperTypes().iterator();
 			while (itOfEAllSuperTypes.hasNext()) {
 				EClass superType = (EClass) itOfEAllSuperTypes.next();
-				if (containClasses.getContains().indexOf(superType) == -1 && superTypes.indexOf(superType) == -1) {
+				if (containClasses.getContains().indexOf(superType) == -1 && superTypes.indexOf(superType) == -1) {		
+					/*
+					if (((InternalEObject)superType).eIsProxy() == true) {
+						String asldl = ((InternalEObject)superType).eProxyURI().fragment();
+						EObject asd = reset.getEObject(((InternalEObject)superType).eProxyURI(),true);
+						System.out.println(asd.toString());
+					}
+					*/
 					superTypes.add(superType);
 				}				
 			}
@@ -363,5 +376,11 @@ public class CreateConstraintProject extends CreateEclipseProjectImpl{
 		String rtpatFilePath = modularPattern.getClassInstances().get(0).getElement().eResource().getURI().toFileString();
 		return rtpatFilePath.substring(0, rtpatFilePath.lastIndexOf('.')).concat(".genmodel");
 	} 
+	
+	public String getConstraintStructure(PatternInstance modularPattern) {
+		
+		String rtpatFilePath = modularPattern.getClassInstances().get(0).getElement().eResource().getURI().toFileString();
+		return rtpatFilePath.substring(0, rtpatFilePath.lastIndexOf('.')).concat(".temp");
+	}
 	
 }

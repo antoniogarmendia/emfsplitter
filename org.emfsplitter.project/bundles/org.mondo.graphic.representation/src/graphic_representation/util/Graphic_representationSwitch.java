@@ -392,6 +392,38 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Graphic_representationPackage.VIRTUAL_COMPARTMENT: {
+				VirtualCompartment virtualCompartment = (VirtualCompartment)theEObject;
+				T result = caseVirtualCompartment(virtualCompartment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.VIRTUAL_COMPARTMENT_REFERENCE: {
+				VirtualCompartmentReference virtualCompartmentReference = (VirtualCompartmentReference)theEObject;
+				T result = caseVirtualCompartmentReference(virtualCompartmentReference);
+				if (result == null) result = caseVirtualCompartment(virtualCompartmentReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.VIRTUAL_COMPARTMENT_OCL: {
+				VirtualCompartmentOCL virtualCompartmentOCL = (VirtualCompartmentOCL)theEObject;
+				T result = caseVirtualCompartmentOCL(virtualCompartmentOCL);
+				if (result == null) result = caseVirtualCompartment(virtualCompartmentOCL);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.COMPARTMENT_EDGE: {
+				CompartmentEdge compartmentEdge = (CompartmentEdge)theEObject;
+				T result = caseCompartmentEdge(compartmentEdge);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.COMPARTMENT_LINK: {
+				CompartmentLink compartmentLink = (CompartmentLink)theEObject;
+				T result = caseCompartmentLink(compartmentLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1098,6 +1130,81 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConditionalStyle(ConditionalStyle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Virtual Compartment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Virtual Compartment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVirtualCompartment(VirtualCompartment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Virtual Compartment Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Virtual Compartment Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVirtualCompartmentReference(VirtualCompartmentReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Virtual Compartment OCL</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Virtual Compartment OCL</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVirtualCompartmentOCL(VirtualCompartmentOCL object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Compartment Edge</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Compartment Edge</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompartmentEdge(CompartmentEdge object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Compartment Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Compartment Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompartmentLink(CompartmentLink object) {
 		return null;
 	}
 

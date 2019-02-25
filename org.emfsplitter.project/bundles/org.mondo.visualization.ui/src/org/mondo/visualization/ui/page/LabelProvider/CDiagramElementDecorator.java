@@ -1,5 +1,8 @@
 package org.mondo.visualization.ui.page.LabelProvider;
 
+import graphic_representation.CompartmentEdge;
+import graphic_representation.CompartmentElement;
+import graphic_representation.CompartmentLink;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Diamond;
 import graphic_representation.Edge;
@@ -50,7 +53,7 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 			EObject eObject = ((ConditionalStyle) element).eContainer();		
 			if (eObject instanceof Node) {
 				
-				if (((Node) eObject).getNode_elements().isCompartment() == true) {
+				if (((Node) eObject).getNode_elements().isCompartmentAffixed() == true) {
 					if(shape instanceof IconElement)
 						return "File Path";
 					if(shape instanceof ShapeCompartmentGradient)
@@ -76,7 +79,7 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 		{
 			Node nod = (Node)element;
 			Shape shape = nod.getNode_shape();
-			if(nod.getNode_elements().isCompartment() == true)
+			if(nod.getNode_elements().isCompartmentAffixed() == true)
 			{
 				if(shape instanceof IconElement)
 					return "File Path";
@@ -102,7 +105,7 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 		if(element instanceof Root)
 		{
 			Shape shape = ((Root) element).getRoot_shape();
-			if(((Root) element).getRoot_node_elements().isCompartment() == false)
+			if(((Root) element).getRoot_node_elements().isCompartmentAffixed() == false)
 			{
 				if(shape instanceof Ellipse)
 					return "Ellipse";
@@ -125,6 +128,28 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 					return "Parallelogram";				
 			}
 			return super.getText(element);
+		}
+		
+		if (element instanceof Shape) {
+			Shape sh = (Shape) element;
+			if(sh instanceof Ellipse)
+				return "Ellipse";
+			if(sh instanceof Rectangle)
+				return "Rectangle";
+			if(sh instanceof IconElement)
+				return "File Path";
+			if(sh instanceof Diamond)
+				return "Diamond";
+			if(sh instanceof Note)
+				return "Note";
+		}
+		
+		if (element instanceof CompartmentEdge) {
+			return "Decorator";
+		}
+		
+		if (element instanceof CompartmentLink) {
+			return ((CompartmentLink) element).getDecoratorName();
 		}
 		
 		if(element instanceof Link)
@@ -151,6 +176,9 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 			}
 		}		
 		
+		if (element instanceof CompartmentElement)
+			return "";
+		
 		if(element instanceof LabelEAttribute)
 			return ((LabelEAttribute) element).getLabelFormat().size()>0?"Font Format: ".concat(((LabelEAttribute) element).getLabelFormat().toString()):"Font Format: []";
 		
@@ -165,6 +193,11 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 			EObject parentLink = ((Link) element).eContainer();
 			if(parentLink instanceof Edge_Direction)	
 				return FindDecoratorbyName(((Link) element).getDecoratorName());	
+		}		
+		if (element instanceof CompartmentLink) {
+			
+			CompartmentLink compartLink = (CompartmentLink) element;
+			return FindDecoratorbyName(compartLink.getDecoratorName());
 		}
 		if(element instanceof Object[])
 		{

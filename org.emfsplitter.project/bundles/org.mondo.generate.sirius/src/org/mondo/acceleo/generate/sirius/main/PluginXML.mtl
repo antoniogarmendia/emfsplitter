@@ -19,13 +19,14 @@
 	</editor>
 	[/for]	
    </extension>
+   <!--Avoid the creation of Sirius Project
    <extension
          point="org.modular.sirius.definition.ext">
       <new_client
             class="[anProject.toLower()/].[getProperty('prefix_name')/].ext.CreateDesignSiriusProject">
       </new_client>
    </extension>	
-   
+   -->
    <!--Create Sirius Project -->	
 	<extension
          point="org.eclipse.ui.newWizards">
@@ -41,7 +42,14 @@
             name="[anProject/] Graphical Generation Project"
             project="true">
       </wizard>
-   </extension>		
+   </extension>	
+   <!-- Register the viewpoint --> 
+   <extension point="org.eclipse.sirius.componentization">
+    <component class="[anProject/].[getProperty('prefix_name')/].Activator"
+               id="[anProject/].[getProperty('prefix_name')/]"
+	       name="project">
+    </component>
+  </extension>	  
 </plugin>
 [/file]
 [/template]

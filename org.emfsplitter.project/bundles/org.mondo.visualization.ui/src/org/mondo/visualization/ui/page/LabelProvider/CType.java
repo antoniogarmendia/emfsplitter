@@ -1,6 +1,7 @@
 package org.mondo.visualization.ui.page.LabelProvider;
 
 
+import graphic_representation.CompartmentElement;
 import graphic_representation.Node;
 import graphic_representation.Root;
 import graphic_representation.impl.EdgeImpl;
@@ -12,19 +13,19 @@ public class CType extends ColumnLabelProvider{
 	private final String type = "";	
 		
 	public CType() {
-		super();
-		// TODO Auto-generated constructor stub		
+		super();			
 	}
 
 	@Override
 	public String getText(Object element) {
-		// TODO Auto-generated method stub
-		if(element instanceof Root)
+		if (element instanceof Root)
 			return "Node";
-		if(element instanceof Node)
+		if (element instanceof Node)
 			return "Node";
-		if(element instanceof EdgeImpl)
-			return "Edge";		
+		if (element instanceof EdgeImpl)
+			return "Edge";	
+		if (element instanceof CompartmentElement)
+			return ((CompartmentElement) element).getCompartmentView().getLiteral();
 		return type;
 	}		
 

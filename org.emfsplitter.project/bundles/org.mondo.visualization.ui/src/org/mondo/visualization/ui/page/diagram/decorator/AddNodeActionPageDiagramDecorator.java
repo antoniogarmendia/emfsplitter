@@ -10,9 +10,12 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Shell;
 import org.mondo.visualization.ui.wizard.ConditionalStyleDialog;
 
+import graphic_representation.CompartmentEdge;
+import graphic_representation.CompartmentElement;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.Node;
+import graphic_representation.Shape;
 
 public class AddNodeActionPageDiagramDecorator {
 	
@@ -20,7 +23,19 @@ public class AddNodeActionPageDiagramDecorator {
 	private Shell shell;
 	
 	private Action actionAddConditionalStyle;
+	//CompartmentElement..reference is non containment
+	private Action actionAddInitShape;
+	private Action actionAddNodeShape;
+	private Action actionAddEndShape;
+	private Action actionAddInitToFirst;
+	private Action actionAddNodeToNode;
+	private Action actionAddNodeToEnd;
+	//End CompartmentElement
 	private Action actionDeleteConditionalStyle;
+	//CompartmentElement..reference is non containment Delete
+	private Action actionDeleteCompartmentEdge;
+	private Action actionDeleteShape;	 
+	//End
 	
 	public AddNodeActionPageDiagramDecorator(TreeViewer treeViewer, Shell shell) {
 		this.treeViewer = treeViewer;
@@ -30,9 +45,120 @@ public class AddNodeActionPageDiagramDecorator {
 	public void makeActions() {
 		makeActionAddConditionalStyle();
 		makeActionDeleteConditionalStyle();
+		makeActionAddInitShape();
+		makeActionAddNodeShape();
+		makeActionAddEndShape();
+		makeActionAddInitToFirst();
+		makeActionAddNodeToNode();
+		makeActionAddNodeToEnd();
+		//Delete 
+		makeActionDeleteInitShape();
+		makeActionDeleteNodeShape();
 	}
 	
-	private void makeActionDeleteConditionalStyle() {
+	public void makeActionAddInitShape() {
+		actionAddInitShape = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentElement) {
+					CompartmentElement compart = (CompartmentElement) obj;
+					compart.setInit(Graphic_representationFactory.eINSTANCE.createEllipse());
+					treeViewer.refresh(obj);
+				}
+			}			
+		};	
+		actionAddInitShape.setId("com.wizard.visualization.decorator.AddInitShape");
+		actionAddInitShape.setText("Add Init Shape");
+		actionAddInitShape.setToolTipText("Add Init Shape");		
+	}	
+	
+	public void makeActionAddNodeToEnd() {
+		actionAddNodeToEnd = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentElement) {
+					CompartmentElement compart = (CompartmentElement) obj;
+					compart.setNodeToEnd(Graphic_representationFactory.eINSTANCE.createCompartmentEdge());
+					treeViewer.refresh(obj);
+				}
+			}			
+		};	
+		actionAddNodeToEnd.setId("com.wizard.visualization.decorator.AddEndNode");
+		actionAddNodeToEnd.setText("Add Edge from last to the End Node");
+		actionAddNodeToEnd.setToolTipText("Add End Node");		
+	}
+
+	public void makeActionAddNodeToNode() {
+		actionAddNodeToNode = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentElement) {
+					CompartmentElement compart = (CompartmentElement) obj;
+					compart.setNodeToNode(Graphic_representationFactory.eINSTANCE.createCompartmentEdge());
+					treeViewer.refresh(obj);
+				}
+			}			
+		};	
+		actionAddNodeToNode.setId("com.wizard.visualization.decorator.AddNodeToNode");
+		actionAddNodeToNode.setText("Add Edge Node to Node");
+		actionAddNodeToNode.setToolTipText("Add Edge Node to Node");		
+	}
+
+	public void makeActionAddInitToFirst() {
+		actionAddInitToFirst = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentElement) {
+					CompartmentElement compart = (CompartmentElement) obj;
+					compart.setInitToFirst(Graphic_representationFactory.eINSTANCE.createCompartmentEdge());
+					treeViewer.refresh(obj);
+				}
+			}			
+		};	
+		actionAddInitToFirst.setId("com.wizard.visualization.decorator.AddInitToFirst");
+		actionAddInitToFirst.setText("Add Edge Init Node to First");
+		actionAddInitToFirst.setToolTipText("Add Edge Init Node to First");		
+	}
+
+	public void makeActionAddEndShape() {
+		actionAddEndShape = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentElement) {
+					CompartmentElement compart = (CompartmentElement) obj;	
+					compart.setEnd(Graphic_representationFactory.eINSTANCE.createEllipse());
+					treeViewer.refresh(obj);
+				}
+			}			
+		};	
+		actionAddEndShape.setId("com.wizard.visualization.decorator.AddEndShape");
+		actionAddEndShape.setText("Add End Shape");
+		actionAddEndShape.setToolTipText("Add End Shape");		
+	}
+
+	public void makeActionAddNodeShape() {
+		actionAddNodeShape = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentElement) {
+					CompartmentElement compart = (CompartmentElement) obj;
+					compart.setNodeShape(Graphic_representationFactory.eINSTANCE.createEllipse());
+					treeViewer.refresh(obj);
+				}
+			}			
+		};	
+		actionAddNodeShape.setId("com.wizard.visualization.decorator.AddNodeShape");
+		actionAddNodeShape.setText("Add Node Shape");
+		actionAddNodeShape.setToolTipText("Add Node Shape");		
+	}	
+
+	public void makeActionDeleteConditionalStyle() {
 		
 		actionDeleteConditionalStyle = new Action() {
 			
@@ -82,12 +208,79 @@ public class AddNodeActionPageDiagramDecorator {
 		actionAddConditionalStyle.setToolTipText("Conditional Style");		
 	}
 	
+	public void makeActionDeleteInitShape() {
+		
+		actionDeleteShape = new Action() {
+			@Override
+			public void run() {
+				
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof Shape) {
+					EcoreUtil.remove((EObject) obj);					
+					treeViewer.refresh(((EObject) obj).eContainer());
+				}				
+			}
+		};
+		actionDeleteShape.setId("com.wizard.visualization.decorator.DeleteCompartmentNode");
+		actionDeleteShape.setText("Delete Node");
+		actionDeleteShape.setToolTipText("Delete Node");	
+	}	
+	
+	public void makeActionDeleteNodeShape() {
+		
+		actionDeleteCompartmentEdge = new Action() {
+			@Override
+			public void run() {
+				Object obj = GetSelectedTreeViewerObject();
+				if (obj instanceof CompartmentEdge) {
+					EcoreUtil.remove((EObject) obj);					
+					treeViewer.refresh(((EObject) obj).eContainer());
+				}
+			}
+		};
+		actionDeleteCompartmentEdge.setId("com.wizard.visualization.decorator.DeleteCompartmentEdge");
+		actionDeleteCompartmentEdge.setText("Delete Edge");
+		actionDeleteCompartmentEdge.setToolTipText("Delete Edge");	
+	}
+	
 	public Action getAddConditionalStyle() {
 		return actionAddConditionalStyle;
 	}
 	
+	public Action getActionAddInitShape() {
+		return actionAddInitShape;
+	}
+	
+	 public Action getActionAddNodeShape() {
+		return actionAddNodeShape;
+	}
+	
+	public Action getActionAddEndShape() {
+		return actionAddEndShape;
+	}
+	
+	public Action getActionAddInitToFirst() {
+		return actionAddInitToFirst;
+	}
+	
+	public Action getActionAddNodeToNode() {
+		return actionAddNodeToNode;
+	}
+	
+	public Action getActionAddNodeToEnd() {
+		return actionAddNodeToEnd;
+	}
+	
 	public Action getActionDeleteConditionalStyle() {
 		return actionDeleteConditionalStyle;
+	}
+	
+	public Action getActionDeleteCompartmentEdge() {
+		return actionDeleteCompartmentEdge;
+	}
+
+	public Action getActionDeleteShape() {
+		return actionDeleteShape;
 	}
 	
 	public Object GetSelectedTreeViewerObject(){

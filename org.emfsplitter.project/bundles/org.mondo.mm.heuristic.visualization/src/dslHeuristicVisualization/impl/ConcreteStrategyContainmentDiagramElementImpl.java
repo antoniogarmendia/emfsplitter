@@ -76,8 +76,7 @@ public class ConcreteStrategyContainmentDiagramElementImpl extends MinimalEObjec
 	 * @generated NOT
 	 */
 	public EList<EClass> PossibleElements(EClass rootEClass, EList<EList<Boolean>> pathMatrix, EList<EClass> listEClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
+		
 		EList<EClass> list_elements = new BasicEList<EClass>();
 		eClassNoElements = new BasicEList<EClass>();
 		if(rootEClass==null)			

@@ -6,7 +6,7 @@
 
 [for (c : ClassRoleInstance | anPatternInstance.Get_FolderClassRoleInstance()->union(anPatternInstance.Get_ProjectClassRoleInstance()
 																						 ->select(anClassRoleInstance : ClassRoleInstance | anClassRoleInstance.referenceInstances
-																						 ->select(ref : ReferenceRoleInstance | ref.element.eType.name.toString() = anClassRoleInstance.element.name.toString())->size() > 0)->asSequence()))]) ]
+																						 ->select(ref : ReferenceRoleInstance | ref.element.eType.name.toString() = anClassRoleInstance.element.name.toString())->size() > 0)->asSequence())->excluding(anPatternInstance.Get_ProjectClassRoleInstance()))]) ]
 
 [file ('src/'.concat(anProjectName.toLower() + '.' + anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase() + getProperty('prefix_name')).replaceAll('\\.','/').concat('/wizard/folder/').concat(c.element.name.toString()).concat('CreateFolderWizard.java'),false, 'UTF-8')]
 package [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].wizard.folder;
@@ -32,7 +32,11 @@ import java.io.IOException;
 [if (genPackage.basePackage->isEmpty() = true)]
 import [generateEClassImport(c.element)/];
 [else]
-import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/][generateEClassImportBasePackage(c.element)/];
+[if (genPackage.interfacePackageSuffix = '')]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[generateEClassImportBasePackage(c.element)/];
+[else]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/].[generateEClassImportBasePackage(c.element)/];
+[/if]
 [/if]
 [comment EEnum Classes/]
 [for (attr : EAttribute | c.element.eAllAttributes)]

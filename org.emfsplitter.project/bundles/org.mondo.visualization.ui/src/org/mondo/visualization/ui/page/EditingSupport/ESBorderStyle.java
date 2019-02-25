@@ -11,6 +11,7 @@ import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.swt.widgets.Composite;
 
 import graphic_representation.Border;
+import graphic_representation.CompartmentEdge;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Edge;
 import graphic_representation.Node;
@@ -44,11 +45,13 @@ public class ESBorderStyle extends EditingSupport {
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof Border)
 			return true;
 		
-		if(element instanceof Edge)
+		if(element instanceof Edge || element instanceof CompartmentEdge)
 			return true;
 		
 		if(element instanceof PaletteDescriptionLink)
@@ -67,12 +70,16 @@ public class ESBorderStyle extends EditingSupport {
 		 sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof Border)
 			return GetLineStyleName().indexOf(((Border) sh).getBorderStyle());
 		
 		if(element instanceof Edge)
 			return GetLineStyleName().indexOf(((Edge) element).getEdge_style().getLineStyle());
+		if (element instanceof CompartmentEdge)
+			return GetLineStyleName().indexOf(((CompartmentEdge) element).getEdge_style().getLineStyle());
 		
 		if(element instanceof PaletteDescriptionLink)
 			return GetLineStyleName().indexOf(((PaletteDescriptionLink) element).getLineStyle());
@@ -90,12 +97,16 @@ public class ESBorderStyle extends EditingSupport {
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof Border)
 			 ((Border) sh).setBorderStyle(GetLineStyleName().get((Integer)value));
 		
 		if(element instanceof Edge)
 			((Edge) element).getEdge_style().setLineStyle(GetLineStyleName().get((Integer)value));
+		if (element instanceof CompartmentEdge)
+			((CompartmentEdge) element).getEdge_style().setLineStyle(GetLineStyleName().get((Integer)value));
 		
 		if(element instanceof PaletteDescriptionLink)
 			((PaletteDescriptionLink) element).setLineStyle(GetLineStyleName().get((Integer)value));

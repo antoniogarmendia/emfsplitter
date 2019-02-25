@@ -4,7 +4,7 @@
 
 [template public Properties_SourceJAVA(anProjectName : String, anPackageName : String, anPatternInstance : PatternInstance, anEObjectGenModel : GenModel)]
 
-[for(c : ClassRoleInstance | anPatternInstance.Get_FolderClassRoleInstance()->union(anPatternInstance.Get_FileClassRoleInstance())->union(anPatternInstance.Get_ProjectClassRoleInstance()->asSequence()))]
+[for (c : ClassRoleInstance | anPatternInstance.Get_FolderClassRoleInstance()->union(anPatternInstance.Get_FileClassRoleInstance())->union(anPatternInstance.Get_ProjectClassRoleInstance()->asSequence()))]
 
 [file ('src/'.concat(anProjectName.toLower() + '.' + anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase() + getProperty('prefix_name')).replaceAll('\\.','/').concat('/propertysource/').concat(c.element.name.toString()).concat('ItemPropertiesSource.java'),false, 'UTF-8')]
 package [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].propertysource;
@@ -34,7 +34,11 @@ import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 [if (genPackage.basePackage->isEmpty() = true)]
 import [generateEClassImport(c.element)/];
 [else]
-import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/][generateEClassImportBasePackage(c.element)/];
+[if (genPackage.interfacePackageSuffix = '')]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[generateEClassImportBasePackage(c.element)/];
+[else]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/].[generateEClassImportBasePackage(c.element)/];
+[/if]
 [/if]
 [/let]
 

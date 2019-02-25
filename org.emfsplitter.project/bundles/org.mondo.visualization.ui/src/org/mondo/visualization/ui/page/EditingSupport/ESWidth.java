@@ -1,5 +1,6 @@
 package org.mondo.visualization.ui.page.EditingSupport;
 
+import graphic_representation.CompartmentEdge;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Diamond;
 import graphic_representation.Edge;
@@ -47,11 +48,15 @@ public class ESWidth extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;		
 		
 		if(sh instanceof IconElement)
 			return false;
 		if(element instanceof LabelEAttribute || element instanceof Object[])
 			return false;
+		if (element instanceof CompartmentEdge)
+			return true;
 		if(element instanceof Link)
 		{
 			EObject parent = ((EObject) element).eContainer();
@@ -77,6 +82,11 @@ public class ESWidth extends EditingSupport{
 			return ((PaletteDescriptionLink) element).getLineWidth();
 		else if(element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
+		else if (element instanceof CompartmentEdge)
+			return ((CompartmentEdge) element).getEdge_style().getLineWidth();
+		
 		return this.GetTextWidth(sh);
 	}
 
@@ -90,6 +100,8 @@ public class ESWidth extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 			
 		if(sh instanceof Rectangle)
 			((Rectangle)sh).setWidth(Integer.parseInt((String)value));
@@ -107,6 +119,8 @@ public class ESWidth extends EditingSupport{
 			((PaletteDescriptionLink) element).setLineWidth((String)value);
 		else if(element instanceof Edge)
 			((Edge) element).getEdge_style().setLineWidth((String)value);
+		else if (element instanceof CompartmentEdge)
+			((CompartmentEdge) element).getEdge_style().setLineWidth((String)value);
 				
 		getViewer().update(element, null);
 	}

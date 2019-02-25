@@ -9,7 +9,6 @@ import graphic_representation.RepresentationDD;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -180,7 +179,7 @@ public class PageDiagramElements extends WizardPage {
 		layoutList.heightHint = 50;
 		listOfWarning.setLayoutData(layoutList);
 		
-		CreateMenu();
+		createMenu();
 		
 		setControl(container);
 		setPageComplete(true);
@@ -398,6 +397,13 @@ public class PageDiagramElements extends WizardPage {
 					DiagramElement diag = (DiagramElement) currentElement;
 					if(diag.getAnEClass().equals(anEClass))
 						return true;
+					else {
+						/*
+						 * Make the comparison also using the name of the class
+						 * */
+						if (diag.getAnEClass().getName().equals(anEClass.getName()))
+							return true;
+					}
 				}
 			}			
 		}
@@ -480,14 +486,13 @@ public class PageDiagramElements extends WizardPage {
 	}
 	
 	
-	public void CreateMenu()
+	public void createMenu()
 	{
-		/*
+		
 		ActionTreePageDiagramElements allActions = new ActionTreePageDiagramElements(getTreeViewer(), "com.wizard.visualization",
 							getShell(), getHeuristicStrategy(), getHeuristicStrategySettings(),getGraphicRepresentation().getListRepresentations().get(getCurrentRepresentation())
 							,listOfWarning);		
-		allActions.Execute();	
-		*/	
+		allActions.Execute();			
 	}
 	
 	

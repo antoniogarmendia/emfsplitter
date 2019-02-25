@@ -1,6 +1,7 @@
 package org.mondo.visualization.ui.page.EditingSupport;
 
 
+import graphic_representation.CompartmentLink;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Diamond;
 import graphic_representation.Ellipse;
@@ -15,6 +16,7 @@ import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.Rectangle;
 import graphic_representation.Root;
 import graphic_representation.Shape;
+import graphic_representation.ShapeColor;
 import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.ShapeCompartmentParallelogram;
 import graphic_representation.SiriusSystemColors;
@@ -24,6 +26,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
@@ -56,7 +60,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		
 		super(viewer);		
 		cell_Editor = new ComboBoxCellEditor((Composite) getViewer().getControl(),
-				CDiagramElementDecorator.getEdgesImages().toArray(new String[0]));
+				CDiagramElementDecorator.getEdgesImages().toArray(new String[CDiagramElementDecorator.getEdgesImages().size()]));
 		
 		cell_shape = new ComboBoxCellEditor((Composite) getViewer().getControl(),shapeList.toArray(new String[shapeList.size()]));
 		cell_shapeCompartment = new ComboBoxCellEditor((Composite) getViewer().getControl(), 
@@ -68,26 +72,29 @@ public class ESDiagramElementDecorator extends EditingSupport{
 				
 		if (element instanceof Root) {
 			
-			if(((Root) element).getRoot_node_elements().isCompartment() == true)
+			if(((Root) element).getRoot_node_elements().isCompartmentAffixed() == true)
 				return cell_shapeCompartment;
 			return cell_shape;
 		}
+		if (element instanceof Shape)
+			return cell_shape;
+		
 		if (element instanceof Node) {
 			Node nod = (Node)element;
-			if(nod.getNode_elements().isCompartment() == true)
+			if(nod.getNode_elements().isCompartmentAffixed() == true)
 				return cell_shapeCompartment;
 			return cell_shape;
 		}
 		if (element instanceof ConditionalStyle) {
 			EObject parentEObject = ((ConditionalStyle) element).eContainer();
 			if (parentEObject instanceof Node) {
-				if(((Node) parentEObject).getNode_elements().isCompartment() == true)
+				if(((Node) parentEObject).getNode_elements().isCompartmentAffixed() == true)
 					return cell_shapeCompartment;
 				return cell_shape;
 			}				
 		}	
 		
-		if(element instanceof Link || element instanceof Object[])
+		if(element instanceof Link || element instanceof Object[] || element instanceof CompartmentLink)
 			return cell_Editor;
 		if(element instanceof LabelEAttribute)
 		{
@@ -160,6 +167,8 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		}
 		if(element instanceof Object[])
 			return true;
+		if(element instanceof Shape || element instanceof CompartmentLink)
+			return true;
 		
 		return true;
 	}
@@ -186,11 +195,19 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		} else if(element instanceof Node) {
 			
 			shape = ((Node)element).getNode_shape();
-			nodeElements = ((Node)element).getNode_elements();	
-			
+			nodeElements = ((Node)element).getNode_elements();			
 		} 
+		
+		if (element instanceof Shape)
+			return getValueIsNotCompartment((Shape)element);
+		
+		if (element instanceof CompartmentLink) {
+			String decoratorName = ((CompartmentLink) element).getDecoratorName();
+			return CDiagramElementDecorator.getEdgesImages().indexOf(decoratorName);
+		}
+			
 		if ( shape != null && nodeElements != null) {
-			if (nodeElements.isCompartment() == true)
+			if (nodeElements.isCompartmentAffixed() == true)
 				return getValueCompartment(shape);
 			else
 				return getValueIsNotCompartment(shape);
@@ -202,26 +219,43 @@ public class ESDiagramElementDecorator extends EditingSupport{
 	@Override
 	protected void setValue(Object element, Object value) {
 		
-		Integer valShape = (Integer)value;
-		
 		if(element instanceof Link){
 			
 			String decoratorName = CDiagramElementDecorator.GetDecoratorName((Integer)value);
 			Link link = (Link)element;
 			link.setDecoratorName(decoratorName);	
+			getViewer().update(element, null);
 			
 		} else if (element instanceof ConditionalStyle) {
 			
+			Integer valShape = (Integer)value;
 			setValueConditionalStyle((ConditionalStyle) element, valShape);	
+			getViewer().update(element, null);
 			
 		} else if (element instanceof Node) {
-					
-			setValueNode(((Node) element),valShape);			
+			
+			Integer valShape = (Integer)value;		
+			setValueNode(((Node) element),valShape);	
+			getViewer().update(element, null);
 			
 		}	else if (element instanceof Root) {		
 			
-			setValueRoot(((Root) element), valShape);			
-		}		
+			Integer valShape = (Integer)value;
+			setValueRoot(((Root) element), valShape);
+			getViewer().update(element, null);
+			
+		} else if (element instanceof Shape) {
+			
+			Shape oldShape = (Shape) element;
+			Shape newShape = getIsNotCompartmentShapeByValue((Integer) value);
+			if (!newShape.eClass().getName().equals(oldShape.eClass().getName())) {
+				EStructuralFeature feat = oldShape.eContainingFeature();
+				EObject obj = oldShape.eContainer();
+				EcoreUtil.remove((EObject) element);
+				obj.eSet(feat, newShape);
+				getViewer().refresh(obj);				
+			}			
+		}	
 		
 		if(element instanceof Object[])
 		{
@@ -236,9 +270,17 @@ public class ESDiagramElementDecorator extends EditingSupport{
 					((PaletteDescriptionLink)objs [1]).setDecoratorName(decoratorName);
 				
 			}
+			getViewer().update(element, null);
 		}	
 		
-		getViewer().update(element, null);		
+		if (element instanceof CompartmentLink) {
+						
+			String decoratorName = CDiagramElementDecorator.GetDecoratorName((Integer)value);
+			CompartmentLink compartmentLink = (CompartmentLink)element;
+			compartmentLink.setDecoratorName(decoratorName);	
+			getViewer().update(element, null);			
+		}
+				
 	}
 	
 	private void setValueRoot(Root root, Integer valShape) {
@@ -361,7 +403,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 	public Shape getShapeByNodeElements(Node_Element nodeElements, Integer valShape) {
 		
 		Shape newShape = null;		
-		if (nodeElements.isCompartment() == true) {
+		if (nodeElements.isCompartmentAffixed() == true) {
 			
 			newShape = getCompartmentShapeByValue(valShape);		
 		} else {
@@ -389,21 +431,33 @@ public class ESDiagramElementDecorator extends EditingSupport{
 	
 	public Shape getIsNotCompartmentShapeByValue(Integer value) {
 		
+		Shape shape = null;
 		switch (value) {
 		case 0:
-			return createRectangle();
-		case 1:
-			return createEllipse();
+			shape = createRectangle();
+			break;
+		case 1:						
+			shape =  createEllipse();
+			break;
 		case 2:
-			return createIconElement();
+			shape = createIconElement();
+			break;
 		case 3:
-			return createDiamond();
+			shape = createDiamond();
+			break;
 		case 4:
-			return createNote();
-
+			shape = createNote();
+			break;
 		default:
 			return null;
-		}		
+		}	
+		
+		if (shape instanceof ShapeColor) {
+			ShapeColor color = (ShapeColor) shape;
+			color.setColor(createColor());			
+		}
+		
+		return shape;
 	}
 	
 	public Note createNote() {
@@ -419,6 +473,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		Rectangle rectangle = Graphic_representationFactory.eINSTANCE.createRectangle();
 		rectangle.setColor(createColor());
 		rectangle.setBorderColor(createColor());
+		rectangle.setBorderStyle("solid");
 		return rectangle;
 	}
 	
@@ -450,6 +505,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		gradient.setColor(createColor());
 		gradient.setBorderColor(createColor());
 		gradient.setForeGroundColor(createColor());
+		gradient.setBorderStyle("solid");
 		return gradient;
 	}
 	
@@ -458,6 +514,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		ShapeCompartmentParallelogram parallelogram = Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram();
 		parallelogram.setColor(createColor());
 		parallelogram.setBorderColor(createColor());
+		parallelogram.setBorderStyle("solid");
 		return parallelogram;
 	}
 	

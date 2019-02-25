@@ -6,7 +6,8 @@
 
 [file ('plugin.xml',false, 'UTF-8')]
 <plugin>
-   <extension-point id="[Get_ProjectClass(anPatternInstance).name/]ModularBuilders" name="[anProjectName/].builders" schema="schema/[Get_ProjectClass(anPatternInstance).name/]ModularBuilders.exsd"/>	
+   <extension-point id="[Get_ProjectClass(anPatternInstance).name/]ModularBuilders" name="[anProjectName/].builders" schema="schema/[Get_ProjectClass(anPatternInstance).name/]ModularBuilders.exsd"/>
+   <extension-point id="[Get_ProjectClass(anPatternInstance).name/]ModularListeners" name="[anProjectName/].listeners" schema="schema/[Get_ProjectClass(anPatternInstance).name/]ModularListeners.exsd"/>	
    <extension
          point="org.eclipse.ui.newWizards">
 	  <!-- PROJECT CATEGORY -->

@@ -18,7 +18,7 @@ import org.eclipse.ui.IWorkbench;
 import org.osgi.service.prefs.BackingStoreException;
 import java.io.IOException;
 import [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClass().name.toLowerCase()/][getProperty('prefix_name')/].ModularModel;
-import org.mondo.modular.sirius.ext.EvaluateSiriusProjectCreation;
+import [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClass().name.toLowerCase()/][getProperty('prefix_name')/].ext.EvaluateModularListener;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.MessageDialog;
 
@@ -58,7 +58,7 @@ public class [anPatternInstance.Get_ProjectClass().name/]NewProjectWizard extend
 	@Override
 	public boolean performFinish() {
 		
-		projectInfo = new [anPatternInstance.Get_ProjectClass().name/]NewProjectInfo(mainpage.Get_Features());
+		projectInfo = new [anPatternInstance.Get_ProjectClass().name/]NewProjectInfo(mainpage.getRoot());
 		String addr = mainpage.getDiagram_address();
 		if(addr!=null)
 		{
@@ -67,7 +67,7 @@ public class [anPatternInstance.Get_ProjectClass().name/]NewProjectWizard extend
 				ModularModel createProject = new ModularModel();
 				try {
 					[if(anPatternInstance.Get_ProjectClassRoleInstance().HasTypeFeature_EAttribute('name')=false)]
-					createProject.setProjectName(mainpage.Get_Features().get_ProjectName());
+					createProject.setProjectName(mainpage.getProjectname());
 					[/if]
 					createProject.Reverse_Engineering(addrURI);
 
@@ -101,7 +101,7 @@ public class [anPatternInstance.Get_ProjectClass().name/]NewProjectWizard extend
 	
 	public void evaluateSiriusProjectCreation() {
 		
-		new EvaluateSiriusProjectCreation().executeProject(Platform.getExtensionRegistry(),"[anPatternInstance.Get_ProjectClass().name/].odesign");
+		new EvaluateModularListener().executeProject(Platform.getExtensionRegistry(),projectInfo.getProject().getName());
 	}
 
 }

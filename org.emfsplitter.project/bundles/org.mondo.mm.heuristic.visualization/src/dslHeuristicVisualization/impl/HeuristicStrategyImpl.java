@@ -5,6 +5,7 @@ import dslHeuristicVisualization.EcoreMatrixContainment;
 import dslHeuristicVisualization.HeuristicStrategy;
 import dslHeuristicVisualization.HeuristicStrategySettings;
 import dslHeuristicVisualization.RepreHeurSS;
+import dslHeuristicVisualization.StrategyPossibleElements;
 import graphic_representation.AffixedElement;
 import graphic_representation.AllElements;
 import graphic_representation.CompartmentElement;
@@ -387,6 +388,16 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	public void Execute_Graphical_Elements() {
 		
+		int aux = getCurrentMMGR();
+		RepreHeurSS repre = listRepresentation.get(getCurrentMMGR());		
+		EList<HeuristicStrategySettings> aux2 = repre.getHeuristicStrategySettings();
+		HeuristicStrategySettings aux3 = aux2.get(getCurrentRepresentation());
+		StrategyPossibleElements aux4 = aux3.getStrategy_possibleElements();
+		EClass rootEClass = ((RepresentationDD)graphic_representation.getAllGraphicRepresentation().
+					get(getCurrentMMGR()).getListRepresentations().get(getCurrentRepresentation())).
+					getRoot().getAnEClass();
+		
+		//aux4.PossibleElements(rootEClass, pathMatrix, listEClass)	
 		//Possible Elements
 		EList<EClass> list_elements = listRepresentation.get(getCurrentMMGR()).getHeuristicStrategySettings().				
 										get(getCurrentRepresentation()).getStrategy_possibleElements().
@@ -463,7 +474,7 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 					ele.getNode_elements().getLabelanEAttribute().add(labelEAttribute);
 				}	
 				//Default Shape
-				if(ele.getNode_elements().isCompartment()==false)
+				if(ele.getNode_elements().isCompartmentAffixed() == false)
 				{
 					Ellipse sh = Graphic_representationFactory.eINSTANCE.createEllipse();
 					ele.setNode_shape(sh);

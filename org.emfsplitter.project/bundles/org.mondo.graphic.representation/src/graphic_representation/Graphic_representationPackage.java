@@ -444,13 +444,22 @@ public interface Graphic_representationPackage extends EPackage {
 	int NODE__PRESENTATION = DIAGRAM_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Virtual Compartments</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__VIRTUAL_COMPARTMENTS = DIAGRAM_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = DIAGRAM_ELEMENT_FEATURE_COUNT + 5;
+	int NODE_FEATURE_COUNT = DIAGRAM_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -676,22 +685,40 @@ public interface Graphic_representationPackage extends EPackage {
 	int NODE_ELEMENT__EXPANDABLE_ITEMS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Virtual Compartment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_ELEMENT__VIRTUAL_COMPARTMENT = 4;
+
+	/**
 	 * The number of structural features of the '<em>Node Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT_FEATURE_COUNT = 4;
+	int NODE_ELEMENT_FEATURE_COUNT = 5;
 
 	/**
-	 * The operation id for the '<em>Is Compartment</em>' operation.
+	 * The operation id for the '<em>Is Only Compartment</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT___IS_COMPARTMENT = 0;
+	int NODE_ELEMENT___IS_ONLY_COMPARTMENT = 0;
+
+	/**
+	 * The operation id for the '<em>Is Compartment Affixed</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_ELEMENT___IS_COMPARTMENT_AFFIXED = 1;
 
 	/**
 	 * The number of operations of the '<em>Node Element</em>' class.
@@ -700,7 +727,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT_OPERATION_COUNT = 1;
+	int NODE_ELEMENT_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link graphic_representation.impl.ExpandableItemImpl <em>Expandable Item</em>}' class.
@@ -1912,13 +1939,76 @@ public interface Graphic_representationPackage extends EPackage {
 	int COMPARTMENT_ELEMENT__NODES = AFFIXED_COMPARTMENT_ELEMENT__NODES;
 
 	/**
+	 * The feature id for the '<em><b>Compartment View</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__COMPARTMENT_VIEW = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Init</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__INIT = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Node Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__NODE_SHAPE = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__END = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Init To First</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__INIT_TO_FIRST = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Node To Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__NODE_TO_NODE = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Node To End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_ELEMENT__NODE_TO_END = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Compartment Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARTMENT_ELEMENT_FEATURE_COUNT = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 0;
+	int COMPARTMENT_ELEMENT_FEATURE_COUNT = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Compartment Element</em>' class.
@@ -2688,6 +2778,236 @@ public interface Graphic_representationPackage extends EPackage {
 	int CONDITIONAL_STYLE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link graphic_representation.impl.VirtualCompartmentImpl <em>Virtual Compartment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.VirtualCompartmentImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartment()
+	 * @generated
+	 */
+	int VIRTUAL_COMPARTMENT = 47;
+
+	/**
+	 * The feature id for the '<em><b>Node</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT__NODE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Virtual Compartment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Virtual Compartment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.VirtualCompartmentReferenceImpl <em>Virtual Compartment Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.VirtualCompartmentReferenceImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartmentReference()
+	 * @generated
+	 */
+	int VIRTUAL_COMPARTMENT_REFERENCE = 48;
+
+	/**
+	 * The feature id for the '<em><b>Node</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_REFERENCE__NODE = VIRTUAL_COMPARTMENT__NODE;
+
+	/**
+	 * The feature id for the '<em><b>Container Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_REFERENCE__CONTAINER_REFERENCE = VIRTUAL_COMPARTMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Virtual Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_REFERENCE__VIRTUAL_REFERENCE = VIRTUAL_COMPARTMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Virtual Compartment Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_REFERENCE_FEATURE_COUNT = VIRTUAL_COMPARTMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Virtual Compartment Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_REFERENCE_OPERATION_COUNT = VIRTUAL_COMPARTMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.VirtualCompartmentOCLImpl <em>Virtual Compartment OCL</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.VirtualCompartmentOCLImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartmentOCL()
+	 * @generated
+	 */
+	int VIRTUAL_COMPARTMENT_OCL = 49;
+
+	/**
+	 * The feature id for the '<em><b>Node</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_OCL__NODE = VIRTUAL_COMPARTMENT__NODE;
+
+	/**
+	 * The feature id for the '<em><b>Ocl Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_OCL__OCL_EXPRESSION = VIRTUAL_COMPARTMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Virtual Compartment OCL</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_OCL_FEATURE_COUNT = VIRTUAL_COMPARTMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Virtual Compartment OCL</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_COMPARTMENT_OCL_OPERATION_COUNT = VIRTUAL_COMPARTMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.CompartmentEdgeImpl <em>Compartment Edge</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.CompartmentEdgeImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentEdge()
+	 * @generated
+	 */
+	int COMPARTMENT_EDGE = 50;
+
+	/**
+	 * The feature id for the '<em><b>Edge style</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_EDGE__EDGE_STYLE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_EDGE__SOURCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_EDGE__TARGET = 2;
+
+	/**
+	 * The number of structural features of the '<em>Compartment Edge</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_EDGE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Compartment Edge</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_EDGE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.CompartmentLinkImpl <em>Compartment Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.CompartmentLinkImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentLink()
+	 * @generated
+	 */
+	int COMPARTMENT_LINK = 51;
+
+	/**
+	 * The feature id for the '<em><b>Decorator Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_LINK__DECORATOR_NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Compartment Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_LINK_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Compartment Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARTMENT_LINK_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link graphic_representation.GRFontFormat <em>GR Font Format</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2695,7 +3015,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGRFontFormat()
 	 * @generated
 	 */
-	int GR_FONT_FORMAT = 47;
+	int GR_FONT_FORMAT = 52;
 
 	/**
 	 * The meta object id for the '{@link graphic_representation.LabelPosition <em>Label Position</em>}' enum.
@@ -2705,7 +3025,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelPosition()
 	 * @generated
 	 */
-	int LABEL_POSITION = 48;
+	int LABEL_POSITION = 53;
 
 
 	/**
@@ -2716,7 +3036,18 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getChildrenPresentation()
 	 * @generated
 	 */
-	int CHILDREN_PRESENTATION = 49;
+	int CHILDREN_PRESENTATION = 54;
+
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.CompartmentView <em>Compartment View</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.CompartmentView
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentView()
+	 * @generated
+	 */
+	int COMPARTMENT_VIEW = 55;
 
 
 	/**
@@ -2977,6 +3308,17 @@ public interface Graphic_representationPackage extends EPackage {
 	EAttribute getNode_Presentation();
 
 	/**
+	 * Returns the meta object for the reference list '{@link graphic_representation.Node#getVirtualCompartments <em>Virtual Compartments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Virtual Compartments</em>'.
+	 * @see graphic_representation.Node#getVirtualCompartments()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_VirtualCompartments();
+
+	/**
 	 * Returns the meta object for class '{@link graphic_representation.IconElement <em>Icon Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3116,14 +3458,35 @@ public interface Graphic_representationPackage extends EPackage {
 	EReference getNode_Element_ExpandableItems();
 
 	/**
-	 * Returns the meta object for the '{@link graphic_representation.Node_Element#isCompartment() <em>Is Compartment</em>}' operation.
+	 * Returns the meta object for the containment reference list '{@link graphic_representation.Node_Element#getVirtualCompartment <em>Virtual Compartment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Compartment</em>' operation.
-	 * @see graphic_representation.Node_Element#isCompartment()
+	 * @return the meta object for the containment reference list '<em>Virtual Compartment</em>'.
+	 * @see graphic_representation.Node_Element#getVirtualCompartment()
+	 * @see #getNode_Element()
 	 * @generated
 	 */
-	EOperation getNode_Element__IsCompartment();
+	EReference getNode_Element_VirtualCompartment();
+
+	/**
+	 * Returns the meta object for the '{@link graphic_representation.Node_Element#isOnlyCompartment() <em>Is Only Compartment</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Only Compartment</em>' operation.
+	 * @see graphic_representation.Node_Element#isOnlyCompartment()
+	 * @generated
+	 */
+	EOperation getNode_Element__IsOnlyCompartment();
+
+	/**
+	 * Returns the meta object for the '{@link graphic_representation.Node_Element#isCompartmentAffixed() <em>Is Compartment Affixed</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Compartment Affixed</em>' operation.
+	 * @see graphic_representation.Node_Element#isCompartmentAffixed()
+	 * @generated
+	 */
+	EOperation getNode_Element__IsCompartmentAffixed();
 
 	/**
 	 * Returns the meta object for class '{@link graphic_representation.ExpandableItem <em>Expandable Item</em>}'.
@@ -3689,6 +4052,83 @@ public interface Graphic_representationPackage extends EPackage {
 	EClass getCompartmentElement();
 
 	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.CompartmentElement#getCompartmentView <em>Compartment View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Compartment View</em>'.
+	 * @see graphic_representation.CompartmentElement#getCompartmentView()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EAttribute getCompartmentElement_CompartmentView();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getInit <em>Init</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init</em>'.
+	 * @see graphic_representation.CompartmentElement#getInit()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EReference getCompartmentElement_Init();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getNodeShape <em>Node Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node Shape</em>'.
+	 * @see graphic_representation.CompartmentElement#getNodeShape()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EReference getCompartmentElement_NodeShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getEnd <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>End</em>'.
+	 * @see graphic_representation.CompartmentElement#getEnd()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EReference getCompartmentElement_End();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getInitToFirst <em>Init To First</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init To First</em>'.
+	 * @see graphic_representation.CompartmentElement#getInitToFirst()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EReference getCompartmentElement_InitToFirst();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getNodeToNode <em>Node To Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node To Node</em>'.
+	 * @see graphic_representation.CompartmentElement#getNodeToNode()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EReference getCompartmentElement_NodeToNode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getNodeToEnd <em>Node To End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node To End</em>'.
+	 * @see graphic_representation.CompartmentElement#getNodeToEnd()
+	 * @see #getCompartmentElement()
+	 * @generated
+	 */
+	EReference getCompartmentElement_NodeToEnd();
+
+	/**
 	 * Returns the meta object for class '{@link graphic_representation.AffixedCompartmentElement <em>Affixed Compartment Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4144,6 +4584,144 @@ public interface Graphic_representationPackage extends EPackage {
 	EReference getConditionalStyle_ConditionalStyle();
 
 	/**
+	 * Returns the meta object for class '{@link graphic_representation.VirtualCompartment <em>Virtual Compartment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Virtual Compartment</em>'.
+	 * @see graphic_representation.VirtualCompartment
+	 * @generated
+	 */
+	EClass getVirtualCompartment();
+
+	/**
+	 * Returns the meta object for the reference '{@link graphic_representation.VirtualCompartment#getNode <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Node</em>'.
+	 * @see graphic_representation.VirtualCompartment#getNode()
+	 * @see #getVirtualCompartment()
+	 * @generated
+	 */
+	EReference getVirtualCompartment_Node();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.VirtualCompartmentReference <em>Virtual Compartment Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Virtual Compartment Reference</em>'.
+	 * @see graphic_representation.VirtualCompartmentReference
+	 * @generated
+	 */
+	EClass getVirtualCompartmentReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link graphic_representation.VirtualCompartmentReference#getContainerReference <em>Container Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Container Reference</em>'.
+	 * @see graphic_representation.VirtualCompartmentReference#getContainerReference()
+	 * @see #getVirtualCompartmentReference()
+	 * @generated
+	 */
+	EReference getVirtualCompartmentReference_ContainerReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link graphic_representation.VirtualCompartmentReference#getVirtualReference <em>Virtual Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Virtual Reference</em>'.
+	 * @see graphic_representation.VirtualCompartmentReference#getVirtualReference()
+	 * @see #getVirtualCompartmentReference()
+	 * @generated
+	 */
+	EReference getVirtualCompartmentReference_VirtualReference();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.VirtualCompartmentOCL <em>Virtual Compartment OCL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Virtual Compartment OCL</em>'.
+	 * @see graphic_representation.VirtualCompartmentOCL
+	 * @generated
+	 */
+	EClass getVirtualCompartmentOCL();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.VirtualCompartmentOCL#getOclExpression <em>Ocl Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ocl Expression</em>'.
+	 * @see graphic_representation.VirtualCompartmentOCL#getOclExpression()
+	 * @see #getVirtualCompartmentOCL()
+	 * @generated
+	 */
+	EAttribute getVirtualCompartmentOCL_OclExpression();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.CompartmentEdge <em>Compartment Edge</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Compartment Edge</em>'.
+	 * @see graphic_representation.CompartmentEdge
+	 * @generated
+	 */
+	EClass getCompartmentEdge();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentEdge#getEdge_style <em>Edge style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Edge style</em>'.
+	 * @see graphic_representation.CompartmentEdge#getEdge_style()
+	 * @see #getCompartmentEdge()
+	 * @generated
+	 */
+	EReference getCompartmentEdge_Edge_style();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentEdge#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Source</em>'.
+	 * @see graphic_representation.CompartmentEdge#getSource()
+	 * @see #getCompartmentEdge()
+	 * @generated
+	 */
+	EReference getCompartmentEdge_Source();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentEdge#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Target</em>'.
+	 * @see graphic_representation.CompartmentEdge#getTarget()
+	 * @see #getCompartmentEdge()
+	 * @generated
+	 */
+	EReference getCompartmentEdge_Target();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.CompartmentLink <em>Compartment Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Compartment Link</em>'.
+	 * @see graphic_representation.CompartmentLink
+	 * @generated
+	 */
+	EClass getCompartmentLink();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.CompartmentLink#getDecoratorName <em>Decorator Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Decorator Name</em>'.
+	 * @see graphic_representation.CompartmentLink#getDecoratorName()
+	 * @see #getCompartmentLink()
+	 * @generated
+	 */
+	EAttribute getCompartmentLink_DecoratorName();
+
+	/**
 	 * Returns the meta object for enum '{@link graphic_representation.GRFontFormat <em>GR Font Format</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4172,6 +4750,16 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getChildrenPresentation();
+
+	/**
+	 * Returns the meta object for enum '{@link graphic_representation.CompartmentView <em>Compartment View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Compartment View</em>'.
+	 * @see graphic_representation.CompartmentView
+	 * @generated
+	 */
+	EEnum getCompartmentView();
 
 	/**
 	 * Returns the meta object for the attribute '{@link graphic_representation.Border#getBorderStyle <em>Border Style</em>}'.
@@ -4425,6 +5013,14 @@ public interface Graphic_representationPackage extends EPackage {
 		EAttribute NODE__PRESENTATION = eINSTANCE.getNode_Presentation();
 
 		/**
+		 * The meta object literal for the '<em><b>Virtual Compartments</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__VIRTUAL_COMPARTMENTS = eINSTANCE.getNode_VirtualCompartments();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.IconElementImpl <em>Icon Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4535,12 +5131,28 @@ public interface Graphic_representationPackage extends EPackage {
 		EReference NODE_ELEMENT__EXPANDABLE_ITEMS = eINSTANCE.getNode_Element_ExpandableItems();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Compartment</b></em>' operation.
+		 * The meta object literal for the '<em><b>Virtual Compartment</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation NODE_ELEMENT___IS_COMPARTMENT = eINSTANCE.getNode_Element__IsCompartment();
+		EReference NODE_ELEMENT__VIRTUAL_COMPARTMENT = eINSTANCE.getNode_Element_VirtualCompartment();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Only Compartment</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE_ELEMENT___IS_ONLY_COMPARTMENT = eINSTANCE.getNode_Element__IsOnlyCompartment();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Compartment Affixed</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE_ELEMENT___IS_COMPARTMENT_AFFIXED = eINSTANCE.getNode_Element__IsCompartmentAffixed();
 
 		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.ExpandableItemImpl <em>Expandable Item</em>}' class.
@@ -5007,6 +5619,62 @@ public interface Graphic_representationPackage extends EPackage {
 		EClass COMPARTMENT_ELEMENT = eINSTANCE.getCompartmentElement();
 
 		/**
+		 * The meta object literal for the '<em><b>Compartment View</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARTMENT_ELEMENT__COMPARTMENT_VIEW = eINSTANCE.getCompartmentElement_CompartmentView();
+
+		/**
+		 * The meta object literal for the '<em><b>Init</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_ELEMENT__INIT = eINSTANCE.getCompartmentElement_Init();
+
+		/**
+		 * The meta object literal for the '<em><b>Node Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_ELEMENT__NODE_SHAPE = eINSTANCE.getCompartmentElement_NodeShape();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_ELEMENT__END = eINSTANCE.getCompartmentElement_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Init To First</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_ELEMENT__INIT_TO_FIRST = eINSTANCE.getCompartmentElement_InitToFirst();
+
+		/**
+		 * The meta object literal for the '<em><b>Node To Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_ELEMENT__NODE_TO_NODE = eINSTANCE.getCompartmentElement_NodeToNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Node To End</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_ELEMENT__NODE_TO_END = eINSTANCE.getCompartmentElement_NodeToEnd();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.AffixedCompartmentElementImpl <em>Affixed Compartment Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5385,6 +6053,120 @@ public interface Graphic_representationPackage extends EPackage {
 		EReference CONDITIONAL_STYLE__CONDITIONAL_STYLE = eINSTANCE.getConditionalStyle_ConditionalStyle();
 
 		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.VirtualCompartmentImpl <em>Virtual Compartment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.VirtualCompartmentImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartment()
+		 * @generated
+		 */
+		EClass VIRTUAL_COMPARTMENT = eINSTANCE.getVirtualCompartment();
+
+		/**
+		 * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIRTUAL_COMPARTMENT__NODE = eINSTANCE.getVirtualCompartment_Node();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.VirtualCompartmentReferenceImpl <em>Virtual Compartment Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.VirtualCompartmentReferenceImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartmentReference()
+		 * @generated
+		 */
+		EClass VIRTUAL_COMPARTMENT_REFERENCE = eINSTANCE.getVirtualCompartmentReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Container Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIRTUAL_COMPARTMENT_REFERENCE__CONTAINER_REFERENCE = eINSTANCE.getVirtualCompartmentReference_ContainerReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Virtual Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIRTUAL_COMPARTMENT_REFERENCE__VIRTUAL_REFERENCE = eINSTANCE.getVirtualCompartmentReference_VirtualReference();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.VirtualCompartmentOCLImpl <em>Virtual Compartment OCL</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.VirtualCompartmentOCLImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartmentOCL()
+		 * @generated
+		 */
+		EClass VIRTUAL_COMPARTMENT_OCL = eINSTANCE.getVirtualCompartmentOCL();
+
+		/**
+		 * The meta object literal for the '<em><b>Ocl Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIRTUAL_COMPARTMENT_OCL__OCL_EXPRESSION = eINSTANCE.getVirtualCompartmentOCL_OclExpression();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.CompartmentEdgeImpl <em>Compartment Edge</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.CompartmentEdgeImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentEdge()
+		 * @generated
+		 */
+		EClass COMPARTMENT_EDGE = eINSTANCE.getCompartmentEdge();
+
+		/**
+		 * The meta object literal for the '<em><b>Edge style</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_EDGE__EDGE_STYLE = eINSTANCE.getCompartmentEdge_Edge_style();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_EDGE__SOURCE = eINSTANCE.getCompartmentEdge_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPARTMENT_EDGE__TARGET = eINSTANCE.getCompartmentEdge_Target();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.CompartmentLinkImpl <em>Compartment Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.CompartmentLinkImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentLink()
+		 * @generated
+		 */
+		EClass COMPARTMENT_LINK = eINSTANCE.getCompartmentLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Decorator Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARTMENT_LINK__DECORATOR_NAME = eINSTANCE.getCompartmentLink_DecoratorName();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.GRFontFormat <em>GR Font Format</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5413,6 +6195,16 @@ public interface Graphic_representationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum CHILDREN_PRESENTATION = eINSTANCE.getChildrenPresentation();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.CompartmentView <em>Compartment View</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.CompartmentView
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentView()
+		 * @generated
+		 */
+		EEnum COMPARTMENT_VIEW = eINSTANCE.getCompartmentView();
 
 		/**
 		 * The meta object literal for the '<em><b>Border Style</b></em>' attribute feature.

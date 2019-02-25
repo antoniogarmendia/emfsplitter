@@ -63,7 +63,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.mondo.generate.modular.project.ext.IModularBuilder"/>
+                  <meta.attribute kind="java" basedOn=":[anProjectName/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].ext.IModularBuilder"/>
                </appinfo>
             </annotation>
          </attribute>

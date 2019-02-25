@@ -71,10 +71,12 @@ public class GraphicTreeContentProvider implements ITreeContentProvider {
 			
 			Object[] attributes = nod.getNode_elements().getLabelanEAttribute().toArray(new Object[]{});
 			Object[] links = nod.getNode_elements().getLinkPalette().toArray(new Object[]{});
-			Object[] affixedCompartments = nod.getNode_elements().getAffixedCompartmentElements().toArray(new Object[]{});		
+			Object[] affixedCompartments = nod.getNode_elements().getAffixedCompartmentElements().toArray(new Object[]{});
+			Object[] virtualCompartments = nod.getNode_elements().getVirtualCompartment().toArray(new Object[]{});
 						
 			Object[] allObjects = ArrayUtils.addAll(attributes,affixedCompartments);
-			return ArrayUtils.addAll(allObjects, links );			
+			Object[] all =  ArrayUtils.addAll(allObjects, links );		
+			return ArrayUtils.addAll(all, virtualCompartments);
 		}
 		//Edge Children
 		else if(parentElement instanceof Edge){

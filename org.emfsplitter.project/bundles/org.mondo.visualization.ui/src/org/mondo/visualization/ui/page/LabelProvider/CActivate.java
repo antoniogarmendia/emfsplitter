@@ -6,8 +6,10 @@ import graphic_representation.CompartmentElement;
 import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Link;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.VirtualCompartmentReference;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.mondo.visualization.ui.Activator;
@@ -25,6 +27,12 @@ public class CActivate extends ColumnLabelProvider {
 			return ((EdgeLabelEAttribute) element).getLabelEAttribute().getName();
 		if(element instanceof Link)
 			return ((Link) element).getAnEReference().getName();
+		if(element instanceof VirtualCompartmentReference)
+			return ((VirtualCompartmentReference) element).getVirtualReference().getName();
+		if (element instanceof VirtualCompartmentOCL) {
+			if (((VirtualCompartmentOCL) element).getNode()!=null)
+				return ((VirtualCompartmentOCL) element).getNode().getAnEClass().getName();
+		}
 		if(element instanceof AffixedCompartmentElement)
 			return ((AffixedCompartmentElement) element).getAnEReference().getName();
 		
@@ -38,7 +46,8 @@ public class CActivate extends ColumnLabelProvider {
 		
 		if(element instanceof LabelEAttribute || element instanceof EdgeLabelEAttribute)
 			return EAttribute;
-		if(element instanceof AffixedElement || element instanceof CompartmentElement || element instanceof Link)
+		if(element instanceof AffixedElement || element instanceof CompartmentElement || element instanceof Link || 
+				element instanceof VirtualCompartmentReference)
 			return EReference;		
 		return super.getImage(element);
 	}	

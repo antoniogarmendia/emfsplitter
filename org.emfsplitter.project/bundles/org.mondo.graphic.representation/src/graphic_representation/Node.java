@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link graphic_representation.Node#isExpandable <em>Expandable</em>}</li>
  *   <li>{@link graphic_representation.Node#getConditionalStyle <em>Conditional Style</em>}</li>
  *   <li>{@link graphic_representation.Node#getPresentation <em>Presentation</em>}</li>
+ *   <li>{@link graphic_representation.Node#getVirtualCompartments <em>Virtual Compartments</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getNode()
@@ -149,5 +150,23 @@ public interface Node extends DiagramElement {
 	 * @generated
 	 */
 	void setPresentation(ChildrenPresentation value);
+
+	/**
+	 * Returns the value of the '<em><b>Virtual Compartments</b></em>' reference list.
+	 * The list contents are of type {@link graphic_representation.VirtualCompartment}.
+	 * It is bidirectional and its opposite is '{@link graphic_representation.VirtualCompartment#getNode <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtual Compartments</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtual Compartments</em>' reference list.
+	 * @see graphic_representation.Graphic_representationPackage#getNode_VirtualCompartments()
+	 * @see graphic_representation.VirtualCompartment#getNode
+	 * @model opposite="node"
+	 * @generated
+	 */
+	EList<VirtualCompartment> getVirtualCompartments();
 
 } // Node

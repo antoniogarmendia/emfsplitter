@@ -36,7 +36,7 @@
 [generateManifestFile(anProjectName, anPatternInstance, modularPatternInstance)/]	
 [generatePluginFile(anProjectName,modularPatternInstance)/]
 
-[generateconstraintFiles(anPatternInstance, mmConstraint)/]
+[generateconstraintFiles(anPatternInstance, mmConstraint, anProjectName)/]
 
 [generateeolExecuteFile(anProjectName, constraintName)/]
 

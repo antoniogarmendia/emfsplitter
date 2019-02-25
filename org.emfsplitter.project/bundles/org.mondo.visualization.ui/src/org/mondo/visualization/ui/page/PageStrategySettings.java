@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
@@ -34,8 +33,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.mondo.visualization.ui.libraryrtpat.XMIRuntimePatternsImplImpl;
-import org.mondo.visualization.ui.page.diagram.decorator.PageDefineDiagramElementDecorator;
-import org.mondo.visualization.ui.page.diagram.element.PageDiagramElements;
 import org.mondo.visualization.ui.wizard.WizardConcreteVisualization;
 
 import splitterLibrary.EcoreEMF;
@@ -54,7 +51,6 @@ import dslHeuristicVisualization.ConcreteStrategyMaxContainment;
 import dslHeuristicVisualization.DefaultArcParameter;
 import dslHeuristicVisualization.HeuristicStrategy;
 import dslHeuristicVisualization.HeuristicStrategySettings;
-import dslHeuristicVisualization.RepreHeurSS;
 import dslHeuristicVisualization.impl.DslHeuristicVisualizationFactoryImpl;
 
 public class PageStrategySettings extends WizardPage{
@@ -71,6 +67,8 @@ public class PageStrategySettings extends WizardPage{
 	//Button Use Default
 	private Button btn_param_default;
 	private Button btn_param_arc;
+	// Do not execute heuristics button
+	private Button executeHeuristics;
 	
 	private int representation;
 	private int currentMMGR;
@@ -103,10 +101,21 @@ public class PageStrategySettings extends WizardPage{
 		Heuristic_Label_Selection(container);
 		Heuristic_Link_Selection(container);
 		
+		new Label(container, SWT.NONE);
+		//GridData for the checkbox
+		GridData gdDontExecute = new GridData(SWT.RIGHT, SWT.RIGHT, true, false, 1, 1);
+		gdDontExecute.widthHint = 300;
+		
+		// Create checkbox do not execute heuristics
+		executeHeuristics = new Button(container, SWT.CHECK);
+		executeHeuristics.setText("Execute Heuristics.");
+		executeHeuristics.setSelection(true);
+		executeHeuristics.setLayoutData(gdDontExecute);	
+		
 		setControl(container);
 		setPageComplete(true);
 	}
-	
+		
 	public void CreateControlRootStrategy(Composite parent)
 	{
 		//Group Root
@@ -198,12 +207,8 @@ public class PageStrategySettings extends WizardPage{
 			if(getHeuristicStrategySettings().getStrategy_root() instanceof ConcreteStrategyMaxContainment)
 				btn_maxroot.setSelection(true);
 		else
-			btn_noparroot.setSelection(true);	
+			btn_noparroot.setSelection(true);		
 		
-		if (((WizardConcreteVisualization)getWizard()).isModularPattern() == true) {
-			EList<MMGraphic_Representation> mmRepresentation = getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation();
-			ClassRoleInstanceToMMGraphicRepresentation(getListUnitClassRoleInstance(), mmRepresentation);		
-		}
 		/*
 		 * Fix this
 		if (((WizardConcreteVisualization)getWizard()).isUpdateGraphicR() == false) {
@@ -587,75 +592,7 @@ public class PageStrategySettings extends WizardPage{
 	@Override
 	public void setVisible(boolean visible) {
 		
-		super.setVisible(visible);
-		/*
-		if(visible==false)
-		{
-			if(!(getCurrentMMGR()==0))
-			{
-				getHeuristicStrategy().setCurrentMMGR(getCurrentMMGR());
-				getHeuristicStrategy().setCurrentRepresentation(getRepresentation());
-				getHeuristicStrategy().Execute_Graphical_Elements();	
-				return;
-			}			
-			
-			if(!(getRepresentation()==0))
-			{
-				getHeuristicStrategy().setCurrentRepresentation(getRepresentation());
-				getHeuristicStrategy().Execute_Graphical_Elements();	
-				return;
-			}			
-			
-			if(btn_modularity.getSelection() == true){
-				
-				getHeuristicStrategy().ExecuteDirectPathMatrix();
-				getHeuristicStrategy().setCurrentMMGR(getCurrentMMGR());
-				getHeuristicStrategy().setCurrentRepresentation(getRepresentation());
-				getHeuristicStrategy().Execute_Graphical_Elements();
-				
-				if(getWizard().getPages().length > 3)
-					return;
-				
-				//Add additional pages to the wizard
-				int countAllRepresentations = getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation().size();
-				for (int i = 1; i < countAllRepresentations; i++) {
-					PageStrategySettings strategy = new PageStrategySettings("Choose the Strategies to Define the Concrete Visualization");
-					PageDiagramElements elements = new PageDiagramElements("Choose the Diagram Elements");
-					PageDefineDiagramElementDecorator decorator = new PageDefineDiagramElementDecorator("Choose the Decorators for the Nodes, Edges and Links");
-					//Set the Integer representation
-					strategy.setCurrentMMGR(i);
-					elements.setCurrentMMGR(i);
-					decorator.setCurrentMMGR(i);
-					//Add Pages to the wizard
-					((Wizard)getWizard()).addPage(strategy);
-					((Wizard)getWizard()).addPage(elements);
-					((Wizard)getWizard()).addPage(decorator);
-					//Add also the Strategy Settings
-					RepreHeurSS repreSS = DslHeuristicVisualizationFactoryImpl.eINSTANCE.createRepreHeurSS();
-					repreSS.getHeuristicStrategySettings().add(DslHeuristicVisualizationFactoryImpl.eINSTANCE.createHeuristicStrategySettings());
-					getHeuristicStrategy().getListRepresentation().add(repreSS);
-					//Add Graphic Representation
-					//MMGraphic_Representation mmgraph = Graphic_representationFactoryImpl.eINSTANCE.createMMGraphic_Representation();
-					//mmgraph.getListRepresentations().add(Graphic_representationFactoryImpl.eINSTANCE.createRepresentation());
-					//getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation().add(mmgraph);
-					//getHeuristicStrategy().getListRepresentation().get(i).getHeuristicStrategySettings().add(DslHeuristicVisualizationFactoryImpl.eINSTANCE.createHeuristicStrategySettings());
-				}				
-			}
-			else if(getCurrentMMGR()==0){
-				getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation().clear();
-				//Create the Graphic Representation
-				MMGraphic_Representation graph = Graphic_representationFactory.eINSTANCE.createMMGraphic_Representation();
-				//Create the First Representation
-				graph.getListRepresentations().add(Graphic_representationFactory.eINSTANCE.createRepresentationDD());
-				getHeuristicStrategy().getGraphic_representation().getAllGraphicRepresentation().
-						add(graph);
-				getHeuristicStrategy().setCurrentRepresentation(getRepresentation());
-				getHeuristicStrategy().setCurrentMMGR(0);
-				getHeuristicStrategy().ExecuteHeuristics();
-			}
-		}
-		*/	
-		
+		super.setVisible(visible);	
 	}	
 	
 	public int getRepresentation() {
@@ -712,6 +649,10 @@ public class PageStrategySettings extends WizardPage{
 			}		
 		}		
 		return "unknown";
+	}
+	
+	public Button getExecuteHeuristics() {
+		return executeHeuristics;
 	}
 	
 	public int getCurrentMMGR() {

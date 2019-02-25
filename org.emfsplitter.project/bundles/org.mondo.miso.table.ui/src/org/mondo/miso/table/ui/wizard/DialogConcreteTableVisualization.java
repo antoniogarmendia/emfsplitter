@@ -18,12 +18,12 @@ public class DialogConcreteTableVisualization extends WizardDialog{
 
 	public DialogConcreteTableVisualization(Shell parentShell, IWizard newWizard) {
 		super(parentShell, newWizard);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		// TODO Auto-generated method stub
+		
 		super.createButtonsForButtonBar(parent);
 			
 		((GridLayout) parent.getLayout()).numColumns++;
@@ -33,7 +33,7 @@ public class DialogConcreteTableVisualization extends WizardDialog{
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
+				
 				WizardDefineTableVisualization wizard = (WizardDefineTableVisualization)getWizard();
 				PageDefineTableRepresentation newTable = new PageDefineTableRepresentation("Create Table Representation");
 				

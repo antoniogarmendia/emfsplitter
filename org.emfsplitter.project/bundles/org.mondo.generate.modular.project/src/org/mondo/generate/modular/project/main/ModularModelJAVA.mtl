@@ -19,12 +19,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.mondo.generate.modular.project.general.create.project.main.api.PerformantXMIUtils;
 import org.mondo.generate.modular.project.general.create.project.main.api.CopierReverseEngineering;
 import [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].wizard.[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo;
-import [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].wizard.[Get_ProjectClass(anPatternInstance).name/]ProjectFeatures;
 import org.osgi.service.prefs.BackingStoreException;
 
 [let genPackage : GenPackage =  getGenClassFromEClass(Get_ProjectClass(anPatternInstance),anEObjectGenModel).eContainer().oclAsType(GenPackage) ]
 [if (genPackage.basePackage->isEmpty() = false)]
-import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/][generateEClassImportBasePackage(Get_ProjectClass(anPatternInstance))/];
+[if (genPackage.interfacePackageSuffix = '')]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[generateEClassImportBasePackage(Get_ProjectClass(anPatternInstance))/];
+[else]
+import [genPackage.basePackage/].[genPackage.ecorePackage.name/].[genPackage.interfacePackageSuffix/].[generateEClassImportBasePackage(Get_ProjectClass(anPatternInstance))/];
+[/if]
 [else]
 import [generateEClassImport(Get_ProjectClass(anPatternInstance))/];
 [/if]
@@ -66,22 +69,10 @@ public class ModularModel {
 
 		//The first element(Root)
 		[Get_ProjectClass(anPatternInstance).name/] root = ([Get_ProjectClass(anPatternInstance).name/]) modelResource.getContents().get(0);
-		[Get_ProjectClass(anPatternInstance).name/]ProjectFeatures feat = new [Get_ProjectClass(anPatternInstance).name/]ProjectFeatures(
-		[for (attr : EAttribute | Get_ProjectClass(anPatternInstance).eAllAttributes)]
-			[if(attr.eType.toString().contains('boolean'))]
-			root.is[attr.name.toUpperFirst()/]()[if(Get_ProjectClass(anPatternInstance).eAllAttributes->asSequence()->size()<>i)],[/if]
-			[else]
-			root.get[attr.name.toUpperFirst()/]()[if(Get_ProjectClass(anPatternInstance).eAllAttributes->asSequence()->size()<>i)],[/if]
-			[/if]
-		[/for]		
-		);
-		[if(anPatternInstance.Get_ProjectClassRoleInstance().HasTypeFeature_EAttribute('name')=false)]
-		feat.set_ProjectName(getProjectName());
-		[/if]
-
+		
 		if(root instanceof [Get_ProjectClass(anPatternInstance).name.toString().toUpperFirst()/]){
 			
-			[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo project = new [Get_ProjectClass(anPatternInstance).name/]NewProjectInfo(feat,modelResource);
+			[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo project = new [Get_ProjectClass(anPatternInstance).name/]NewProjectInfo(root,modelResource);
 			project.createProject();
 			System.out.println("Reverse_Engineering_Create_Project_Complete");
 		}
@@ -94,21 +85,9 @@ public class ModularModel {
 		Resource modelResource = PerformantXMIUtils.getPerformantResource(modelURI);
 
 		[Get_ProjectClass(anPatternInstance).name/] root = ([Get_ProjectClass(anPatternInstance).name/]) modelResource.getContents().get(0);
-		[Get_ProjectClass(anPatternInstance).name/]ProjectFeatures feat = new [Get_ProjectClass(anPatternInstance).name/]ProjectFeatures(
-		[for (attr : EAttribute | Get_ProjectClass(anPatternInstance).eAllAttributes)]
-			[if(attr.eType.toString().contains('boolean'))]
-			root.is[attr.name.toUpperFirst()/]()[if(Get_ProjectClass(anPatternInstance).eAllAttributes->asSequence()->size()<>i)],[/if]
-			[else]
-			root.get[attr.name.toUpperFirst()/]()[if(Get_ProjectClass(anPatternInstance).eAllAttributes->asSequence()->size()<>i)],[/if]
-			[/if]
-		[/for]		
-		);
-		[if(anPatternInstance.Get_ProjectClassRoleInstance().HasTypeFeature_EAttribute('name')=false)]
-		feat.set_ProjectName(getProjectName());
-		[/if]		
 		
 		//Create Performant Resource
-		[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo project = new [Get_ProjectClass(anPatternInstance).name/]NewProjectInfo(feat,modelResource);
+		[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo project = new [Get_ProjectClass(anPatternInstance).name/]NewProjectInfo(root,modelResource);
 		project.setProject(pro);
 		IContainer newFolder = project.createFolder();		
 		project.reverseEngineering(newFolder);		
@@ -126,18 +105,8 @@ public class ModularModel {
 	// join methods
 	public Resource reverseEngineeringContainer([anPatternInstance.Get_ProjectClass().name/] root, IProject pro, CopierReverseEngineering copier, ResourceSet reset) {
 			
-		[Get_ProjectClass(anPatternInstance).name/]ProjectFeatures feat = new [Get_ProjectClass(anPatternInstance).name/]ProjectFeatures(
-		[for (attr : EAttribute | Get_ProjectClass(anPatternInstance).eAllAttributes)]
-			[if(attr.eType.toString().contains('boolean'))]
-			root.is[attr.name.toUpperFirst()/]()[if(Get_ProjectClass(anPatternInstance).eAllAttributes->asSequence()->size()<>i)],[/if]
-			[else]
-			root.get[attr.name.toUpperFirst()/]()[if(Get_ProjectClass(anPatternInstance).eAllAttributes->asSequence()->size()<>i)],[/if]
-			[/if]
-		[/for]		
-		);
-			
 		//Create Performant Resource
-		[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo project = new [Get_ProjectClass(anPatternInstance).name/]NewProjectInfo(feat,null);
+		[Get_ProjectClass(anPatternInstance).name/]NewProjectInfo project = new [Get_ProjectClass(anPatternInstance).name/]NewProjectInfo(root,null);
 		project.setProject(pro);
 		IContainer newFolder = project.createFolder();		
 		return project.reverseEngineering(newFolder,root,copier,reset);			

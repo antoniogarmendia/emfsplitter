@@ -10,7 +10,10 @@ import graphic_representation.AllElements;
 import graphic_representation.Border;
 import graphic_representation.ChildrenPresentation;
 import graphic_representation.Color;
+import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
+import graphic_representation.CompartmentLink;
+import graphic_representation.CompartmentView;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.DefaultLayer;
 import graphic_representation.DiagramElement;
@@ -54,6 +57,9 @@ import graphic_representation.ShapeColor;
 import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.ShapeCompartmentParallelogram;
 import graphic_representation.SiriusSystemColors;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.VirtualCompartmentReference;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -406,6 +412,41 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass virtualCompartmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass virtualCompartmentReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass virtualCompartmentOCLEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compartmentEdgeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compartmentLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum grFontFormatEEnum = null;
 
 	/**
@@ -421,6 +462,13 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * @generated
 	 */
 	private EEnum childrenPresentationEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum compartmentViewEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -469,6 +517,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		ViewpointPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -707,6 +756,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getNode_VirtualCompartments() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIconElement() {
 		return iconElementEClass;
 	}
@@ -824,8 +882,26 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getNode_Element__IsCompartment() {
+	public EReference getNode_Element_VirtualCompartment() {
+		return (EReference)node_ElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode_Element__IsOnlyCompartment() {
 		return node_ElementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getNode_Element__IsCompartmentAffixed() {
+		return node_ElementEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1310,6 +1386,69 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCompartmentElement_CompartmentView() {
+		return (EAttribute)compartmentElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentElement_Init() {
+		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentElement_NodeShape() {
+		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentElement_End() {
+		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentElement_InitToFirst() {
+		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentElement_NodeToNode() {
+		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentElement_NodeToEnd() {
+		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAffixedCompartmentElement() {
 		return affixedCompartmentElementEClass;
 	}
@@ -1697,6 +1836,123 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getVirtualCompartment() {
+		return virtualCompartmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVirtualCompartment_Node() {
+		return (EReference)virtualCompartmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getVirtualCompartmentReference() {
+		return virtualCompartmentReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVirtualCompartmentReference_ContainerReference() {
+		return (EReference)virtualCompartmentReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVirtualCompartmentReference_VirtualReference() {
+		return (EReference)virtualCompartmentReferenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getVirtualCompartmentOCL() {
+		return virtualCompartmentOCLEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVirtualCompartmentOCL_OclExpression() {
+		return (EAttribute)virtualCompartmentOCLEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCompartmentEdge() {
+		return compartmentEdgeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentEdge_Edge_style() {
+		return (EReference)compartmentEdgeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentEdge_Source() {
+		return (EReference)compartmentEdgeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompartmentEdge_Target() {
+		return (EReference)compartmentEdgeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCompartmentLink() {
+		return compartmentLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompartmentLink_DecoratorName() {
+		return (EAttribute)compartmentLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGRFontFormat() {
 		return grFontFormatEEnum;
 	}
@@ -1717,6 +1973,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 */
 	public EEnum getChildrenPresentation() {
 		return childrenPresentationEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getCompartmentView() {
+		return compartmentViewEEnum;
 	}
 
 	/**
@@ -1795,6 +2060,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEAttribute(nodeEClass, NODE__EXPANDABLE);
 		createEReference(nodeEClass, NODE__CONDITIONAL_STYLE);
 		createEAttribute(nodeEClass, NODE__PRESENTATION);
+		createEReference(nodeEClass, NODE__VIRTUAL_COMPARTMENTS);
 
 		iconElementEClass = createEClass(ICON_ELEMENT);
 		createEAttribute(iconElementEClass, ICON_ELEMENT__FILEPATH);
@@ -1811,7 +2077,9 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEReference(node_ElementEClass, NODE_ELEMENT__LINK_PALETTE);
 		createEReference(node_ElementEClass, NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS);
 		createEReference(node_ElementEClass, NODE_ELEMENT__EXPANDABLE_ITEMS);
-		createEOperation(node_ElementEClass, NODE_ELEMENT___IS_COMPARTMENT);
+		createEReference(node_ElementEClass, NODE_ELEMENT__VIRTUAL_COMPARTMENT);
+		createEOperation(node_ElementEClass, NODE_ELEMENT___IS_ONLY_COMPARTMENT);
+		createEOperation(node_ElementEClass, NODE_ELEMENT___IS_COMPARTMENT_AFFIXED);
 
 		expandableItemEClass = createEClass(EXPANDABLE_ITEM);
 		createEAttribute(expandableItemEClass, EXPANDABLE_ITEM__INDEX);
@@ -1885,6 +2153,13 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		affixedElementEClass = createEClass(AFFIXED_ELEMENT);
 
 		compartmentElementEClass = createEClass(COMPARTMENT_ELEMENT);
+		createEAttribute(compartmentElementEClass, COMPARTMENT_ELEMENT__COMPARTMENT_VIEW);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__INIT);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__NODE_SHAPE);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__END);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__INIT_TO_FIRST);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__NODE_TO_NODE);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__NODE_TO_END);
 
 		affixedCompartmentElementEClass = createEClass(AFFIXED_COMPARTMENT_ELEMENT);
 		createEReference(affixedCompartmentElementEClass, AFFIXED_COMPARTMENT_ELEMENT__AN_EREFERENCE);
@@ -1948,10 +2223,29 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEAttribute(conditionalStyleEClass, CONDITIONAL_STYLE__VALUE);
 		createEReference(conditionalStyleEClass, CONDITIONAL_STYLE__CONDITIONAL_STYLE);
 
+		virtualCompartmentEClass = createEClass(VIRTUAL_COMPARTMENT);
+		createEReference(virtualCompartmentEClass, VIRTUAL_COMPARTMENT__NODE);
+
+		virtualCompartmentReferenceEClass = createEClass(VIRTUAL_COMPARTMENT_REFERENCE);
+		createEReference(virtualCompartmentReferenceEClass, VIRTUAL_COMPARTMENT_REFERENCE__CONTAINER_REFERENCE);
+		createEReference(virtualCompartmentReferenceEClass, VIRTUAL_COMPARTMENT_REFERENCE__VIRTUAL_REFERENCE);
+
+		virtualCompartmentOCLEClass = createEClass(VIRTUAL_COMPARTMENT_OCL);
+		createEAttribute(virtualCompartmentOCLEClass, VIRTUAL_COMPARTMENT_OCL__OCL_EXPRESSION);
+
+		compartmentEdgeEClass = createEClass(COMPARTMENT_EDGE);
+		createEReference(compartmentEdgeEClass, COMPARTMENT_EDGE__EDGE_STYLE);
+		createEReference(compartmentEdgeEClass, COMPARTMENT_EDGE__SOURCE);
+		createEReference(compartmentEdgeEClass, COMPARTMENT_EDGE__TARGET);
+
+		compartmentLinkEClass = createEClass(COMPARTMENT_LINK);
+		createEAttribute(compartmentLinkEClass, COMPARTMENT_LINK__DECORATOR_NAME);
+
 		// Create enums
 		grFontFormatEEnum = createEEnum(GR_FONT_FORMAT);
 		labelPositionEEnum = createEEnum(LABEL_POSITION);
 		childrenPresentationEEnum = createEEnum(CHILDREN_PRESENTATION);
+		compartmentViewEEnum = createEEnum(COMPARTMENT_VIEW);
 	}
 
 	/**
@@ -2027,6 +2321,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		representationDDEClass.getESuperTypes().add(this.getRepresentation());
 		representationTableEClass.getESuperTypes().add(this.getRepresentation());
 		lineGroupEClass.getESuperTypes().add(this.getLine());
+		virtualCompartmentReferenceEClass.getESuperTypes().add(this.getVirtualCompartment());
+		virtualCompartmentOCLEClass.getESuperTypes().add(this.getVirtualCompartment());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(mmGraphic_RepresentationEClass, MMGraphic_Representation.class, "MMGraphic_Representation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2059,6 +2355,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEAttribute(getNode_Expandable(), ecorePackage.getEBoolean(), "expandable", "false", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_ConditionalStyle(), this.getConditionalStyle(), null, "conditionalStyle", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Presentation(), this.getChildrenPresentation(), "presentation", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_VirtualCompartments(), this.getVirtualCompartment(), this.getVirtualCompartment_Node(), "virtualCompartments", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iconElementEClass, IconElement.class, "IconElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIconElement_Filepath(), ecorePackage.getEString(), "filepath", null, 0, 1, IconElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2076,8 +2373,11 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEReference(getNode_Element_LinkPalette(), this.getPaletteDescriptionLink(), null, "linkPalette", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Element_AffixedCompartmentElements(), this.getAffixedCompartmentElement(), null, "affixedCompartmentElements", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Element_ExpandableItems(), this.getExpandableItem(), null, "expandableItems", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_Element_VirtualCompartment(), this.getVirtualCompartment(), null, "virtualCompartment", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getNode_Element__IsCompartment(), ecorePackage.getEBoolean(), "isCompartment", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getNode_Element__IsOnlyCompartment(), ecorePackage.getEBoolean(), "isOnlyCompartment", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getNode_Element__IsCompartmentAffixed(), ecorePackage.getEBoolean(), "isCompartmentAffixed", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(expandableItemEClass, ExpandableItem.class, "ExpandableItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExpandableItem_Index(), ecorePackage.getEInt(), "index", "0", 0, 1, ExpandableItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2151,6 +2451,13 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEClass(affixedElementEClass, AffixedElement.class, "AffixedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(compartmentElementEClass, CompartmentElement.class, "CompartmentElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCompartmentElement_CompartmentView(), this.getCompartmentView(), "compartmentView", "None", 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_Init(), this.getShape(), null, "init", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_NodeShape(), this.getShape(), null, "nodeShape", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_End(), this.getShape(), null, "end", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_InitToFirst(), this.getCompartmentEdge(), null, "initToFirst", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_NodeToNode(), this.getCompartmentEdge(), null, "nodeToNode", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_NodeToEnd(), this.getCompartmentEdge(), null, "nodeToEnd", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(affixedCompartmentElementEClass, AffixedCompartmentElement.class, "AffixedCompartmentElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAffixedCompartmentElement_AnEReference(), ecorePackage.getEReference(), null, "anEReference", null, 0, 1, AffixedCompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2216,6 +2523,24 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEAttribute(getConditionalStyle_Value(), ecorePackage.getEString(), "value", null, 0, 1, ConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConditionalStyle_ConditionalStyle(), this.getShape(), null, "conditionalStyle", null, 0, 1, ConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(virtualCompartmentEClass, VirtualCompartment.class, "VirtualCompartment", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVirtualCompartment_Node(), this.getNode(), this.getNode_VirtualCompartments(), "node", null, 0, 1, VirtualCompartment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(virtualCompartmentReferenceEClass, VirtualCompartmentReference.class, "VirtualCompartmentReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVirtualCompartmentReference_ContainerReference(), theEcorePackage.getEReference(), null, "containerReference", null, 0, 1, VirtualCompartmentReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVirtualCompartmentReference_VirtualReference(), theEcorePackage.getEReference(), null, "virtualReference", null, 0, 1, VirtualCompartmentReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(virtualCompartmentOCLEClass, VirtualCompartmentOCL.class, "VirtualCompartmentOCL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVirtualCompartmentOCL_OclExpression(), ecorePackage.getEString(), "oclExpression", null, 0, 1, VirtualCompartmentOCL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compartmentEdgeEClass, CompartmentEdge.class, "CompartmentEdge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompartmentEdge_Edge_style(), this.getEdge_Style(), null, "edge_style", null, 1, 1, CompartmentEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentEdge_Source(), this.getCompartmentLink(), null, "source", null, 0, 1, CompartmentEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentEdge_Target(), this.getCompartmentLink(), null, "target", null, 0, 1, CompartmentEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compartmentLinkEClass, CompartmentLink.class, "CompartmentLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCompartmentLink_DecoratorName(), ecorePackage.getEString(), "decoratorName", "NoDecoration", 0, 1, CompartmentLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(grFontFormatEEnum, GRFontFormat.class, "GRFontFormat");
 		addEEnumLiteral(grFontFormatEEnum, GRFontFormat.ITALIC);
@@ -2232,6 +2557,10 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		addEEnumLiteral(childrenPresentationEEnum, ChildrenPresentation.LIST);
 		addEEnumLiteral(childrenPresentationEEnum, ChildrenPresentation.HORIZONTALSTACK);
 		addEEnumLiteral(childrenPresentationEEnum, ChildrenPresentation.VERTICALSTACK);
+
+		initEEnum(compartmentViewEEnum, CompartmentView.class, "CompartmentView");
+		addEEnumLiteral(compartmentViewEEnum, CompartmentView.NONE);
+		addEEnumLiteral(compartmentViewEEnum, CompartmentView.LINKED_LIST);
 
 		// Create resource
 		createResource(eNS_URI);

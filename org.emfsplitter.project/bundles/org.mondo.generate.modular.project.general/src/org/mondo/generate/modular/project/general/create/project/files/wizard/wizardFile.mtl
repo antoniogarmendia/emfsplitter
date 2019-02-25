@@ -41,7 +41,7 @@ public class [c.element.name /]CreateFolderWizard extends [c.element.name/]NewPr
 	@Override
 	public boolean performFinish() {
 		
-		projectInfo = new [c.element.name/]NewProjectInfo(mainpage.Get_Features());
+		projectInfo = new [c.element.name/]NewProjectInfo(mainpage.getRoot());
 		String addr = mainpage.getDiagram_address();
 		if(addr != null) {
 			

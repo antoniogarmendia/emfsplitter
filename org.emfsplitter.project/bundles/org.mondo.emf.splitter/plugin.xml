@@ -29,6 +29,11 @@
       </command>
       <command
             categoryId="org.mondo.emf.splitter.category"
+            id="org.mondo.emf.splitter.popupmenuParseMMGraph"
+            name="Parse .mmgraph">
+      </command>
+      <command
+            categoryId="org.mondo.emf.splitter.category"
             id="org.mondo.emf.splitter.popupmenuDefineConcreteVisualization"
             name="Define Concrete Visualization">
       </command>
@@ -91,6 +96,10 @@
       <handler
             class="org.mondo.emf.splitter.actions.CreateAllProjects"
             commandId="org.mondo.emf.splitter.popupmenuCreateAllPluginProjects">
+      </handler>
+            <handler
+            class="org.mondo.emf.splitter.parse.ParseMMGraph"
+            commandId="org.mondo.emf.splitter.popupmenuParseMMGraph">
       </handler>
       <handler
             class="org.mondo.emf.splitter.actions.DefineConcreteVisualization"
@@ -232,7 +241,7 @@
                      mnemonic="S"
                      style="push">
                </command>
-            </menu>
+            </menu>            
             <visibleWhen
                   checkEnabled="false">
                <with
@@ -250,6 +259,32 @@
                </with>
             </visibleWhen>
          </menu>
+         <menu
+               label="EMF-Splitter Generic Stuff">
+               <command
+                     commandId="org.mondo.emf.splitter.popupmenuParseMMGraph"
+                     id="PopupMenu.menu.SplitterParseMMGraph"
+                     label="Parse MMGraph"
+                     mnemonic="S"
+                     style="push">
+               </command>
+          <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.name"
+                              value="*.mmgraph">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>      
       </menuContribution>
    </extension>
    <extension
@@ -281,6 +316,10 @@
       <client
             class="org.mondo.emf.splitter.dsl.tao.DSLtaoCreateConstraintProject"
             pattern="Constraint">
+      </client>
+      <client
+            class="org.mondo.emf.splitter.dsl.tao.DSLtaoCreateTableProject"
+            pattern="Table-based Representation">
       </client>
    </extension>
 

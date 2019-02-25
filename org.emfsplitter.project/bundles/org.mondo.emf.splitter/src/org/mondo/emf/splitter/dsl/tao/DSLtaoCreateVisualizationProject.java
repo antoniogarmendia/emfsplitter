@@ -11,7 +11,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -28,12 +27,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.BasicInternalEList;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.window.Window;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.miso.wizard.instantiate.modular.pattern.utils.GraphToModularityPattern;
 import org.miso.wizard.instantiate.modular.pattern.utils.PatternModularUtils;
 import org.mondo.acceleo.generate.sirius.createProject.CreateSiriusPluginProject;
 import org.mondo.editor.extensionpoints.IPatternImplementation;
@@ -57,8 +52,11 @@ import runtimePatterns.ClassRoleInstance;
 import runtimePatterns.FeatureRoleInstance;
 import runtimePatterns.InstanceFeatureRoleInstance;
 
+import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.ui.editor.DiagramBehavior;
 import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.window.Window;
 
 import runtimePatterns.PatternInstance;
 import runtimePatterns.PatternInstances;
@@ -149,7 +147,7 @@ public class DSLtaoCreateVisualizationProject implements IPatternImplementation 
 		
 		//Create Heuristic Strategy
 		HeuristicStrategy heuristicStrategy = DslHeuristicVisualizationFactoryImpl.eINSTANCE.createHeuristicStrategy();
-		//Try insert a resource
+		//Insert a resource
 		ResourceSet reset = new ResourceSetImpl();
 		Resource resStrategy = reset.createResource(resourceURI.trimFileExtension().appendFileExtension("strategy"));
 		resStrategy.getContents().add(heuristicStrategy);
@@ -168,26 +166,87 @@ public class DSLtaoCreateVisualizationProject implements IPatternImplementation 
 		
 		wizardVisualization.setHeuristicStrategy(heuristicStrategy);
 		
-		wizardVisualization.setUpdateGraphicR(false);
-		
+		wizardVisualization.setUpdateGraphicR(false);		
 		
 		DialogConcreteVisualization dialog = new DialogConcreteVisualization(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()
-				, wizardVisualization);
-		
+				, wizardVisualization);		
 		
 		//Search if Modularity pattern has been applied
 		PatternInstance patternModularity = XMIRuntimePatternsImplImpl.getModularityPatternInstance(patternInstances);
 		if(patternModularity!=null){
 			wizardVisualization.setModularPattern(true);
 			wizardVisualization.initEcore(resEcore.getLocationURI().toString(),XMIRuntimePatternsImplImpl.GetUnitsPatternModularity(patternModularity));
-		}
+			}
 		else {
 			wizardVisualization.initEcore(resEcore.getLocationURI().toString(),null);
 			wizardVisualization.setModularPattern(false);
-		}
+		}		
 		
+		//Search a graphic representation
+		URI graphicR = resourceURI.trimFileExtension().appendFileExtension("graphicR");
+				
+		boolean fileExist = new ExtensibleURIConverterImpl().exists(graphicR, null);
+		wizardVisualization.setHeuristicStrategy(heuristicStrategy);
 		
-		dialog.open();		
+		if (fileExist == true) {
+			
+			boolean result = MessageDialog.openQuestion(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					"Update/Override", 
+							"A file with the graphical representation pattern definition has been detected. "
+							+ "Would you like to update the pattern?");
+			
+			//update 
+			if(result == true) {		
+				
+				Resource res = reset.getResource(graphicR, true);
+				try {
+					res.load(null);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				GraphicRepresentation gR = (GraphicRepresentation) res.getContents().get(0);
+				heuristicStrategy.setGraphic_representation(gR);
+				wizardVisualization.setUpdateGraphicR(true);
+				graph = gR;
+			} else {
+				wizardVisualization.setUpdateGraphicR(false);
+			}		
+			
+		}		
+		
+		wizardVisualization.getHeuristicStrategy().ExecuteDirectPathMatrix();
+		
+		if (dialog.open() == Window.OK) {
+			
+			//Obtain diagram
+			IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+			IDiagramContainerUI editor = (IDiagramContainerUI)activePage.getActiveEditor();
+			Diagram currentDiagram = editor.getDiagramTypeProvider().getDiagram();
+			
+			// obtain Graph-Representation Pattern
+			PatternSet patternModel = PatternUtils.getPatternSetModelByDiagrama(currentDiagram);
+			Pattern graphPattern = DSLtaoUtils.getGraphRepresentation(patternModel);
+			PatternInstances graphInstance = DSLtaoUtils.createPatternInstances();
+			
+			//convert GraphicalRepresentation to runtime patterns
+			GRToDSLtaoGraph transoPattern = new GRToDSLtaoGraph(graphPattern);
+			transoPattern.tranformGRToGraphBasedPattern(graph, graphInstance);
+						
+			transformPatternsCompatibleWithDiagram(ePack,graphInstance.getAppliedPatterns().get(0));
+			
+			// apply pattern to the diagram
+			PatternApplicationUtils.applyPattern(transformFromAppliedPatternsToMMInterfaceRelDiagram(graphInstance.getAppliedPatterns().get(0),pattern),
+					getDiagramDSLtao(), pattern, patternInstances, "Graph-based Representation", false);
+			
+			// save runtime patterns
+			URI uri = resourceURI.trimFileExtension().appendFileExtension("rtpat");
+			boolean exisRtpat = DSLtaoUtils.existRuntimePatterns(uri);	
+			// update runtime patterns
+			PatternModularUtils.savePatternInstanceInRtapt(uri,graphInstance.getAppliedPatterns().get(0),DSLtaoUtils.catGraphRepresentation);
+			
+			System.out.println("Apply Pattern");			
+			
+		}	
 		
 		return true;
 	}
@@ -480,7 +539,7 @@ public class DSLtaoCreateVisualizationProject implements IPatternImplementation 
 	
 	private EReference searchEReference (EClass eClass, String name) {
 		
-		Iterator<EReference> allContainments = eClass.getEAllContainments().iterator();
+		Iterator<EReference> allContainments = eClass.getEAllReferences().iterator();//getEALLContainments
 		while (allContainments.hasNext()) {
 			EReference eReference = (EReference) allContainments.next();
 			if (eReference.getName().equals(name))

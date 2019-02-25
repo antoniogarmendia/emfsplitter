@@ -91,6 +91,10 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 			case Graphic_representationPackage.REPRESENTATION_TABLE: return createRepresentationTable();
 			case Graphic_representationPackage.LINE_GROUP: return createLineGroup();
 			case Graphic_representationPackage.CONDITIONAL_STYLE: return createConditionalStyle();
+			case Graphic_representationPackage.VIRTUAL_COMPARTMENT_REFERENCE: return createVirtualCompartmentReference();
+			case Graphic_representationPackage.VIRTUAL_COMPARTMENT_OCL: return createVirtualCompartmentOCL();
+			case Graphic_representationPackage.COMPARTMENT_EDGE: return createCompartmentEdge();
+			case Graphic_representationPackage.COMPARTMENT_LINK: return createCompartmentLink();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +114,8 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 				return createLabelPositionFromString(eDataType, initialValue);
 			case Graphic_representationPackage.CHILDREN_PRESENTATION:
 				return createChildrenPresentationFromString(eDataType, initialValue);
+			case Graphic_representationPackage.COMPARTMENT_VIEW:
+				return createCompartmentViewFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -129,6 +135,8 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 				return convertLabelPositionToString(eDataType, instanceValue);
 			case Graphic_representationPackage.CHILDREN_PRESENTATION:
 				return convertChildrenPresentationToString(eDataType, instanceValue);
+			case Graphic_representationPackage.COMPARTMENT_VIEW:
+				return convertCompartmentViewToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -489,6 +497,46 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public VirtualCompartmentReference createVirtualCompartmentReference() {
+		VirtualCompartmentReferenceImpl virtualCompartmentReference = new VirtualCompartmentReferenceImpl();
+		return virtualCompartmentReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VirtualCompartmentOCL createVirtualCompartmentOCL() {
+		VirtualCompartmentOCLImpl virtualCompartmentOCL = new VirtualCompartmentOCLImpl();
+		return virtualCompartmentOCL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompartmentEdge createCompartmentEdge() {
+		CompartmentEdgeImpl compartmentEdge = new CompartmentEdgeImpl();
+		return compartmentEdge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompartmentLink createCompartmentLink() {
+		CompartmentLinkImpl compartmentLink = new CompartmentLinkImpl();
+		return compartmentLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public GRFontFormat createGRFontFormatFromString(EDataType eDataType, String initialValue) {
 		GRFontFormat result = GRFontFormat.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -541,6 +589,26 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 	 * @generated
 	 */
 	public String convertChildrenPresentationToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompartmentView createCompartmentViewFromString(EDataType eDataType, String initialValue) {
+		CompartmentView result = CompartmentView.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCompartmentViewToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

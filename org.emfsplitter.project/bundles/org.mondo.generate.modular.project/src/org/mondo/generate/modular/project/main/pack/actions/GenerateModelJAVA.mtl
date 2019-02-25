@@ -1,8 +1,8 @@
 [comment encoding = UTF-8 /]
-[module GenerateModelJAVA('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns')]
+[module GenerateModelJAVA('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns','http://www.eclipse.org/emf/2002/GenModel')]
 [import org::mondo::generate::modular::project::main::requests::global_queriesModularProject /]
 
-[template public GenerateModelJAVA(anProjectName : String,anPatternInstance : PatternInstance)]
+[template public GenerateModelJAVA(anProjectName : String,anPatternInstance : PatternInstance, anEObjectGenModel : GenModel)]
 
 [file ('src/'.concat(anProjectName.toLower() + '.' + anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase() + getProperty('prefix_name')).replaceAll('\\.','/').concat('/actions/GenerateModel.java'),false, 'UTF-8')]
 package [anProjectName.toLower()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/][getProperty('prefix_name')/].actions;
@@ -50,7 +50,7 @@ public class GenerateModel implements IHandler  {
 			if(firstelement instanceof IProject){
 
 				IProject pro = (IProject)firstelement;
-				URI modelUri = URI.createPlatformResourceURI(pro.getName() + "/complete_diagram.xmi" ,true);
+				URI modelUri = URI.createPlatformResourceURI(pro.getName() + "/complete_diagram.[anEObjectGenModel.geteAllPackages()->first().fileExtensions/]",true);
 				ModularModel mModel = new ModularModel();
 
 				try {

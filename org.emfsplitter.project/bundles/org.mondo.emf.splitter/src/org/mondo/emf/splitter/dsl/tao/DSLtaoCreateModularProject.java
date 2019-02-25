@@ -217,6 +217,7 @@ public class DSLtaoCreateModularProject implements IPatternImplementation {
 
 	private void transformPatternsCompatibleWithDiagram(EPackage ePack, PatternInstance modularInstance) {
 		
+		// When test meta-models(OMG and AtlanMod) comment this method
 		EList<EClass> listEClasses = obtainEClasses(ePack);		
 		Iterator<ClassRoleInstance> itClassRoleInstance = modularInstance.getClassInstances().iterator();
 		while (itClassRoleInstance.hasNext()) {

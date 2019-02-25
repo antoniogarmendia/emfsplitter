@@ -83,8 +83,7 @@ public class GraphToModularityPattern {
 	}
 
 	public void tranformGraphToModularityPattern(Graph iGraph, PatternInstances patternInstances){
-		
-		
+				
 		Iterator<SubGraph> itSubgraph = iGraph.getSubgraph().iterator();
 		while (itSubgraph.hasNext()) {
 			SubGraph subGraph = (SubGraph) itSubgraph.next();
@@ -101,7 +100,7 @@ public class GraphToModularityPattern {
 			EList<ClassRoleInstance> rootRoleInstances = new BasicEList<ClassRoleInstance>();
 			rootRoleInstances.add(rootInstance);
 			
-			if (p != null) {
+			if (p !=null) {
 				rootRoleInstances.add(p);
 			}
 						
@@ -111,6 +110,9 @@ public class GraphToModularityPattern {
 			// list for packages and units
 			EList<Node> visitedNodes = new BasicEList<Node>();
 			visitedNodes.add(rootNode);
+					
+			//set project 
+			addCompositionsToProject(subGraph,modularInstance, rootNode, rootInstance);
 			
 			//set packages and units
 			setPackagesAndUnits(subGraph,modularInstance, rootNode,rootRoleInstances,visitedNodes);
@@ -118,7 +120,25 @@ public class GraphToModularityPattern {
 			System.out.println("Transformation Graph to Runtime Patterns");
 		}	
 	}
+	
+	private void addCompositionsToProject(SubGraph subGraph, PatternInstance modularInstance, Node rootNode, ClassRoleInstance rootInstance) {
+		
+		Iterator<Composition> itComposition = rootNode.getCompositions().iterator();
+		
+		while (itComposition.hasNext()) {
 			
+			//Composition
+			Composition composition = (Composition) itComposition.next();
+			Node currentNode = composition.getTarget();
+			
+			//Package
+			boolean pack = isPackage(currentNode);
+			if(pack == true) {
+				
+			}
+			
+		}
+	}			
 	
 	private ClassRoleInstance addAdditionalClassInstanceforProject(Node rootNode, PatternInstance modularInstance) {
 		
@@ -134,7 +154,7 @@ public class GraphToModularityPattern {
 				}
 				else if (enumModular==EnumModular.UNIT) {
 					cInterface = unit;
-				    addClassRoleInstance(rootNode, modularInstance, cInterface);	
+					addClassRoleInstance(rootNode, modularInstance, cInterface);	
 				}
 			}
 		}
@@ -142,7 +162,8 @@ public class GraphToModularityPattern {
 		return p;		
 	}
 
-	private void setPackagesAndUnits(SubGraph subGraph, PatternInstance patternInstance, Node rootNode, EList<ClassRoleInstance> rootRoleInstances, EList<Node> visitedNodes) {
+	private void setPackagesAndUnits(SubGraph subGraph, PatternInstance patternInstance, Node rootNode, 
+			EList<ClassRoleInstance> rootRoleInstances, EList<Node> visitedNodes) {
 		
 		Iterator<Composition> itComposition = rootNode.getCompositions().iterator();
 		boolean pack = false;
@@ -176,6 +197,7 @@ public class GraphToModularityPattern {
 				unit = isUnit(currentNode);
 				if(unit == true){
 					
+					visitedNodes.add(currentNode);
 					addClassRoleInstance(currentNode,patternInstance,this.unit);
 					addReferenceInstance(composition, rootRoleInstances);				
 				}
@@ -224,11 +246,13 @@ public class GraphToModularityPattern {
 				}
 				
 			}
-			else{
+			else {
 				// the node has been visited, so only the containment reference must be added
 				//if the node is unit or package
-				if(isUnitPackage(currentNode)==true)
+				if(isPackage(currentNode)==true)
 					addReferenceInstance(composition, rootRoleInstances);
+				if(isUnit(currentNode) == true) 
+					addReferenceInstance(composition, rootRoleInstances);					
 			}
 		}
 		
@@ -258,13 +282,14 @@ public class GraphToModularityPattern {
 		classInstance.getFeatureInstances().add(feat);
 		
 		// set name
-		TypeFeatureRoleInstance typeFeat = RuntimePatternsFactoryImpl.eINSTANCE.createTypeFeatureRoleInstance();
-		typeFeat.setElement(node.getName());
-		typeFeat.setRole((FeatureType) nameInstance);
-		classInstance.getFeatureInstances().add(typeFeat);
+		if (node.getName() != null) {		
+			TypeFeatureRoleInstance typeFeat = RuntimePatternsFactoryImpl.eINSTANCE.createTypeFeatureRoleInstance();
+			typeFeat.setElement(node.getName());
+			typeFeat.setRole((FeatureType) nameInstance);
+			classInstance.getFeatureInstances().add(typeFeat);		
+		}
 		
-		if(classInterface.equals(unit)){
-			
+		if(classInterface.equals(unit)) {			
 			// set extension
 			InstanceFeatureRoleInstance extFeat = RuntimePatternsFactoryImpl.eINSTANCE.createInstanceFeatureRoleInstance();
 			extFeat.setRole(extInstance);
@@ -279,15 +304,18 @@ public class GraphToModularityPattern {
 	
 	private void addReferenceInstance(Composition composition, EList<ClassRoleInstance> rootInstances){
 		
-		// add containment reference
-		ReferenceRoleInstance referenceContainee = RuntimePatternsFactoryImpl.eINSTANCE.createReferenceRoleInstance();
-		referenceContainee.setRole(this.containmentReference);
-		referenceContainee.setElement(composition.getEReference());
-				
 		Iterator<ClassRoleInstance> roleInstances = rootInstances.iterator();
 		
 		while (roleInstances.hasNext()) {
+			
 			ClassRoleInstance classRoleInstance = (ClassRoleInstance) roleInstances.next();
+			
+			// add containment reference
+			ReferenceRoleInstance referenceContainee = RuntimePatternsFactoryImpl.eINSTANCE.createReferenceRoleInstance();
+			referenceContainee.setRole(this.containmentReference);
+			referenceContainee.setElement(composition.getEReference());
+			
+			
 			classRoleInstance.getReferenceInstances().add(referenceContainee);
 		}		
 	}

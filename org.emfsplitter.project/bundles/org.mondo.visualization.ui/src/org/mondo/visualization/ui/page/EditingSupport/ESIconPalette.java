@@ -14,6 +14,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -177,9 +179,15 @@ public class ESIconPalette extends EditingSupport{
 		}
 		
 		public void prepareBrowseWorkspaceButton(Button btn_selectWorkspace) {
-			String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(getShell());
-			if (imagePath != null)
-				txURI.setText(imagePath);
+			
+			btn_selectWorkspace.addSelectionListener(new SelectionAdapter() {				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(getShell());
+					if (imagePath != null)
+						txURI.setText(imagePath);
+				}				
+			});			
 		}
 		
 		public static class FileProvider extends LabelProvider{

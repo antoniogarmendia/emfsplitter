@@ -40,6 +40,8 @@ public class ESBorderColor extends EditingSupport {
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof Border)
 			return true;
@@ -57,6 +59,8 @@ public class ESBorderColor extends EditingSupport {
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof Border)
 		{
@@ -78,6 +82,8 @@ public class ESBorderColor extends EditingSupport {
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 			
 		if(sh instanceof Border)
 		{

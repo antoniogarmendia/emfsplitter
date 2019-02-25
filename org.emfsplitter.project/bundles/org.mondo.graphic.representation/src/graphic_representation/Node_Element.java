@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link graphic_representation.Node_Element#getLinkPalette <em>Link Palette</em>}</li>
  *   <li>{@link graphic_representation.Node_Element#getAffixedCompartmentElements <em>Affixed Compartment Elements</em>}</li>
  *   <li>{@link graphic_representation.Node_Element#getExpandableItems <em>Expandable Items</em>}</li>
+ *   <li>{@link graphic_representation.Node_Element#getVirtualCompartment <em>Virtual Compartment</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getNode_Element()
@@ -90,11 +91,35 @@ public interface Node_Element extends EObject {
 	EList<ExpandableItem> getExpandableItems();
 
 	/**
+	 * Returns the value of the '<em><b>Virtual Compartment</b></em>' containment reference list.
+	 * The list contents are of type {@link graphic_representation.VirtualCompartment}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtual Compartment</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtual Compartment</em>' containment reference list.
+	 * @see graphic_representation.Graphic_representationPackage#getNode_Element_VirtualCompartment()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<VirtualCompartment> getVirtualCompartment();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
-	boolean isCompartment();
+	boolean isOnlyCompartment();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isCompartmentAffixed();
 
 } // Node_Element

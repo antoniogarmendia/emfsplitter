@@ -2,13 +2,19 @@ package org.mondo.visualization.ui.page.EditingSupport;
 
 import graphic_representation.AffixedCompartmentElement;
 import graphic_representation.AffixedElement;
+import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
 import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.Edge_Direction;
+import graphic_representation.Graphic_representationFactory;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Link;
+import graphic_representation.Node;
 import graphic_representation.Node_Element;
 import graphic_representation.PaletteDescriptionLink;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.VirtualCompartmentReference;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 import java.util.ArrayList;
@@ -19,24 +25,30 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
+import org.eclipse.jface.viewers.DialogCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.PlatformUI;
+import org.mondo.visualization.ui.wizard.VirtualContainerOclDialog;
 
 public class ESActivate extends EditingSupport{
 	
 	private ComboBoxCellEditor cmb_editor;
+	private DialogCellEditor cellVirtualCompartment;
 	
 	public ESActivate(ColumnViewer viewer) {
 		
 		super(viewer);		
 		cmb_editor = new ComboBoxCellEditor((Composite) getViewer().getControl(), new String[]{});
-		cmb_editor.setStyle(SWT.CENTER);		
+		cmb_editor.setStyle(SWT.CENTER);		 
 	}
 
 	@Override
@@ -66,11 +78,42 @@ public class ESActivate extends EditingSupport{
 		
 		if(element instanceof AffixedCompartmentElement)
 		{
-			EReference ref = ((AffixedCompartmentElement)element).getAnEReference();
-			EClass class_attr = ref.getEContainingClass();
-			AddEAllEReferencesContainments(class_attr);
+			EObject parentEObjectElement = ((AffixedCompartmentElement) element).eContainer();
+			if (parentEObjectElement instanceof Node_Element) {
+				Node_Element parentNodeElement = (Node_Element) parentEObjectElement;
+				EObject parentEObjectNode = parentNodeElement.eContainer();
+				if (parentEObjectNode instanceof Node) {
+					Node parentNode = (Node) parentEObjectNode;
+					EClass eClass = parentNode.getAnEClass();					
+					AddEAllEReferences(eClass);	
+				}
+			}	
+			
 			return cmb_editor;
 		}	
+		
+		if (element instanceof VirtualCompartmentReference) {
+			
+			EObject parentEObjectElement = ((VirtualCompartmentReference) element).eContainer();
+			if (parentEObjectElement instanceof Node_Element) {
+				Node_Element parentNodeElement = (Node_Element) parentEObjectElement;
+				EObject parentEObjectNode = parentNodeElement.eContainer();
+				if (parentEObjectNode instanceof Node) {
+					Node parentNode = (Node) parentEObjectNode;
+					EClass eClass = parentNode.getAnEClass();
+					AddEAllEReferencesContainments(eClass);	
+				}
+			}
+			
+			return cmb_editor;
+		}
+		
+		if (element instanceof VirtualCompartmentOCL) {
+				
+			cellVirtualCompartment = getCellVirtualCompartmentOcl(element);
+			cellVirtualCompartment.create((Composite) getViewer().getControl());
+			return cellVirtualCompartment;			
+		}
 		
 		return null;
 	}
@@ -79,7 +122,7 @@ public class ESActivate extends EditingSupport{
 	protected boolean canEdit(Object element) {
 		
 		if(element instanceof LabelEAttribute || element instanceof Link || element instanceof AffixedCompartmentElement
-				|| element instanceof EdgeLabelEAttribute)
+				|| element instanceof EdgeLabelEAttribute || element instanceof VirtualCompartment)
 			return true;
 		return false;
 	}
@@ -99,14 +142,61 @@ public class ESActivate extends EditingSupport{
 			return this.FindEReference(((Link)element).getAnEReference());	
 		
 		if(element instanceof AffixedCompartmentElement)
-			return this.FindEReferenceContainment(((AffixedCompartmentElement)element).getAnEReference());
-				
+			return this.FindEReference(((AffixedCompartmentElement)element).getAnEReference());
+		
+		if(element instanceof VirtualCompartmentReference)
+			return this.FindEReferenceContainment(((VirtualCompartmentReference)element).getVirtualReference());
+		
+		if (element instanceof VirtualCompartmentOCL) {
+			if (((VirtualCompartmentOCL) element).getNode() != null)
+				return ((VirtualCompartmentOCL) element).getNode().getAnEClass().getName();
+		}
 		return null;
 	}
 
 	@Override
 	protected void setValue(Object element, Object value) {
 				
+		if (element instanceof CompartmentElement) {
+			
+			CompartmentElement compartElement = (CompartmentElement) element;
+			EObject parentEObjectElement = compartElement.eContainer();
+			if (parentEObjectElement instanceof Node_Element) {
+				Node_Element nodeElement = (Node_Element) parentEObjectElement;
+				EObject parentNodeElement = nodeElement.eContainer();
+				if (parentNodeElement instanceof Node) {
+					Node parentNode = (Node) parentNodeElement;
+					EClass eClass = parentNode.getAnEClass();
+	 				EReference newReference = eClass.getEAllReferences().get((Integer) value);
+	 				EReference oldReference = compartElement.getAnEReference();
+	 				if (!newReference.equals(oldReference)) {
+		 				compartElement.setAnEReference(newReference);
+		 				createNonContainmentFeatures(compartElement);
+	 				}
+				}
+			}
+			
+			System.out.println("CompartmentElement");
+		}	
+		
+		if (element instanceof VirtualCompartmentReference) {
+			
+			VirtualCompartmentReference virtualCompartment = (VirtualCompartmentReference) element;
+			EObject parent = virtualCompartment.eContainer();
+			if (parent instanceof Node_Element) {
+				Node_Element nodeElement = (Node_Element) parent;
+				EObject parentNodeElement = nodeElement.eContainer();
+				if (parentNodeElement instanceof Node) {
+					Node parentNode = (Node) parentNodeElement;
+					EClass eClass = parentNode.getAnEClass();
+	 				EReference newReference = eClass.getEAllContainments().get((Integer) value);
+	 				virtualCompartment.setVirtualReference(newReference);	 				
+				}				
+			}
+			
+			System.out.println("VirtualCompartment");
+		}
+		
 		if(element instanceof LabelEAttribute)
 		{
 			LabelEAttribute attrLabel = (LabelEAttribute)element;
@@ -309,4 +399,41 @@ public class ESActivate extends EditingSupport{
 		}
 		return -1;	
 	}
+	
+	private DialogCellEditor getCellVirtualCompartmentOcl(Object element) {
+		
+		return new DialogCellEditor() {
+
+			@Override
+			protected Object openDialogBox(Control cellEditorWindow) {
+				
+				if (element instanceof VirtualCompartmentOCL) {
+					VirtualCompartmentOCL virtualCompartmentOcl = (VirtualCompartmentOCL) element;
+					VirtualContainerOclDialog dialog = new VirtualContainerOclDialog(cellEditorWindow.getShell(), virtualCompartmentOcl);
+					if (dialog.open() == Dialog.OK) {
+						getViewer().update(element, null);
+						getViewer().refresh();
+					}												
+				}				
+				return null;
+			}				
+		};
+	}
+	
+	
+	public static void createNonContainmentFeatures(CompartmentElement compart) {
+		
+		//Nodes
+		compart.setInit(Graphic_representationFactory.eINSTANCE.createEllipse());
+		compart.setNodeShape(Graphic_representationFactory.eINSTANCE.createEllipse());
+		compart.setEnd(Graphic_representationFactory.eINSTANCE.createEllipse());
+		//Edges
+		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
+		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		
+		compart.setInitToFirst(compartEdge);
+		compart.setNodeToNode(EcoreUtil.copy(compartEdge));
+		compart.setNodeToEnd(EcoreUtil.copy(compartEdge));
+	}	
 }

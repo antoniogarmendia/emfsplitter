@@ -256,6 +256,26 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 				return createConditionalStyleAdapter();
 			}
 			@Override
+			public Adapter caseVirtualCompartment(VirtualCompartment object) {
+				return createVirtualCompartmentAdapter();
+			}
+			@Override
+			public Adapter caseVirtualCompartmentReference(VirtualCompartmentReference object) {
+				return createVirtualCompartmentReferenceAdapter();
+			}
+			@Override
+			public Adapter caseVirtualCompartmentOCL(VirtualCompartmentOCL object) {
+				return createVirtualCompartmentOCLAdapter();
+			}
+			@Override
+			public Adapter caseCompartmentEdge(CompartmentEdge object) {
+				return createCompartmentEdgeAdapter();
+			}
+			@Override
+			public Adapter caseCompartmentLink(CompartmentLink object) {
+				return createCompartmentLinkAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -930,6 +950,76 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.VirtualCompartment <em>Virtual Compartment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.VirtualCompartment
+	 * @generated
+	 */
+	public Adapter createVirtualCompartmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.VirtualCompartmentReference <em>Virtual Compartment Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.VirtualCompartmentReference
+	 * @generated
+	 */
+	public Adapter createVirtualCompartmentReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.VirtualCompartmentOCL <em>Virtual Compartment OCL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.VirtualCompartmentOCL
+	 * @generated
+	 */
+	public Adapter createVirtualCompartmentOCLAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.CompartmentEdge <em>Compartment Edge</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.CompartmentEdge
+	 * @generated
+	 */
+	public Adapter createCompartmentEdgeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.CompartmentLink <em>Compartment Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.CompartmentLink
+	 * @generated
+	 */
+	public Adapter createCompartmentLinkAdapter() {
 		return null;
 	}
 

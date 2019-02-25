@@ -12,7 +12,7 @@ import org.eclipse.core.runtime.CoreException;
 
 public class ConstraintMarkerManager {
 	
-	public static final String FAILED_CONSTRAINT_MARKER_ID = "org.miso.wind.turbine.cs.constraint.failedConstraint";
+	public static final String FAILED_CONSTRAINT_MARKER_ID = "[anProjectName/].[getProperty('prefix_name')/].failedConstraint";
 	public static final String CONSTRAINT_NAME = "constraint_name";
 			
 	private final ConstraintResourceMarker resourceMarker;

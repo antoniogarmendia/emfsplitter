@@ -1,5 +1,6 @@
 package org.mondo.visualization.ui.page.LabelProvider;
 
+import graphic_representation.CompartmentEdge;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Diamond;
 import graphic_representation.Edge;
@@ -35,6 +36,10 @@ public class CWidth extends ColumnLabelProvider{
 			return ((Edge) element).getEdge_style().getLineWidth();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
+		else if (element instanceof CompartmentEdge)
+			return ((CompartmentEdge) element).getEdge_style().getLineWidth();
 		
 		return GetTextWidthShape(sh);
 	}	

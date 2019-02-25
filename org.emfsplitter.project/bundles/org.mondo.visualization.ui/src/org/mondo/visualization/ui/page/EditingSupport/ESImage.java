@@ -95,6 +95,8 @@ public class ESImage extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof IconElement)
 			return true;
@@ -111,6 +113,8 @@ public class ESImage extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof IconElement)
 			return ((IconElement)sh).getFilepath()  == null ? "Define path" : ((IconElement)sh).getFilepath();	
@@ -128,6 +132,8 @@ public class ESImage extends EditingSupport{
 			sh = ((Root) element).getRoot_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
 		
 		if(sh instanceof IconElement)
 			((IconElement)sh).setFilepath((String)value);		

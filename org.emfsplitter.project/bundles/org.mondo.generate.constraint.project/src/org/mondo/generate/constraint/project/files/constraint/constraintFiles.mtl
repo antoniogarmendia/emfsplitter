@@ -2,7 +2,7 @@
 [module constraintFiles('http://mondo.org/runtimePatterns','http://miso.es/constraints')]
 [import org::mondo::generate::constraint::project::request::queries /]
 
-[template public generateconstraintFiles(aPatternInstance : PatternInstance, mmConstraint: MetamodelConstraint)]
+[template public generateconstraintFiles(aPatternInstance : PatternInstance, mmConstraint: MetamodelConstraint, anProjectName : String)]
 
 [for(c : ClassRoleInstance | aPatternInstance.classInstances)]
 
@@ -15,7 +15,7 @@
 var result = Sequence{};
 var emfTool : new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 var ecoreUtil = emfTool.ecoreUtil;
-var queryTool : new Native("org.miso.wind.turbine.cs.constraint.builder.ConstraintQueryTool");
+var queryTool : new Native("[anProjectName/].[getProperty('prefix_name')/].builder.ConstraintQueryTool");
 
 var listOfObjects = queryTool.getListToExecuteConstraint(Model.resource,"[c.element.name/]");
 

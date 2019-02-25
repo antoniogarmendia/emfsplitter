@@ -14,11 +14,11 @@ public class EvaluateSiriusProjectCreation {
 	private static final String ISIRIUS_ID = "org.modular.sirius.definition.ext";
 	
 	@Execute
-	public void executeProject(IExtensionRegistry registry,String anProjectName) {
-	    evaluateProject(registry, anProjectName);
+	public void executeProject(IExtensionRegistry registry,String anProjectName,String projectNature) {
+	    evaluateProject(registry, projectNature, anProjectName);
 	}
 	
-	private void evaluateProject(IExtensionRegistry registry,String anProjectName) {
+	private void evaluateProject(IExtensionRegistry registry, String projectNature,String anProjectName) {
 		 
 		IConfigurationElement[] config = registry.getConfigurationElementsFor(ISIRIUS_ID);
 		
@@ -27,33 +27,33 @@ public class EvaluateSiriusProjectCreation {
 		      for (IConfigurationElement e : config) {
 		        final Object o = e.createExecutableExtension("class");
 		        if (o instanceof ISiriusCreation) {
-		           executeExtension(o,anProjectName);
+		           executeExtension(o,projectNature,anProjectName);
 		        }
 		      }
 		    } catch (CoreException ex) {
 		      System.out.println(ex.getMessage());
 		    }
 			 
-		}	
+	}	
 		
-		private void executeExtension(Object o,String anProjectName) {
-			// TODO Auto-generated method stub
-			ISafeRunnable runnable = new ISafeRunnable() {
-			      @Override
-			      public void handleException(Throwable e) {
-			        System.out.println("Exception in client");
-			      }
-
-			      @Override
-			      public void run() throws Exception {
-			    	((ISiriusCreation) o).ExecuteAfterCreateProject(anProjectName);
-			      }
-			    };
-			    
-			    SafeRunner.run(runnable);
-			
-		}
+	private void executeExtension(Object o, String projectNature, String anProjectName) {
 		
+		ISafeRunnable runnable = new ISafeRunnable() {
+		      @Override
+		      public void handleException(Throwable e) {
+		        System.out.println("Exception in client");
+		      }
+		      @Override
+		      public void run() throws Exception {
+		    	((ISiriusCreation) o).executeAfterProjectCreation(projectNature, anProjectName);
+		      }
+		    };
+		    
+		    SafeRunner.run(runnable);
+		
+	}
+		
+	/*
 		@Execute
 		public void executeFile(IExtensionRegistry registry,URI anfileURI){
 			evaluateFile(registry, anfileURI);
@@ -78,7 +78,7 @@ public class EvaluateSiriusProjectCreation {
 			}	
 			
 			private void executeExtensionFile(Object o,URI anfileURI) {
-				// TODO Auto-generated method stub
+				
 				ISafeRunnable runnable = new ISafeRunnable() {
 				      @Override
 				      public void handleException(Throwable e) {
@@ -93,5 +93,5 @@ public class EvaluateSiriusProjectCreation {
 				    SafeRunner.run(runnable);				
 			}	
 		
-
+	*/
 }

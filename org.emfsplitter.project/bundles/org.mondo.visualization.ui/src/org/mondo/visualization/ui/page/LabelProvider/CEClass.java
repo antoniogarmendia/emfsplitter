@@ -12,6 +12,9 @@ import graphic_representation.Link;
 import graphic_representation.Node;
 import graphic_representation.Node_Element;
 import graphic_representation.Root;
+import graphic_representation.VirtualCompartment;
+import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.VirtualCompartmentReference;
 import graphic_representation.impl.EdgeImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -79,6 +82,12 @@ public class CEClass extends ColumnLabelProvider{
 		
 		if(element instanceof CompartmentElement)
 			return "EReference.Compartment";
+		
+		if (element instanceof VirtualCompartmentReference)
+			return "EReference.VirtualCompartment";
+		
+		if (element instanceof VirtualCompartmentOCL)
+			return "EReference.VirtualCompartment OCL";
 		
 		if(element instanceof AffixedElement)
 			return "EReference.Affixed";
