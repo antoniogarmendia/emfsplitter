@@ -18,7 +18,7 @@
 	[generatePackageeditor(anProjectName)/]	
 
 
-	[PluginXML(anProjectName, anRepresentation)/]
+	[PluginXML(anProjectName, anRepresentation, modularInstance)/]
 	
 	[comment Package External Actions /]
 	[generatePackageExternalActions(anProjectName)/]	

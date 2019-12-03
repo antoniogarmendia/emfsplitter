@@ -14,11 +14,14 @@ import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
 import graphic_representation.CompartmentLink;
 import graphic_representation.CompartmentView;
+import graphic_representation.ConditionalEdgeStyle;
+import graphic_representation.ConditionalRepresentation;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.DefaultLayer;
 import graphic_representation.DiagramElement;
 import graphic_representation.Diamond;
 import graphic_representation.Edge;
+import graphic_representation.EdgeDecorator;
 import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.Edge_Direction;
 import graphic_representation.Edge_Style;
@@ -29,16 +32,22 @@ import graphic_representation.GRFontFormat;
 import graphic_representation.GRLabelStyleDescription;
 import graphic_representation.GRUserColor;
 import graphic_representation.GRUserColorDef;
+import graphic_representation.GeneralLabel;
 import graphic_representation.GraphicRepresentation;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.Graphic_representationPackage;
 import graphic_representation.IconElement;
+import graphic_representation.LabelAligment;
+import graphic_representation.LabelBorderedStyle;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.LabelPosition;
 import graphic_representation.Layer;
 import graphic_representation.Line;
 import graphic_representation.LineGroup;
 import graphic_representation.Link;
+import graphic_representation.LinkedListRepresentation;
+import graphic_representation.LoopRepresentation;
 import graphic_representation.MMGraphic_Representation;
 import graphic_representation.Node;
 import graphic_representation.Node_Element;
@@ -50,6 +59,7 @@ import graphic_representation.RGBColorDescription;
 import graphic_representation.Rectangle;
 import graphic_representation.Representation;
 import graphic_representation.RepresentationDD;
+import graphic_representation.RepresentationStyle;
 import graphic_representation.RepresentationTable;
 import graphic_representation.Root;
 import graphic_representation.Shape;
@@ -57,9 +67,13 @@ import graphic_representation.ShapeColor;
 import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.ShapeCompartmentParallelogram;
 import graphic_representation.SiriusSystemColors;
+import graphic_representation.TreeRepresentation;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
+import graphic_representation.rest.RestPackage;
+import graphic_representation.rest.impl.RestPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -293,6 +307,41 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass representationStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass loopRepresentationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkedListRepresentationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalRepresentationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass treeRepresentationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass affixedCompartmentElementEClass = null;
 
 	/**
@@ -300,7 +349,21 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass generalLabelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass labelEAttributeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass labelOCLEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -447,6 +510,27 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass weAttributeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalEdgeStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass edgeDecoratorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum grFontFormatEEnum = null;
 
 	/**
@@ -461,6 +545,13 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum labelAligmentEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum childrenPresentationEEnum = null;
 
 	/**
@@ -469,6 +560,13 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * @generated
 	 */
 	private EEnum compartmentViewEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum labelBorderedStyleEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -520,11 +618,16 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		EcorePackage.eINSTANCE.eClass();
 		ViewpointPackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		RestPackageImpl theRestPackage = (RestPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RestPackage.eNS_URI) instanceof RestPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RestPackage.eNS_URI) : RestPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theGraphic_representationPackage.createPackageContents();
+		theRestPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theGraphic_representationPackage.initializePackageContents();
+		theRestPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theGraphic_representationPackage.freeze();
@@ -684,6 +787,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEdge_ConditionalEdgeStyle() {
+		return (EReference)edgeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEdgeLabelEAttribute() {
 		return edgeLabelEAttributeEClass;
 	}
@@ -792,6 +904,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getIconElement_FigureSearch() {
+		return (EReference)iconElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getIconElement__ImageBase64() {
 		return iconElementEClass.getEOperations().get(0);
 	}
@@ -846,7 +967,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Element_LabelanEAttribute() {
+	public EReference getNode_Element_LinkPalette() {
 		return (EReference)node_ElementEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -855,7 +976,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Element_LinkPalette() {
+	public EReference getNode_Element_AffixedCompartmentElements() {
 		return (EReference)node_ElementEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -864,7 +985,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Element_AffixedCompartmentElements() {
+	public EReference getNode_Element_ExpandableItems() {
 		return (EReference)node_ElementEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -873,17 +994,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Element_ExpandableItems() {
-		return (EReference)node_ElementEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getNode_Element_VirtualCompartment() {
-		return (EReference)node_ElementEClass.getEStructuralFeatures().get(4);
+		return (EReference)node_ElementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1080,6 +1192,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getShape_LabelanEAttribute() {
+		return (EReference)shapeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getShapeCompartmentGradient() {
 		return shapeCompartmentGradientEClass;
 	}
@@ -1127,6 +1248,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 */
 	public EReference getShapeCompartmentGradient_ForeGroundColor() {
 		return (EReference)shapeCompartmentGradientEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShapeCompartmentGradient_LabelStyle() {
+		return (EAttribute)shapeCompartmentGradientEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1395,7 +1525,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompartmentElement_Init() {
+	public EReference getCompartmentElement_RepresentationStyle() {
 		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1404,8 +1534,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompartmentElement_NodeShape() {
-		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(2);
+	public EClass getRepresentationStyle() {
+		return representationStyleEClass;
 	}
 
 	/**
@@ -1413,8 +1543,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompartmentElement_End() {
-		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(3);
+	public EClass getLoopRepresentation() {
+		return loopRepresentationEClass;
 	}
 
 	/**
@@ -1422,8 +1552,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompartmentElement_InitToFirst() {
-		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(4);
+	public EReference getLoopRepresentation_InitShape() {
+		return (EReference)loopRepresentationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1431,8 +1561,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompartmentElement_NodeToNode() {
-		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(5);
+	public EReference getLoopRepresentation_NodeShape() {
+		return (EReference)loopRepresentationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1440,8 +1570,287 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompartmentElement_NodeToEnd() {
-		return (EReference)compartmentElementEClass.getEStructuralFeatures().get(6);
+	public EReference getLoopRepresentation_EndShape() {
+		return (EReference)loopRepresentationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLoopRepresentation_InitToNode() {
+		return (EReference)loopRepresentationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLoopRepresentation_RecursiveEdge() {
+		return (EReference)loopRepresentationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLoopRepresentation_NodeToEnd() {
+		return (EReference)loopRepresentationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLinkedListRepresentation() {
+		return linkedListRepresentationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkedListRepresentation_Init() {
+		return (EReference)linkedListRepresentationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkedListRepresentation_NodeShape() {
+		return (EReference)linkedListRepresentationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkedListRepresentation_End() {
+		return (EReference)linkedListRepresentationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkedListRepresentation_InitToFirst() {
+		return (EReference)linkedListRepresentationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkedListRepresentation_NodeToNode() {
+		return (EReference)linkedListRepresentationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkedListRepresentation_NodeToEnd() {
+		return (EReference)linkedListRepresentationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConditionalRepresentation() {
+		return conditionalRepresentationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_InitShape() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_IfShape() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_ThenShape() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_ElseShape() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_EndShape() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_InitToIf() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_IfToThenNode() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_ThenNodeToEndNode() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_IfNodeToElseNode() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_ElseNodeToEndNode() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_ThenReference() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalRepresentation_ElseReference() {
+		return (EReference)conditionalRepresentationEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTreeRepresentation() {
+		return treeRepresentationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_InitShape() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_RootShape() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_NodeShape() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_EndShape() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_InitToRootShape() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_RootShapeToNode() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTreeRepresentation_NodeShapeToEndShape() {
+		return (EReference)treeRepresentationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1476,6 +1885,24 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGeneralLabel() {
+		return generalLabelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeneralLabel_LabelAligment() {
+		return (EAttribute)generalLabelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLabelEAttribute() {
 		return labelEAttributeEClass;
 	}
@@ -1485,8 +1912,26 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLabelEAttribute_AnEAttribute() {
+	public EReference getLabelEAttribute_LabelAttributes() {
 		return (EReference)labelEAttributeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLabelOCL() {
+		return labelOCLEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLabelOCL_OclExpression() {
+		return (EAttribute)labelOCLEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1836,6 +2281,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getConditionalStyle_LabelOcl() {
+		return (EReference)conditionalStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVirtualCompartment() {
 		return virtualCompartmentEClass;
 	}
@@ -1953,6 +2407,96 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getWEAttribute() {
+		return weAttributeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWEAttribute_EAttribute() {
+		return (EReference)weAttributeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConditionalEdgeStyle() {
+		return conditionalEdgeStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConditionalEdgeStyle_ConditionalOCL() {
+		return (EAttribute)conditionalEdgeStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalEdgeStyle_ConditionalEdge() {
+		return (EReference)conditionalEdgeStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalEdgeStyle_GeneralLabel() {
+		return (EReference)conditionalEdgeStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalEdgeStyle_DecoratorSource() {
+		return (EReference)conditionalEdgeStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConditionalEdgeStyle_DecoratorTarget() {
+		return (EReference)conditionalEdgeStyleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEdgeDecorator() {
+		return edgeDecoratorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEdgeDecorator_DecoratorName() {
+		return (EAttribute)edgeDecoratorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGRFontFormat() {
 		return grFontFormatEEnum;
 	}
@@ -1971,6 +2515,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getLabelAligment() {
+		return labelAligmentEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getChildrenPresentation() {
 		return childrenPresentationEEnum;
 	}
@@ -1982,6 +2535,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 	 */
 	public EEnum getCompartmentView() {
 		return compartmentViewEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLabelBorderedStyle() {
+		return labelBorderedStyleEEnum;
 	}
 
 	/**
@@ -2050,6 +2612,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEReference(edgeEClass, EDGE__DIRECTIONS);
 		createEReference(edgeEClass, EDGE__EDGE_STYLE);
 		createEReference(edgeEClass, EDGE__EDGE_LABEL);
+		createEReference(edgeEClass, EDGE__CONDITIONAL_EDGE_STYLE);
 
 		edgeLabelEAttributeEClass = createEClass(EDGE_LABEL_EATTRIBUTE);
 		createEReference(edgeLabelEAttributeEClass, EDGE_LABEL_EATTRIBUTE__LABEL_EATTRIBUTE);
@@ -2065,6 +2628,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		iconElementEClass = createEClass(ICON_ELEMENT);
 		createEAttribute(iconElementEClass, ICON_ELEMENT__FILEPATH);
 		createEAttribute(iconElementEClass, ICON_ELEMENT__EMBEDDED_IMAGE);
+		createEReference(iconElementEClass, ICON_ELEMENT__FIGURE_SEARCH);
 		createEOperation(iconElementEClass, ICON_ELEMENT___IMAGE_BASE64);
 
 		paletteDescriptionEClass = createEClass(PALETTE_DESCRIPTION);
@@ -2073,7 +2637,6 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEAttribute(paletteDescriptionEClass, PALETTE_DESCRIPTION__IS_DRAGGABLE);
 
 		node_ElementEClass = createEClass(NODE_ELEMENT);
-		createEReference(node_ElementEClass, NODE_ELEMENT__LABELAN_EATTRIBUTE);
 		createEReference(node_ElementEClass, NODE_ELEMENT__LINK_PALETTE);
 		createEReference(node_ElementEClass, NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS);
 		createEReference(node_ElementEClass, NODE_ELEMENT__EXPANDABLE_ITEMS);
@@ -2105,6 +2668,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEReference(graphicRepresentationEClass, GRAPHIC_REPRESENTATION__USER_COLORS);
 
 		shapeEClass = createEClass(SHAPE);
+		createEReference(shapeEClass, SHAPE__LABELAN_EATTRIBUTE);
 
 		shapeCompartmentGradientEClass = createEClass(SHAPE_COMPARTMENT_GRADIENT);
 		createEAttribute(shapeCompartmentGradientEClass, SHAPE_COMPARTMENT_GRADIENT__WIDTH);
@@ -2112,6 +2676,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEAttribute(shapeCompartmentGradientEClass, SHAPE_COMPARTMENT_GRADIENT__CORNER_HEIGHT);
 		createEAttribute(shapeCompartmentGradientEClass, SHAPE_COMPARTMENT_GRADIENT__CORNER_WIDTH);
 		createEReference(shapeCompartmentGradientEClass, SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR);
+		createEAttribute(shapeCompartmentGradientEClass, SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE);
 
 		shapeCompartmentParallelogramEClass = createEClass(SHAPE_COMPARTMENT_PARALLELOGRAM);
 		createEAttribute(shapeCompartmentParallelogramEClass, SHAPE_COMPARTMENT_PARALLELOGRAM__WIDTH);
@@ -2150,23 +2715,65 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 
 		additionalLayerEClass = createEClass(ADDITIONAL_LAYER);
 
-		affixedElementEClass = createEClass(AFFIXED_ELEMENT);
-
-		compartmentElementEClass = createEClass(COMPARTMENT_ELEMENT);
-		createEAttribute(compartmentElementEClass, COMPARTMENT_ELEMENT__COMPARTMENT_VIEW);
-		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__INIT);
-		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__NODE_SHAPE);
-		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__END);
-		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__INIT_TO_FIRST);
-		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__NODE_TO_NODE);
-		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__NODE_TO_END);
-
 		affixedCompartmentElementEClass = createEClass(AFFIXED_COMPARTMENT_ELEMENT);
 		createEReference(affixedCompartmentElementEClass, AFFIXED_COMPARTMENT_ELEMENT__AN_EREFERENCE);
 		createEReference(affixedCompartmentElementEClass, AFFIXED_COMPARTMENT_ELEMENT__NODES);
 
+		affixedElementEClass = createEClass(AFFIXED_ELEMENT);
+
+		compartmentElementEClass = createEClass(COMPARTMENT_ELEMENT);
+		createEAttribute(compartmentElementEClass, COMPARTMENT_ELEMENT__COMPARTMENT_VIEW);
+		createEReference(compartmentElementEClass, COMPARTMENT_ELEMENT__REPRESENTATION_STYLE);
+
+		representationStyleEClass = createEClass(REPRESENTATION_STYLE);
+
+		loopRepresentationEClass = createEClass(LOOP_REPRESENTATION);
+		createEReference(loopRepresentationEClass, LOOP_REPRESENTATION__INIT_SHAPE);
+		createEReference(loopRepresentationEClass, LOOP_REPRESENTATION__NODE_SHAPE);
+		createEReference(loopRepresentationEClass, LOOP_REPRESENTATION__END_SHAPE);
+		createEReference(loopRepresentationEClass, LOOP_REPRESENTATION__INIT_TO_NODE);
+		createEReference(loopRepresentationEClass, LOOP_REPRESENTATION__RECURSIVE_EDGE);
+		createEReference(loopRepresentationEClass, LOOP_REPRESENTATION__NODE_TO_END);
+
+		linkedListRepresentationEClass = createEClass(LINKED_LIST_REPRESENTATION);
+		createEReference(linkedListRepresentationEClass, LINKED_LIST_REPRESENTATION__INIT);
+		createEReference(linkedListRepresentationEClass, LINKED_LIST_REPRESENTATION__NODE_SHAPE);
+		createEReference(linkedListRepresentationEClass, LINKED_LIST_REPRESENTATION__END);
+		createEReference(linkedListRepresentationEClass, LINKED_LIST_REPRESENTATION__INIT_TO_FIRST);
+		createEReference(linkedListRepresentationEClass, LINKED_LIST_REPRESENTATION__NODE_TO_NODE);
+		createEReference(linkedListRepresentationEClass, LINKED_LIST_REPRESENTATION__NODE_TO_END);
+
+		conditionalRepresentationEClass = createEClass(CONDITIONAL_REPRESENTATION);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__INIT_SHAPE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__IF_SHAPE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__THEN_SHAPE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__ELSE_SHAPE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__END_SHAPE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__INIT_TO_IF);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__IF_TO_THEN_NODE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__THEN_NODE_TO_END_NODE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__IF_NODE_TO_ELSE_NODE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__ELSE_NODE_TO_END_NODE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__THEN_REFERENCE);
+		createEReference(conditionalRepresentationEClass, CONDITIONAL_REPRESENTATION__ELSE_REFERENCE);
+
+		treeRepresentationEClass = createEClass(TREE_REPRESENTATION);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__INIT_SHAPE);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__ROOT_SHAPE);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__NODE_SHAPE);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__END_SHAPE);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__INIT_TO_ROOT_SHAPE);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__ROOT_SHAPE_TO_NODE);
+		createEReference(treeRepresentationEClass, TREE_REPRESENTATION__NODE_SHAPE_TO_END_SHAPE);
+
+		generalLabelEClass = createEClass(GENERAL_LABEL);
+		createEAttribute(generalLabelEClass, GENERAL_LABEL__LABEL_ALIGMENT);
+
 		labelEAttributeEClass = createEClass(LABEL_EATTRIBUTE);
-		createEReference(labelEAttributeEClass, LABEL_EATTRIBUTE__AN_EATTRIBUTE);
+		createEReference(labelEAttributeEClass, LABEL_EATTRIBUTE__LABEL_ATTRIBUTES);
+
+		labelOCLEClass = createEClass(LABEL_OCL);
+		createEAttribute(labelOCLEClass, LABEL_OCL__OCL_EXPRESSION);
 
 		borderEClass = createEClass(BORDER);
 		createEAttribute(borderEClass, BORDER__BORDER_STYLE);
@@ -2222,6 +2829,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		createEReference(conditionalStyleEClass, CONDITIONAL_STYLE__EATTRIBUTE);
 		createEAttribute(conditionalStyleEClass, CONDITIONAL_STYLE__VALUE);
 		createEReference(conditionalStyleEClass, CONDITIONAL_STYLE__CONDITIONAL_STYLE);
+		createEReference(conditionalStyleEClass, CONDITIONAL_STYLE__LABEL_OCL);
 
 		virtualCompartmentEClass = createEClass(VIRTUAL_COMPARTMENT);
 		createEReference(virtualCompartmentEClass, VIRTUAL_COMPARTMENT__NODE);
@@ -2241,11 +2849,26 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		compartmentLinkEClass = createEClass(COMPARTMENT_LINK);
 		createEAttribute(compartmentLinkEClass, COMPARTMENT_LINK__DECORATOR_NAME);
 
+		weAttributeEClass = createEClass(WE_ATTRIBUTE);
+		createEReference(weAttributeEClass, WE_ATTRIBUTE__EATTRIBUTE);
+
+		conditionalEdgeStyleEClass = createEClass(CONDITIONAL_EDGE_STYLE);
+		createEAttribute(conditionalEdgeStyleEClass, CONDITIONAL_EDGE_STYLE__CONDITIONAL_OCL);
+		createEReference(conditionalEdgeStyleEClass, CONDITIONAL_EDGE_STYLE__CONDITIONAL_EDGE);
+		createEReference(conditionalEdgeStyleEClass, CONDITIONAL_EDGE_STYLE__GENERAL_LABEL);
+		createEReference(conditionalEdgeStyleEClass, CONDITIONAL_EDGE_STYLE__DECORATOR_SOURCE);
+		createEReference(conditionalEdgeStyleEClass, CONDITIONAL_EDGE_STYLE__DECORATOR_TARGET);
+
+		edgeDecoratorEClass = createEClass(EDGE_DECORATOR);
+		createEAttribute(edgeDecoratorEClass, EDGE_DECORATOR__DECORATOR_NAME);
+
 		// Create enums
 		grFontFormatEEnum = createEEnum(GR_FONT_FORMAT);
 		labelPositionEEnum = createEEnum(LABEL_POSITION);
+		labelAligmentEEnum = createEEnum(LABEL_ALIGMENT);
 		childrenPresentationEEnum = createEEnum(CHILDREN_PRESENTATION);
 		compartmentViewEEnum = createEEnum(COMPARTMENT_VIEW);
+		labelBorderedStyleEEnum = createEEnum(LABEL_BORDERED_STYLE);
 	}
 
 	/**
@@ -2272,8 +2895,12 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		RestPackage theRestPackage = (RestPackage)EPackage.Registry.INSTANCE.getEPackage(RestPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		DescriptionPackage theDescriptionPackage = (DescriptionPackage)EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theRestPackage);
 
 		// Create type parameters
 
@@ -2311,8 +2938,14 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		additionalLayerEClass.getESuperTypes().add(this.getLayer());
 		affixedElementEClass.getESuperTypes().add(this.getAffixedCompartmentElement());
 		compartmentElementEClass.getESuperTypes().add(this.getAffixedCompartmentElement());
-		labelEAttributeEClass.getESuperTypes().add(this.getShapeColor());
-		labelEAttributeEClass.getESuperTypes().add(this.getGRLabelStyleDescription());
+		loopRepresentationEClass.getESuperTypes().add(this.getRepresentationStyle());
+		linkedListRepresentationEClass.getESuperTypes().add(this.getRepresentationStyle());
+		conditionalRepresentationEClass.getESuperTypes().add(this.getRepresentationStyle());
+		treeRepresentationEClass.getESuperTypes().add(this.getRepresentationStyle());
+		generalLabelEClass.getESuperTypes().add(this.getShapeColor());
+		generalLabelEClass.getESuperTypes().add(this.getGRLabelStyleDescription());
+		labelEAttributeEClass.getESuperTypes().add(this.getGeneralLabel());
+		labelOCLEClass.getESuperTypes().add(this.getGeneralLabel());
 		grUserColorDefEClass.getESuperTypes().add(this.getColor());
 		rgbColorEClass.getESuperTypes().add(this.getGRUserColor());
 		rgbColorEClass.getESuperTypes().add(this.getRGBColorDescription());
@@ -2344,7 +2977,8 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEClass(edgeEClass, Edge.class, "Edge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEdge_Directions(), this.getEdge_Direction(), null, "directions", null, 0, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEdge_Edge_style(), this.getEdge_Style(), null, "edge_style", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEdge_EdgeLabel(), this.getEdgeLabelEAttribute(), null, "edgeLabel", null, 0, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEdge_EdgeLabel(), this.getGeneralLabel(), null, "edgeLabel", null, 0, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEdge_ConditionalEdgeStyle(), this.getConditionalEdgeStyle(), null, "conditionalEdgeStyle", null, 0, -1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(edgeLabelEAttributeEClass, EdgeLabelEAttribute.class, "EdgeLabelEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEdgeLabelEAttribute_LabelEAttribute(), theEcorePackage.getEAttribute(), null, "labelEAttribute", null, 0, 1, EdgeLabelEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2360,6 +2994,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEClass(iconElementEClass, IconElement.class, "IconElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIconElement_Filepath(), ecorePackage.getEString(), "filepath", null, 0, 1, IconElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIconElement_EmbeddedImage(), ecorePackage.getEString(), "embeddedImage", "null", 0, 1, IconElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIconElement_FigureSearch(), theRestPackage.getSearch(), null, "figureSearch", null, 0, 1, IconElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getIconElement__ImageBase64(), null, "ImageBase64", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2369,7 +3004,6 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEAttribute(getPaletteDescription_IsDraggable(), ecorePackage.getEBoolean(), "isDraggable", "true", 0, 1, PaletteDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(node_ElementEClass, Node_Element.class, "Node_Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNode_Element_LabelanEAttribute(), this.getLabelEAttribute(), null, "LabelanEAttribute", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Element_LinkPalette(), this.getPaletteDescriptionLink(), null, "linkPalette", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Element_AffixedCompartmentElements(), this.getAffixedCompartmentElement(), null, "affixedCompartmentElements", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Element_ExpandableItems(), this.getExpandableItem(), null, "expandableItems", null, 0, -1, Node_Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2403,6 +3037,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEReference(getGraphicRepresentation_UserColors(), this.getGRUserColor(), null, "userColors", null, 0, -1, GraphicRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(shapeEClass, Shape.class, "Shape", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getShape_LabelanEAttribute(), this.getGeneralLabel(), null, "LabelanEAttribute", null, 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(shapeCompartmentGradientEClass, ShapeCompartmentGradient.class, "ShapeCompartmentGradient", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getShapeCompartmentGradient_Width(), ecorePackage.getEIntegerObject(), "width", "10", 0, 1, ShapeCompartmentGradient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2410,6 +3045,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEAttribute(getShapeCompartmentGradient_CornerHeight(), ecorePackage.getEIntegerObject(), "cornerHeight", "10", 0, 1, ShapeCompartmentGradient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getShapeCompartmentGradient_CornerWidth(), ecorePackage.getEIntegerObject(), "cornerWidth", "10", 0, 1, ShapeCompartmentGradient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getShapeCompartmentGradient_ForeGroundColor(), this.getColor(), null, "foreGroundColor", null, 0, 1, ShapeCompartmentGradient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShapeCompartmentGradient_LabelStyle(), this.getLabelBorderedStyle(), "labelStyle", "NotDefined", 0, 1, ShapeCompartmentGradient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(shapeCompartmentParallelogramEClass, ShapeCompartmentParallelogram.class, "ShapeCompartmentParallelogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getShapeCompartmentParallelogram_Width(), ecorePackage.getEIntegerObject(), "width", "10", 0, 1, ShapeCompartmentParallelogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2448,23 +3084,65 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 
 		initEClass(additionalLayerEClass, AdditionalLayer.class, "AdditionalLayer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(affixedElementEClass, AffixedElement.class, "AffixedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(compartmentElementEClass, CompartmentElement.class, "CompartmentElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCompartmentElement_CompartmentView(), this.getCompartmentView(), "compartmentView", "None", 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompartmentElement_Init(), this.getShape(), null, "init", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompartmentElement_NodeShape(), this.getShape(), null, "nodeShape", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompartmentElement_End(), this.getShape(), null, "end", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompartmentElement_InitToFirst(), this.getCompartmentEdge(), null, "initToFirst", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompartmentElement_NodeToNode(), this.getCompartmentEdge(), null, "nodeToNode", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompartmentElement_NodeToEnd(), this.getCompartmentEdge(), null, "nodeToEnd", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(affixedCompartmentElementEClass, AffixedCompartmentElement.class, "AffixedCompartmentElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAffixedCompartmentElement_AnEReference(), ecorePackage.getEReference(), null, "anEReference", null, 0, 1, AffixedCompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAffixedCompartmentElement_Nodes(), this.getNode(), null, "nodes", null, 0, -1, AffixedCompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(affixedElementEClass, AffixedElement.class, "AffixedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(compartmentElementEClass, CompartmentElement.class, "CompartmentElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCompartmentElement_CompartmentView(), this.getCompartmentView(), "compartmentView", "None", 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompartmentElement_RepresentationStyle(), this.getRepresentationStyle(), null, "representationStyle", null, 0, 1, CompartmentElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(representationStyleEClass, RepresentationStyle.class, "RepresentationStyle", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(loopRepresentationEClass, LoopRepresentation.class, "LoopRepresentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLoopRepresentation_InitShape(), this.getShape(), null, "initShape", null, 0, 1, LoopRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoopRepresentation_NodeShape(), this.getShape(), null, "nodeShape", null, 0, 1, LoopRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoopRepresentation_EndShape(), this.getShape(), null, "endShape", null, 0, 1, LoopRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoopRepresentation_InitToNode(), this.getCompartmentEdge(), null, "initToNode", null, 0, 1, LoopRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoopRepresentation_RecursiveEdge(), this.getCompartmentEdge(), null, "recursiveEdge", null, 0, 1, LoopRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoopRepresentation_NodeToEnd(), this.getCompartmentEdge(), null, "nodeToEnd", null, 0, 1, LoopRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkedListRepresentationEClass, LinkedListRepresentation.class, "LinkedListRepresentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinkedListRepresentation_Init(), this.getShape(), null, "init", null, 0, 1, LinkedListRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkedListRepresentation_NodeShape(), this.getShape(), null, "nodeShape", null, 0, 1, LinkedListRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkedListRepresentation_End(), this.getShape(), null, "end", null, 0, 1, LinkedListRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkedListRepresentation_InitToFirst(), this.getCompartmentEdge(), null, "initToFirst", null, 0, 1, LinkedListRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkedListRepresentation_NodeToNode(), this.getCompartmentEdge(), null, "nodeToNode", null, 0, 1, LinkedListRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkedListRepresentation_NodeToEnd(), this.getCompartmentEdge(), null, "nodeToEnd", null, 0, 1, LinkedListRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(conditionalRepresentationEClass, ConditionalRepresentation.class, "ConditionalRepresentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConditionalRepresentation_InitShape(), this.getShape(), null, "initShape", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_IfShape(), this.getShape(), null, "ifShape", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_ThenShape(), this.getShape(), null, "thenShape", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_ElseShape(), this.getShape(), null, "elseShape", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_EndShape(), this.getShape(), null, "endShape", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_InitToIf(), this.getCompartmentEdge(), null, "initToIf", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_IfToThenNode(), this.getCompartmentEdge(), null, "ifToThenNode", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_ThenNodeToEndNode(), this.getCompartmentEdge(), null, "thenNodeToEndNode", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_IfNodeToElseNode(), this.getCompartmentEdge(), null, "ifNodeToElseNode", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_ElseNodeToEndNode(), this.getCompartmentEdge(), null, "elseNodeToEndNode", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_ThenReference(), theEcorePackage.getEReference(), null, "thenReference", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalRepresentation_ElseReference(), theEcorePackage.getEReference(), null, "elseReference", null, 0, 1, ConditionalRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(treeRepresentationEClass, TreeRepresentation.class, "TreeRepresentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTreeRepresentation_InitShape(), this.getShape(), null, "initShape", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTreeRepresentation_RootShape(), this.getShape(), null, "rootShape", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTreeRepresentation_NodeShape(), this.getShape(), null, "nodeShape", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTreeRepresentation_EndShape(), this.getShape(), null, "endShape", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTreeRepresentation_InitToRootShape(), this.getCompartmentEdge(), null, "initToRootShape", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTreeRepresentation_RootShapeToNode(), this.getCompartmentEdge(), null, "rootShapeToNode", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTreeRepresentation_NodeShapeToEndShape(), this.getCompartmentEdge(), null, "nodeShapeToEndShape", null, 0, 1, TreeRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(generalLabelEClass, GeneralLabel.class, "GeneralLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGeneralLabel_LabelAligment(), this.getLabelAligment(), "labelAligment", null, 0, 1, GeneralLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(labelEAttributeEClass, LabelEAttribute.class, "LabelEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLabelEAttribute_AnEAttribute(), ecorePackage.getEAttribute(), null, "anEAttribute", null, 0, 1, LabelEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLabelEAttribute_LabelAttributes(), this.getWEAttribute(), null, "labelAttributes", null, 0, -1, LabelEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(labelOCLEClass, LabelOCL.class, "LabelOCL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLabelOCL_OclExpression(), ecorePackage.getEString(), "oclExpression", null, 0, 1, LabelOCL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(borderEClass, Border.class, "Border", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBorder_BorderStyle(), ecorePackage.getEString(), "borderStyle", "solid", 0, 1, Border.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2522,6 +3200,7 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEReference(getConditionalStyle_EAttribute(), theEcorePackage.getEAttribute(), null, "eAttribute", null, 0, 1, ConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConditionalStyle_Value(), ecorePackage.getEString(), "value", null, 0, 1, ConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConditionalStyle_ConditionalStyle(), this.getShape(), null, "conditionalStyle", null, 0, 1, ConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStyle_LabelOcl(), this.getLabelOCL(), null, "labelOcl", null, 0, 1, ConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(virtualCompartmentEClass, VirtualCompartment.class, "VirtualCompartment", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVirtualCompartment_Node(), this.getNode(), this.getNode_VirtualCompartments(), "node", null, 0, 1, VirtualCompartment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2541,6 +3220,19 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEClass(compartmentLinkEClass, CompartmentLink.class, "CompartmentLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompartmentLink_DecoratorName(), ecorePackage.getEString(), "decoratorName", "NoDecoration", 0, 1, CompartmentLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(weAttributeEClass, WEAttribute.class, "WEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWEAttribute_EAttribute(), ecorePackage.getEAttribute(), null, "eAttribute", null, 1, 1, WEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(conditionalEdgeStyleEClass, ConditionalEdgeStyle.class, "ConditionalEdgeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConditionalEdgeStyle_ConditionalOCL(), ecorePackage.getEString(), "conditionalOCL", null, 0, 1, ConditionalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalEdgeStyle_ConditionalEdge(), this.getEdge_Style(), null, "conditionalEdge", null, 0, 1, ConditionalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalEdgeStyle_GeneralLabel(), this.getGeneralLabel(), null, "generalLabel", null, 0, 1, ConditionalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalEdgeStyle_DecoratorSource(), this.getEdgeDecorator(), null, "decoratorSource", null, 1, 1, ConditionalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalEdgeStyle_DecoratorTarget(), this.getEdgeDecorator(), null, "decoratorTarget", null, 1, 1, ConditionalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(edgeDecoratorEClass, EdgeDecorator.class, "EdgeDecorator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEdgeDecorator_DecoratorName(), ecorePackage.getEString(), "decoratorName", "NoDecoration", 0, 1, EdgeDecorator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(grFontFormatEEnum, GRFontFormat.class, "GRFontFormat");
 		addEEnumLiteral(grFontFormatEEnum, GRFontFormat.ITALIC);
@@ -2552,6 +3244,11 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		addEEnumLiteral(labelPositionEEnum, LabelPosition.BORDER);
 		addEEnumLiteral(labelPositionEEnum, LabelPosition.NODE);
 
+		initEEnum(labelAligmentEEnum, LabelAligment.class, "LabelAligment");
+		addEEnumLiteral(labelAligmentEEnum, LabelAligment.CENTER);
+		addEEnumLiteral(labelAligmentEEnum, LabelAligment.LEFT);
+		addEEnumLiteral(labelAligmentEEnum, LabelAligment.RIGHT);
+
 		initEEnum(childrenPresentationEEnum, ChildrenPresentation.class, "ChildrenPresentation");
 		addEEnumLiteral(childrenPresentationEEnum, ChildrenPresentation.FREEFORM);
 		addEEnumLiteral(childrenPresentationEEnum, ChildrenPresentation.LIST);
@@ -2561,6 +3258,15 @@ public class Graphic_representationPackageImpl extends EPackageImpl implements G
 		initEEnum(compartmentViewEEnum, CompartmentView.class, "CompartmentView");
 		addEEnumLiteral(compartmentViewEEnum, CompartmentView.NONE);
 		addEEnumLiteral(compartmentViewEEnum, CompartmentView.LINKED_LIST);
+		addEEnumLiteral(compartmentViewEEnum, CompartmentView.CONDITIONAL_REPRESENTATION);
+		addEEnumLiteral(compartmentViewEEnum, CompartmentView.LOOP_REPRESENTATION);
+		addEEnumLiteral(compartmentViewEEnum, CompartmentView.TREE_REPRESENTATION);
+
+		initEEnum(labelBorderedStyleEEnum, LabelBorderedStyle.class, "LabelBorderedStyle");
+		addEEnumLiteral(labelBorderedStyleEEnum, LabelBorderedStyle.NOT_DEFINED);
+		addEEnumLiteral(labelBorderedStyleEEnum, LabelBorderedStyle.LABEL_BORDER_FOR_CONTAINER);
+		addEEnumLiteral(labelBorderedStyleEEnum, LabelBorderedStyle.LABEL_BORDER_STYLE_WITH_BEVELED_CORNER);
+		addEEnumLiteral(labelBorderedStyleEEnum, LabelBorderedStyle.NO_LABEL_BORDER_FOR_LIST);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,7 +2,7 @@
  */
 package graphic_representation;
 
-import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,38 +13,28 @@ import org.eclipse.emf.ecore.EAttribute;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link graphic_representation.LabelEAttribute#getAnEAttribute <em>An EAttribute</em>}</li>
+ *   <li>{@link graphic_representation.LabelEAttribute#getLabelAttributes <em>Label Attributes</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getLabelEAttribute()
  * @model
  * @generated
  */
-public interface LabelEAttribute extends ShapeColor, GRLabelStyleDescription {
+public interface LabelEAttribute extends GeneralLabel {
 	/**
-	 * Returns the value of the '<em><b>An EAttribute</b></em>' reference.
+	 * Returns the value of the '<em><b>Label Attributes</b></em>' containment reference list.
+	 * The list contents are of type {@link graphic_representation.WEAttribute}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>An EAttribute</em>' reference isn't clear,
+	 * If the meaning of the '<em>Label Attributes</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>An EAttribute</em>' reference.
-	 * @see #setAnEAttribute(EAttribute)
-	 * @see graphic_representation.Graphic_representationPackage#getLabelEAttribute_AnEAttribute()
-	 * @model
+	 * @return the value of the '<em>Label Attributes</em>' containment reference list.
+	 * @see graphic_representation.Graphic_representationPackage#getLabelEAttribute_LabelAttributes()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EAttribute getAnEAttribute();
-
-	/**
-	 * Sets the value of the '{@link graphic_representation.LabelEAttribute#getAnEAttribute <em>An EAttribute</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>An EAttribute</em>' reference.
-	 * @see #getAnEAttribute()
-	 * @generated
-	 */
-	void setAnEAttribute(EAttribute value);
+	EList<WEAttribute> getLabelAttributes();
 
 } // LabelEAttribute

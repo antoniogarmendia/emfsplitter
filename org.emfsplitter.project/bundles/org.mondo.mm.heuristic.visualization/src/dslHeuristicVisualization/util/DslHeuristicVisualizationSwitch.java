@@ -3,7 +3,6 @@
 package dslHeuristicVisualization.util;
 
 import dslHeuristicVisualization.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -258,6 +257,38 @@ public class DslHeuristicVisualizationSwitch<T> extends Switch<T> {
 			case DslHeuristicVisualizationPackage.REPRE_HEUR_SS: {
 				RepreHeurSS repreHeurSS = (RepreHeurSS)theEObject;
 				T result = caseRepreHeurSS(repreHeurSS);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DslHeuristicVisualizationPackage.STRATEGY_GRAPHICAL_STYLE: {
+				StrategyGraphicalStyle strategyGraphicalStyle = (StrategyGraphicalStyle)theEObject;
+				T result = caseStrategyGraphicalStyle(strategyGraphicalStyle);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DslHeuristicVisualizationPackage.GRAPHICAL_SHAPES_EDGE_STYLE: {
+				GraphicalShapesEdgeStyle graphicalShapesEdgeStyle = (GraphicalShapesEdgeStyle)theEObject;
+				T result = caseGraphicalShapesEdgeStyle(graphicalShapesEdgeStyle);
+				if (result == null) result = caseStrategyGraphicalStyle(graphicalShapesEdgeStyle);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DslHeuristicVisualizationPackage.GRAPHICAL_ICONS_CONTAINMENT: {
+				GraphicalIconsContainment graphicalIconsContainment = (GraphicalIconsContainment)theEObject;
+				T result = caseGraphicalIconsContainment(graphicalIconsContainment);
+				if (result == null) result = caseStrategyGraphicalStyle(graphicalIconsContainment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DslHeuristicVisualizationPackage.GRAPHICAL_EDGE_STYLE: {
+				GraphicalEdgeStyle graphicalEdgeStyle = (GraphicalEdgeStyle)theEObject;
+				T result = caseGraphicalEdgeStyle(graphicalEdgeStyle);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DslHeuristicVisualizationPackage.GRAPHICAL_COMPARTMENT_STYLE: {
+				GraphicalCompartmentStyle graphicalCompartmentStyle = (GraphicalCompartmentStyle)theEObject;
+				T result = caseGraphicalCompartmentStyle(graphicalCompartmentStyle);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -712,6 +743,81 @@ public class DslHeuristicVisualizationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRepreHeurSS(RepreHeurSS object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Strategy Graphical Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Strategy Graphical Style</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStrategyGraphicalStyle(StrategyGraphicalStyle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Graphical Shapes Edge Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Graphical Shapes Edge Style</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGraphicalShapesEdgeStyle(GraphicalShapesEdgeStyle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Graphical Icons Containment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Graphical Icons Containment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGraphicalIconsContainment(GraphicalIconsContainment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Graphical Edge Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Graphical Edge Style</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGraphicalEdgeStyle(GraphicalEdgeStyle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Graphical Compartment Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Graphical Compartment Style</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGraphicalCompartmentStyle(GraphicalCompartmentStyle object) {
 		return null;
 	}
 

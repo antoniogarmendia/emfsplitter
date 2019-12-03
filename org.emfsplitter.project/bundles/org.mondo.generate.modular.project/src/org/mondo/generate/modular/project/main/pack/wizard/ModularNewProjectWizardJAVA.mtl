@@ -101,7 +101,7 @@ public class [anPatternInstance.Get_ProjectClass().name/]NewProjectWizard extend
 	
 	public void evaluateSiriusProjectCreation() {
 		
-		new EvaluateModularListener().executeProject(Platform.getExtensionRegistry(),projectInfo.getProject().getName());
+		//new EvaluateModularListener().executeProject(Platform.getExtensionRegistry(),projectInfo.getProject().getName());
 	}
 
 }

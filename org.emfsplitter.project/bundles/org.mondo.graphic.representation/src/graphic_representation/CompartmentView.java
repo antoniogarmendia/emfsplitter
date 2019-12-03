@@ -36,7 +36,31 @@ public enum CompartmentView implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LINKED_LIST(1, "LinkedList", "Linked List");
+	LINKED_LIST(1, "LinkedList", "Linked List"), /**
+	 * The '<em><b>Conditional Representation</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CONDITIONAL_REPRESENTATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CONDITIONAL_REPRESENTATION(2, "ConditionalRepresentation", "ConditionalRepresentation"), /**
+	 * The '<em><b>Loop Representation</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LOOP_REPRESENTATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LOOP_REPRESENTATION(3, "LoopRepresentation", "LoopRepresentation"), /**
+	 * The '<em><b>Tree Representation</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TREE_REPRESENTATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TREE_REPRESENTATION(4, "TreeRepresentation", "TreeRepresentation");
 
 	/**
 	 * The '<em><b>None</b></em>' literal value.
@@ -69,6 +93,51 @@ public enum CompartmentView implements Enumerator {
 	public static final int LINKED_LIST_VALUE = 1;
 
 	/**
+	 * The '<em><b>Conditional Representation</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Conditional Representation</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CONDITIONAL_REPRESENTATION
+	 * @model name="ConditionalRepresentation"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CONDITIONAL_REPRESENTATION_VALUE = 2;
+
+	/**
+	 * The '<em><b>Loop Representation</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Loop Representation</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LOOP_REPRESENTATION
+	 * @model name="LoopRepresentation"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LOOP_REPRESENTATION_VALUE = 3;
+
+	/**
+	 * The '<em><b>Tree Representation</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Tree Representation</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TREE_REPRESENTATION
+	 * @model name="TreeRepresentation"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TREE_REPRESENTATION_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Compartment View</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +147,9 @@ public enum CompartmentView implements Enumerator {
 		new CompartmentView[] {
 			NONE,
 			LINKED_LIST,
+			CONDITIONAL_REPRESENTATION,
+			LOOP_REPRESENTATION,
+			TREE_REPRESENTATION,
 		};
 
 	/**
@@ -136,6 +208,9 @@ public enum CompartmentView implements Enumerator {
 		switch (value) {
 			case NONE_VALUE: return NONE;
 			case LINKED_LIST_VALUE: return LINKED_LIST;
+			case CONDITIONAL_REPRESENTATION_VALUE: return CONDITIONAL_REPRESENTATION;
+			case LOOP_REPRESENTATION_VALUE: return LOOP_REPRESENTATION;
+			case TREE_REPRESENTATION_VALUE: return TREE_REPRESENTATION;
 		}
 		return null;
 	}

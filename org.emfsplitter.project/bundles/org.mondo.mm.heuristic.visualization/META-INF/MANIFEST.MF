@@ -8,13 +8,19 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: dslHeuristicVisualization,
+ dslHeuristicVisualization.extension.icon,
+ dslHeuristicVisualization.extension.shape,
  dslHeuristicVisualization.impl,
  dslHeuristicVisualization.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.sirius.diagram;visibility:=reexport,
  org.mondo.graphic.representation;visibility:=reexport,
  org.mondo.emf.splitter.library;bundle-version="0.1.0";visibility:=reexport,
- org.eclipse.sirius;visibility:=reexport
+ org.eclipse.sirius;visibility:=reexport,
+ org.uam.eps.miso.diagram.editor.jersey;bundle-version="1.0.0",
+ org.uam.eps.miso.diagram.editor.json;bundle-version="1.0.0",
+ org.eclipse.e4.core.di.annotations
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.common.base,
  org.eclipse.core.resources,

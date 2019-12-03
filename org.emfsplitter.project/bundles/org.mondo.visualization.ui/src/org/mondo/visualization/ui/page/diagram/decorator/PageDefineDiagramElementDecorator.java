@@ -37,6 +37,7 @@ import org.mondo.visualization.ui.page.EditingSupport.ESDiagramElement;
 import org.mondo.visualization.ui.page.EditingSupport.ESDiagramElementDecorator;
 import org.mondo.visualization.ui.page.EditingSupport.ESHeight;
 import org.mondo.visualization.ui.page.EditingSupport.ESImage;
+import org.mondo.visualization.ui.page.EditingSupport.ESLabelAlignment;
 import org.mondo.visualization.ui.page.EditingSupport.ESPosition;
 import org.mondo.visualization.ui.page.EditingSupport.ESWidth;
 import org.mondo.visualization.ui.page.LabelProvider.CBorderColor;
@@ -47,6 +48,7 @@ import org.mondo.visualization.ui.page.LabelProvider.CDiagramElementDecorator;
 import org.mondo.visualization.ui.page.LabelProvider.CDiagramElement;
 import org.mondo.visualization.ui.page.LabelProvider.CHeight;
 import org.mondo.visualization.ui.page.LabelProvider.CImage;
+import org.mondo.visualization.ui.page.LabelProvider.CLabelAlignment;
 import org.mondo.visualization.ui.page.LabelProvider.CPosition;
 import org.mondo.visualization.ui.page.LabelProvider.CWidth;
 import org.mondo.visualization.ui.page.diagram.element.PageDiagramElements;
@@ -77,6 +79,7 @@ public class PageDefineDiagramElementDecorator extends WizardPage{
 	private TreeViewerColumn col_borderStyle;
 	private TreeViewerColumn col_borderWidth;
 	private TreeViewerColumn col_position;
+	private TreeViewerColumn colLabelAlignment;
 	private TreeViewerColumn col_image;	
 	
 	private int representation;
@@ -197,6 +200,13 @@ public class PageDefineDiagramElementDecorator extends WizardPage{
 		col_position.getColumn().setText("Label Position");
 		col_position.setLabelProvider(new CPosition());
 		col_position.setEditingSupport(new ESPosition(treeViewer));
+		
+		//Label Aligment
+		colLabelAlignment = new TreeViewerColumn(treeViewer, SWT.NONE);
+		colLabelAlignment.getColumn().setWidth(100);
+		colLabelAlignment.getColumn().setText("Label Alignment");
+		colLabelAlignment.setLabelProvider(new CLabelAlignment());
+		colLabelAlignment.setEditingSupport(new ESLabelAlignment(treeViewer));
 		
 		//Workspace Image
 		col_image = new TreeViewerColumn(treeViewer, SWT.CENTER);

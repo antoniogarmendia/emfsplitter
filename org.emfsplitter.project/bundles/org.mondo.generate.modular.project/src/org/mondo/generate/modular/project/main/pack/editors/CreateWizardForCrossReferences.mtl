@@ -117,7 +117,6 @@ public class ModularFeatureEditorDialog extends Dialog{
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		// TODO Auto-generated method stub
 		Composite contents = (Composite)super.createDialogArea(parent);
 		
 		GridLayout contentsGridLayout = (GridLayout)contents.getLayout();

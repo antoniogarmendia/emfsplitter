@@ -15,5 +15,16 @@
             name="GraphicR Preferences">
       </page>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+          class="org.mondo.visualization.ui.save.vpchanges.CustomSiriusEditorWrapper"
+          contributorClass="org.mondo.visualization.ui.save.vpchanges.CustomSiriusActionBarContributorWrapper"
+          default="true"
+          extensions="odesign"
+          icon="icons/odesign.gif"
+          id="org.eclipse.sirius.editor.editorPlugin.SiriusEditorID.Wrapper"
+          name="Viewpoint Save Changes Editor ">
+    </editor>
+   </extension>
 </plugin>

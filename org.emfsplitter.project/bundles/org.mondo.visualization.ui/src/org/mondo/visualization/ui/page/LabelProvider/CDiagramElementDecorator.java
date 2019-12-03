@@ -3,13 +3,16 @@ package org.mondo.visualization.ui.page.LabelProvider;
 import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
 import graphic_representation.CompartmentLink;
+import graphic_representation.ConditionalEdgeStyle;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Diamond;
 import graphic_representation.Edge;
+import graphic_representation.EdgeDecorator;
 import graphic_representation.Edge_Direction;
 import graphic_representation.Ellipse;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.Link;
 import graphic_representation.Node;
 import graphic_representation.Node_Element;
@@ -20,6 +23,7 @@ import graphic_representation.Root;
 import graphic_representation.Shape;
 import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.ShapeCompartmentParallelogram;
+import graphic_representation.WEAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +50,10 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 	@Override
 	public String getText(Object element) {
 	
-		if(element instanceof Edge)
+		if(element instanceof Edge || element instanceof ConditionalEdgeStyle)
 			return "Decorator";
+		if (element instanceof EdgeDecorator)
+			return ((EdgeDecorator) element).getDecoratorName();
 		if(element instanceof ConditionalStyle) {
 			Shape shape = ((ConditionalStyle) element).getConditionalStyle();
 			EObject eObject = ((ConditionalStyle) element).eContainer();		
@@ -179,9 +185,14 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 		if (element instanceof CompartmentElement)
 			return "";
 		
-		if(element instanceof LabelEAttribute)
-			return ((LabelEAttribute) element).getLabelFormat().size()>0?"Font Format: ".concat(((LabelEAttribute) element).getLabelFormat().toString()):"Font Format: []";
-		
+		if(element instanceof LabelEAttribute) {
+				LabelEAttribute parentLabel = (LabelEAttribute) element;
+				return parentLabel.getLabelFormat().size()>0?"Font Format: ".concat(parentLabel.getLabelFormat().toString()):"Font Format: []";			
+		}
+		if(element instanceof LabelOCL) {
+			LabelOCL labelOCL = (LabelOCL) element;
+			return labelOCL.getLabelFormat().size()>0?"Font Format: ".concat(labelOCL.getLabelFormat().toString()):"Font Format: []";
+		}	
 		return super.getText(element);
 	}
 
@@ -193,7 +204,12 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 			EObject parentLink = ((Link) element).eContainer();
 			if(parentLink instanceof Edge_Direction)	
 				return FindDecoratorbyName(((Link) element).getDecoratorName());	
+		}	
+		if (element instanceof EdgeDecorator) {
+			String decoratorName = ((EdgeDecorator) element).getDecoratorName();
+			return FindDecoratorbyName(decoratorName);
 		}		
+		
 		if (element instanceof CompartmentLink) {
 			
 			CompartmentLink compartLink = (CompartmentLink) element;
@@ -213,6 +229,7 @@ public class CDiagramElementDecorator extends ColumnLabelProvider{
 				return FindDecoratorbyName(decoratorName);
 			}
 		}	
+		
 		return null;
 	}
 	

@@ -93,17 +93,18 @@ public class ScopeDefinitionPage extends WizardPage{
 	    eNameColumn.setLabelProvider(new EClassColumnLabelProvider());
 	    eNameColumn.setEditingSupport(new EClassEditingProvider(viewer, this.listEClassesWReferences));
 	    
-	    TreeViewerColumn eScope = new TreeViewerColumn(viewer, SWT.NONE);
-	    eScope.getColumn().setWidth(150);
-	    eScope.getColumn().setText("Scope");
-	    eScope.setLabelProvider(new ScopeColumnLabelProvider());
-	    eScope.setEditingSupport(new ScopeEditingProvider(viewer));
-		
 	    TreeViewerColumn reference = new TreeViewerColumn(viewer, SWT.NONE);
 	    reference.getColumn().setWidth(200);
 	    reference.getColumn().setText("Reference");
 	    reference.setLabelProvider(new ReferenceColumnLabelProvider());
-	    reference.setEditingSupport(new ReferenceEditingProvider(viewer));
+	    reference.setEditingSupport(new ReferenceEditingProvider(viewer));    
+	    
+	    
+	    TreeViewerColumn eScope = new TreeViewerColumn(viewer, SWT.NONE);
+	    eScope.getColumn().setWidth(150);
+	    eScope.getColumn().setText("Scope");
+	    eScope.setLabelProvider(new ScopeColumnLabelProvider());
+	    eScope.setEditingSupport(new ScopeEditingProvider(viewer));	    
 	    	    
 	    Button button = new Button(container, SWT.PUSH);
         button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,

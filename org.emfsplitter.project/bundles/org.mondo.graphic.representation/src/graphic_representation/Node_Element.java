@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link graphic_representation.Node_Element#getLabelanEAttribute <em>Labelan EAttribute</em>}</li>
  *   <li>{@link graphic_representation.Node_Element#getLinkPalette <em>Link Palette</em>}</li>
  *   <li>{@link graphic_representation.Node_Element#getAffixedCompartmentElements <em>Affixed Compartment Elements</em>}</li>
  *   <li>{@link graphic_representation.Node_Element#getExpandableItems <em>Expandable Items</em>}</li>
@@ -26,22 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Node_Element extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Labelan EAttribute</b></em>' containment reference list.
-	 * The list contents are of type {@link graphic_representation.LabelEAttribute}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Labelan EAttribute</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Labelan EAttribute</em>' containment reference list.
-	 * @see graphic_representation.Graphic_representationPackage#getNode_Element_LabelanEAttribute()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<LabelEAttribute> getLabelanEAttribute();
-
 	/**
 	 * Returns the value of the '<em><b>Link Palette</b></em>' containment reference list.
 	 * The list contents are of type {@link graphic_representation.PaletteDescriptionLink}.

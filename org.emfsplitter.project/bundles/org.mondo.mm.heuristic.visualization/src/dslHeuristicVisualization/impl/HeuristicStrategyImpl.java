@@ -5,7 +5,6 @@ import dslHeuristicVisualization.EcoreMatrixContainment;
 import dslHeuristicVisualization.HeuristicStrategy;
 import dslHeuristicVisualization.HeuristicStrategySettings;
 import dslHeuristicVisualization.RepreHeurSS;
-import dslHeuristicVisualization.StrategyPossibleElements;
 import graphic_representation.AffixedElement;
 import graphic_representation.AllElements;
 import graphic_representation.CompartmentElement;
@@ -13,8 +12,6 @@ import graphic_representation.DefaultLayer;
 import graphic_representation.DiagramElement;
 import graphic_representation.Edge;
 import graphic_representation.Edge_Direction;
-import graphic_representation.Edge_Style;
-import graphic_representation.Ellipse;
 import graphic_representation.GraphicRepresentation;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.LabelEAttribute;
@@ -24,15 +21,12 @@ import graphic_representation.Node;
 
 import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.RepresentationDD;
-import graphic_representation.ShapeCompartmentParallelogram;
+import graphic_representation.WEAttribute;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Iterator;
-
-import javax.annotation.Generated;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
@@ -62,6 +56,8 @@ import splitterLibrary.EcoreEMF;
  *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategyImpl#getCurrentRepresentation <em>Current Representation</em>}</li>
  *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategyImpl#getCurrentMMGR <em>Current MMGR</em>}</li>
  *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategyImpl#getListRepresentation <em>List Representation</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategyImpl#getFolderPath <em>Folder Path</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategyImpl#getPlatformPath <em>Platform Path</em>}</li>
  * </ul>
  *
  * @generated
@@ -146,6 +142,46 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected EList<RepreHeurSS> listRepresentation;
+
+	/**
+	 * The default value of the '{@link #getFolderPath() <em>Folder Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFolderPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FOLDER_PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFolderPath() <em>Folder Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFolderPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String folderPath = FOLDER_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPlatformPath() <em>Platform Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPlatformPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PLATFORM_PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPlatformPath() <em>Platform Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPlatformPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String platformPath = PLATFORM_PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -350,6 +386,48 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFolderPath() {
+		return folderPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFolderPath(String newFolderPath) {
+		String oldFolderPath = folderPath;
+		folderPath = newFolderPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__FOLDER_PATH, oldFolderPath, folderPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPlatformPath() {
+		return platformPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPlatformPath(String newPlatformPath) {
+		String oldPlatformPath = platformPath;
+		platformPath = newPlatformPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__PLATFORM_PATH, oldPlatformPath, platformPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public void ExecuteHeuristics() {
@@ -387,17 +465,7 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated NOT
 	 */
 	public void Execute_Graphical_Elements() {
-		
-		int aux = getCurrentMMGR();
-		RepreHeurSS repre = listRepresentation.get(getCurrentMMGR());		
-		EList<HeuristicStrategySettings> aux2 = repre.getHeuristicStrategySettings();
-		HeuristicStrategySettings aux3 = aux2.get(getCurrentRepresentation());
-		StrategyPossibleElements aux4 = aux3.getStrategy_possibleElements();
-		EClass rootEClass = ((RepresentationDD)graphic_representation.getAllGraphicRepresentation().
-					get(getCurrentMMGR()).getListRepresentations().get(getCurrentRepresentation())).
-					getRoot().getAnEClass();
-		
-		//aux4.PossibleElements(rootEClass, pathMatrix, listEClass)	
+				
 		//Possible Elements
 		EList<EClass> list_elements = listRepresentation.get(getCurrentMMGR()).getHeuristicStrategySettings().				
 										get(getCurrentRepresentation()).getStrategy_possibleElements().
@@ -417,17 +485,18 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 		defLayer.setName("Default Layer");
 		//End		
 		EList<Edge_Direction> listDirections = new BasicEList<Edge_Direction>();
+					
 		for (int i = 0; i < count_list_elements; i++) {
 			anEClass = list_elements.get(i);
 			if(currentStrategySettings.getStrategy_arcSelection().IsArc(anEClass)){
 				element = Graphic_representationFactory.eINSTANCE.createEdge();
-				element.setAnEClass(anEClass);
-				Edge_Style edgStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
-				edgStyle.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-				((Edge)element).setEdge_style(edgStyle);
+				element.setAnEClass(anEClass);				
 				//Search for Source and Target
 				Edge_Direction edgeDirection = currentStrategySettings.getStrategy_arcSelection().getArc_direction().Get_Direction(anEClass);
 				((Edge)element).setDirections(edgeDirection);
+							
+				currentStrategySettings.getStrategyGraphicalShape().setEdgeClassStyle((Edge)element);
+				
 				listDirections.add(edgeDirection);				
 			}
 			else if(currentStrategySettings.getStrategy_node_selection().IsNode(anEClass))
@@ -443,9 +512,9 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 				int count_links = list_links.size();
 				for (int j = 0; j < count_links; j++){
 					PaletteDescriptionLink e = Graphic_representationFactoryImpl.eINSTANCE.createPaletteDescriptionLink();
-					e.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
 					e.setAnEReference(list_links.get(j));
 					e.setPalette_name("Create Link " + list_links.get(j).getName());
+					currentStrategySettings.getStrategyGraphicalShape().setLinkStyle(e);
 					list_linksPalette.add(e);			
 				}
 				ele.getNode_elements().getLinkPalette().addAll(list_linksPalette);
@@ -464,31 +533,30 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 					affixed.setAnEReference(itAffixedReference.next());
 					ele.getNode_elements().getAffixedCompartmentElements().add(affixed);					
 				}				
+				//Default Shape
+				if(ele.getNode_elements().isCompartmentAffixed() == false)
+				{					
+					if (currentStrategySettings.getStrategyGraphicalIcon() == null)					
+						currentStrategySettings.getStrategyGraphicalShape().setNodeShape(ele, folderPath, platformPath);
+					else
+						currentStrategySettings.getStrategyGraphicalIcon().setNodeIcon(ele, folderPath, platformPath);										
+				}
+				else
+				{
+					currentStrategySettings.getStrategyGraphicalShape().setCompartmentShape(ele);					
+				}
+				//End Default Shape	
 				//Heuristic to Choose Labels
 				EAttribute attr = currentStrategySettings.getStrategy_label().GetLabel(anEClass);
 				if(attr!=null)
 				{
 					LabelEAttribute labelEAttribute = Graphic_representationFactoryImpl.eINSTANCE.createLabelEAttribute();
-					labelEAttribute.setAnEAttribute(attr);
+					WEAttribute wAttribute = Graphic_representationFactoryImpl.eINSTANCE.createWEAttribute();
+					wAttribute.setEAttribute(attr);
+					labelEAttribute.getLabelAttributes().add(wAttribute);
 					labelEAttribute.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-					ele.getNode_elements().getLabelanEAttribute().add(labelEAttribute);
+					ele.getNode_shape().setLabelanEAttribute(labelEAttribute);					
 				}	
-				//Default Shape
-				if(ele.getNode_elements().isCompartmentAffixed() == false)
-				{
-					Ellipse sh = Graphic_representationFactory.eINSTANCE.createEllipse();
-					ele.setNode_shape(sh);
-					sh.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-					sh.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-				}
-				else
-				{
-					ShapeCompartmentParallelogram sh = Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram();
-					sh.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-					sh.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-					ele.setNode_shape(sh);
-				}
-				//End Default Shape				
 			}
 			if(element!=null){
 				//Define Palette
@@ -503,12 +571,7 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 					element.getContainerReference().add(GetFeatureName(nemf.getList_classes().
 									get(parentIndex),element.getAnEClass()));
 				}				
-				//int getParentIndex = ecoreContainment.GetParent(index);
-				//if(getParentIndex!=-1)
-				//	element.getContainerReference().add(GetFeatureName(nemf.getList_classes().
-				//			get(getParentIndex),element.getAnEClass()));
-				//element.setContainerReference(GetFeatureName(nemf.getList_classes().
-				//		get(getParentIndex),element.getAnEClass()));					
+					
 				element.setDiag_palette(Graphic_representationFactory.eINSTANCE.createPaletteDescription());
 				element.getDiag_palette().setPalette_name(currentStrategySettings.getStrategy_palette().Get_Palette(anEClass));
 				defLayer.getElements().add(element);			
@@ -650,6 +713,10 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 				return getCurrentMMGR();
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__LIST_REPRESENTATION:
 				return getListRepresentation();
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__FOLDER_PATH:
+				return getFolderPath();
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__PLATFORM_PATH:
+				return getPlatformPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -682,6 +749,12 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 				getListRepresentation().clear();
 				getListRepresentation().addAll((Collection<? extends RepreHeurSS>)newValue);
 				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__FOLDER_PATH:
+				setFolderPath((String)newValue);
+				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__PLATFORM_PATH:
+				setPlatformPath((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -712,6 +785,12 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__LIST_REPRESENTATION:
 				getListRepresentation().clear();
 				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__FOLDER_PATH:
+				setFolderPath(FOLDER_PATH_EDEFAULT);
+				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__PLATFORM_PATH:
+				setPlatformPath(PLATFORM_PATH_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -736,6 +815,10 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 				return CURRENT_MMGR_EDEFAULT == null ? currentMMGR != null : !CURRENT_MMGR_EDEFAULT.equals(currentMMGR);
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__LIST_REPRESENTATION:
 				return listRepresentation != null && !listRepresentation.isEmpty();
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__FOLDER_PATH:
+				return FOLDER_PATH_EDEFAULT == null ? folderPath != null : !FOLDER_PATH_EDEFAULT.equals(folderPath);
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY__PLATFORM_PATH:
+				return PLATFORM_PATH_EDEFAULT == null ? platformPath != null : !PLATFORM_PATH_EDEFAULT.equals(platformPath);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -782,6 +865,10 @@ public class HeuristicStrategyImpl extends MinimalEObjectImpl.Container implemen
 		result.append(currentRepresentation);
 		result.append(", currentMMGR: ");
 		result.append(currentMMGR);
+		result.append(", folderPath: ");
+		result.append(folderPath);
+		result.append(", platformPath: ");
+		result.append(platformPath);
 		result.append(')');
 		return result.toString();
 	}

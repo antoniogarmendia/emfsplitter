@@ -7,11 +7,13 @@
 [import org::mondo::generate::modular::project::main::pack::editors::CustomPropertyDescriptor /]
 [import org::mondo::generate::modular::project::main::pack::editors::ModularCrossReferences /]
 [import org::mondo::generate::modular::project::main::pack::editors::CreateWizardForCrossReferences /]
+[import org::mondo::generate::modular::project::main::pack::editors::ModularPossibleValues /]
 
 [template public generatePackageeditors(anProjectName : String, anPackageName : String, anPatternInstance : PatternInstance,anEObjectGenModel : GenModel)]
 
 [let anEClass : EClass = anPatternInstance.Get_ProjectClassRoleInstance().element]
 	[generateCreateWizardForCrossReferences(anProjectName, anEClass,anPatternInstance) /]
+	[generateModularPossibleValues(anProjectName, anEClass) /]
 [/let]
 [let c : ClassRoleInstance = anPatternInstance.Get_ProjectClassRoleInstance()]
 	[ModularCrossReferences(anProjectName, c)/]

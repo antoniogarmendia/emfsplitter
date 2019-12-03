@@ -180,6 +180,10 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 				return createAdditionalLayerAdapter();
 			}
 			@Override
+			public Adapter caseAffixedCompartmentElement(AffixedCompartmentElement object) {
+				return createAffixedCompartmentElementAdapter();
+			}
+			@Override
 			public Adapter caseAffixedElement(AffixedElement object) {
 				return createAffixedElementAdapter();
 			}
@@ -188,12 +192,36 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 				return createCompartmentElementAdapter();
 			}
 			@Override
-			public Adapter caseAffixedCompartmentElement(AffixedCompartmentElement object) {
-				return createAffixedCompartmentElementAdapter();
+			public Adapter caseRepresentationStyle(RepresentationStyle object) {
+				return createRepresentationStyleAdapter();
+			}
+			@Override
+			public Adapter caseLoopRepresentation(LoopRepresentation object) {
+				return createLoopRepresentationAdapter();
+			}
+			@Override
+			public Adapter caseLinkedListRepresentation(LinkedListRepresentation object) {
+				return createLinkedListRepresentationAdapter();
+			}
+			@Override
+			public Adapter caseConditionalRepresentation(ConditionalRepresentation object) {
+				return createConditionalRepresentationAdapter();
+			}
+			@Override
+			public Adapter caseTreeRepresentation(TreeRepresentation object) {
+				return createTreeRepresentationAdapter();
+			}
+			@Override
+			public Adapter caseGeneralLabel(GeneralLabel object) {
+				return createGeneralLabelAdapter();
 			}
 			@Override
 			public Adapter caseLabelEAttribute(LabelEAttribute object) {
 				return createLabelEAttributeAdapter();
+			}
+			@Override
+			public Adapter caseLabelOCL(LabelOCL object) {
+				return createLabelOCLAdapter();
 			}
 			@Override
 			public Adapter caseBorder(Border object) {
@@ -274,6 +302,18 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCompartmentLink(CompartmentLink object) {
 				return createCompartmentLinkAdapter();
+			}
+			@Override
+			public Adapter caseWEAttribute(WEAttribute object) {
+				return createWEAttributeAdapter();
+			}
+			@Override
+			public Adapter caseConditionalEdgeStyle(ConditionalEdgeStyle object) {
+				return createConditionalEdgeStyleAdapter();
+			}
+			@Override
+			public Adapter caseEdgeDecorator(EdgeDecorator object) {
+				return createEdgeDecoratorAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -716,6 +756,76 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.RepresentationStyle <em>Representation Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.RepresentationStyle
+	 * @generated
+	 */
+	public Adapter createRepresentationStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.LoopRepresentation <em>Loop Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.LoopRepresentation
+	 * @generated
+	 */
+	public Adapter createLoopRepresentationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.LinkedListRepresentation <em>Linked List Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.LinkedListRepresentation
+	 * @generated
+	 */
+	public Adapter createLinkedListRepresentationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.ConditionalRepresentation <em>Conditional Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.ConditionalRepresentation
+	 * @generated
+	 */
+	public Adapter createConditionalRepresentationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.TreeRepresentation <em>Tree Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.TreeRepresentation
+	 * @generated
+	 */
+	public Adapter createTreeRepresentationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link graphic_representation.AffixedCompartmentElement <em>Affixed Compartment Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -730,6 +840,20 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.GeneralLabel <em>General Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.GeneralLabel
+	 * @generated
+	 */
+	public Adapter createGeneralLabelAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link graphic_representation.LabelEAttribute <em>Label EAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -740,6 +864,20 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLabelEAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.LabelOCL <em>Label OCL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.LabelOCL
+	 * @generated
+	 */
+	public Adapter createLabelOCLAdapter() {
 		return null;
 	}
 
@@ -1020,6 +1158,48 @@ public class Graphic_representationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCompartmentLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.WEAttribute <em>WE Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.WEAttribute
+	 * @generated
+	 */
+	public Adapter createWEAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.ConditionalEdgeStyle <em>Conditional Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.ConditionalEdgeStyle
+	 * @generated
+	 */
+	public Adapter createConditionalEdgeStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graphic_representation.EdgeDecorator <em>Edge Decorator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graphic_representation.EdgeDecorator
+	 * @generated
+	 */
+	public Adapter createEdgeDecoratorAdapter() {
 		return null;
 	}
 

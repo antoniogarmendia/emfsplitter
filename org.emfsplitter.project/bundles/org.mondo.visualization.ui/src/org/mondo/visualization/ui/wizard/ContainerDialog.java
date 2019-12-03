@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import graphic_representation.ChildrenPresentation;
+import graphic_representation.LabelBorderedStyle;
 import graphic_representation.Node;
 import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.SiriusSystemColors;
@@ -29,6 +30,7 @@ public class ContainerDialog extends Dialog {
 	private String fColor;
 	private Integer height;
 	private Integer width;
+	private LabelBorderedStyle labelBorderedStyle;
 	
 	//Widgets
 	private Combo cmbPresentation;
@@ -37,6 +39,7 @@ public class ContainerDialog extends Dialog {
 	private Combo cmbFColor;
 	private Text txtCHeight;
 	private Text txtCWidth;
+	private Combo cmbLabelStyles;
 
 	public ContainerDialog(Shell parentShell, Node node) {
 		super(parentShell);		
@@ -44,6 +47,8 @@ public class ContainerDialog extends Dialog {
 		this.cmbFColor = null;
 		this.txtCHeight = null;
 		this.txtCWidth = null;
+		this.cmbLabelStyles = null;
+		this.labelBorderedStyle = null;
 	}
 	
 	@Override
@@ -94,7 +99,17 @@ public class ContainerDialog extends Dialog {
 						
 			txtCWidth = new Text(container, SWT.BORDER);
 			txtCWidth.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-			txtCWidth.setText(sh.getCornerWidth().toString());			
+			txtCWidth.setText(sh.getCornerWidth().toString());	
+			
+			//Label Style
+			Label labelForLabelStyle = new Label(container,SWT.NONE);
+			labelForLabelStyle.setText("Label Style: ");			
+			
+			cmbLabelStyles = new Combo(container, SWT.BORDER);
+			cmbLabelStyles.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			List<String> labelStyles = getLabelStyles();
+			cmbLabelStyles.setItems(labelStyles.toArray(new String[labelStyles.size()]));
+			cmbLabelStyles.select(labelStyles.indexOf(sh.getLabelStyle().getName()));			
 		}		
 		return container;
 	}
@@ -117,6 +132,7 @@ public class ContainerDialog extends Dialog {
 			this.fColor = cmbFColor.getText(); 
 			this.height = Integer.parseInt(this.txtCHeight.getText());
 			this.width = Integer.parseInt(this.txtCWidth.getText());
+			this.labelBorderedStyle = LabelBorderedStyle.getByName(this.cmbLabelStyles.getText());
 		}		
 		super.okPressed();
 	}
@@ -134,6 +150,15 @@ public class ContainerDialog extends Dialog {
 		return result;		
 	}
 	
+	public static List<String> getLabelStyles() {
+		
+		List<String> result = new ArrayList<String>();
+		LabelBorderedStyle[] labelStyles = LabelBorderedStyle.values();
+		for (LabelBorderedStyle labelStyle: labelStyles)
+			result.add(labelStyle.getName());		
+		return result;
+	}
+	
 	public String getfColor() {
 		return fColor;
 	}
@@ -144,6 +169,10 @@ public class ContainerDialog extends Dialog {
 
 	public Integer getWidth() {
 		return width;
+	}
+	
+	public LabelBorderedStyle getLabelBorderedStyle() {
+		return labelBorderedStyle;
 	}
 	
 }

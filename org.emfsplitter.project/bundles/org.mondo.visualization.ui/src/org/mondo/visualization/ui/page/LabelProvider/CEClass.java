@@ -15,7 +15,10 @@ import graphic_representation.Root;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
 import graphic_representation.impl.EdgeImpl;
+
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -77,7 +80,7 @@ public class CEClass extends ColumnLabelProvider{
 				return "EReference.Link";			
 		}		
 		
-		if(element instanceof LabelEAttribute)
+		if(element instanceof WEAttribute)
 			return "EAttribute.name";		
 		
 		if(element instanceof CompartmentElement)

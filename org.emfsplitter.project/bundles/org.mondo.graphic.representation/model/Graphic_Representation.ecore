@@ -27,8 +27,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="edge_style" lowerBound="1"
         eType="#//Edge_Style" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeLabel" eType="#//EdgeLabelEAttribute"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edgeLabel" eType="#//GeneralLabel"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalEdgeStyle" upperBound="-1"
+        eType="#//ConditionalEdgeStyle" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EdgeLabelEAttribute">
     <eStructuralFeatures xsi:type="ecore:EReference" name="labelEAttribute" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute"/>
@@ -51,6 +53,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filepath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="embeddedImage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="null"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="figureSearch" eType="#//rest/Search"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PaletteDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon_filepath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -61,8 +65,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Node_Element">
     <eOperations name="isOnlyCompartment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isCompartmentAffixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="LabelanEAttribute" upperBound="-1"
-        eType="#//LabelEAttribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="linkPalette" upperBound="-1"
         eType="#//PaletteDescriptionLink" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="affixedCompartmentElements"
@@ -104,7 +106,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="userColors" upperBound="-1"
         eType="#//GRUserColor" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Shape"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Shape">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LabelanEAttribute" lowerBound="1"
+        eType="#//GeneralLabel" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ShapeCompartmentGradient" eSuperTypes="#//Shape #//ShapeColor #//Border">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="10"/>
@@ -116,6 +121,8 @@
         defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="foreGroundColor" eType="#//Color"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelStyle" eType="#//LabelBorderedStyle"
+        defaultValueLiteral="NotDefined"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ShapeCompartmentParallelogram" eSuperTypes="#//Shape #//ShapeColor #//Border">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
@@ -165,10 +172,34 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DefaultLayer" eSuperTypes="#//Layer"/>
   <eClassifiers xsi:type="ecore:EClass" name="AdditionalLayer" eSuperTypes="#//Layer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AffixedCompartmentElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anEReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//Node"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AffixedElement" eSuperTypes="#//AffixedCompartmentElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="CompartmentElement" eSuperTypes="#//AffixedCompartmentElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="compartmentView" eType="#//CompartmentView"
         defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representationStyle" eType="#//RepresentationStyle"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepresentationStyle" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LoopRepresentation" eSuperTypes="#//RepresentationStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initToNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recursiveEdge" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeToEnd" eType="#//CompartmentEdge"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkedListRepresentation" eSuperTypes="#//RepresentationStyle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Shape"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeShape" eType="#//Shape"
@@ -181,13 +212,55 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeToEnd" eType="#//CompartmentEdge"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AffixedCompartmentElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="anEReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
-        eType="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalRepresentation" eSuperTypes="#//RepresentationStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initToIf" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifToThenNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenNodeToEndNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifNodeToElseNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseNodeToEndNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenReference" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseReference" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LabelEAttribute" eSuperTypes="#//ShapeColor #//GRLabelStyleDescription">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="anEAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TreeRepresentation" eSuperTypes="#//RepresentationStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endShape" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initToRootShape" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootShapeToNode" eType="#//CompartmentEdge"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeShapeToEndShape" eType="#//CompartmentEdge"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralLabel" eSuperTypes="#//ShapeColor #//GRLabelStyleDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelAligment" eType="#//LabelAligment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelEAttribute" eSuperTypes="#//GeneralLabel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelAttributes" upperBound="-1"
+        eType="#//WEAttribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelOCL" eSuperTypes="#//GeneralLabel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oclExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Border" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderStyle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -224,7 +297,7 @@
     <eLiterals name="italic"/>
     <eLiterals name="bold" value="1"/>
     <eLiterals name="underline" value="2"/>
-    <eLiterals name="strike_through"/>
+    <eLiterals name="strike_through" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GRLabelStyleDescription" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" upperBound="-1"
@@ -236,6 +309,11 @@
   <eClassifiers xsi:type="ecore:EEnum" name="LabelPosition">
     <eLiterals name="border"/>
     <eLiterals name="node" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LabelAligment">
+    <eLiterals name="CENTER"/>
+    <eLiterals name="LEFT" value="1"/>
+    <eLiterals name="RIGHT" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Representation" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="RepresentationDD" eSuperTypes="#//Representation">
@@ -264,6 +342,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eAttribute" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyle" eType="#//Shape"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelOcl" eType="#//LabelOCL"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ChildrenPresentation">
@@ -297,5 +377,52 @@
   <eClassifiers xsi:type="ecore:EEnum" name="CompartmentView">
     <eLiterals name="None" literal="None"/>
     <eLiterals name="LinkedList" value="1" literal="Linked List"/>
+    <eLiterals name="ConditionalRepresentation" value="2"/>
+    <eLiterals name="LoopRepresentation" value="3"/>
+    <eLiterals name="TreeRepresentation" value="4"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WEAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eAttribute" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LabelBorderedStyle">
+    <eLiterals name="NotDefined"/>
+    <eLiterals name="LabelBorderForContainer" value="1"/>
+    <eLiterals name="LabelBorderStyleWithBeveledCorner" value="2"/>
+    <eLiterals name="NoLabelBorderForList" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalEdgeStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conditionalOCL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalEdge" eType="#//Edge_Style"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalLabel" eType="#//GeneralLabel"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="decoratorSource" lowerBound="1"
+        eType="#//EdgeDecorator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="decoratorTarget" lowerBound="1"
+        eType="#//EdgeDecorator" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EdgeDecorator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decoratorName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="NoDecoration"/>
+  </eClassifiers>
+  <eSubpackages name="rest" nsURI="http://mondo.org/graphic_representation/rest/1.0.3"
+      nsPrefix="rest">
+    <eClassifiers xsi:type="ecore:EClass" name="Search">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+          eType="#//rest/Parameter" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidateImages" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="platformPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="folderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="acceptedValues" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

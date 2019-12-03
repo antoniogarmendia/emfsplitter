@@ -4,17 +4,23 @@ import graphic_representation.AffixedCompartmentElement;
 import graphic_representation.AffixedElement;
 import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
+import graphic_representation.CompartmentView;
 import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.Edge_Direction;
+import graphic_representation.GeneralLabel;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Link;
+import graphic_representation.LinkedListRepresentation;
 import graphic_representation.Node;
 import graphic_representation.Node_Element;
 import graphic_representation.PaletteDescriptionLink;
+import graphic_representation.RepresentationStyle;
+import graphic_representation.Shape;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 import java.util.ArrayList;
@@ -26,6 +32,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gef.ui.parts.TreeViewer;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
@@ -33,6 +40,7 @@ import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.DialogCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -54,10 +62,11 @@ public class ESActivate extends EditingSupport{
 	@Override
 	protected CellEditor getCellEditor(Object element) {
 		
-		if(element instanceof LabelEAttribute)//LabelEAttr
+		
+		if(element instanceof WEAttribute)//LabelEAttr
 		{
-			EAttribute attr = ((LabelEAttribute)element).getAnEAttribute();
-			EClass class_attr = attr.getEContainingClass();
+			WEAttribute wattr = (WEAttribute) element;
+			EClass class_attr = wattr.getEAttribute().getEContainingClass();
 			AddEAllAttributes(class_attr);
 			return cmb_editor;
 		}
@@ -122,7 +131,7 @@ public class ESActivate extends EditingSupport{
 	protected boolean canEdit(Object element) {
 		
 		if(element instanceof LabelEAttribute || element instanceof Link || element instanceof AffixedCompartmentElement
-				|| element instanceof EdgeLabelEAttribute || element instanceof VirtualCompartment)
+				|| element instanceof EdgeLabelEAttribute || element instanceof VirtualCompartment || element instanceof WEAttribute)
 			return true;
 		return false;
 	}
@@ -130,9 +139,10 @@ public class ESActivate extends EditingSupport{
 	@Override
 	protected Object getValue(Object element) {
 		
-		if (element instanceof LabelEAttribute) {
-			EAttribute attr = ((LabelEAttribute) element).getAnEAttribute();
-			return FindEAttribute(attr);
+		
+		if (element instanceof WEAttribute) {
+			WEAttribute attr = ((WEAttribute) element);
+			return FindEAttribute(attr.getEAttribute());
 		}
 		
 		if (element instanceof EdgeLabelEAttribute)
@@ -155,8 +165,8 @@ public class ESActivate extends EditingSupport{
 	}
 
 	@Override
-	protected void setValue(Object element, Object value) {
-				
+	protected void setValue(Object element, Object value) {				
+
 		if (element instanceof CompartmentElement) {
 			
 			CompartmentElement compartElement = (CompartmentElement) element;
@@ -171,13 +181,34 @@ public class ESActivate extends EditingSupport{
 	 				EReference oldReference = compartElement.getAnEReference();
 	 				if (!newReference.equals(oldReference)) {
 		 				compartElement.setAnEReference(newReference);
-		 				createNonContainmentFeatures(compartElement);
+		 				if (compartElement.getCompartmentView() == CompartmentView.LINKED_LIST)
+		 					createNonContainmentFeatures(compartElement);
 	 				}
 				}
 			}
 			
 			System.out.println("CompartmentElement");
 		}	
+		
+		if (element instanceof AffixedElement) {
+			
+			AffixedElement affixedElement = (AffixedElement) element;
+			EObject parentEObjectElement = affixedElement.eContainer();
+			if (parentEObjectElement instanceof Node_Element) {
+				Node_Element nodeElement = (Node_Element) parentEObjectElement;
+				EObject parentNodeElement = nodeElement.eContainer();
+				if (parentNodeElement instanceof Node) {
+					Node parentNode = (Node) parentNodeElement;
+					EClass eClass = parentNode.getAnEClass();
+	 				EReference newReference = eClass.getEAllReferences().get((Integer) value);
+	 				EReference oldReference = affixedElement.getAnEReference();
+	 				if (!newReference.equals(oldReference)) {
+	 					affixedElement.setAnEReference(newReference);		 				
+	 				}
+				}				
+			}
+			System.out.println("AffixedElement");			
+		}		
 		
 		if (element instanceof VirtualCompartmentReference) {
 			
@@ -197,25 +228,26 @@ public class ESActivate extends EditingSupport{
 			System.out.println("VirtualCompartment");
 		}
 		
-		if(element instanceof LabelEAttribute)
+		
+		if(element instanceof WEAttribute)
 		{
-			LabelEAttribute attrLabel = (LabelEAttribute)element;
-			EClass class_attr = attrLabel.getAnEAttribute().getEContainingClass();
+			WEAttribute wattribute = (WEAttribute) element;
+			EClass class_attr = wattribute.getEAttribute().getEContainingClass();
 			EAttribute newattr = class_attr.getEAllAttributes().get(((Integer)value));
-			if(!newattr.equals(attrLabel.getAnEAttribute())){
-				EObject nodElementEObject = attrLabel.eContainer();
-				if(nodElementEObject instanceof Node_Element)
-				{
-					Node_Element nodElement = (Node_Element)nodElementEObject;
-					int index = this.MissingEAttribute(class_attr.getEAllAttributes(), nodElement.getLabelanEAttribute());
+			if(!newattr.equals(wattribute.getEAttribute())) {
+				EObject labelEObject = wattribute.eContainer();
+				if (labelEObject instanceof LabelEAttribute) {
+					LabelEAttribute label = (LabelEAttribute) labelEObject;
+					int index = this.MissingEAttribute(class_attr.getEAllAttributes(), label.getLabelAttributes());
 					if(index!=-1)
-						attrLabel.setAnEAttribute(newattr);						
+						wattribute.setEAttribute(newattr);						
 					else
 						MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 								"Information about addition",
 								"The attribute is already selected  as a label");
-				}			
-			}
+				}
+				System.out.println("adsad");
+			}			
 		}
 		
 		if(element instanceof EdgeLabelEAttribute) {
@@ -383,21 +415,25 @@ public class ESActivate extends EditingSupport{
 		return -1;				
 	}	
 	
-	private int MissingEAttribute(EList<EAttribute> fulllist, EList<LabelEAttribute> listLabelEAttribute)
+	public int MissingEAttribute(EList<EAttribute> fulllist, EList<WEAttribute> listLabelEAttribute)
 	{
-		Iterator<EAttribute> it_fullist = fulllist.iterator();		
+		Iterator<EAttribute> it_fullist = fulllist.iterator();
 		while (it_fullist.hasNext()) {
-			EAttribute attr = (EAttribute) it_fullist.next();
-			Iterator<LabelEAttribute> it_listLabelEAttribute = listLabelEAttribute.iterator();
-			while (it_listLabelEAttribute.hasNext()) {
-				LabelEAttribute labelAttribute = (LabelEAttribute) it_listLabelEAttribute.next();
-				if(labelAttribute.getAnEAttribute().equals(attr))
+			EAttribute attr = it_fullist.next();
+			Iterator<WEAttribute> itWAttributtes = listLabelEAttribute.iterator();
+			boolean find = false;
+			while (itWAttributtes.hasNext()) {
+				WEAttribute weAttribute = (WEAttribute) itWAttributtes.next();
+				if (weAttribute.getEAttribute().equals(attr)) {
+					find = true;
 					break;
-				if(it_listLabelEAttribute.hasNext() == false)
-					return fulllist.indexOf(attr);
+				}
 			}
+			if (find == false)
+				return fulllist.indexOf(attr);
 		}
-		return -1;	
+		
+		return -1;		
 	}
 	
 	private DialogCellEditor getCellVirtualCompartmentOcl(Object element) {
@@ -423,17 +459,26 @@ public class ESActivate extends EditingSupport{
 	
 	public static void createNonContainmentFeatures(CompartmentElement compart) {
 		
+		RepresentationStyle repre = compart.getRepresentationStyle();
+		LinkedListRepresentation linkedListRepre = null;
+		if (repre instanceof LinkedListRepresentation) {
+			return;			
+		} else {
+			linkedListRepre = Graphic_representationFactoryImpl.eINSTANCE.createLinkedListRepresentation();
+			compart.setRepresentationStyle(linkedListRepre);
+		}
+				
 		//Nodes
-		compart.setInit(Graphic_representationFactory.eINSTANCE.createEllipse());
-		compart.setNodeShape(Graphic_representationFactory.eINSTANCE.createEllipse());
-		compart.setEnd(Graphic_representationFactory.eINSTANCE.createEllipse());
+		linkedListRepre.setInit(Graphic_representationFactory.eINSTANCE.createEllipse());
+		linkedListRepre.setNodeShape(Graphic_representationFactory.eINSTANCE.createEllipse());
+		linkedListRepre.setEnd(Graphic_representationFactory.eINSTANCE.createEllipse());
 		//Edges
 		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
 		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
 		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
 		
-		compart.setInitToFirst(compartEdge);
-		compart.setNodeToNode(EcoreUtil.copy(compartEdge));
-		compart.setNodeToEnd(EcoreUtil.copy(compartEdge));
+		linkedListRepre.setInitToFirst(compartEdge);
+		linkedListRepre.setNodeToNode(EcoreUtil.copy(compartEdge));
+		linkedListRepre.setNodeToEnd(EcoreUtil.copy(compartEdge));
 	}	
 }

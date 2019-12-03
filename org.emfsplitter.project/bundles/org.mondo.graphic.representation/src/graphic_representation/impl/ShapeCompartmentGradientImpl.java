@@ -5,6 +5,7 @@ package graphic_representation.impl;
 import graphic_representation.Border;
 import graphic_representation.Color;
 import graphic_representation.Graphic_representationPackage;
+import graphic_representation.LabelBorderedStyle;
 import graphic_representation.ShapeColor;
 import graphic_representation.ShapeCompartmentGradient;
 import org.eclipse.emf.common.notify.Notification;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.viewpoint.description.SystemColor;
  *   <li>{@link graphic_representation.impl.ShapeCompartmentGradientImpl#getCornerHeight <em>Corner Height</em>}</li>
  *   <li>{@link graphic_representation.impl.ShapeCompartmentGradientImpl#getCornerWidth <em>Corner Width</em>}</li>
  *   <li>{@link graphic_representation.impl.ShapeCompartmentGradientImpl#getForeGroundColor <em>Fore Ground Color</em>}</li>
+ *   <li>{@link graphic_representation.impl.ShapeCompartmentGradientImpl#getLabelStyle <em>Label Style</em>}</li>
  * </ul>
  *
  * @generated
@@ -188,6 +190,26 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 	 * @ordered
 	 */
 	protected Color foreGroundColor;
+
+	/**
+	 * The default value of the '{@link #getLabelStyle() <em>Label Style</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabelStyle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LabelBorderedStyle LABEL_STYLE_EDEFAULT = LabelBorderedStyle.NOT_DEFINED;
+
+	/**
+	 * The cached value of the '{@link #getLabelStyle() <em>Label Style</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabelStyle()
+	 * @generated
+	 * @ordered
+	 */
+	protected LabelBorderedStyle labelStyle = LABEL_STYLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -468,6 +490,27 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LabelBorderedStyle getLabelStyle() {
+		return labelStyle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLabelStyle(LabelBorderedStyle newLabelStyle) {
+		LabelBorderedStyle oldLabelStyle = labelStyle;
+		labelStyle = newLabelStyle == null ? LABEL_STYLE_EDEFAULT : newLabelStyle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE, oldLabelStyle, labelStyle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -518,6 +561,8 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 				return getCornerWidth();
 			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR:
 				return getForeGroundColor();
+			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE:
+				return getLabelStyle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -556,6 +601,9 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 				return;
 			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR:
 				setForeGroundColor((Color)newValue);
+				return;
+			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE:
+				setLabelStyle((LabelBorderedStyle)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -596,6 +644,9 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR:
 				setForeGroundColor((Color)null);
 				return;
+			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE:
+				setLabelStyle(LABEL_STYLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -626,6 +677,8 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 				return CORNER_WIDTH_EDEFAULT == null ? cornerWidth != null : !CORNER_WIDTH_EDEFAULT.equals(cornerWidth);
 			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR:
 				return foreGroundColor != null;
+			case Graphic_representationPackage.SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE:
+				return labelStyle != LABEL_STYLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -700,6 +753,8 @@ public class ShapeCompartmentGradientImpl extends ShapeImpl implements ShapeComp
 		result.append(cornerHeight);
 		result.append(", cornerWidth: ");
 		result.append(cornerWidth);
+		result.append(", labelStyle: ");
+		result.append(labelStyle);
 		result.append(')');
 		return result.toString();
 	}

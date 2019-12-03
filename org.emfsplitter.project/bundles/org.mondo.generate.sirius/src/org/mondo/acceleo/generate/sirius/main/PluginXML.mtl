@@ -1,9 +1,9 @@
 [comment encoding = UTF-8 /]
-[module PluginXML('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/graphic_representation/1.0.3')]
+[module PluginXML('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/graphic_representation/1.0.3', 'http://mondo.org/runtimePatterns')]
 [import org::mondo::generate::modular::project::main::requests::global_queriesModularProject /]
 
 
-[template public PluginXML(anProject : String, anRepresentation : GraphicRepresentation)]
+[template public PluginXML(anProject : String, anRepresentation : GraphicRepresentation, modularInstance : PatternInstance)]
 [file ('plugin.xml',false, 'UTF-8')]
 <plugin>
    <extension
@@ -49,7 +49,21 @@
                id="[anProject/].[getProperty('prefix_name')/]"
 	       name="project">
     </component>
-  </extension>	  
+  </extension>	 
+  <!-- External Actions-->
+  <extension
+         point="org.eclipse.sirius.externalJavaAction">
+	  <!-- To Show the real object which is referenced-->
+      <javaActions
+            actionClass="org.eclipse.emf.henshin.model.sirius.external.actions.ShowRealObject"
+            id="[modularInstance.Get_ProjectClass().name/].odesign.ShowRealObjectAction">
+      </javaActions>
+	  <!-- Delete just the reference (not a real object)-->
+	  <javaActions
+            actionClass="org.eclipse.emf.henshin.model.sirius.external.actions.DeleteEObjectInstanceAction"
+            id="[modularInstance.Get_ProjectClass().name/].odesign.DeleteEObjectInstanceAction">
+      </javaActions> 
+   </extension>	 		 
 </plugin>
 [/file]
 [/template]

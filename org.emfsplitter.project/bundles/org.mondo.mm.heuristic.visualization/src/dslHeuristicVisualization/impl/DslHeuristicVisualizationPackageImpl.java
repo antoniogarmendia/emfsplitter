@@ -22,27 +22,36 @@ import dslHeuristicVisualization.DefaultArcParameter;
 import dslHeuristicVisualization.DslHeuristicVisualizationFactory;
 import dslHeuristicVisualization.DslHeuristicVisualizationPackage;
 import dslHeuristicVisualization.EcoreMatrixContainment;
+import dslHeuristicVisualization.GraphicalCompartmentStyle;
+import dslHeuristicVisualization.GraphicalEdgeStyle;
+import dslHeuristicVisualization.GraphicalIconsContainment;
+import dslHeuristicVisualization.GraphicalShapesEdgeStyle;
 import dslHeuristicVisualization.HeuristicStrategy;
 import dslHeuristicVisualization.HeuristicStrategySettings;
 import dslHeuristicVisualization.LabelParameter;
 import dslHeuristicVisualization.RepreHeurSS;
 import dslHeuristicVisualization.StrategyArcDirection;
 import dslHeuristicVisualization.StrategyArcSelection;
+import dslHeuristicVisualization.StrategyGraphicalStyle;
 import dslHeuristicVisualization.StrategyLabel;
 import dslHeuristicVisualization.StrategyLinkCompartment;
 import dslHeuristicVisualization.StrategyNodeSelection;
 import dslHeuristicVisualization.StrategyPalette;
 import dslHeuristicVisualization.StrategyPossibleElements;
 import dslHeuristicVisualization.StrategyRootSelection;
+import dslHeuristicVisualization.extension.icon.ICustomiseIcon;
+import dslHeuristicVisualization.extension.shape.ICustomiseShape;
 import graphic_representation.Graphic_representationPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import splitterLibrary.SplitterLibraryPackage;
 
 /**
@@ -263,6 +272,55 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 	private EClass repreHeurSSEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass strategyGraphicalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass graphicalShapesEdgeStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass graphicalIconsContainmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass graphicalEdgeStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass graphicalCompartmentStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dtCustomiseShapeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dtCustomiseIconEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -309,8 +367,10 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		Graphic_representationPackage.eINSTANCE.eClass();
 		SplitterLibraryPackage.eINSTANCE.eClass();
+		ViewpointPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDslHeuristicVisualizationPackage.createPackageContents();
@@ -388,6 +448,24 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 	 */
 	public EReference getHeuristicStrategy_ListRepresentation() {
 		return (EReference)heuristicStrategyEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHeuristicStrategy_FolderPath() {
+		return (EAttribute)heuristicStrategyEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHeuristicStrategy_PlatformPath() {
+		return (EAttribute)heuristicStrategyEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -998,6 +1076,24 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getHeuristicStrategySettings_StrategyGraphicalShape() {
+		return (EAttribute)heuristicStrategySettingsEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHeuristicStrategySettings_StrategyGraphicalIcon() {
+		return (EAttribute)heuristicStrategySettingsEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStrategyLinkCompartment() {
 		return strategyLinkCompartmentEClass;
 	}
@@ -1088,6 +1184,321 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStrategyGraphicalStyle() {
+		return strategyGraphicalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getStrategyGraphicalStyle__GetNodeShape__Node_String_String() {
+		return strategyGraphicalStyleEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGraphicalShapesEdgeStyle() {
+		return graphicalShapesEdgeStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGraphicalShapesEdgeStyle_SequenceNodeShapes() {
+		return (EReference)graphicalShapesEdgeStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalShapesEdgeStyle_IndexNodeShape() {
+		return (EAttribute)graphicalShapesEdgeStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalShapesEdgeStyle_SequenceLine() {
+		return (EAttribute)graphicalShapesEdgeStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalShapesEdgeStyle_SequenceColor() {
+		return (EAttribute)graphicalShapesEdgeStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalShapesEdgeStyle_IndexColor() {
+		return (EAttribute)graphicalShapesEdgeStyleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalShapesEdgeStyle_IndexLine() {
+		return (EAttribute)graphicalShapesEdgeStyleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalShapesEdgeStyle__GetCompartmentColor() {
+		return graphicalShapesEdgeStyleEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalShapesEdgeStyle__GetCompartmentLine() {
+		return graphicalShapesEdgeStyleEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGraphicalIconsContainment() {
+		return graphicalIconsContainmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalIconsContainment__GetSearchString__String() {
+		return graphicalIconsContainmentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGraphicalEdgeStyle() {
+		return graphicalEdgeStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalEdgeStyle_SequenceColor() {
+		return (EAttribute)graphicalEdgeStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalEdgeStyle_IndexColor() {
+		return (EAttribute)graphicalEdgeStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalEdgeStyle_SequenceLine() {
+		return (EAttribute)graphicalEdgeStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalEdgeStyle_IndexLine() {
+		return (EAttribute)graphicalEdgeStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalEdgeStyle__GetEdgeStyle() {
+		return graphicalEdgeStyleEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalEdgeStyle__GetTargetDecorator() {
+		return graphicalEdgeStyleEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalEdgeStyle__GetSourceDecorator() {
+		return graphicalEdgeStyleEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalEdgeStyle__GetEdgeColor() {
+		return graphicalEdgeStyleEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalEdgeStyle__GetEdgeLine() {
+		return graphicalEdgeStyleEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGraphicalCompartmentStyle() {
+		return graphicalCompartmentStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGraphicalCompartmentStyle_SequenceShapes() {
+		return (EReference)graphicalCompartmentStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalCompartmentStyle_SequenceLine() {
+		return (EAttribute)graphicalCompartmentStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalCompartmentStyle_IndexShape() {
+		return (EAttribute)graphicalCompartmentStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalCompartmentStyle_IndexColor() {
+		return (EAttribute)graphicalCompartmentStyleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalCompartmentStyle_IndexLine() {
+		return (EAttribute)graphicalCompartmentStyleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGraphicalCompartmentStyle_SequenceColor() {
+		return (EAttribute)graphicalCompartmentStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalCompartmentStyle__GetCompartmentShape() {
+		return graphicalCompartmentStyleEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalCompartmentStyle__GetCompartmentColor() {
+		return graphicalCompartmentStyleEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getGraphicalCompartmentStyle__GetCompartmentLine() {
+		return graphicalCompartmentStyleEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDTCustomiseShape() {
+		return dtCustomiseShapeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDTCustomiseIcon() {
+		return dtCustomiseIconEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DslHeuristicVisualizationFactory getDslHeuristicVisualizationFactory() {
 		return (DslHeuristicVisualizationFactory)getEFactoryInstance();
 	}
@@ -1118,6 +1529,8 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 		createEAttribute(heuristicStrategyEClass, HEURISTIC_STRATEGY__CURRENT_REPRESENTATION);
 		createEAttribute(heuristicStrategyEClass, HEURISTIC_STRATEGY__CURRENT_MMGR);
 		createEReference(heuristicStrategyEClass, HEURISTIC_STRATEGY__LIST_REPRESENTATION);
+		createEAttribute(heuristicStrategyEClass, HEURISTIC_STRATEGY__FOLDER_PATH);
+		createEAttribute(heuristicStrategyEClass, HEURISTIC_STRATEGY__PLATFORM_PATH);
 		createEOperation(heuristicStrategyEClass, HEURISTIC_STRATEGY___EXECUTE_HEURISTICS);
 		createEOperation(heuristicStrategyEClass, HEURISTIC_STRATEGY___EXECUTE_ROOT_ELEMENT);
 		createEOperation(heuristicStrategyEClass, HEURISTIC_STRATEGY___EXECUTE_GRAPHICAL_ELEMENTS);
@@ -1209,6 +1622,8 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 		createEReference(heuristicStrategySettingsEClass, HEURISTIC_STRATEGY_SETTINGS__STRATEGY_NODE_SELECTION);
 		createEReference(heuristicStrategySettingsEClass, HEURISTIC_STRATEGY_SETTINGS__STRATEGY_POSSIBLE_ELEMENTS);
 		createEReference(heuristicStrategySettingsEClass, HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT);
+		createEAttribute(heuristicStrategySettingsEClass, HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE);
+		createEAttribute(heuristicStrategySettingsEClass, HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON);
 
 		strategyLinkCompartmentEClass = createEClass(STRATEGY_LINK_COMPARTMENT);
 		createEReference(strategyLinkCompartmentEClass, STRATEGY_LINK_COMPARTMENT__LIST_LINKS);
@@ -1224,6 +1639,48 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 
 		repreHeurSSEClass = createEClass(REPRE_HEUR_SS);
 		createEReference(repreHeurSSEClass, REPRE_HEUR_SS__HEURISTIC_STRATEGY_SETTINGS);
+
+		strategyGraphicalStyleEClass = createEClass(STRATEGY_GRAPHICAL_STYLE);
+		createEOperation(strategyGraphicalStyleEClass, STRATEGY_GRAPHICAL_STYLE___GET_NODE_SHAPE__NODE_STRING_STRING);
+
+		graphicalShapesEdgeStyleEClass = createEClass(GRAPHICAL_SHAPES_EDGE_STYLE);
+		createEReference(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_NODE_SHAPES);
+		createEAttribute(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_NODE_SHAPE);
+		createEAttribute(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_LINE);
+		createEAttribute(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_COLOR);
+		createEAttribute(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_COLOR);
+		createEAttribute(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_LINE);
+		createEOperation(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE___GET_COMPARTMENT_COLOR);
+		createEOperation(graphicalShapesEdgeStyleEClass, GRAPHICAL_SHAPES_EDGE_STYLE___GET_COMPARTMENT_LINE);
+
+		graphicalIconsContainmentEClass = createEClass(GRAPHICAL_ICONS_CONTAINMENT);
+		createEOperation(graphicalIconsContainmentEClass, GRAPHICAL_ICONS_CONTAINMENT___GET_SEARCH_STRING__STRING);
+
+		graphicalEdgeStyleEClass = createEClass(GRAPHICAL_EDGE_STYLE);
+		createEAttribute(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE__SEQUENCE_COLOR);
+		createEAttribute(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE__INDEX_COLOR);
+		createEAttribute(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE__SEQUENCE_LINE);
+		createEAttribute(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE__INDEX_LINE);
+		createEOperation(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE___GET_EDGE_STYLE);
+		createEOperation(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE___GET_TARGET_DECORATOR);
+		createEOperation(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE___GET_SOURCE_DECORATOR);
+		createEOperation(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE___GET_EDGE_COLOR);
+		createEOperation(graphicalEdgeStyleEClass, GRAPHICAL_EDGE_STYLE___GET_EDGE_LINE);
+
+		graphicalCompartmentStyleEClass = createEClass(GRAPHICAL_COMPARTMENT_STYLE);
+		createEReference(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_SHAPES);
+		createEAttribute(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_LINE);
+		createEAttribute(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_COLOR);
+		createEAttribute(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE__INDEX_SHAPE);
+		createEAttribute(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE__INDEX_COLOR);
+		createEAttribute(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE__INDEX_LINE);
+		createEOperation(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_SHAPE);
+		createEOperation(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_COLOR);
+		createEOperation(graphicalCompartmentStyleEClass, GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_LINE);
+
+		// Create data types
+		dtCustomiseShapeEDataType = createEDataType(DT_CUSTOMISE_SHAPE);
+		dtCustomiseIconEDataType = createEDataType(DT_CUSTOMISE_ICON);
 	}
 
 	/**
@@ -1274,6 +1731,8 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 		concreteContainmentasAffixedEClass.getESuperTypes().add(this.getStrategyLinkCompartment());
 		concreteContainmentasLinksEClass.getESuperTypes().add(this.getStrategyLinkCompartment());
 		concreteContainmentasCompartmentsEClass.getESuperTypes().add(this.getStrategyLinkCompartment());
+		graphicalShapesEdgeStyleEClass.getESuperTypes().add(this.getStrategyGraphicalStyle());
+		graphicalIconsContainmentEClass.getESuperTypes().add(this.getStrategyGraphicalStyle());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(heuristicStrategyEClass, HeuristicStrategy.class, "HeuristicStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1283,6 +1742,8 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 		initEAttribute(getHeuristicStrategy_CurrentRepresentation(), ecorePackage.getEIntegerObject(), "currentRepresentation", null, 0, 1, HeuristicStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHeuristicStrategy_CurrentMMGR(), theEcorePackage.getEIntegerObject(), "currentMMGR", null, 0, 1, HeuristicStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHeuristicStrategy_ListRepresentation(), this.getRepreHeurSS(), null, "listRepresentation", null, 0, -1, HeuristicStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeuristicStrategy_FolderPath(), ecorePackage.getEString(), "folderPath", null, 0, 1, HeuristicStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeuristicStrategy_PlatformPath(), ecorePackage.getEString(), "platformPath", null, 0, 1, HeuristicStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHeuristicStrategy__ExecuteHeuristics(), null, "ExecuteHeuristics", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1445,6 +1906,8 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 		initEReference(getHeuristicStrategySettings_Strategy_node_selection(), this.getStrategyNodeSelection(), null, "strategy_node_selection", null, 0, 1, HeuristicStrategySettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHeuristicStrategySettings_Strategy_possibleElements(), this.getStrategyPossibleElements(), null, "strategy_possibleElements", null, 0, 1, HeuristicStrategySettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHeuristicStrategySettings_Strategy_linkcompartment(), this.getStrategyLinkCompartment(), null, "strategy_linkcompartment", null, 0, 1, HeuristicStrategySettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeuristicStrategySettings_StrategyGraphicalShape(), this.getDTCustomiseShape(), "strategyGraphicalShape", null, 0, 1, HeuristicStrategySettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeuristicStrategySettings_StrategyGraphicalIcon(), this.getDTCustomiseIcon(), "strategyGraphicalIcon", null, 0, 1, HeuristicStrategySettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(strategyLinkCompartmentEClass, StrategyLinkCompartment.class, "StrategyLinkCompartment", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStrategyLinkCompartment_ListLinks(), ecorePackage.getEReference(), null, "listLinks", null, 0, -1, StrategyLinkCompartment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1462,6 +1925,64 @@ public class DslHeuristicVisualizationPackageImpl extends EPackageImpl implement
 
 		initEClass(repreHeurSSEClass, RepreHeurSS.class, "RepreHeurSS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepreHeurSS_HeuristicStrategySettings(), this.getHeuristicStrategySettings(), null, "heuristicStrategySettings", null, 0, -1, RepreHeurSS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(strategyGraphicalStyleEClass, StrategyGraphicalStyle.class, "StrategyGraphicalStyle", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = initEOperation(getStrategyGraphicalStyle__GetNodeShape__Node_String_String(), theGraphic_representationPackage.getShape(), "getNodeShape", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theGraphic_representationPackage.getNode(), "node", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "folderPath", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "platformPath", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(graphicalShapesEdgeStyleEClass, GraphicalShapesEdgeStyle.class, "GraphicalShapesEdgeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGraphicalShapesEdgeStyle_SequenceNodeShapes(), theGraphic_representationPackage.getShape(), null, "sequenceNodeShapes", null, 0, -1, GraphicalShapesEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalShapesEdgeStyle_IndexNodeShape(), ecorePackage.getEInt(), "indexNodeShape", null, 0, 1, GraphicalShapesEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalShapesEdgeStyle_SequenceLine(), ecorePackage.getEInt(), "sequenceLine", null, 0, -1, GraphicalShapesEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalShapesEdgeStyle_SequenceColor(), ecorePackage.getEInt(), "sequenceColor", null, 0, -1, GraphicalShapesEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalShapesEdgeStyle_IndexColor(), ecorePackage.getEInt(), "indexColor", null, 0, 1, GraphicalShapesEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalShapesEdgeStyle_IndexLine(), ecorePackage.getEInt(), "indexLine", null, 0, 1, GraphicalShapesEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getGraphicalShapesEdgeStyle__GetCompartmentColor(), theGraphic_representationPackage.getSiriusSystemColors(), "getCompartmentColor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalShapesEdgeStyle__GetCompartmentLine(), ecorePackage.getEString(), "getCompartmentLine", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(graphicalIconsContainmentEClass, GraphicalIconsContainment.class, "GraphicalIconsContainment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = initEOperation(getGraphicalIconsContainment__GetSearchString__String(), ecorePackage.getEString(), "getSearchString", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(graphicalEdgeStyleEClass, GraphicalEdgeStyle.class, "GraphicalEdgeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGraphicalEdgeStyle_SequenceColor(), ecorePackage.getEInt(), "sequenceColor", null, 0, -1, GraphicalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalEdgeStyle_IndexColor(), ecorePackage.getEInt(), "indexColor", null, 0, 1, GraphicalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalEdgeStyle_SequenceLine(), ecorePackage.getEInt(), "sequenceLine", null, 0, -1, GraphicalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalEdgeStyle_IndexLine(), ecorePackage.getEInt(), "indexLine", null, 0, 1, GraphicalEdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getGraphicalEdgeStyle__GetEdgeStyle(), theGraphic_representationPackage.getEdge_Style(), "getEdgeStyle", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalEdgeStyle__GetTargetDecorator(), ecorePackage.getEString(), "getTargetDecorator", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalEdgeStyle__GetSourceDecorator(), ecorePackage.getEString(), "getSourceDecorator", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalEdgeStyle__GetEdgeColor(), theGraphic_representationPackage.getSiriusSystemColors(), "getEdgeColor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalEdgeStyle__GetEdgeLine(), ecorePackage.getEString(), "getEdgeLine", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(graphicalCompartmentStyleEClass, GraphicalCompartmentStyle.class, "GraphicalCompartmentStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGraphicalCompartmentStyle_SequenceShapes(), theGraphic_representationPackage.getShape(), null, "sequenceShapes", null, 0, -1, GraphicalCompartmentStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalCompartmentStyle_SequenceLine(), ecorePackage.getEInt(), "sequenceLine", null, 0, -1, GraphicalCompartmentStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalCompartmentStyle_SequenceColor(), ecorePackage.getEInt(), "sequenceColor", null, 0, -1, GraphicalCompartmentStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalCompartmentStyle_IndexShape(), ecorePackage.getEInt(), "indexShape", null, 0, 1, GraphicalCompartmentStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalCompartmentStyle_IndexColor(), ecorePackage.getEInt(), "indexColor", null, 0, 1, GraphicalCompartmentStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGraphicalCompartmentStyle_IndexLine(), ecorePackage.getEInt(), "indexLine", null, 0, 1, GraphicalCompartmentStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getGraphicalCompartmentStyle__GetCompartmentShape(), theGraphic_representationPackage.getShape(), "getCompartmentShape", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalCompartmentStyle__GetCompartmentColor(), theGraphic_representationPackage.getSiriusSystemColors(), "getCompartmentColor", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getGraphicalCompartmentStyle__GetCompartmentLine(), ecorePackage.getEString(), "getCompartmentLine", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(dtCustomiseShapeEDataType, ICustomiseShape.class, "DTCustomiseShape", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(dtCustomiseIconEDataType, ICustomiseIcon.class, "DTCustomiseIcon", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

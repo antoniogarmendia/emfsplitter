@@ -12,8 +12,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eReference" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ScopeDefinitionEnum">
-    <eLiterals name="SAME_WORKSPACE" value="3" literal="SAME_WORKSPACE"/>
-    <eLiterals name="SAME_PROJECT" value="2" literal="SAME_PROJECT"/>
+    <eLiterals name="SAME_WORKSPACE" value="4" literal="SAME_WORKSPACE"/>
+    <eLiterals name="SAME_PROJECT" value="3" literal="SAME_PROJECT"/>
+    <eLiterals name="SAME_ROOT_PACKAGE" value="2" literal="SAME_ROOT_PACKAGE"/>
     <eLiterals name="SAME_PACKAGE" value="1"/>
     <eLiterals name="SAME_UNIT"/>
   </eClassifiers>

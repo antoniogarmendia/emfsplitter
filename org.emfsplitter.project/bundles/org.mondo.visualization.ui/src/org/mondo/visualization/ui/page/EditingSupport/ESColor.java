@@ -3,23 +3,27 @@ package org.mondo.visualization.ui.page.EditingSupport;
 import graphic_representation.Color;
 import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
+import graphic_representation.ConditionalEdgeStyle;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Edge;
 import graphic_representation.Edge_Style;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.Node;
 import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.Root;
 import graphic_representation.Shape;
 import graphic_representation.ShapeColor;
 import graphic_representation.SiriusSystemColors;
+import graphic_representation.WEAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
@@ -60,7 +64,7 @@ public class ESColor extends EditingSupport{
 				return false;
 		if(element instanceof Object[])
 			return false;		
-		
+
 		return true;
 	}
 
@@ -117,6 +121,18 @@ public class ESColor extends EditingSupport{
 					return GetColorsName().indexOf(((SiriusSystemColors) color).getName());
 			}
 		}
+		if (element instanceof ConditionalEdgeStyle) {
+			
+			ConditionalEdgeStyle condEdge = (ConditionalEdgeStyle) element;
+			Edge_Style sh = condEdge.getConditionalEdge();
+			if(sh instanceof ShapeColor)
+			{
+				Color color = sh.getColor();
+				if(color instanceof SiriusSystemColors)
+					return GetColorsName().indexOf(((SiriusSystemColors) color).getName());
+			}			
+		}
+		
 		
 		if (element instanceof CompartmentEdge) {
 			
@@ -139,6 +155,13 @@ public class ESColor extends EditingSupport{
 		if(element instanceof LabelEAttribute)
 		{
 			Color color = ((LabelEAttribute) element).getColor();
+			if(color instanceof SiriusSystemColors)
+				return GetColorsName().indexOf(((SiriusSystemColors) color).getName());
+		}	
+		
+		if (element instanceof LabelOCL) {
+			
+			Color color = ((LabelOCL) element).getColor();
 			if(color instanceof SiriusSystemColors)
 				return GetColorsName().indexOf(((SiriusSystemColors) color).getName());
 		}
@@ -214,6 +237,18 @@ public class ESColor extends EditingSupport{
 			
 		}
 		
+		if(element instanceof ConditionalEdgeStyle)
+		{
+			Edge_Style sh = ((ConditionalEdgeStyle) element).getConditionalEdge();
+			Color color = sh.getColor();
+
+			if(color instanceof SiriusSystemColors)
+			{
+				((SiriusSystemColors) color).setName(GetColorsName().get((Integer)value));
+			}
+			
+		}
+		
 		if(element instanceof PaletteDescriptionLink)
 		{
 			Color color = ((PaletteDescriptionLink) element).getColor();
@@ -226,6 +261,12 @@ public class ESColor extends EditingSupport{
 			Color color = ((LabelEAttribute) element).getColor();
 			if(color instanceof SiriusSystemColors)
 				((SiriusSystemColors) color).setName(GetColorsName().get((Integer)value));			
+		}	
+		
+		if (element instanceof LabelOCL) {			
+			Color color = ((LabelOCL) element).getColor();
+			if(color instanceof SiriusSystemColors)
+				((SiriusSystemColors) color).setName(GetColorsName().get((Integer)value));
 		}
 		
 		if(element instanceof Shape) {

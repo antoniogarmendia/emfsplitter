@@ -10,6 +10,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchPage;
@@ -17,7 +19,6 @@ import org.eclipse.ui.PlatformUI;
 import org.miso.wizard.instantiate.modular.pattern.pages.PageSelectClassProject;
 import org.miso.wizard.instantiate.modular.pattern.utils.GraphToModularityPattern;
 import org.miso.wizard.instantiate.modular.pattern.utils.PatternModularUtils;
-import org.mondo.editor.ui.utils.patterns.PatternUtils;
 
 import MetaModelGraph.Graph;
 import dslHeuristicVisualization.DslHeuristicVisualizationFactory;
@@ -30,6 +31,9 @@ import splitterLibrary.util.DSLtaoUtils;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 
 public class WizardApplyModularPattern extends DynamicWizard{
+	
+	static final String PATTERNS_FOLDER = "patterns";
+	static final String PATTERNS_FILE_NAME = "repository.dslpatterns";
 
 	protected ModularityPatternPage patternPage;
 	protected PageSelectClassProject pageProject;
@@ -123,7 +127,7 @@ public class WizardApplyModularPattern extends DynamicWizard{
 		Diagram currentDiagram = editor.getDiagramTypeProvider().getDiagram();
 		
 		// obtain Modular Pattern
-		PatternSet patternModel = PatternUtils.getPatternSetModelByDiagrama(currentDiagram);
+		PatternSet patternModel = this.getPatternSetModelByDiagrama(currentDiagram);
 		Pattern modularPattern = DSLtaoUtils.getModularPattern(patternModel);
 		//DSLtaoUtils.setPatternAbsoluteUri(this.eProject, modularPattern.eResource());
 		modularInstance = DSLtaoUtils.createPatternInstances();
@@ -149,6 +153,39 @@ public class WizardApplyModularPattern extends DynamicWizard{
 		return true;
 	}	
 
+	/**
+	 * Static method that returns the PatternSet object stored on the given project relative to the diagram
+	 * @param project
+	 * @return PatternSet, null if it's not possible
+	 */
+	
+	private PatternSet getPatternSetModelByDiagrama(Diagram diagram) {
+		URI diagramURI = diagram.eResource().getURI();
+		URI parentURI = diagramURI.trimSegments(1);
+		URI repositoryURI = parentURI.appendSegment(PATTERNS_FOLDER).appendSegment(PATTERNS_FILE_NAME);
+		ResourceSet resourceSet = new ResourceSetImpl();
+		try{
+			Resource resource = resourceSet.getResource(repositoryURI, true);		
+			if (resource != null){
+				PatternSet patternSet = (PatternSet) resource.getContents().get(0);	
+				//Set Relative
+				//setRelativeURI(patternSet.eResource());
+				return patternSet;
+			}
+		}catch (RuntimeException e){
+		}		
+		return null;
+	}
+	
+	/**
+	 * Static method that change the uri of the given Patterns resource to convert it into relative.
+	 * @param resource
+	 */
+	public static void setPatternsRelativeURI(Resource resource){
+		URI relativeURI = URI.createURI(PATTERNS_FOLDER+"/"+PATTERNS_FILE_NAME, false);
+		resource.setURI(relativeURI);
+	}
+
 	public WizardDialog getDialog() {
 		return dialog;
 	}
@@ -160,5 +197,7 @@ public class WizardApplyModularPattern extends DynamicWizard{
 	public PatternInstance getModularInstance() {
 		return this.modInstance;
 	}
+	
+	
 	
  }

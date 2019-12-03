@@ -25,9 +25,11 @@ import graphic_representation.CompartmentElement;
 import graphic_representation.Edge;
 import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.Edge_Direction;
+import graphic_representation.GeneralLabel;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.Layer;
 import graphic_representation.Link;
 import graphic_representation.Node;
@@ -42,6 +44,7 @@ import graphic_representation.ShapeCompartmentParallelogram;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 public class AddActionPageDiagramElements extends AActionPageDiagramElements{
@@ -95,8 +98,10 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 						MessageDialog.openInformation(getShell(),"Information about add edge name",
 								"The Class does not contain Attributes");
 					} else {
-						EdgeLabelEAttribute edgeLabel = Graphic_representationFactory.eINSTANCE.createEdgeLabelEAttribute();
-						edgeLabel.setLabelEAttribute(edge.getAnEClass().getEAllAttributes().get(0));
+						LabelEAttribute edgeLabel = Graphic_representationFactory.eINSTANCE.createLabelEAttribute();
+						WEAttribute wAttribute = Graphic_representationFactoryImpl.eINSTANCE.createWEAttribute();
+						wAttribute.setEAttribute(edge.getAnEClass().getEAllAttributes().get(0));
+						edgeLabel.getLabelAttributes().add(wAttribute);
 						edge.setEdgeLabel(edgeLabel);	
 						getTreeViewer().refresh(obj);
 					}					
@@ -117,7 +122,7 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 			public void run() {
 				Object obj = GetSelectedTreeViewerObject();
 				
-				Node_Element nodElement = null;
+				Shape shape = null;
 				EClass anEClass = null;
 				if(obj instanceof Node || obj instanceof Root)
 				{
@@ -125,38 +130,54 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 					{	
 						Node nod = (Node) obj;
 						anEClass = nod.getAnEClass();
-						nodElement = nod.getNode_elements();
+						shape = nod.getNode_shape();
 					}
 					else if(obj instanceof Root)
 					{
 						Root root = (Root)obj;
 						anEClass = root.getAnEClass();
-						nodElement = root.getRoot_node_elements();
+						shape = root.getRoot_shape();
 					}
 					
-					EList<EAttribute> listEAllAttributes = anEClass.getEAllAttributes();
-					int countEAllAttributes = listEAllAttributes.size();
-					int countLabelanEAttribute =  nodElement.getLabelanEAttribute().size();
-					if(countEAllAttributes==0)
-					{
-						MessageDialog.openInformation(getShell(),"Information about addition of links",
-								"There are no Attributes in the EClass");
-						return;
-					}
-					if(countEAllAttributes==countLabelanEAttribute)
-						MessageDialog.openInformation(getShell(),"Information about addition",
-								"All class attributes have already been selected as labels");
-					else if(countEAllAttributes>countLabelanEAttribute){
+					GeneralLabel generalLabel = shape.getLabelanEAttribute();
+					if (generalLabel instanceof LabelOCL) {
 						
-						int index = MissingEAttribute(listEAllAttributes,nodElement.getLabelanEAttribute());	
-						if(index!=-1){
-							LabelEAttribute labelEAttribute = Graphic_representationFactoryImpl.eINSTANCE.createLabelEAttribute();
-							labelEAttribute.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-							labelEAttribute.setAnEAttribute(listEAllAttributes.get(index));
-							nodElement.getLabelanEAttribute().add(labelEAttribute);
-							getTreeViewer().refresh(obj);
-						}						
-					}										
+						MessageDialog.openInformation(getShell(),"Information about addition of new Label",
+								"There is already defined a label using OCL");
+						return;
+					} else if (generalLabel instanceof LabelEAttribute || generalLabel == null) {
+						
+						LabelEAttribute label = (LabelEAttribute) generalLabel;
+						EList<EAttribute> listEAllAttributes = anEClass.getEAllAttributes();
+						int countEAllAttributes = listEAllAttributes.size();
+						int countLabelanEAttribute =  generalLabel==null?0:label.getLabelAttributes().size();
+						if(countEAllAttributes==0)
+						{
+							MessageDialog.openInformation(getShell(),"Information about addition of links",
+									"There are no Attributes in the EClass");
+							return;
+						}
+						if(countEAllAttributes==countLabelanEAttribute)
+							MessageDialog.openInformation(getShell(),"Information about addition",
+									"All class attributes have already been selected as labels");
+						else if(countEAllAttributes>countLabelanEAttribute){
+							int index = 0;
+							if (label != null)
+								index = MissingEAttribute(listEAllAttributes,label.getLabelAttributes());
+							else {
+								label = Graphic_representationFactoryImpl.eINSTANCE.createLabelEAttribute();
+								label.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+								shape.setLabelanEAttribute(label);
+							}
+								
+							if(index!=-1){
+								WEAttribute wAttribute = Graphic_representationFactoryImpl.eINSTANCE.createWEAttribute();
+								wAttribute.setEAttribute(listEAllAttributes.get(index));
+								label.getLabelAttributes().add(wAttribute);
+								getTreeViewer().refresh(obj);
+							}
+						}
+					}								
 				}				
 			}
 		};
@@ -283,8 +304,13 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 								Node node = (Node) obj;
 								Shape shape = node.getNode_shape();
 								boolean shapeIsCompartment = isShapeCompartment(shape);
-								if (shapeIsCompartment == false)
-									((Node) obj).setNode_shape(Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram());
+								if (shapeIsCompartment == false) {
+									//Change label
+									GeneralLabel generalLabel = ((Node) obj).getNode_shape().getLabelanEAttribute();
+									Shape shapeCompartment = Graphic_representationFactory.eINSTANCE.createShapeCompartmentParallelogram();							
+									((Node) obj).setNode_shape(shapeCompartment);
+									shapeCompartment.setLabelanEAttribute(generalLabel);
+								}
 								System.out.println("asda");
 							}
 							getTreeViewer().refresh(obj);
@@ -636,9 +662,11 @@ public class AddActionPageDiagramElements extends AActionPageDiagramElements{
 					if(attr!=null)
 					{
 						LabelEAttribute labelEAttribute = Graphic_representationFactoryImpl.eINSTANCE.createLabelEAttribute();
-						labelEAttribute.setAnEAttribute(attr);
+						WEAttribute wAttribute = Graphic_representationFactoryImpl.eINSTANCE.createWEAttribute();
+						wAttribute.setEAttribute(attr);
+						labelEAttribute.getLabelAttributes().add(wAttribute);
 						labelEAttribute.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						((RepresentationDD)input[0]).getRoot().getRoot_node_elements().getLabelanEAttribute().add(labelEAttribute);
+						((RepresentationDD)input[0]).getRoot().getRoot_shape().setLabelanEAttribute(labelEAttribute);						
 					}					
 					while (itLinks.hasNext()) {
 						EReference ref = itLinks.next();

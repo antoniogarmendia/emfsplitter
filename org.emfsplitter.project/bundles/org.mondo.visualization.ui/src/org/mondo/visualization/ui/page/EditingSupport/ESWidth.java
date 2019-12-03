@@ -8,6 +8,7 @@ import graphic_representation.Edge_Direction;
 import graphic_representation.Ellipse;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.Link;
 import graphic_representation.Node;
 import graphic_representation.Note;
@@ -65,6 +66,10 @@ public class ESWidth extends EditingSupport{
 				else
 			return true;
 		}
+		
+		if (element instanceof LabelOCL)
+			return false;		
+		
 		return true;
 	}
 

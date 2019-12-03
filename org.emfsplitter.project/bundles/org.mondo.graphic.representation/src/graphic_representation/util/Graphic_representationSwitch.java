@@ -266,6 +266,12 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Graphic_representationPackage.AFFIXED_COMPARTMENT_ELEMENT: {
+				AffixedCompartmentElement affixedCompartmentElement = (AffixedCompartmentElement)theEObject;
+				T result = caseAffixedCompartmentElement(affixedCompartmentElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case Graphic_representationPackage.AFFIXED_ELEMENT: {
 				AffixedElement affixedElement = (AffixedElement)theEObject;
 				T result = caseAffixedElement(affixedElement);
@@ -280,17 +286,63 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Graphic_representationPackage.AFFIXED_COMPARTMENT_ELEMENT: {
-				AffixedCompartmentElement affixedCompartmentElement = (AffixedCompartmentElement)theEObject;
-				T result = caseAffixedCompartmentElement(affixedCompartmentElement);
+			case Graphic_representationPackage.REPRESENTATION_STYLE: {
+				RepresentationStyle representationStyle = (RepresentationStyle)theEObject;
+				T result = caseRepresentationStyle(representationStyle);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.LOOP_REPRESENTATION: {
+				LoopRepresentation loopRepresentation = (LoopRepresentation)theEObject;
+				T result = caseLoopRepresentation(loopRepresentation);
+				if (result == null) result = caseRepresentationStyle(loopRepresentation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.LINKED_LIST_REPRESENTATION: {
+				LinkedListRepresentation linkedListRepresentation = (LinkedListRepresentation)theEObject;
+				T result = caseLinkedListRepresentation(linkedListRepresentation);
+				if (result == null) result = caseRepresentationStyle(linkedListRepresentation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.CONDITIONAL_REPRESENTATION: {
+				ConditionalRepresentation conditionalRepresentation = (ConditionalRepresentation)theEObject;
+				T result = caseConditionalRepresentation(conditionalRepresentation);
+				if (result == null) result = caseRepresentationStyle(conditionalRepresentation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.TREE_REPRESENTATION: {
+				TreeRepresentation treeRepresentation = (TreeRepresentation)theEObject;
+				T result = caseTreeRepresentation(treeRepresentation);
+				if (result == null) result = caseRepresentationStyle(treeRepresentation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.GENERAL_LABEL: {
+				GeneralLabel generalLabel = (GeneralLabel)theEObject;
+				T result = caseGeneralLabel(generalLabel);
+				if (result == null) result = caseShapeColor(generalLabel);
+				if (result == null) result = caseGRLabelStyleDescription(generalLabel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Graphic_representationPackage.LABEL_EATTRIBUTE: {
 				LabelEAttribute labelEAttribute = (LabelEAttribute)theEObject;
 				T result = caseLabelEAttribute(labelEAttribute);
+				if (result == null) result = caseGeneralLabel(labelEAttribute);
 				if (result == null) result = caseShapeColor(labelEAttribute);
 				if (result == null) result = caseGRLabelStyleDescription(labelEAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.LABEL_OCL: {
+				LabelOCL labelOCL = (LabelOCL)theEObject;
+				T result = caseLabelOCL(labelOCL);
+				if (result == null) result = caseGeneralLabel(labelOCL);
+				if (result == null) result = caseShapeColor(labelOCL);
+				if (result == null) result = caseGRLabelStyleDescription(labelOCL);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -421,6 +473,24 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 			case Graphic_representationPackage.COMPARTMENT_LINK: {
 				CompartmentLink compartmentLink = (CompartmentLink)theEObject;
 				T result = caseCompartmentLink(compartmentLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.WE_ATTRIBUTE: {
+				WEAttribute weAttribute = (WEAttribute)theEObject;
+				T result = caseWEAttribute(weAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.CONDITIONAL_EDGE_STYLE: {
+				ConditionalEdgeStyle conditionalEdgeStyle = (ConditionalEdgeStyle)theEObject;
+				T result = caseConditionalEdgeStyle(conditionalEdgeStyle);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Graphic_representationPackage.EDGE_DECORATOR: {
+				EdgeDecorator edgeDecorator = (EdgeDecorator)theEObject;
+				T result = caseEdgeDecorator(edgeDecorator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -879,6 +949,81 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Representation Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Representation Style</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRepresentationStyle(RepresentationStyle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Loop Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Loop Representation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLoopRepresentation(LoopRepresentation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Linked List Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Linked List Representation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinkedListRepresentation(LinkedListRepresentation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Representation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalRepresentation(ConditionalRepresentation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tree Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tree Representation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTreeRepresentation(TreeRepresentation object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Affixed Compartment Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -894,6 +1039,21 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>General Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>General Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralLabel(GeneralLabel object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Label EAttribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -905,6 +1065,21 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLabelEAttribute(LabelEAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Label OCL</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Label OCL</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLabelOCL(LabelOCL object) {
 		return null;
 	}
 
@@ -1205,6 +1380,51 @@ public class Graphic_representationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCompartmentLink(CompartmentLink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>WE Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>WE Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWEAttribute(WEAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Edge Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Edge Style</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalEdgeStyle(ConditionalEdgeStyle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Edge Decorator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Edge Decorator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEdgeDecorator(EdgeDecorator object) {
 		return null;
 	}
 

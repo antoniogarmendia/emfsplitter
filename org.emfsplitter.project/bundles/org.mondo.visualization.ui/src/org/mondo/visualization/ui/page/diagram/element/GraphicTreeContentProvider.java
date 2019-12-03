@@ -2,12 +2,15 @@ package org.mondo.visualization.ui.page.diagram.element;
 
 import graphic_representation.DiagramElement;
 import graphic_representation.Edge;
+import graphic_representation.GeneralLabel;
+import graphic_representation.LabelEAttribute;
 import graphic_representation.Layer;
 import graphic_representation.Node;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
@@ -60,7 +63,10 @@ public class GraphicTreeContentProvider implements ITreeContentProvider {
 		if(parentElement instanceof Root)
 		{
 			Root root = (Root) parentElement;
-			Object[] attributes = root.getRoot_node_elements().getLabelanEAttribute().toArray(new Object[]{});
+			GeneralLabel label = root.getRoot_shape().getLabelanEAttribute();
+			Object[] attributes = new Object[]{}; 
+			if (label instanceof LabelEAttribute)		
+				attributes = ((LabelEAttribute)label).getLabelAttributes().toArray(new Object[]{});
 			Object[] links = root.getRoot_node_elements().getLinkPalette().toArray(new Object[]{});
 			Object[] affixedCompartments = root.getRoot_node_elements().getAffixedCompartmentElements().toArray(new Object[]{});
 			Object[] allObjects = ArrayUtils.addAll(attributes,affixedCompartments);
@@ -69,7 +75,7 @@ public class GraphicTreeContentProvider implements ITreeContentProvider {
 		if(parentElement instanceof Node){
 			Node nod = (Node)parentElement;
 			
-			Object[] attributes = nod.getNode_elements().getLabelanEAttribute().toArray(new Object[]{});
+			Object[] attributes = getNodeLabel(nod);
 			Object[] links = nod.getNode_elements().getLinkPalette().toArray(new Object[]{});
 			Object[] affixedCompartments = nod.getNode_elements().getAffixedCompartmentElements().toArray(new Object[]{});
 			Object[] virtualCompartments = nod.getNode_elements().getVirtualCompartment().toArray(new Object[]{});
@@ -106,5 +112,15 @@ public class GraphicTreeContentProvider implements ITreeContentProvider {
 			return true;
 		
 		return false;
-	}	
+	}
+	
+	public Object[] getNodeLabel(Node nod) {
+		
+		GeneralLabel generalLabel = nod.getNode_shape().getLabelanEAttribute();
+		if (generalLabel instanceof LabelEAttribute)
+			return ((LabelEAttribute) generalLabel).getLabelAttributes().toArray(new Object[]{});
+		else 
+			return new Object[] {};		
+	}
+	
 }

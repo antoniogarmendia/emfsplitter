@@ -6,7 +6,6 @@ import graphic_representation.AffixedCompartmentElement;
 import graphic_representation.CompartmentElement;
 import graphic_representation.ExpandableItem;
 import graphic_representation.Graphic_representationPackage;
-import graphic_representation.LabelEAttribute;
 import graphic_representation.Node_Element;
 import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.VirtualCompartment;
@@ -30,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link graphic_representation.impl.Node_ElementImpl#getLabelanEAttribute <em>Labelan EAttribute</em>}</li>
  *   <li>{@link graphic_representation.impl.Node_ElementImpl#getLinkPalette <em>Link Palette</em>}</li>
  *   <li>{@link graphic_representation.impl.Node_ElementImpl#getAffixedCompartmentElements <em>Affixed Compartment Elements</em>}</li>
  *   <li>{@link graphic_representation.impl.Node_ElementImpl#getExpandableItems <em>Expandable Items</em>}</li>
@@ -40,16 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class Node_ElementImpl extends MinimalEObjectImpl.Container implements Node_Element {
-	/**
-	 * The cached value of the '{@link #getLabelanEAttribute() <em>Labelan EAttribute</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLabelanEAttribute()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LabelEAttribute> labelanEAttribute;
-
 	/**
 	 * The cached value of the '{@link #getLinkPalette() <em>Link Palette</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -107,18 +95,6 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	protected EClass eStaticClass() {
 		return Graphic_representationPackage.Literals.NODE_ELEMENT;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<LabelEAttribute> getLabelanEAttribute() {
-		if (labelanEAttribute == null) {
-			labelanEAttribute = new EObjectContainmentEList<LabelEAttribute>(LabelEAttribute.class, this, Graphic_representationPackage.NODE_ELEMENT__LABELAN_EATTRIBUTE);
-		}
-		return labelanEAttribute;
 	}
 
 	/**
@@ -210,8 +186,6 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Graphic_representationPackage.NODE_ELEMENT__LABELAN_EATTRIBUTE:
-				return ((InternalEList<?>)getLabelanEAttribute()).basicRemove(otherEnd, msgs);
 			case Graphic_representationPackage.NODE_ELEMENT__LINK_PALETTE:
 				return ((InternalEList<?>)getLinkPalette()).basicRemove(otherEnd, msgs);
 			case Graphic_representationPackage.NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS:
@@ -232,8 +206,6 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case Graphic_representationPackage.NODE_ELEMENT__LABELAN_EATTRIBUTE:
-				return getLabelanEAttribute();
 			case Graphic_representationPackage.NODE_ELEMENT__LINK_PALETTE:
 				return getLinkPalette();
 			case Graphic_representationPackage.NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS:
@@ -255,10 +227,6 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case Graphic_representationPackage.NODE_ELEMENT__LABELAN_EATTRIBUTE:
-				getLabelanEAttribute().clear();
-				getLabelanEAttribute().addAll((Collection<? extends LabelEAttribute>)newValue);
-				return;
 			case Graphic_representationPackage.NODE_ELEMENT__LINK_PALETTE:
 				getLinkPalette().clear();
 				getLinkPalette().addAll((Collection<? extends PaletteDescriptionLink>)newValue);
@@ -287,9 +255,6 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case Graphic_representationPackage.NODE_ELEMENT__LABELAN_EATTRIBUTE:
-				getLabelanEAttribute().clear();
-				return;
 			case Graphic_representationPackage.NODE_ELEMENT__LINK_PALETTE:
 				getLinkPalette().clear();
 				return;
@@ -314,8 +279,6 @@ public class Node_ElementImpl extends MinimalEObjectImpl.Container implements No
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case Graphic_representationPackage.NODE_ELEMENT__LABELAN_EATTRIBUTE:
-				return labelanEAttribute != null && !labelanEAttribute.isEmpty();
 			case Graphic_representationPackage.NODE_ELEMENT__LINK_PALETTE:
 				return linkPalette != null && !linkPalette.isEmpty();
 			case Graphic_representationPackage.NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS:

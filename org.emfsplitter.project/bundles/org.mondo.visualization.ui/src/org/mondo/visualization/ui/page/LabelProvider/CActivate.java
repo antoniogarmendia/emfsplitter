@@ -9,6 +9,7 @@ import graphic_representation.Link;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
 
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.graphics.Image;
@@ -36,8 +37,8 @@ public class CActivate extends ColumnLabelProvider {
 		if(element instanceof AffixedCompartmentElement)
 			return ((AffixedCompartmentElement) element).getAnEReference().getName();
 		
-		if(element instanceof LabelEAttribute)
-			return ((LabelEAttribute) element).getAnEAttribute().getName();
+		if(element instanceof WEAttribute)
+			return ((WEAttribute) element).getEAttribute().getName();
 		return "";
 	}
 

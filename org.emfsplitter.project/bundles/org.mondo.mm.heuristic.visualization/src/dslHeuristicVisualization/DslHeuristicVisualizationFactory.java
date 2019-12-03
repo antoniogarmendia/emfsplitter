@@ -211,6 +211,42 @@ public interface DslHeuristicVisualizationFactory extends EFactory {
 	RepreHeurSS createRepreHeurSS();
 
 	/**
+	 * Returns a new object of class '<em>Graphical Shapes Edge Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Graphical Shapes Edge Style</em>'.
+	 * @generated
+	 */
+	GraphicalShapesEdgeStyle createGraphicalShapesEdgeStyle();
+
+	/**
+	 * Returns a new object of class '<em>Graphical Icons Containment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Graphical Icons Containment</em>'.
+	 * @generated
+	 */
+	GraphicalIconsContainment createGraphicalIconsContainment();
+
+	/**
+	 * Returns a new object of class '<em>Graphical Edge Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Graphical Edge Style</em>'.
+	 * @generated
+	 */
+	GraphicalEdgeStyle createGraphicalEdgeStyle();
+
+	/**
+	 * Returns a new object of class '<em>Graphical Compartment Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Graphical Compartment Style</em>'.
+	 * @generated
+	 */
+	GraphicalCompartmentStyle createGraphicalCompartmentStyle();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

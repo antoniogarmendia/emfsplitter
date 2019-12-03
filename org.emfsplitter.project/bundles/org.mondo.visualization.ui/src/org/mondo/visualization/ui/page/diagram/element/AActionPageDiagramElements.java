@@ -15,11 +15,13 @@ import org.eclipse.swt.widgets.Shell;
 import dslHeuristicVisualization.HeuristicStrategy;
 import dslHeuristicVisualization.HeuristicStrategySettings;
 import graphic_representation.AffixedCompartmentElement;
+import graphic_representation.GeneralLabel;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Layer;
 import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
 
 public abstract class AActionPageDiagramElements {
 	
@@ -117,26 +119,25 @@ public abstract class AActionPageDiagramElements {
 		return -1;
 	}
 	
-	public int MissingEAttribute(EList<EAttribute> fulllist, EList<LabelEAttribute> listLabelEAttribute)
+	
+	public int MissingEAttribute(EList<EAttribute> fulllist, EList<WEAttribute> listLabelEAttribute)
 	{
 		Iterator<EAttribute> it_fullist = fulllist.iterator();
-		Iterator<LabelEAttribute> it_listLabelEAttribute = listLabelEAttribute.iterator();
-		if(it_listLabelEAttribute.hasNext() == false && it_fullist.hasNext() == true)
-			return fulllist.indexOf(it_fullist.next());
-		else
-			if(it_listLabelEAttribute.hasNext() == false && it_fullist.hasNext() == false)
-				return -1;
 		while (it_fullist.hasNext()) {
 			EAttribute attr = it_fullist.next();
-			it_listLabelEAttribute = listLabelEAttribute.iterator();
-			while (it_listLabelEAttribute.hasNext()) {
-				LabelEAttribute labelAttribute = it_listLabelEAttribute.next();
-				if(labelAttribute.getAnEAttribute().equals(attr))
+			Iterator<WEAttribute> itWAttributtes = listLabelEAttribute.iterator();
+			boolean find = false;
+			while (itWAttributtes.hasNext()) {
+				WEAttribute weAttribute = (WEAttribute) itWAttributtes.next();
+				if (weAttribute.getEAttribute().equals(attr)) {
+					find = true;
 					break;
-				if(it_listLabelEAttribute.hasNext() == false)
-					return fulllist.indexOf(attr);
+				}
 			}
+			if (find == false)
+				return fulllist.indexOf(attr);
 		}
+		
 		return -1;		
 	}
 	

@@ -4,6 +4,7 @@ package graphic_representation.impl;
 
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Graphic_representationPackage;
+import graphic_representation.LabelOCL;
 import graphic_representation.Shape;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link graphic_representation.impl.ConditionalStyleImpl#getEAttribute <em>EAttribute</em>}</li>
  *   <li>{@link graphic_representation.impl.ConditionalStyleImpl#getValue <em>Value</em>}</li>
  *   <li>{@link graphic_representation.impl.ConditionalStyleImpl#getConditionalStyle <em>Conditional Style</em>}</li>
+ *   <li>{@link graphic_representation.impl.ConditionalStyleImpl#getLabelOcl <em>Label Ocl</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,6 +73,16 @@ public class ConditionalStyleImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected Shape conditionalStyle;
+
+	/**
+	 * The cached value of the '{@link #getLabelOcl() <em>Label Ocl</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabelOcl()
+	 * @generated
+	 * @ordered
+	 */
+	protected LabelOCL labelOcl;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,11 +210,56 @@ public class ConditionalStyleImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LabelOCL getLabelOcl() {
+		return labelOcl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetLabelOcl(LabelOCL newLabelOcl, NotificationChain msgs) {
+		LabelOCL oldLabelOcl = labelOcl;
+		labelOcl = newLabelOcl;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL, oldLabelOcl, newLabelOcl);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLabelOcl(LabelOCL newLabelOcl) {
+		if (newLabelOcl != labelOcl) {
+			NotificationChain msgs = null;
+			if (labelOcl != null)
+				msgs = ((InternalEObject)labelOcl).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL, null, msgs);
+			if (newLabelOcl != null)
+				msgs = ((InternalEObject)newLabelOcl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL, null, msgs);
+			msgs = basicSetLabelOcl(newLabelOcl, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL, newLabelOcl, newLabelOcl));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Graphic_representationPackage.CONDITIONAL_STYLE__CONDITIONAL_STYLE:
 				return basicSetConditionalStyle(null, msgs);
+			case Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL:
+				return basicSetLabelOcl(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,6 +279,8 @@ public class ConditionalStyleImpl extends MinimalEObjectImpl.Container implement
 				return getValue();
 			case Graphic_representationPackage.CONDITIONAL_STYLE__CONDITIONAL_STYLE:
 				return getConditionalStyle();
+			case Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL:
+				return getLabelOcl();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -242,6 +301,9 @@ public class ConditionalStyleImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case Graphic_representationPackage.CONDITIONAL_STYLE__CONDITIONAL_STYLE:
 				setConditionalStyle((Shape)newValue);
+				return;
+			case Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL:
+				setLabelOcl((LabelOCL)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -264,6 +326,9 @@ public class ConditionalStyleImpl extends MinimalEObjectImpl.Container implement
 			case Graphic_representationPackage.CONDITIONAL_STYLE__CONDITIONAL_STYLE:
 				setConditionalStyle((Shape)null);
 				return;
+			case Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL:
+				setLabelOcl((LabelOCL)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -282,6 +347,8 @@ public class ConditionalStyleImpl extends MinimalEObjectImpl.Container implement
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case Graphic_representationPackage.CONDITIONAL_STYLE__CONDITIONAL_STYLE:
 				return conditionalStyle != null;
+			case Graphic_representationPackage.CONDITIONAL_STYLE__LABEL_OCL:
+				return labelOcl != null;
 		}
 		return super.eIsSet(featureID);
 	}

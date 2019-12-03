@@ -56,7 +56,7 @@ public enum GRFontFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STRIKE_THROUGH(0, "strike_through", "strike_through");
+	STRIKE_THROUGH(3, "strike_through", "strike_through");
 
 	/**
 	 * The '<em><b>Italic</b></em>' literal value.
@@ -116,7 +116,7 @@ public enum GRFontFormat implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRIKE_THROUGH_VALUE = 0;
+	public static final int STRIKE_THROUGH_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>GR Font Format</b></em>' enumerators.
@@ -189,6 +189,7 @@ public enum GRFontFormat implements Enumerator {
 			case ITALIC_VALUE: return ITALIC;
 			case BOLD_VALUE: return BOLD;
 			case UNDERLINE_VALUE: return UNDERLINE;
+			case STRIKE_THROUGH_VALUE: return STRIKE_THROUGH;
 		}
 		return null;
 	}

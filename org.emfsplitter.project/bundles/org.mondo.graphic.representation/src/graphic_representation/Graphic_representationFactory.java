@@ -265,6 +265,51 @@ public interface Graphic_representationFactory extends EFactory {
 	CompartmentElement createCompartmentElement();
 
 	/**
+	 * Returns a new object of class '<em>Loop Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Loop Representation</em>'.
+	 * @generated
+	 */
+	LoopRepresentation createLoopRepresentation();
+
+	/**
+	 * Returns a new object of class '<em>Linked List Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Linked List Representation</em>'.
+	 * @generated
+	 */
+	LinkedListRepresentation createLinkedListRepresentation();
+
+	/**
+	 * Returns a new object of class '<em>Conditional Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conditional Representation</em>'.
+	 * @generated
+	 */
+	ConditionalRepresentation createConditionalRepresentation();
+
+	/**
+	 * Returns a new object of class '<em>Tree Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tree Representation</em>'.
+	 * @generated
+	 */
+	TreeRepresentation createTreeRepresentation();
+
+	/**
+	 * Returns a new object of class '<em>General Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>General Label</em>'.
+	 * @generated
+	 */
+	GeneralLabel createGeneralLabel();
+
+	/**
 	 * Returns a new object of class '<em>Label EAttribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -272,6 +317,15 @@ public interface Graphic_representationFactory extends EFactory {
 	 * @generated
 	 */
 	LabelEAttribute createLabelEAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Label OCL</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Label OCL</em>'.
+	 * @generated
+	 */
+	LabelOCL createLabelOCL();
 
 	/**
 	 * Returns a new object of class '<em>GR User Color Def</em>'.
@@ -371,6 +425,33 @@ public interface Graphic_representationFactory extends EFactory {
 	 * @generated
 	 */
 	CompartmentLink createCompartmentLink();
+
+	/**
+	 * Returns a new object of class '<em>WE Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>WE Attribute</em>'.
+	 * @generated
+	 */
+	WEAttribute createWEAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Conditional Edge Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conditional Edge Style</em>'.
+	 * @generated
+	 */
+	ConditionalEdgeStyle createConditionalEdgeStyle();
+
+	/**
+	 * Returns a new object of class '<em>Edge Decorator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Edge Decorator</em>'.
+	 * @generated
+	 */
+	EdgeDecorator createEdgeDecorator();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -25,6 +25,8 @@ import splitterLibrary.EcoreEMF;
  *   <li>{@link dslHeuristicVisualization.HeuristicStrategy#getCurrentRepresentation <em>Current Representation</em>}</li>
  *   <li>{@link dslHeuristicVisualization.HeuristicStrategy#getCurrentMMGR <em>Current MMGR</em>}</li>
  *   <li>{@link dslHeuristicVisualization.HeuristicStrategy#getListRepresentation <em>List Representation</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.HeuristicStrategy#getFolderPath <em>Folder Path</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.HeuristicStrategy#getPlatformPath <em>Platform Path</em>}</li>
  * </ul>
  *
  * @see dslHeuristicVisualization.DslHeuristicVisualizationPackage#getHeuristicStrategy()
@@ -177,6 +179,58 @@ public interface HeuristicStrategy extends EObject {
 	 * @generated
 	 */
 	EList<RepreHeurSS> getListRepresentation();
+
+	/**
+	 * Returns the value of the '<em><b>Folder Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Folder Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Folder Path</em>' attribute.
+	 * @see #setFolderPath(String)
+	 * @see dslHeuristicVisualization.DslHeuristicVisualizationPackage#getHeuristicStrategy_FolderPath()
+	 * @model
+	 * @generated
+	 */
+	String getFolderPath();
+
+	/**
+	 * Sets the value of the '{@link dslHeuristicVisualization.HeuristicStrategy#getFolderPath <em>Folder Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Folder Path</em>' attribute.
+	 * @see #getFolderPath()
+	 * @generated
+	 */
+	void setFolderPath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Platform Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Platform Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Platform Path</em>' attribute.
+	 * @see #setPlatformPath(String)
+	 * @see dslHeuristicVisualization.DslHeuristicVisualizationPackage#getHeuristicStrategy_PlatformPath()
+	 * @model
+	 * @generated
+	 */
+	String getPlatformPath();
+
+	/**
+	 * Sets the value of the '{@link dslHeuristicVisualization.HeuristicStrategy#getPlatformPath <em>Platform Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Platform Path</em>' attribute.
+	 * @see #getPlatformPath()
+	 * @generated
+	 */
+	void setPlatformPath(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

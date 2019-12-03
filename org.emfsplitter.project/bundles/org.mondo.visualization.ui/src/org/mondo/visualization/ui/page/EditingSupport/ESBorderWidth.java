@@ -8,6 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import graphic_representation.Border;
 import graphic_representation.ConditionalStyle;
+import graphic_representation.LabelOCL;
 import graphic_representation.Node;
 import graphic_representation.Root;
 import graphic_representation.Shape;
@@ -37,9 +38,10 @@ public class ESBorderWidth extends EditingSupport {
 			sh = ((ConditionalStyle) element).getConditionalStyle();
 		else if (element instanceof Shape)
 			sh = (Shape) element;
-		
+						
 		if(sh instanceof Border)
 			return true;
+				
 		return false;
 	}
 

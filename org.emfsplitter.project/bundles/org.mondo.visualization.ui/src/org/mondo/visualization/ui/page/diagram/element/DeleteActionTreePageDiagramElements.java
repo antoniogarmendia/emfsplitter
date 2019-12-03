@@ -22,15 +22,20 @@ import graphic_representation.CompartmentElement;
 import graphic_representation.DiagramElement;
 import graphic_representation.Edge;
 import graphic_representation.EdgeLabelEAttribute;
+import graphic_representation.GeneralLabel;
 import graphic_representation.LabelEAttribute;
 import graphic_representation.Layer;
 import graphic_representation.MMGraphic_Representation;
 import graphic_representation.Node;
+import graphic_representation.Node_Element;
 import graphic_representation.PaletteDescriptionLink;
+import graphic_representation.Rectangle;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
+import graphic_representation.WEAttribute;
+import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 public class DeleteActionTreePageDiagramElements extends AActionPageDiagramElements{
 
@@ -103,11 +108,17 @@ public class DeleteActionTreePageDiagramElements extends AActionPageDiagramEleme
 			public void run() {
 				
 				Object obj = GetSelectedTreeViewerObject();				
-				if(obj instanceof LabelEAttribute)//Update the Model
+				if(obj instanceof WEAttribute)//Update the Model
 				{
-					LabelEAttribute labelEAttribute = (LabelEAttribute)obj;
-					EcoreUtil.remove(labelEAttribute);//Update Model
-					getTreeViewer().remove(obj);	 //Update Tree Viewer					
+					WEAttribute attribute = (WEAttribute)obj;					
+					EObject parentEObject = attribute.eContainer();
+					if (parentEObject instanceof LabelEAttribute) {
+						LabelEAttribute label = (LabelEAttribute) parentEObject;
+						label.getLabelAttributes().remove(attribute);	
+						if (label.getLabelAttributes().size() == 0)
+							EcoreUtil.remove(label);						
+						getTreeViewer().remove(obj);	 //Update Tree Viewer	
+					}				
 				}				
 			}			
 		};
@@ -150,7 +161,24 @@ public class DeleteActionTreePageDiagramElements extends AActionPageDiagramEleme
 				if(obj instanceof CompartmentElement)
 				{
 					CompartmentElement compart = (CompartmentElement)obj;
+					EObject parentCompartment =compart.eContainer();
 					EcoreUtil.remove(compart);//Update the Model
+					
+					if (parentCompartment instanceof Node_Element) {
+						
+						boolean isCompartment = ((Node_Element) parentCompartment).isCompartmentAffixed();
+						if (isCompartment == false) {
+							//Change Shape
+							EObject parentNodeElement = parentCompartment.eContainer();
+							if (parentNodeElement instanceof Node) {
+								Node node = (Node) parentNodeElement;
+								GeneralLabel generalLabel = node.getNode_shape().getLabelanEAttribute();
+								Rectangle rect = Graphic_representationFactoryImpl.eINSTANCE.createRectangle();
+								rect.setLabelanEAttribute(generalLabel);
+								node.setNode_shape(rect);
+							}
+						}					
+					}					
 					getTreeViewer().remove(obj);//Update Tree Viewer
 				}				
 			}			

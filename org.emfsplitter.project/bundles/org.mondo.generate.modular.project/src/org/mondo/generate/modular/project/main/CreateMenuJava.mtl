@@ -124,10 +124,10 @@ public class CreateMenu extends ExtensionContributionFactory {
 					}
 					
 					if (index != -1) {
-
-						[for (c : ClassRoleInstance | Get_FolderClassRoleInstance(anPatternInstance)->union(anPatternInstance.Get_ProjectClassRoleInstance()
-																							 ->select(anClassRoleInstance : ClassRoleInstance | anClassRoleInstance.referenceInstances
-																							 ->select(ref : ReferenceRoleInstance | ref.element.eType.name.toString() = anClassRoleInstance.element.name.toString())->size() > 0)->asSequence()))]
+						
+						[comment ->union(anPatternInstance.Get_ProjectClassRoleInstance()->select(anClassRoleInstance : ClassRoleInstance | anClassRoleInstance.referenceInstances
+																							 ->select(ref : ReferenceRoleInstance | ref.element.eType.name.toString() = anClassRoleInstance.element.name.toString())->size() > 0)->asSequence())/]
+						[for (c : ClassRoleInstance | Get_FolderClassRoleInstance(anPatternInstance))]
 						if(index == [i/]) {
 
 							CommandContributionItemParameter pcommand = new CommandContributionItemParameter(serviceLocator,
@@ -144,15 +144,16 @@ public class CreateMenu extends ExtensionContributionFactory {
 															endif))]
 							[if(anPatternInstance.IsEClassContainerElement(ref.element.eType) = true)]
 								[if(anPatternInstance.IsEClassPackageInstance(ref.element.eType) = true or anPatternInstance.IsEClassProjectInstance(ref.element.eType) = true)]
-							pcommand.parameters.put("newWizardId", "[anProjectName/].[ref.element.eType.name.toLower()/].[ref.element.eType.name.toLower()/]NewPackage");
-							CommandContributionItem item[ref.element.name/]Package = new CommandContributionItem(pcommand);
-							menu.add(item[ref.element.name/]Package);
-								[else]
-							pcommand.parameters.put("newWizardId", "[anProjectName/].[ref.element.eType.name.toLower()/].[ref.element.eType.name.toLower()/]NewFile");
-							CommandContributionItem item[ref.element.name/]File = new CommandContributionItem(pcommand);
-							menu.add(item[ref.element.name/]File);
-								[/if]							
-								[for(anClassRoleInstance : ClassRoleInstance| anPatternInstance.IsEClassSuperTypeClassRoleInstance(ref.element.eType)
+								pcommand.parameters.put("newWizardId", "[anProjectName/].[ref.element.eType.name.toLower()/].[ref.element.eType.name.toLower()/]NewPackage");
+								CommandContributionItem item[ref.element.name/] = new CommandContributionItem(pcommand);
+								menu.add(item[ref.element.name/]);
+								[/if]
+								[if(anPatternInstance.IsEClassFileInstance(ref.element.eType) = true)]
+								pcommand.parameters.put("newWizardId", "[anProjectName/].[ref.element.eType.name.toLower()/].[ref.element.eType.name.toLower()/]NewFile");
+								CommandContributionItem item[ref.element.name/]Unit = new CommandContributionItem(pcommand);
+								menu.add(item[ref.element.name/]Unit);
+								[/if]
+							[for(anClassRoleInstance : ClassRoleInstance| anPatternInstance.IsEClassSuperTypeClassRoleInstance(ref.element.eType)
 																->asSequence()->iterate(currentElement; result: Sequence(ClassRoleInstance) = Sequence{} | 
 																	if result->select(classRoleInstance : ClassRoleInstance | classRoleInstance.element.name.toString() = currentElement.element.name.toString())->size() <= 0
 																		then 

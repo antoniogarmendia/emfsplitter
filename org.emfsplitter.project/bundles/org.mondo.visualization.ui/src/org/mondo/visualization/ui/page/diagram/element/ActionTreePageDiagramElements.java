@@ -38,6 +38,7 @@ import graphic_representation.Root;
 import graphic_representation.VirtualCompartment;
 import graphic_representation.VirtualCompartmentOCL;
 import graphic_representation.VirtualCompartmentReference;
+import graphic_representation.WEAttribute;
 
 public class ActionTreePageDiagramElements {
 	
@@ -164,7 +165,7 @@ public class ActionTreePageDiagramElements {
 			manager.add(deleteDiagramElements.getActionNodeDelete());
 			manager.add(actionsDiagramElements.getActionAddAllAffixed());
 		}
-		else if(obj instanceof LabelEAttribute)
+		else if(obj instanceof WEAttribute)
 		{
 			manager.add(deleteDiagramElements.getActionNameDelete());
 		}

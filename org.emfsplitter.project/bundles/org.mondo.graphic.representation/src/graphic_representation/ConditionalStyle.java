@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link graphic_representation.ConditionalStyle#getEAttribute <em>EAttribute</em>}</li>
  *   <li>{@link graphic_representation.ConditionalStyle#getValue <em>Value</em>}</li>
  *   <li>{@link graphic_representation.ConditionalStyle#getConditionalStyle <em>Conditional Style</em>}</li>
+ *   <li>{@link graphic_representation.ConditionalStyle#getLabelOcl <em>Label Ocl</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getConditionalStyle()
@@ -101,5 +102,31 @@ public interface ConditionalStyle extends EObject {
 	 * @generated
 	 */
 	void setConditionalStyle(Shape value);
+
+	/**
+	 * Returns the value of the '<em><b>Label Ocl</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label Ocl</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label Ocl</em>' containment reference.
+	 * @see #setLabelOcl(LabelOCL)
+	 * @see graphic_representation.Graphic_representationPackage#getConditionalStyle_LabelOcl()
+	 * @model containment="true"
+	 * @generated
+	 */
+	LabelOCL getLabelOcl();
+
+	/**
+	 * Sets the value of the '{@link graphic_representation.ConditionalStyle#getLabelOcl <em>Label Ocl</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label Ocl</em>' containment reference.
+	 * @see #getLabelOcl()
+	 * @generated
+	 */
+	void setLabelOcl(LabelOCL value);
 
 } // ConditionalStyle

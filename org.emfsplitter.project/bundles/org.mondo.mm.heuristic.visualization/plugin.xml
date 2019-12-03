@@ -5,6 +5,8 @@
 -->
 
 <plugin>
+   <extension-point id="customise_shape" name="graphical.representation.customise.shape" schema="schema/customise_shape.exsd"/>
+   <extension-point id="customise_icon" name="graphical.representation.customise.icon" schema="schema/customise_icon.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated dslHeuristicVisualization -->
@@ -12,6 +14,28 @@
             uri="http://mondo.dsl.org/dslHeuristicVisualization"
             class="dslHeuristicVisualization.DslHeuristicVisualizationPackage"
             genModel="model/dslHeuristicVisualization.genmodel"/>
+   </extension>
+   <extension
+         point="org.mondo.mm.heuristic.visualization.customise_shape">
+      <client
+            class="dslHeuristicVisualization.extension.shape.SemioticClarity"
+            name = "Semiotic Clarity">
+      </client>
+      <client
+            class="dslHeuristicVisualization.extension.shape.RandomShape"
+            name="Random">
+      </client>
+   </extension>
+   <extension
+         point="org.mondo.mm.heuristic.visualization.customise_icon">
+      <client
+            class="dslHeuristicVisualization.extension.icon.SearchGoogleIcon"
+            name="Google Images">
+      </client>
+      <client
+            class="dslHeuristicVisualization.extension.icon.SearchPixabayIcon"
+            name="Pixabay Icons">
+      </client>
    </extension>
 
 </plugin>

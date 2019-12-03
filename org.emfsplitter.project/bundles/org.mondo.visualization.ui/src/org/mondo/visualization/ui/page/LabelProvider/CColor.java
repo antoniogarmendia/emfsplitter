@@ -2,18 +2,23 @@ package org.mondo.visualization.ui.page.LabelProvider;
 
 import graphic_representation.Color;
 import graphic_representation.CompartmentEdge;
+import graphic_representation.ConditionalEdgeStyle;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Edge;
 import graphic_representation.Edge_Style;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.Node;
 import graphic_representation.PaletteDescriptionLink;
 import graphic_representation.Root;
 import graphic_representation.Shape;
 import graphic_representation.ShapeColor;
 import graphic_representation.SiriusSystemColors;
+import graphic_representation.WEAttribute;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 
 public class CColor extends ColumnLabelProvider{
@@ -31,6 +36,11 @@ public class CColor extends ColumnLabelProvider{
 			sh = ((Node)element).getNode_shape();
 		else if (element instanceof ConditionalStyle)
 			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof ConditionalEdgeStyle) {
+			Color color = ((ConditionalEdgeStyle) element).getConditionalEdge().getColor();
+			if(color instanceof SiriusSystemColors)
+				return ((SiriusSystemColors) color).getName();		
+		}
 		else if(element instanceof Edge)
 		{
 			Edge_Style edgStyle = ((Edge)element).getEdge_style();
@@ -49,15 +59,27 @@ public class CColor extends ColumnLabelProvider{
 		else if(element instanceof LabelEAttribute) 
 			return ((LabelEAttribute) element).getColor() instanceof SiriusSystemColors? 
 					((SiriusSystemColors)((LabelEAttribute) element).getColor()).getName(): "";
-					else if(element instanceof PaletteDescriptionLink)
-					{
+		else if(element instanceof PaletteDescriptionLink) {
 						Color color = ((PaletteDescriptionLink) element).getColor();
 						if(color instanceof SiriusSystemColors)
 							return ((SiriusSystemColors) color).getName();	
-					}	
-					else if (element instanceof Shape)
-						sh = (Shape) element;
-					
+		}	
+		else if (element instanceof Shape)
+			sh = (Shape) element;
+		else if (element instanceof LabelEAttribute) {				
+				LabelEAttribute label = (LabelEAttribute) element;
+				Color color = label.getColor();
+				if (color instanceof SiriusSystemColors)
+					return ((SiriusSystemColors) color).getName();					
+		} else if (element instanceof LabelOCL) {
+			
+			Color color = ((LabelOCL) element).getColor();
+			if (color instanceof SiriusSystemColors)
+				return ((SiriusSystemColors) color).getName();	
+		}
+		
+		
+		
 		return getColorShape(sh);
 	}	
 	

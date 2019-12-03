@@ -266,6 +266,7 @@ public class ScopeDefinitionPackageImpl extends EPackageImpl implements ScopeDef
 		initEEnum(scopeDefinitionEnumEEnum, ScopeDefinitionEnum.class, "ScopeDefinitionEnum");
 		addEEnumLiteral(scopeDefinitionEnumEEnum, ScopeDefinitionEnum.SAME_WORKSPACE);
 		addEEnumLiteral(scopeDefinitionEnumEEnum, ScopeDefinitionEnum.SAME_PROJECT);
+		addEEnumLiteral(scopeDefinitionEnumEEnum, ScopeDefinitionEnum.SAME_ROOT_PACKAGE);
 		addEEnumLiteral(scopeDefinitionEnumEEnum, ScopeDefinitionEnum.SAME_PACKAGE);
 		addEEnumLiteral(scopeDefinitionEnumEEnum, ScopeDefinitionEnum.SAME_UNIT);
 

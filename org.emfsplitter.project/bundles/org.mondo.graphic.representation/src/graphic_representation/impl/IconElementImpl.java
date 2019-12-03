@@ -4,6 +4,7 @@ package graphic_representation.impl;
 
 import graphic_representation.Graphic_representationPackage;
 import graphic_representation.IconElement;
+import graphic_representation.rest.Search;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -12,9 +13,11 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -27,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link graphic_representation.impl.IconElementImpl#getFilepath <em>Filepath</em>}</li>
  *   <li>{@link graphic_representation.impl.IconElementImpl#getEmbeddedImage <em>Embedded Image</em>}</li>
+ *   <li>{@link graphic_representation.impl.IconElementImpl#getFigureSearch <em>Figure Search</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,6 +75,16 @@ public class IconElementImpl extends ShapeImpl implements IconElement {
 	 * @ordered
 	 */
 	protected String embeddedImage = EMBEDDED_IMAGE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getFigureSearch() <em>Figure Search</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFigureSearch()
+	 * @generated
+	 * @ordered
+	 */
+	protected Search figureSearch;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +150,49 @@ public class IconElementImpl extends ShapeImpl implements IconElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Search getFigureSearch() {
+		return figureSearch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFigureSearch(Search newFigureSearch, NotificationChain msgs) {
+		Search oldFigureSearch = figureSearch;
+		figureSearch = newFigureSearch;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH, oldFigureSearch, newFigureSearch);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFigureSearch(Search newFigureSearch) {
+		if (newFigureSearch != figureSearch) {
+			NotificationChain msgs = null;
+			if (figureSearch != null)
+				msgs = ((InternalEObject)figureSearch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH, null, msgs);
+			if (newFigureSearch != null)
+				msgs = ((InternalEObject)newFigureSearch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH, null, msgs);
+			msgs = basicSetFigureSearch(newFigureSearch, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH, newFigureSearch, newFigureSearch));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public void ImageBase64() {
@@ -157,12 +214,28 @@ public class IconElementImpl extends ShapeImpl implements IconElement {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH:
+				return basicSetFigureSearch(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case Graphic_representationPackage.ICON_ELEMENT__FILEPATH:
 				return getFilepath();
 			case Graphic_representationPackage.ICON_ELEMENT__EMBEDDED_IMAGE:
 				return getEmbeddedImage();
+			case Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH:
+				return getFigureSearch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -180,6 +253,9 @@ public class IconElementImpl extends ShapeImpl implements IconElement {
 				return;
 			case Graphic_representationPackage.ICON_ELEMENT__EMBEDDED_IMAGE:
 				setEmbeddedImage((String)newValue);
+				return;
+			case Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH:
+				setFigureSearch((Search)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -199,6 +275,9 @@ public class IconElementImpl extends ShapeImpl implements IconElement {
 			case Graphic_representationPackage.ICON_ELEMENT__EMBEDDED_IMAGE:
 				setEmbeddedImage(EMBEDDED_IMAGE_EDEFAULT);
 				return;
+			case Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH:
+				setFigureSearch((Search)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -215,6 +294,8 @@ public class IconElementImpl extends ShapeImpl implements IconElement {
 				return FILEPATH_EDEFAULT == null ? filepath != null : !FILEPATH_EDEFAULT.equals(filepath);
 			case Graphic_representationPackage.ICON_ELEMENT__EMBEDDED_IMAGE:
 				return EMBEDDED_IMAGE_EDEFAULT == null ? embeddedImage != null : !EMBEDDED_IMAGE_EDEFAULT.equals(embeddedImage);
+			case Graphic_representationPackage.ICON_ELEMENT__FIGURE_SEARCH:
+				return figureSearch != null;
 		}
 		return super.eIsSet(featureID);
 	}

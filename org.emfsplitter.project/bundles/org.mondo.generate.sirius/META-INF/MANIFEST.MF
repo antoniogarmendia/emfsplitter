@@ -35,7 +35,8 @@ Export-Package: Visualization,
  org.mondo.acceleo.generate.sirius.main
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Import-Package: org.eclipse.jdt.ui,
+Import-Package: org.eclipse.emf.ecore.change,
+ org.eclipse.jdt.ui,
  org.eclipse.m2m.atl.core.emf,
  org.eclipse.sirius.diagram.description;version="2.0.4",
  org.eclipse.sirius.diagram.description.style;version="3.0.0"

@@ -12,7 +12,9 @@ import runtimePatterns.InstanceFeatureRoleInstance;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -28,6 +30,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -49,8 +52,12 @@ import dslHeuristicVisualization.ConcreteStrategyLabelIdentifier;
 import dslHeuristicVisualization.ConcreteStrategyLabelParameter;
 import dslHeuristicVisualization.ConcreteStrategyMaxContainment;
 import dslHeuristicVisualization.DefaultArcParameter;
+import dslHeuristicVisualization.GraphicalShapesEdgeStyle;
 import dslHeuristicVisualization.HeuristicStrategy;
 import dslHeuristicVisualization.HeuristicStrategySettings;
+import dslHeuristicVisualization.WCustomiseShape;
+import dslHeuristicVisualization.extension.icon.EvaluateContributionCustomiseIcon;
+import dslHeuristicVisualization.extension.shape.EvaluateContributionsCustomiseShape;
 import dslHeuristicVisualization.impl.DslHeuristicVisualizationFactoryImpl;
 
 public class PageStrategySettings extends WizardPage{
@@ -100,6 +107,8 @@ public class PageStrategySettings extends WizardPage{
 		CreateControlArcStrategy(container);
 		Heuristic_Label_Selection(container);
 		Heuristic_Link_Selection(container);
+		heuristicInferGraphicalStyles(container);
+		
 		
 		new Label(container, SWT.NONE);
 		//GridData for the checkbox
@@ -556,6 +565,76 @@ public class PageStrategySettings extends WizardPage{
 			btn_affixed.setSelection(true);		
 	}	
 	
+	// method to display heuristics about graphical styles
+	private void heuristicInferGraphicalStyles(Composite parent) {
+		
+		//Group Group Label Selection
+		GridData gdGraphicalStyles = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+		gdGraphicalStyles.widthHint = 310;
+		
+		Group grpGraphicalStyles = new Group(parent, SWT.NONE);
+		grpGraphicalStyles.setLayoutData(gdGraphicalStyles);
+		grpGraphicalStyles.setText("Graphical Styles");
+		grpGraphicalStyles.setLayout(new GridLayout(2, false));		
+		
+		Label lbShapesDecorators = new Label(grpGraphicalStyles,SWT.NONE);
+		lbShapesDecorators.setText("Shapes");	
+				
+		Combo comboShape = new Combo (grpGraphicalStyles, SWT.READ_ONLY);
+		List<String> getAllExtensionsShape = EvaluateContributionsCustomiseShape.getAllExtensionsToCustomiseShape(Platform.getExtensionRegistry());
+		for (ListIterator<String> iterator = getAllExtensionsShape.listIterator(); iterator.hasNext();) {
+			int index = iterator.nextIndex();
+			String name = (String) iterator.next();
+			comboShape.add(name);
+			if (name.equals("Semiotic Clarity"))
+				comboShape.select(index);			
+		}
+					
+		Label lbIconsDecorators = new Label(grpGraphicalStyles,SWT.NONE);
+		lbIconsDecorators.setText("Icons");			
+		
+		Combo comboIcon = new Combo (grpGraphicalStyles, SWT.READ_ONLY);
+		comboIcon.add("--No Icon--");
+		List<String> getAllExtensionsIcon = EvaluateContributionCustomiseIcon.getAllExtensionsToCustomiseIcon(Platform.getExtensionRegistry());
+		for (ListIterator iterator = getAllExtensionsIcon.listIterator(); iterator.hasNext();) {
+			int index = iterator.nextIndex();
+			String name = (String) iterator.next();
+			comboIcon.add(name);
+			if (name.equals("Google Images"))
+				comboIcon.select(index+1);
+		}		
+				
+		comboShape.addSelectionListener(new SelectionAdapter() {
+			
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				EvaluateContributionsCustomiseShape evalShape = new EvaluateContributionsCustomiseShape();				
+				getHeuristicStrategySettings().
+					setStrategyGraphicalShape(evalShape.execute(Platform.getExtensionRegistry(), comboShape.getText()));				
+			}
+			
+		});
+		
+		comboIcon.addSelectionListener(new SelectionAdapter() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				String customiseIcon = comboIcon.getText();				
+				if (customiseIcon.equals("--No Icon--")) {
+					getHeuristicStrategySettings().
+						setStrategyGraphicalIcon(null);
+				} else {
+					EvaluateContributionCustomiseIcon evalIcon = new EvaluateContributionCustomiseIcon();
+					getHeuristicStrategySettings().
+						setStrategyGraphicalIcon(evalIcon.execute(Platform.getExtensionRegistry(), customiseIcon));
+				}
+			}			
+		});		
+	}
+	
 	public GridData GrdSrcDst()
 	{
 		//Grid Data
@@ -585,7 +664,7 @@ public class PageStrategySettings extends WizardPage{
 	
 	public HeuristicStrategySettings getHeuristicStrategySettings() {
 		
-		return getHeuristicStrategy().getListRepresentation().get(0).
+		return getHeuristicStrategy().getListRepresentation().get(getCurrentMMGR()).
 				getHeuristicStrategySettings().get(getRepresentation());
 	}
 	

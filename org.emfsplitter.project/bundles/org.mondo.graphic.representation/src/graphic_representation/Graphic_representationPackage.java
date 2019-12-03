@@ -307,13 +307,22 @@ public interface Graphic_representationPackage extends EPackage {
 	int EDGE__EDGE_LABEL = DIAGRAM_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Conditional Edge Style</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE__CONDITIONAL_EDGE_STYLE = DIAGRAM_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Edge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDGE_FEATURE_COUNT = DIAGRAM_ELEMENT_FEATURE_COUNT + 3;
+	int EDGE_FEATURE_COUNT = DIAGRAM_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Edge</em>' class.
@@ -541,13 +550,22 @@ public interface Graphic_representationPackage extends EPackage {
 	int SHAPE = 15;
 
 	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__LABELAN_EATTRIBUTE = 0;
+
+	/**
 	 * The number of structural features of the '<em>Shape</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHAPE_FEATURE_COUNT = 0;
+	int SHAPE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Shape</em>' class.
@@ -557,6 +575,15 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SHAPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICON_ELEMENT__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
 
 	/**
 	 * The feature id for the '<em><b>Filepath</b></em>' attribute.
@@ -577,13 +604,22 @@ public interface Graphic_representationPackage extends EPackage {
 	int ICON_ELEMENT__EMBEDDED_IMAGE = SHAPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Figure Search</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICON_ELEMENT__FIGURE_SEARCH = SHAPE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Icon Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ICON_ELEMENT_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 2;
+	int ICON_ELEMENT_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Image Base64</em>' operation.
@@ -649,22 +685,13 @@ public interface Graphic_representationPackage extends EPackage {
 	int PALETTE_DESCRIPTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_ELEMENT__LABELAN_EATTRIBUTE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Link Palette</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT__LINK_PALETTE = 1;
+	int NODE_ELEMENT__LINK_PALETTE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Affixed Compartment Elements</b></em>' containment reference list.
@@ -673,7 +700,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS = 2;
+	int NODE_ELEMENT__AFFIXED_COMPARTMENT_ELEMENTS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Expandable Items</b></em>' containment reference list.
@@ -682,7 +709,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT__EXPANDABLE_ITEMS = 3;
+	int NODE_ELEMENT__EXPANDABLE_ITEMS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Virtual Compartment</b></em>' containment reference list.
@@ -691,7 +718,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT__VIRTUAL_COMPARTMENT = 4;
+	int NODE_ELEMENT__VIRTUAL_COMPARTMENT = 3;
 
 	/**
 	 * The number of structural features of the '<em>Node Element</em>' class.
@@ -700,7 +727,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_ELEMENT_FEATURE_COUNT = 5;
+	int NODE_ELEMENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The operation id for the '<em>Is Only Compartment</em>' operation.
@@ -1044,6 +1071,15 @@ public interface Graphic_representationPackage extends EPackage {
 	int GRAPHIC_REPRESENTATION_OPERATION_COUNT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_COMPARTMENT_GRADIENT__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
+
+	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1125,13 +1161,22 @@ public interface Graphic_representationPackage extends EPackage {
 	int SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR = SHAPE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Label Style</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE = SHAPE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Shape Compartment Gradient</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHAPE_COMPARTMENT_GRADIENT_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 9;
+	int SHAPE_COMPARTMENT_GRADIENT_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Shape Compartment Gradient</em>' class.
@@ -1141,6 +1186,15 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SHAPE_COMPARTMENT_GRADIENT_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_COMPARTMENT_PARALLELOGRAM__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
@@ -1213,6 +1267,15 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SHAPE_COMPARTMENT_PARALLELOGRAM_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELLIPSE__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
@@ -1297,6 +1360,15 @@ public interface Graphic_representationPackage extends EPackage {
 	int NOTE = 19;
 
 	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTE__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
+
+	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1370,6 +1442,15 @@ public interface Graphic_representationPackage extends EPackage {
 	int DIAMOND = 20;
 
 	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIAMOND__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
+
+	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1431,6 +1512,15 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIAMOND_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Labelan EAttribute</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECTANGLE__LABELAN_EATTRIBUTE = SHAPE__LABELAN_EATTRIBUTE;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
@@ -1826,7 +1916,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getAffixedCompartmentElement()
 	 * @generated
 	 */
-	int AFFIXED_COMPARTMENT_ELEMENT = 30;
+	int AFFIXED_COMPARTMENT_ELEMENT = 28;
 
 	/**
 	 * The feature id for the '<em><b>An EReference</b></em>' reference.
@@ -1872,7 +1962,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getAffixedElement()
 	 * @generated
 	 */
-	int AFFIXED_ELEMENT = 28;
+	int AFFIXED_ELEMENT = 29;
 
 	/**
 	 * The feature id for the '<em><b>An EReference</b></em>' reference.
@@ -1918,7 +2008,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentElement()
 	 * @generated
 	 */
-	int COMPARTMENT_ELEMENT = 29;
+	int COMPARTMENT_ELEMENT = 30;
 
 	/**
 	 * The feature id for the '<em><b>An EReference</b></em>' reference.
@@ -1948,58 +2038,13 @@ public interface Graphic_representationPackage extends EPackage {
 	int COMPARTMENT_ELEMENT__COMPARTMENT_VIEW = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Init</b></em>' containment reference.
+	 * The feature id for the '<em><b>Representation Style</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARTMENT_ELEMENT__INIT = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Node Shape</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPARTMENT_ELEMENT__NODE_SHAPE = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPARTMENT_ELEMENT__END = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Init To First</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPARTMENT_ELEMENT__INIT_TO_FIRST = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Node To Node</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPARTMENT_ELEMENT__NODE_TO_NODE = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Node To End</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPARTMENT_ELEMENT__NODE_TO_END = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 6;
+	int COMPARTMENT_ELEMENT__REPRESENTATION_STYLE = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Compartment Element</em>' class.
@@ -2008,7 +2053,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARTMENT_ELEMENT_FEATURE_COUNT = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 7;
+	int COMPARTMENT_ELEMENT_FEATURE_COUNT = AFFIXED_COMPARTMENT_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Compartment Element</em>' class.
@@ -2021,14 +2066,433 @@ public interface Graphic_representationPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link graphic_representation.impl.LabelEAttributeImpl <em>Label EAttribute</em>}' class.
+	 * The meta object id for the '{@link graphic_representation.impl.RepresentationStyleImpl <em>Representation Style</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see graphic_representation.impl.LabelEAttributeImpl
-	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelEAttribute()
+	 * @see graphic_representation.impl.RepresentationStyleImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRepresentationStyle()
 	 * @generated
 	 */
-	int LABEL_EATTRIBUTE = 31;
+	int REPRESENTATION_STYLE = 31;
+
+	/**
+	 * The number of structural features of the '<em>Representation Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPRESENTATION_STYLE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Representation Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPRESENTATION_STYLE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.LoopRepresentationImpl <em>Loop Representation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.LoopRepresentationImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLoopRepresentation()
+	 * @generated
+	 */
+	int LOOP_REPRESENTATION = 32;
+
+	/**
+	 * The feature id for the '<em><b>Init Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION__INIT_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Node Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION__NODE_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>End Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION__END_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Init To Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION__INIT_TO_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Recursive Edge</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION__RECURSIVE_EDGE = REPRESENTATION_STYLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Node To End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION__NODE_TO_END = REPRESENTATION_STYLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Loop Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION_FEATURE_COUNT = REPRESENTATION_STYLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Loop Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_REPRESENTATION_OPERATION_COUNT = REPRESENTATION_STYLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.LinkedListRepresentationImpl <em>Linked List Representation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.LinkedListRepresentationImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLinkedListRepresentation()
+	 * @generated
+	 */
+	int LINKED_LIST_REPRESENTATION = 33;
+
+	/**
+	 * The feature id for the '<em><b>Init</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION__INIT = REPRESENTATION_STYLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Node Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION__NODE_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION__END = REPRESENTATION_STYLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Init To First</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION__INIT_TO_FIRST = REPRESENTATION_STYLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Node To Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION__NODE_TO_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Node To End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION__NODE_TO_END = REPRESENTATION_STYLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Linked List Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION_FEATURE_COUNT = REPRESENTATION_STYLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Linked List Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_LIST_REPRESENTATION_OPERATION_COUNT = REPRESENTATION_STYLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.ConditionalRepresentationImpl <em>Conditional Representation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.ConditionalRepresentationImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getConditionalRepresentation()
+	 * @generated
+	 */
+	int CONDITIONAL_REPRESENTATION = 34;
+
+	/**
+	 * The feature id for the '<em><b>Init Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__INIT_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>If Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__IF_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Then Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__THEN_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Else Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__ELSE_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>End Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__END_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Init To If</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__INIT_TO_IF = REPRESENTATION_STYLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>If To Then Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__IF_TO_THEN_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Then Node To End Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__THEN_NODE_TO_END_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>If Node To Else Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__IF_NODE_TO_ELSE_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Else Node To End Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__ELSE_NODE_TO_END_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Then Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__THEN_REFERENCE = REPRESENTATION_STYLE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Else Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION__ELSE_REFERENCE = REPRESENTATION_STYLE_FEATURE_COUNT + 11;
+
+	/**
+	 * The number of structural features of the '<em>Conditional Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION_FEATURE_COUNT = REPRESENTATION_STYLE_FEATURE_COUNT + 12;
+
+	/**
+	 * The number of operations of the '<em>Conditional Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_REPRESENTATION_OPERATION_COUNT = REPRESENTATION_STYLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.TreeRepresentationImpl <em>Tree Representation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.TreeRepresentationImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getTreeRepresentation()
+	 * @generated
+	 */
+	int TREE_REPRESENTATION = 35;
+
+	/**
+	 * The feature id for the '<em><b>Init Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__INIT_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Root Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__ROOT_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Node Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__NODE_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>End Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__END_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Init To Root Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__INIT_TO_ROOT_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Root Shape To Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__ROOT_SHAPE_TO_NODE = REPRESENTATION_STYLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Node Shape To End Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION__NODE_SHAPE_TO_END_SHAPE = REPRESENTATION_STYLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>Tree Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION_FEATURE_COUNT = REPRESENTATION_STYLE_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of operations of the '<em>Tree Representation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_REPRESENTATION_OPERATION_COUNT = REPRESENTATION_STYLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.GeneralLabelImpl <em>General Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.GeneralLabelImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGeneralLabel()
+	 * @generated
+	 */
+	int GENERAL_LABEL = 36;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' containment reference.
@@ -2037,7 +2501,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE__COLOR = SHAPE_COLOR__COLOR;
+	int GENERAL_LABEL__COLOR = SHAPE_COLOR__COLOR;
 
 	/**
 	 * The feature id for the '<em><b>Label Format</b></em>' attribute list.
@@ -2046,7 +2510,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE__LABEL_FORMAT = SHAPE_COLOR_FEATURE_COUNT + 0;
+	int GENERAL_LABEL__LABEL_FORMAT = SHAPE_COLOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Show Icon</b></em>' attribute.
@@ -2055,7 +2519,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE__SHOW_ICON = SHAPE_COLOR_FEATURE_COUNT + 1;
+	int GENERAL_LABEL__SHOW_ICON = SHAPE_COLOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Label Position</b></em>' attribute.
@@ -2064,16 +2528,98 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE__LABEL_POSITION = SHAPE_COLOR_FEATURE_COUNT + 2;
+	int GENERAL_LABEL__LABEL_POSITION = SHAPE_COLOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>An EAttribute</b></em>' reference.
+	 * The feature id for the '<em><b>Label Aligment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE__AN_EATTRIBUTE = SHAPE_COLOR_FEATURE_COUNT + 3;
+	int GENERAL_LABEL__LABEL_ALIGMENT = SHAPE_COLOR_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>General Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_LABEL_FEATURE_COUNT = SHAPE_COLOR_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>General Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_LABEL_OPERATION_COUNT = SHAPE_COLOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.LabelEAttributeImpl <em>Label EAttribute</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.LabelEAttributeImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelEAttribute()
+	 * @generated
+	 */
+	int LABEL_EATTRIBUTE = 37;
+
+	/**
+	 * The feature id for the '<em><b>Color</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EATTRIBUTE__COLOR = GENERAL_LABEL__COLOR;
+
+	/**
+	 * The feature id for the '<em><b>Label Format</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EATTRIBUTE__LABEL_FORMAT = GENERAL_LABEL__LABEL_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Show Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EATTRIBUTE__SHOW_ICON = GENERAL_LABEL__SHOW_ICON;
+
+	/**
+	 * The feature id for the '<em><b>Label Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EATTRIBUTE__LABEL_POSITION = GENERAL_LABEL__LABEL_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Label Aligment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EATTRIBUTE__LABEL_ALIGMENT = GENERAL_LABEL__LABEL_ALIGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Label Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EATTRIBUTE__LABEL_ATTRIBUTES = GENERAL_LABEL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Label EAttribute</em>' class.
@@ -2082,7 +2628,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE_FEATURE_COUNT = SHAPE_COLOR_FEATURE_COUNT + 4;
+	int LABEL_EATTRIBUTE_FEATURE_COUNT = GENERAL_LABEL_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Label EAttribute</em>' class.
@@ -2091,8 +2637,90 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_EATTRIBUTE_OPERATION_COUNT = SHAPE_COLOR_OPERATION_COUNT + 0;
+	int LABEL_EATTRIBUTE_OPERATION_COUNT = GENERAL_LABEL_OPERATION_COUNT + 0;
 
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.LabelOCLImpl <em>Label OCL</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.LabelOCLImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelOCL()
+	 * @generated
+	 */
+	int LABEL_OCL = 38;
+
+	/**
+	 * The feature id for the '<em><b>Color</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL__COLOR = GENERAL_LABEL__COLOR;
+
+	/**
+	 * The feature id for the '<em><b>Label Format</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL__LABEL_FORMAT = GENERAL_LABEL__LABEL_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Show Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL__SHOW_ICON = GENERAL_LABEL__SHOW_ICON;
+
+	/**
+	 * The feature id for the '<em><b>Label Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL__LABEL_POSITION = GENERAL_LABEL__LABEL_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Label Aligment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL__LABEL_ALIGMENT = GENERAL_LABEL__LABEL_ALIGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Ocl Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL__OCL_EXPRESSION = GENERAL_LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Label OCL</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL_FEATURE_COUNT = GENERAL_LABEL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Label OCL</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OCL_OPERATION_COUNT = GENERAL_LABEL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link graphic_representation.impl.BorderImpl <em>Border</em>}' class.
@@ -2102,7 +2730,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getBorder()
 	 * @generated
 	 */
-	int BORDER = 32;
+	int BORDER = 39;
 
 	/**
 	 * The feature id for the '<em><b>Border Style</b></em>' attribute.
@@ -2158,7 +2786,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getColor()
 	 * @generated
 	 */
-	int COLOR = 33;
+	int COLOR = 40;
 
 	/**
 	 * The number of structural features of the '<em>Color</em>' class.
@@ -2186,7 +2814,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGRUserColor()
 	 * @generated
 	 */
-	int GR_USER_COLOR = 34;
+	int GR_USER_COLOR = 41;
 
 	/**
 	 * The number of structural features of the '<em>GR User Color</em>' class.
@@ -2214,7 +2842,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGRUserColorDef()
 	 * @generated
 	 */
-	int GR_USER_COLOR_DEF = 35;
+	int GR_USER_COLOR_DEF = 42;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' reference.
@@ -2251,7 +2879,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGRColorDescription()
 	 * @generated
 	 */
-	int GR_COLOR_DESCRIPTION = 36;
+	int GR_COLOR_DESCRIPTION = 43;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2288,7 +2916,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRGBColorDescription()
 	 * @generated
 	 */
-	int RGB_COLOR_DESCRIPTION = 37;
+	int RGB_COLOR_DESCRIPTION = 44;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2325,7 +2953,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRGBColor()
 	 * @generated
 	 */
-	int RGB_COLOR = 38;
+	int RGB_COLOR = 45;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2389,7 +3017,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getSiriusSystemColors()
 	 * @generated
 	 */
-	int SIRIUS_SYSTEM_COLORS = 39;
+	int SIRIUS_SYSTEM_COLORS = 46;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2436,7 +3064,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGRLabelStyleDescription()
 	 * @generated
 	 */
-	int GR_LABEL_STYLE_DESCRIPTION = 40;
+	int GR_LABEL_STYLE_DESCRIPTION = 47;
 
 	/**
 	 * The feature id for the '<em><b>Label Format</b></em>' attribute list.
@@ -2491,7 +3119,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRepresentation()
 	 * @generated
 	 */
-	int REPRESENTATION = 41;
+	int REPRESENTATION = 48;
 
 	/**
 	 * The number of structural features of the '<em>Representation</em>' class.
@@ -2519,7 +3147,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRepresentationTable()
 	 * @generated
 	 */
-	int REPRESENTATION_TABLE = 43;
+	int REPRESENTATION_TABLE = 50;
 
 	/**
 	 * The meta object id for the '{@link graphic_representation.impl.RepresentationDDImpl <em>Representation DD</em>}' class.
@@ -2529,7 +3157,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRepresentationDD()
 	 * @generated
 	 */
-	int REPRESENTATION_DD = 42;
+	int REPRESENTATION_DD = 49;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2629,7 +3257,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLine()
 	 * @generated
 	 */
-	int LINE = 44;
+	int LINE = 51;
 
 	/**
 	 * The feature id for the '<em><b>Feature Reference</b></em>' reference.
@@ -2675,7 +3303,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLineGroup()
 	 * @generated
 	 */
-	int LINE_GROUP = 45;
+	int LINE_GROUP = 52;
 
 	/**
 	 * The feature id for the '<em><b>Feature Reference</b></em>' reference.
@@ -2730,7 +3358,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getConditionalStyle()
 	 * @generated
 	 */
-	int CONDITIONAL_STYLE = 46;
+	int CONDITIONAL_STYLE = 53;
 
 	/**
 	 * The feature id for the '<em><b>EAttribute</b></em>' reference.
@@ -2760,13 +3388,22 @@ public interface Graphic_representationPackage extends EPackage {
 	int CONDITIONAL_STYLE__CONDITIONAL_STYLE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Label Ocl</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STYLE__LABEL_OCL = 3;
+
+	/**
 	 * The number of structural features of the '<em>Conditional Style</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_STYLE_FEATURE_COUNT = 3;
+	int CONDITIONAL_STYLE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Conditional Style</em>' class.
@@ -2785,7 +3422,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartment()
 	 * @generated
 	 */
-	int VIRTUAL_COMPARTMENT = 47;
+	int VIRTUAL_COMPARTMENT = 54;
 
 	/**
 	 * The feature id for the '<em><b>Node</b></em>' reference.
@@ -2822,7 +3459,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartmentReference()
 	 * @generated
 	 */
-	int VIRTUAL_COMPARTMENT_REFERENCE = 48;
+	int VIRTUAL_COMPARTMENT_REFERENCE = 55;
 
 	/**
 	 * The feature id for the '<em><b>Node</b></em>' reference.
@@ -2877,7 +3514,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getVirtualCompartmentOCL()
 	 * @generated
 	 */
-	int VIRTUAL_COMPARTMENT_OCL = 49;
+	int VIRTUAL_COMPARTMENT_OCL = 56;
 
 	/**
 	 * The feature id for the '<em><b>Node</b></em>' reference.
@@ -2923,7 +3560,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentEdge()
 	 * @generated
 	 */
-	int COMPARTMENT_EDGE = 50;
+	int COMPARTMENT_EDGE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Edge style</b></em>' containment reference.
@@ -2978,7 +3615,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentLink()
 	 * @generated
 	 */
-	int COMPARTMENT_LINK = 51;
+	int COMPARTMENT_LINK = 58;
 
 	/**
 	 * The feature id for the '<em><b>Decorator Name</b></em>' attribute.
@@ -3008,6 +3645,153 @@ public interface Graphic_representationPackage extends EPackage {
 	int COMPARTMENT_LINK_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link graphic_representation.impl.WEAttributeImpl <em>WE Attribute</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.WEAttributeImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getWEAttribute()
+	 * @generated
+	 */
+	int WE_ATTRIBUTE = 59;
+
+	/**
+	 * The feature id for the '<em><b>EAttribute</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WE_ATTRIBUTE__EATTRIBUTE = 0;
+
+	/**
+	 * The number of structural features of the '<em>WE Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WE_ATTRIBUTE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>WE Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WE_ATTRIBUTE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.ConditionalEdgeStyleImpl <em>Conditional Edge Style</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.ConditionalEdgeStyleImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getConditionalEdgeStyle()
+	 * @generated
+	 */
+	int CONDITIONAL_EDGE_STYLE = 60;
+
+	/**
+	 * The feature id for the '<em><b>Conditional OCL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE__CONDITIONAL_OCL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Conditional Edge</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE__CONDITIONAL_EDGE = 1;
+
+	/**
+	 * The feature id for the '<em><b>General Label</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE__GENERAL_LABEL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Decorator Source</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE__DECORATOR_SOURCE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Decorator Target</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE__DECORATOR_TARGET = 4;
+
+	/**
+	 * The number of structural features of the '<em>Conditional Edge Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Conditional Edge Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_EDGE_STYLE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.impl.EdgeDecoratorImpl <em>Edge Decorator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.impl.EdgeDecoratorImpl
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getEdgeDecorator()
+	 * @generated
+	 */
+	int EDGE_DECORATOR = 61;
+
+	/**
+	 * The feature id for the '<em><b>Decorator Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_DECORATOR__DECORATOR_NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Edge Decorator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_DECORATOR_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Edge Decorator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_DECORATOR_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link graphic_representation.GRFontFormat <em>GR Font Format</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3015,7 +3799,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGRFontFormat()
 	 * @generated
 	 */
-	int GR_FONT_FORMAT = 52;
+	int GR_FONT_FORMAT = 62;
 
 	/**
 	 * The meta object id for the '{@link graphic_representation.LabelPosition <em>Label Position</em>}' enum.
@@ -3025,8 +3809,18 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelPosition()
 	 * @generated
 	 */
-	int LABEL_POSITION = 53;
+	int LABEL_POSITION = 63;
 
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.LabelAligment <em>Label Aligment</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.LabelAligment
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelAligment()
+	 * @generated
+	 */
+	int LABEL_ALIGMENT = 64;
 
 	/**
 	 * The meta object id for the '{@link graphic_representation.ChildrenPresentation <em>Children Presentation</em>}' enum.
@@ -3036,7 +3830,7 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getChildrenPresentation()
 	 * @generated
 	 */
-	int CHILDREN_PRESENTATION = 54;
+	int CHILDREN_PRESENTATION = 65;
 
 
 	/**
@@ -3047,7 +3841,18 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getCompartmentView()
 	 * @generated
 	 */
-	int COMPARTMENT_VIEW = 55;
+	int COMPARTMENT_VIEW = 66;
+
+
+	/**
+	 * The meta object id for the '{@link graphic_representation.LabelBorderedStyle <em>Label Bordered Style</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graphic_representation.LabelBorderedStyle
+	 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelBorderedStyle()
+	 * @generated
+	 */
+	int LABEL_BORDERED_STYLE = 67;
 
 
 	/**
@@ -3222,6 +4027,17 @@ public interface Graphic_representationPackage extends EPackage {
 	EReference getEdge_EdgeLabel();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link graphic_representation.Edge#getConditionalEdgeStyle <em>Conditional Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Conditional Edge Style</em>'.
+	 * @see graphic_representation.Edge#getConditionalEdgeStyle()
+	 * @see #getEdge()
+	 * @generated
+	 */
+	EReference getEdge_ConditionalEdgeStyle();
+
+	/**
 	 * Returns the meta object for class '{@link graphic_representation.EdgeLabelEAttribute <em>Edge Label EAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3351,6 +4167,17 @@ public interface Graphic_representationPackage extends EPackage {
 	EAttribute getIconElement_EmbeddedImage();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.IconElement#getFigureSearch <em>Figure Search</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Figure Search</em>'.
+	 * @see graphic_representation.IconElement#getFigureSearch()
+	 * @see #getIconElement()
+	 * @generated
+	 */
+	EReference getIconElement_FigureSearch();
+
+	/**
 	 * Returns the meta object for the '{@link graphic_representation.IconElement#ImageBase64() <em>Image Base64</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3412,17 +4239,6 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNode_Element();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link graphic_representation.Node_Element#getLabelanEAttribute <em>Labelan EAttribute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Labelan EAttribute</em>'.
-	 * @see graphic_representation.Node_Element#getLabelanEAttribute()
-	 * @see #getNode_Element()
-	 * @generated
-	 */
-	EReference getNode_Element_LabelanEAttribute();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link graphic_representation.Node_Element#getLinkPalette <em>Link Palette</em>}'.
@@ -3692,6 +4508,17 @@ public interface Graphic_representationPackage extends EPackage {
 	EClass getShape();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.Shape#getLabelanEAttribute <em>Labelan EAttribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Labelan EAttribute</em>'.
+	 * @see graphic_representation.Shape#getLabelanEAttribute()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EReference getShape_LabelanEAttribute();
+
+	/**
 	 * Returns the meta object for class '{@link graphic_representation.ShapeCompartmentGradient <em>Shape Compartment Gradient</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3755,6 +4582,17 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getShapeCompartmentGradient_ForeGroundColor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.ShapeCompartmentGradient#getLabelStyle <em>Label Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label Style</em>'.
+	 * @see graphic_representation.ShapeCompartmentGradient#getLabelStyle()
+	 * @see #getShapeCompartmentGradient()
+	 * @generated
+	 */
+	EAttribute getShapeCompartmentGradient_LabelStyle();
 
 	/**
 	 * Returns the meta object for class '{@link graphic_representation.ShapeCompartmentParallelogram <em>Shape Compartment Parallelogram</em>}'.
@@ -4063,70 +4901,406 @@ public interface Graphic_representationPackage extends EPackage {
 	EAttribute getCompartmentElement_CompartmentView();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getInit <em>Init</em>}'.
+	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getRepresentationStyle <em>Representation Style</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Init</em>'.
-	 * @see graphic_representation.CompartmentElement#getInit()
+	 * @return the meta object for the containment reference '<em>Representation Style</em>'.
+	 * @see graphic_representation.CompartmentElement#getRepresentationStyle()
 	 * @see #getCompartmentElement()
 	 * @generated
 	 */
-	EReference getCompartmentElement_Init();
+	EReference getCompartmentElement_RepresentationStyle();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getNodeShape <em>Node Shape</em>}'.
+	 * Returns the meta object for class '{@link graphic_representation.RepresentationStyle <em>Representation Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Representation Style</em>'.
+	 * @see graphic_representation.RepresentationStyle
+	 * @generated
+	 */
+	EClass getRepresentationStyle();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.LoopRepresentation <em>Loop Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Loop Representation</em>'.
+	 * @see graphic_representation.LoopRepresentation
+	 * @generated
+	 */
+	EClass getLoopRepresentation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LoopRepresentation#getInitShape <em>Init Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init Shape</em>'.
+	 * @see graphic_representation.LoopRepresentation#getInitShape()
+	 * @see #getLoopRepresentation()
+	 * @generated
+	 */
+	EReference getLoopRepresentation_InitShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LoopRepresentation#getNodeShape <em>Node Shape</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Node Shape</em>'.
-	 * @see graphic_representation.CompartmentElement#getNodeShape()
-	 * @see #getCompartmentElement()
+	 * @see graphic_representation.LoopRepresentation#getNodeShape()
+	 * @see #getLoopRepresentation()
 	 * @generated
 	 */
-	EReference getCompartmentElement_NodeShape();
+	EReference getLoopRepresentation_NodeShape();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getEnd <em>End</em>}'.
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LoopRepresentation#getEndShape <em>End Shape</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>End</em>'.
-	 * @see graphic_representation.CompartmentElement#getEnd()
-	 * @see #getCompartmentElement()
+	 * @return the meta object for the containment reference '<em>End Shape</em>'.
+	 * @see graphic_representation.LoopRepresentation#getEndShape()
+	 * @see #getLoopRepresentation()
 	 * @generated
 	 */
-	EReference getCompartmentElement_End();
+	EReference getLoopRepresentation_EndShape();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getInitToFirst <em>Init To First</em>}'.
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LoopRepresentation#getInitToNode <em>Init To Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Init To First</em>'.
-	 * @see graphic_representation.CompartmentElement#getInitToFirst()
-	 * @see #getCompartmentElement()
+	 * @return the meta object for the containment reference '<em>Init To Node</em>'.
+	 * @see graphic_representation.LoopRepresentation#getInitToNode()
+	 * @see #getLoopRepresentation()
 	 * @generated
 	 */
-	EReference getCompartmentElement_InitToFirst();
+	EReference getLoopRepresentation_InitToNode();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getNodeToNode <em>Node To Node</em>}'.
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LoopRepresentation#getRecursiveEdge <em>Recursive Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Node To Node</em>'.
-	 * @see graphic_representation.CompartmentElement#getNodeToNode()
-	 * @see #getCompartmentElement()
+	 * @return the meta object for the containment reference '<em>Recursive Edge</em>'.
+	 * @see graphic_representation.LoopRepresentation#getRecursiveEdge()
+	 * @see #getLoopRepresentation()
 	 * @generated
 	 */
-	EReference getCompartmentElement_NodeToNode();
+	EReference getLoopRepresentation_RecursiveEdge();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link graphic_representation.CompartmentElement#getNodeToEnd <em>Node To End</em>}'.
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LoopRepresentation#getNodeToEnd <em>Node To End</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Node To End</em>'.
-	 * @see graphic_representation.CompartmentElement#getNodeToEnd()
-	 * @see #getCompartmentElement()
+	 * @see graphic_representation.LoopRepresentation#getNodeToEnd()
+	 * @see #getLoopRepresentation()
 	 * @generated
 	 */
-	EReference getCompartmentElement_NodeToEnd();
+	EReference getLoopRepresentation_NodeToEnd();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.LinkedListRepresentation <em>Linked List Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Linked List Representation</em>'.
+	 * @see graphic_representation.LinkedListRepresentation
+	 * @generated
+	 */
+	EClass getLinkedListRepresentation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LinkedListRepresentation#getInit <em>Init</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init</em>'.
+	 * @see graphic_representation.LinkedListRepresentation#getInit()
+	 * @see #getLinkedListRepresentation()
+	 * @generated
+	 */
+	EReference getLinkedListRepresentation_Init();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LinkedListRepresentation#getNodeShape <em>Node Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node Shape</em>'.
+	 * @see graphic_representation.LinkedListRepresentation#getNodeShape()
+	 * @see #getLinkedListRepresentation()
+	 * @generated
+	 */
+	EReference getLinkedListRepresentation_NodeShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LinkedListRepresentation#getEnd <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>End</em>'.
+	 * @see graphic_representation.LinkedListRepresentation#getEnd()
+	 * @see #getLinkedListRepresentation()
+	 * @generated
+	 */
+	EReference getLinkedListRepresentation_End();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LinkedListRepresentation#getInitToFirst <em>Init To First</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init To First</em>'.
+	 * @see graphic_representation.LinkedListRepresentation#getInitToFirst()
+	 * @see #getLinkedListRepresentation()
+	 * @generated
+	 */
+	EReference getLinkedListRepresentation_InitToFirst();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LinkedListRepresentation#getNodeToNode <em>Node To Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node To Node</em>'.
+	 * @see graphic_representation.LinkedListRepresentation#getNodeToNode()
+	 * @see #getLinkedListRepresentation()
+	 * @generated
+	 */
+	EReference getLinkedListRepresentation_NodeToNode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.LinkedListRepresentation#getNodeToEnd <em>Node To End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node To End</em>'.
+	 * @see graphic_representation.LinkedListRepresentation#getNodeToEnd()
+	 * @see #getLinkedListRepresentation()
+	 * @generated
+	 */
+	EReference getLinkedListRepresentation_NodeToEnd();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.ConditionalRepresentation <em>Conditional Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conditional Representation</em>'.
+	 * @see graphic_representation.ConditionalRepresentation
+	 * @generated
+	 */
+	EClass getConditionalRepresentation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getInitShape <em>Init Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init Shape</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getInitShape()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_InitShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getIfShape <em>If Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>If Shape</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getIfShape()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_IfShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getThenShape <em>Then Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Then Shape</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getThenShape()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_ThenShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getElseShape <em>Else Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Else Shape</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getElseShape()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_ElseShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getEndShape <em>End Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>End Shape</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getEndShape()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_EndShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getInitToIf <em>Init To If</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init To If</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getInitToIf()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_InitToIf();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getIfToThenNode <em>If To Then Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>If To Then Node</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getIfToThenNode()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_IfToThenNode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getThenNodeToEndNode <em>Then Node To End Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Then Node To End Node</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getThenNodeToEndNode()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_ThenNodeToEndNode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getIfNodeToElseNode <em>If Node To Else Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>If Node To Else Node</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getIfNodeToElseNode()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_IfNodeToElseNode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalRepresentation#getElseNodeToEndNode <em>Else Node To End Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Else Node To End Node</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getElseNodeToEndNode()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_ElseNodeToEndNode();
+
+	/**
+	 * Returns the meta object for the reference '{@link graphic_representation.ConditionalRepresentation#getThenReference <em>Then Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Then Reference</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getThenReference()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_ThenReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link graphic_representation.ConditionalRepresentation#getElseReference <em>Else Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Else Reference</em>'.
+	 * @see graphic_representation.ConditionalRepresentation#getElseReference()
+	 * @see #getConditionalRepresentation()
+	 * @generated
+	 */
+	EReference getConditionalRepresentation_ElseReference();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.TreeRepresentation <em>Tree Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Tree Representation</em>'.
+	 * @see graphic_representation.TreeRepresentation
+	 * @generated
+	 */
+	EClass getTreeRepresentation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getInitShape <em>Init Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init Shape</em>'.
+	 * @see graphic_representation.TreeRepresentation#getInitShape()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_InitShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getRootShape <em>Root Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root Shape</em>'.
+	 * @see graphic_representation.TreeRepresentation#getRootShape()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_RootShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getNodeShape <em>Node Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node Shape</em>'.
+	 * @see graphic_representation.TreeRepresentation#getNodeShape()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_NodeShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getEndShape <em>End Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>End Shape</em>'.
+	 * @see graphic_representation.TreeRepresentation#getEndShape()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_EndShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getInitToRootShape <em>Init To Root Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Init To Root Shape</em>'.
+	 * @see graphic_representation.TreeRepresentation#getInitToRootShape()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_InitToRootShape();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getRootShapeToNode <em>Root Shape To Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root Shape To Node</em>'.
+	 * @see graphic_representation.TreeRepresentation#getRootShapeToNode()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_RootShapeToNode();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.TreeRepresentation#getNodeShapeToEndShape <em>Node Shape To End Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Node Shape To End Shape</em>'.
+	 * @see graphic_representation.TreeRepresentation#getNodeShapeToEndShape()
+	 * @see #getTreeRepresentation()
+	 * @generated
+	 */
+	EReference getTreeRepresentation_NodeShapeToEndShape();
 
 	/**
 	 * Returns the meta object for class '{@link graphic_representation.AffixedCompartmentElement <em>Affixed Compartment Element</em>}'.
@@ -4161,6 +5335,27 @@ public interface Graphic_representationPackage extends EPackage {
 	EReference getAffixedCompartmentElement_Nodes();
 
 	/**
+	 * Returns the meta object for class '{@link graphic_representation.GeneralLabel <em>General Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>General Label</em>'.
+	 * @see graphic_representation.GeneralLabel
+	 * @generated
+	 */
+	EClass getGeneralLabel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.GeneralLabel#getLabelAligment <em>Label Aligment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label Aligment</em>'.
+	 * @see graphic_representation.GeneralLabel#getLabelAligment()
+	 * @see #getGeneralLabel()
+	 * @generated
+	 */
+	EAttribute getGeneralLabel_LabelAligment();
+
+	/**
 	 * Returns the meta object for class '{@link graphic_representation.LabelEAttribute <em>Label EAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4171,15 +5366,36 @@ public interface Graphic_representationPackage extends EPackage {
 	EClass getLabelEAttribute();
 
 	/**
-	 * Returns the meta object for the reference '{@link graphic_representation.LabelEAttribute#getAnEAttribute <em>An EAttribute</em>}'.
+	 * Returns the meta object for the containment reference list '{@link graphic_representation.LabelEAttribute#getLabelAttributes <em>Label Attributes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>An EAttribute</em>'.
-	 * @see graphic_representation.LabelEAttribute#getAnEAttribute()
+	 * @return the meta object for the containment reference list '<em>Label Attributes</em>'.
+	 * @see graphic_representation.LabelEAttribute#getLabelAttributes()
 	 * @see #getLabelEAttribute()
 	 * @generated
 	 */
-	EReference getLabelEAttribute_AnEAttribute();
+	EReference getLabelEAttribute_LabelAttributes();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.LabelOCL <em>Label OCL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Label OCL</em>'.
+	 * @see graphic_representation.LabelOCL
+	 * @generated
+	 */
+	EClass getLabelOCL();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.LabelOCL#getOclExpression <em>Ocl Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ocl Expression</em>'.
+	 * @see graphic_representation.LabelOCL#getOclExpression()
+	 * @see #getLabelOCL()
+	 * @generated
+	 */
+	EAttribute getLabelOCL_OclExpression();
 
 	/**
 	 * Returns the meta object for class '{@link graphic_representation.Border <em>Border</em>}'.
@@ -4584,6 +5800,17 @@ public interface Graphic_representationPackage extends EPackage {
 	EReference getConditionalStyle_ConditionalStyle();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalStyle#getLabelOcl <em>Label Ocl</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Label Ocl</em>'.
+	 * @see graphic_representation.ConditionalStyle#getLabelOcl()
+	 * @see #getConditionalStyle()
+	 * @generated
+	 */
+	EReference getConditionalStyle_LabelOcl();
+
+	/**
 	 * Returns the meta object for class '{@link graphic_representation.VirtualCompartment <em>Virtual Compartment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4722,6 +5949,113 @@ public interface Graphic_representationPackage extends EPackage {
 	EAttribute getCompartmentLink_DecoratorName();
 
 	/**
+	 * Returns the meta object for class '{@link graphic_representation.WEAttribute <em>WE Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>WE Attribute</em>'.
+	 * @see graphic_representation.WEAttribute
+	 * @generated
+	 */
+	EClass getWEAttribute();
+
+	/**
+	 * Returns the meta object for the reference '{@link graphic_representation.WEAttribute#getEAttribute <em>EAttribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>EAttribute</em>'.
+	 * @see graphic_representation.WEAttribute#getEAttribute()
+	 * @see #getWEAttribute()
+	 * @generated
+	 */
+	EReference getWEAttribute_EAttribute();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.ConditionalEdgeStyle <em>Conditional Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conditional Edge Style</em>'.
+	 * @see graphic_representation.ConditionalEdgeStyle
+	 * @generated
+	 */
+	EClass getConditionalEdgeStyle();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.ConditionalEdgeStyle#getConditionalOCL <em>Conditional OCL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Conditional OCL</em>'.
+	 * @see graphic_representation.ConditionalEdgeStyle#getConditionalOCL()
+	 * @see #getConditionalEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getConditionalEdgeStyle_ConditionalOCL();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalEdgeStyle#getConditionalEdge <em>Conditional Edge</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Conditional Edge</em>'.
+	 * @see graphic_representation.ConditionalEdgeStyle#getConditionalEdge()
+	 * @see #getConditionalEdgeStyle()
+	 * @generated
+	 */
+	EReference getConditionalEdgeStyle_ConditionalEdge();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalEdgeStyle#getGeneralLabel <em>General Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>General Label</em>'.
+	 * @see graphic_representation.ConditionalEdgeStyle#getGeneralLabel()
+	 * @see #getConditionalEdgeStyle()
+	 * @generated
+	 */
+	EReference getConditionalEdgeStyle_GeneralLabel();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalEdgeStyle#getDecoratorSource <em>Decorator Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Decorator Source</em>'.
+	 * @see graphic_representation.ConditionalEdgeStyle#getDecoratorSource()
+	 * @see #getConditionalEdgeStyle()
+	 * @generated
+	 */
+	EReference getConditionalEdgeStyle_DecoratorSource();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link graphic_representation.ConditionalEdgeStyle#getDecoratorTarget <em>Decorator Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Decorator Target</em>'.
+	 * @see graphic_representation.ConditionalEdgeStyle#getDecoratorTarget()
+	 * @see #getConditionalEdgeStyle()
+	 * @generated
+	 */
+	EReference getConditionalEdgeStyle_DecoratorTarget();
+
+	/**
+	 * Returns the meta object for class '{@link graphic_representation.EdgeDecorator <em>Edge Decorator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Edge Decorator</em>'.
+	 * @see graphic_representation.EdgeDecorator
+	 * @generated
+	 */
+	EClass getEdgeDecorator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graphic_representation.EdgeDecorator#getDecoratorName <em>Decorator Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Decorator Name</em>'.
+	 * @see graphic_representation.EdgeDecorator#getDecoratorName()
+	 * @see #getEdgeDecorator()
+	 * @generated
+	 */
+	EAttribute getEdgeDecorator_DecoratorName();
+
+	/**
 	 * Returns the meta object for enum '{@link graphic_representation.GRFontFormat <em>GR Font Format</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4742,6 +6076,16 @@ public interface Graphic_representationPackage extends EPackage {
 	EEnum getLabelPosition();
 
 	/**
+	 * Returns the meta object for enum '{@link graphic_representation.LabelAligment <em>Label Aligment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Label Aligment</em>'.
+	 * @see graphic_representation.LabelAligment
+	 * @generated
+	 */
+	EEnum getLabelAligment();
+
+	/**
 	 * Returns the meta object for enum '{@link graphic_representation.ChildrenPresentation <em>Children Presentation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4760,6 +6104,16 @@ public interface Graphic_representationPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCompartmentView();
+
+	/**
+	 * Returns the meta object for enum '{@link graphic_representation.LabelBorderedStyle <em>Label Bordered Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Label Bordered Style</em>'.
+	 * @see graphic_representation.LabelBorderedStyle
+	 * @generated
+	 */
+	EEnum getLabelBorderedStyle();
 
 	/**
 	 * Returns the meta object for the attribute '{@link graphic_representation.Border#getBorderStyle <em>Border Style</em>}'.
@@ -4945,6 +6299,14 @@ public interface Graphic_representationPackage extends EPackage {
 		EReference EDGE__EDGE_LABEL = eINSTANCE.getEdge_EdgeLabel();
 
 		/**
+		 * The meta object literal for the '<em><b>Conditional Edge Style</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDGE__CONDITIONAL_EDGE_STYLE = eINSTANCE.getEdge_ConditionalEdgeStyle();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.EdgeLabelEAttributeImpl <em>Edge Label EAttribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5047,6 +6409,14 @@ public interface Graphic_representationPackage extends EPackage {
 		EAttribute ICON_ELEMENT__EMBEDDED_IMAGE = eINSTANCE.getIconElement_EmbeddedImage();
 
 		/**
+		 * The meta object literal for the '<em><b>Figure Search</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ICON_ELEMENT__FIGURE_SEARCH = eINSTANCE.getIconElement_FigureSearch();
+
+		/**
 		 * The meta object literal for the '<em><b>Image Base64</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5097,14 +6467,6 @@ public interface Graphic_representationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NODE_ELEMENT = eINSTANCE.getNode_Element();
-
-		/**
-		 * The meta object literal for the '<em><b>Labelan EAttribute</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NODE_ELEMENT__LABELAN_EATTRIBUTE = eINSTANCE.getNode_Element_LabelanEAttribute();
 
 		/**
 		 * The meta object literal for the '<em><b>Link Palette</b></em>' containment reference list feature.
@@ -5319,6 +6681,14 @@ public interface Graphic_representationPackage extends EPackage {
 		EClass SHAPE = eINSTANCE.getShape();
 
 		/**
+		 * The meta object literal for the '<em><b>Labelan EAttribute</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHAPE__LABELAN_EATTRIBUTE = eINSTANCE.getShape_LabelanEAttribute();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.ShapeCompartmentGradientImpl <em>Shape Compartment Gradient</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5367,6 +6737,14 @@ public interface Graphic_representationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SHAPE_COMPARTMENT_GRADIENT__FORE_GROUND_COLOR = eINSTANCE.getShapeCompartmentGradient_ForeGroundColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Label Style</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE_COMPARTMENT_GRADIENT__LABEL_STYLE = eINSTANCE.getShapeCompartmentGradient_LabelStyle();
 
 		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.ShapeCompartmentParallelogramImpl <em>Shape Compartment Parallelogram</em>}' class.
@@ -5627,12 +7005,40 @@ public interface Graphic_representationPackage extends EPackage {
 		EAttribute COMPARTMENT_ELEMENT__COMPARTMENT_VIEW = eINSTANCE.getCompartmentElement_CompartmentView();
 
 		/**
-		 * The meta object literal for the '<em><b>Init</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Representation Style</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARTMENT_ELEMENT__INIT = eINSTANCE.getCompartmentElement_Init();
+		EReference COMPARTMENT_ELEMENT__REPRESENTATION_STYLE = eINSTANCE.getCompartmentElement_RepresentationStyle();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.RepresentationStyleImpl <em>Representation Style</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.RepresentationStyleImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getRepresentationStyle()
+		 * @generated
+		 */
+		EClass REPRESENTATION_STYLE = eINSTANCE.getRepresentationStyle();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.LoopRepresentationImpl <em>Loop Representation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.LoopRepresentationImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLoopRepresentation()
+		 * @generated
+		 */
+		EClass LOOP_REPRESENTATION = eINSTANCE.getLoopRepresentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Init Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP_REPRESENTATION__INIT_SHAPE = eINSTANCE.getLoopRepresentation_InitShape();
 
 		/**
 		 * The meta object literal for the '<em><b>Node Shape</b></em>' containment reference feature.
@@ -5640,31 +7046,31 @@ public interface Graphic_representationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARTMENT_ELEMENT__NODE_SHAPE = eINSTANCE.getCompartmentElement_NodeShape();
+		EReference LOOP_REPRESENTATION__NODE_SHAPE = eINSTANCE.getLoopRepresentation_NodeShape();
 
 		/**
-		 * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>End Shape</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARTMENT_ELEMENT__END = eINSTANCE.getCompartmentElement_End();
+		EReference LOOP_REPRESENTATION__END_SHAPE = eINSTANCE.getLoopRepresentation_EndShape();
 
 		/**
-		 * The meta object literal for the '<em><b>Init To First</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Init To Node</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARTMENT_ELEMENT__INIT_TO_FIRST = eINSTANCE.getCompartmentElement_InitToFirst();
+		EReference LOOP_REPRESENTATION__INIT_TO_NODE = eINSTANCE.getLoopRepresentation_InitToNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Node To Node</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Recursive Edge</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARTMENT_ELEMENT__NODE_TO_NODE = eINSTANCE.getCompartmentElement_NodeToNode();
+		EReference LOOP_REPRESENTATION__RECURSIVE_EDGE = eINSTANCE.getLoopRepresentation_RecursiveEdge();
 
 		/**
 		 * The meta object literal for the '<em><b>Node To End</b></em>' containment reference feature.
@@ -5672,7 +7078,237 @@ public interface Graphic_representationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPARTMENT_ELEMENT__NODE_TO_END = eINSTANCE.getCompartmentElement_NodeToEnd();
+		EReference LOOP_REPRESENTATION__NODE_TO_END = eINSTANCE.getLoopRepresentation_NodeToEnd();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.LinkedListRepresentationImpl <em>Linked List Representation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.LinkedListRepresentationImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLinkedListRepresentation()
+		 * @generated
+		 */
+		EClass LINKED_LIST_REPRESENTATION = eINSTANCE.getLinkedListRepresentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Init</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINKED_LIST_REPRESENTATION__INIT = eINSTANCE.getLinkedListRepresentation_Init();
+
+		/**
+		 * The meta object literal for the '<em><b>Node Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINKED_LIST_REPRESENTATION__NODE_SHAPE = eINSTANCE.getLinkedListRepresentation_NodeShape();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINKED_LIST_REPRESENTATION__END = eINSTANCE.getLinkedListRepresentation_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Init To First</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINKED_LIST_REPRESENTATION__INIT_TO_FIRST = eINSTANCE.getLinkedListRepresentation_InitToFirst();
+
+		/**
+		 * The meta object literal for the '<em><b>Node To Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINKED_LIST_REPRESENTATION__NODE_TO_NODE = eINSTANCE.getLinkedListRepresentation_NodeToNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Node To End</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINKED_LIST_REPRESENTATION__NODE_TO_END = eINSTANCE.getLinkedListRepresentation_NodeToEnd();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.ConditionalRepresentationImpl <em>Conditional Representation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.ConditionalRepresentationImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getConditionalRepresentation()
+		 * @generated
+		 */
+		EClass CONDITIONAL_REPRESENTATION = eINSTANCE.getConditionalRepresentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Init Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__INIT_SHAPE = eINSTANCE.getConditionalRepresentation_InitShape();
+
+		/**
+		 * The meta object literal for the '<em><b>If Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__IF_SHAPE = eINSTANCE.getConditionalRepresentation_IfShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Then Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__THEN_SHAPE = eINSTANCE.getConditionalRepresentation_ThenShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Else Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__ELSE_SHAPE = eINSTANCE.getConditionalRepresentation_ElseShape();
+
+		/**
+		 * The meta object literal for the '<em><b>End Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__END_SHAPE = eINSTANCE.getConditionalRepresentation_EndShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Init To If</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__INIT_TO_IF = eINSTANCE.getConditionalRepresentation_InitToIf();
+
+		/**
+		 * The meta object literal for the '<em><b>If To Then Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__IF_TO_THEN_NODE = eINSTANCE.getConditionalRepresentation_IfToThenNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Then Node To End Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__THEN_NODE_TO_END_NODE = eINSTANCE.getConditionalRepresentation_ThenNodeToEndNode();
+
+		/**
+		 * The meta object literal for the '<em><b>If Node To Else Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__IF_NODE_TO_ELSE_NODE = eINSTANCE.getConditionalRepresentation_IfNodeToElseNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Else Node To End Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__ELSE_NODE_TO_END_NODE = eINSTANCE.getConditionalRepresentation_ElseNodeToEndNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Then Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__THEN_REFERENCE = eINSTANCE.getConditionalRepresentation_ThenReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Else Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_REPRESENTATION__ELSE_REFERENCE = eINSTANCE.getConditionalRepresentation_ElseReference();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.TreeRepresentationImpl <em>Tree Representation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.TreeRepresentationImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getTreeRepresentation()
+		 * @generated
+		 */
+		EClass TREE_REPRESENTATION = eINSTANCE.getTreeRepresentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Init Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__INIT_SHAPE = eINSTANCE.getTreeRepresentation_InitShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__ROOT_SHAPE = eINSTANCE.getTreeRepresentation_RootShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Node Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__NODE_SHAPE = eINSTANCE.getTreeRepresentation_NodeShape();
+
+		/**
+		 * The meta object literal for the '<em><b>End Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__END_SHAPE = eINSTANCE.getTreeRepresentation_EndShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Init To Root Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__INIT_TO_ROOT_SHAPE = eINSTANCE.getTreeRepresentation_InitToRootShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Shape To Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__ROOT_SHAPE_TO_NODE = eINSTANCE.getTreeRepresentation_RootShapeToNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Node Shape To End Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_REPRESENTATION__NODE_SHAPE_TO_END_SHAPE = eINSTANCE.getTreeRepresentation_NodeShapeToEndShape();
 
 		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.AffixedCompartmentElementImpl <em>Affixed Compartment Element</em>}' class.
@@ -5701,6 +7337,24 @@ public interface Graphic_representationPackage extends EPackage {
 		EReference AFFIXED_COMPARTMENT_ELEMENT__NODES = eINSTANCE.getAffixedCompartmentElement_Nodes();
 
 		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.GeneralLabelImpl <em>General Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.GeneralLabelImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getGeneralLabel()
+		 * @generated
+		 */
+		EClass GENERAL_LABEL = eINSTANCE.getGeneralLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Label Aligment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERAL_LABEL__LABEL_ALIGMENT = eINSTANCE.getGeneralLabel_LabelAligment();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.LabelEAttributeImpl <em>Label EAttribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5711,12 +7365,30 @@ public interface Graphic_representationPackage extends EPackage {
 		EClass LABEL_EATTRIBUTE = eINSTANCE.getLabelEAttribute();
 
 		/**
-		 * The meta object literal for the '<em><b>An EAttribute</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Label Attributes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LABEL_EATTRIBUTE__AN_EATTRIBUTE = eINSTANCE.getLabelEAttribute_AnEAttribute();
+		EReference LABEL_EATTRIBUTE__LABEL_ATTRIBUTES = eINSTANCE.getLabelEAttribute_LabelAttributes();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.LabelOCLImpl <em>Label OCL</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.LabelOCLImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelOCL()
+		 * @generated
+		 */
+		EClass LABEL_OCL = eINSTANCE.getLabelOCL();
+
+		/**
+		 * The meta object literal for the '<em><b>Ocl Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LABEL_OCL__OCL_EXPRESSION = eINSTANCE.getLabelOCL_OclExpression();
 
 		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.BorderImpl <em>Border</em>}' class.
@@ -6053,6 +7725,14 @@ public interface Graphic_representationPackage extends EPackage {
 		EReference CONDITIONAL_STYLE__CONDITIONAL_STYLE = eINSTANCE.getConditionalStyle_ConditionalStyle();
 
 		/**
+		 * The meta object literal for the '<em><b>Label Ocl</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_STYLE__LABEL_OCL = eINSTANCE.getConditionalStyle_LabelOcl();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.impl.VirtualCompartmentImpl <em>Virtual Compartment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6167,6 +7847,92 @@ public interface Graphic_representationPackage extends EPackage {
 		EAttribute COMPARTMENT_LINK__DECORATOR_NAME = eINSTANCE.getCompartmentLink_DecoratorName();
 
 		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.WEAttributeImpl <em>WE Attribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.WEAttributeImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getWEAttribute()
+		 * @generated
+		 */
+		EClass WE_ATTRIBUTE = eINSTANCE.getWEAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>EAttribute</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WE_ATTRIBUTE__EATTRIBUTE = eINSTANCE.getWEAttribute_EAttribute();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.ConditionalEdgeStyleImpl <em>Conditional Edge Style</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.ConditionalEdgeStyleImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getConditionalEdgeStyle()
+		 * @generated
+		 */
+		EClass CONDITIONAL_EDGE_STYLE = eINSTANCE.getConditionalEdgeStyle();
+
+		/**
+		 * The meta object literal for the '<em><b>Conditional OCL</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONDITIONAL_EDGE_STYLE__CONDITIONAL_OCL = eINSTANCE.getConditionalEdgeStyle_ConditionalOCL();
+
+		/**
+		 * The meta object literal for the '<em><b>Conditional Edge</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_EDGE_STYLE__CONDITIONAL_EDGE = eINSTANCE.getConditionalEdgeStyle_ConditionalEdge();
+
+		/**
+		 * The meta object literal for the '<em><b>General Label</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_EDGE_STYLE__GENERAL_LABEL = eINSTANCE.getConditionalEdgeStyle_GeneralLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Decorator Source</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_EDGE_STYLE__DECORATOR_SOURCE = eINSTANCE.getConditionalEdgeStyle_DecoratorSource();
+
+		/**
+		 * The meta object literal for the '<em><b>Decorator Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_EDGE_STYLE__DECORATOR_TARGET = eINSTANCE.getConditionalEdgeStyle_DecoratorTarget();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.impl.EdgeDecoratorImpl <em>Edge Decorator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.impl.EdgeDecoratorImpl
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getEdgeDecorator()
+		 * @generated
+		 */
+		EClass EDGE_DECORATOR = eINSTANCE.getEdgeDecorator();
+
+		/**
+		 * The meta object literal for the '<em><b>Decorator Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EDGE_DECORATOR__DECORATOR_NAME = eINSTANCE.getEdgeDecorator_DecoratorName();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.GRFontFormat <em>GR Font Format</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6187,6 +7953,16 @@ public interface Graphic_representationPackage extends EPackage {
 		EEnum LABEL_POSITION = eINSTANCE.getLabelPosition();
 
 		/**
+		 * The meta object literal for the '{@link graphic_representation.LabelAligment <em>Label Aligment</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.LabelAligment
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelAligment()
+		 * @generated
+		 */
+		EEnum LABEL_ALIGMENT = eINSTANCE.getLabelAligment();
+
+		/**
 		 * The meta object literal for the '{@link graphic_representation.ChildrenPresentation <em>Children Presentation</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6205,6 +7981,16 @@ public interface Graphic_representationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COMPARTMENT_VIEW = eINSTANCE.getCompartmentView();
+
+		/**
+		 * The meta object literal for the '{@link graphic_representation.LabelBorderedStyle <em>Label Bordered Style</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graphic_representation.LabelBorderedStyle
+		 * @see graphic_representation.impl.Graphic_representationPackageImpl#getLabelBorderedStyle()
+		 * @generated
+		 */
+		EEnum LABEL_BORDERED_STYLE = eINSTANCE.getLabelBorderedStyle();
 
 		/**
 		 * The meta object literal for the '<em><b>Border Style</b></em>' attribute feature.

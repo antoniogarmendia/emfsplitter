@@ -26,7 +26,7 @@ public enum ScopeDefinitionEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SAME_WORKSPACE(3, "SAME_WORKSPACE", "SAME_WORKSPACE"), /**
+	SAME_WORKSPACE(4, "SAME_WORKSPACE", "SAME_WORKSPACE"), /**
 	 * The '<em><b>SAME PROJECT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34,7 +34,15 @@ public enum ScopeDefinitionEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SAME_PROJECT(2, "SAME_PROJECT", "SAME_PROJECT"), /**
+	SAME_PROJECT(3, "SAME_PROJECT", "SAME_PROJECT"), /**
+	 * The '<em><b>SAME ROOT PACKAGE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SAME_ROOT_PACKAGE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SAME_ROOT_PACKAGE(2, "SAME_ROOT_PACKAGE", "SAME_ROOT_PACKAGE"), /**
 	 * The '<em><b>SAME PACKAGE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,7 +73,7 @@ public enum ScopeDefinitionEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SAME_WORKSPACE_VALUE = 3;
+	public static final int SAME_WORKSPACE_VALUE = 4;
 
 	/**
 	 * The '<em><b>SAME PROJECT</b></em>' literal value.
@@ -80,7 +88,22 @@ public enum ScopeDefinitionEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SAME_PROJECT_VALUE = 2;
+	public static final int SAME_PROJECT_VALUE = 3;
+
+	/**
+	 * The '<em><b>SAME ROOT PACKAGE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SAME ROOT PACKAGE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SAME_ROOT_PACKAGE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SAME_ROOT_PACKAGE_VALUE = 2;
 
 	/**
 	 * The '<em><b>SAME PACKAGE</b></em>' literal value.
@@ -122,6 +145,7 @@ public enum ScopeDefinitionEnum implements Enumerator {
 		new ScopeDefinitionEnum[] {
 			SAME_WORKSPACE,
 			SAME_PROJECT,
+			SAME_ROOT_PACKAGE,
 			SAME_PACKAGE,
 			SAME_UNIT,
 		};
@@ -182,6 +206,7 @@ public enum ScopeDefinitionEnum implements Enumerator {
 		switch (value) {
 			case SAME_WORKSPACE_VALUE: return SAME_WORKSPACE;
 			case SAME_PROJECT_VALUE: return SAME_PROJECT;
+			case SAME_ROOT_PACKAGE_VALUE: return SAME_ROOT_PACKAGE;
 			case SAME_PACKAGE_VALUE: return SAME_PACKAGE;
 			case SAME_UNIT_VALUE: return SAME_UNIT;
 		}

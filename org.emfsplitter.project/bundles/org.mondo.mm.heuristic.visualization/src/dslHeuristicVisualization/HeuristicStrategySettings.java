@@ -2,6 +2,8 @@
  */
 package dslHeuristicVisualization;
 
+import dslHeuristicVisualization.extension.icon.ICustomiseIcon;
+import dslHeuristicVisualization.extension.shape.ICustomiseShape;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,6 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategy_node_selection <em>Strategy node selection</em>}</li>
  *   <li>{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategy_possibleElements <em>Strategy possible Elements</em>}</li>
  *   <li>{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategy_linkcompartment <em>Strategy linkcompartment</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalShape <em>Strategy Graphical Shape</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalIcon <em>Strategy Graphical Icon</em>}</li>
  * </ul>
  *
  * @see dslHeuristicVisualization.DslHeuristicVisualizationPackage#getHeuristicStrategySettings()
@@ -208,5 +212,57 @@ public interface HeuristicStrategySettings extends EObject {
 	 * @generated
 	 */
 	void setStrategy_linkcompartment(StrategyLinkCompartment value);
+
+	/**
+	 * Returns the value of the '<em><b>Strategy Graphical Shape</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Strategy Graphical Shape</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Strategy Graphical Shape</em>' attribute.
+	 * @see #setStrategyGraphicalShape(ICustomiseShape)
+	 * @see dslHeuristicVisualization.DslHeuristicVisualizationPackage#getHeuristicStrategySettings_StrategyGraphicalShape()
+	 * @model dataType="dslHeuristicVisualization.DTCustomiseShape"
+	 * @generated
+	 */
+	ICustomiseShape getStrategyGraphicalShape();
+
+	/**
+	 * Sets the value of the '{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalShape <em>Strategy Graphical Shape</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Strategy Graphical Shape</em>' attribute.
+	 * @see #getStrategyGraphicalShape()
+	 * @generated
+	 */
+	void setStrategyGraphicalShape(ICustomiseShape value);
+
+	/**
+	 * Returns the value of the '<em><b>Strategy Graphical Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Strategy Graphical Icon</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Strategy Graphical Icon</em>' attribute.
+	 * @see #setStrategyGraphicalIcon(ICustomiseIcon)
+	 * @see dslHeuristicVisualization.DslHeuristicVisualizationPackage#getHeuristicStrategySettings_StrategyGraphicalIcon()
+	 * @model dataType="dslHeuristicVisualization.DTCustomiseIcon"
+	 * @generated
+	 */
+	ICustomiseIcon getStrategyGraphicalIcon();
+
+	/**
+	 * Sets the value of the '{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalIcon <em>Strategy Graphical Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Strategy Graphical Icon</em>' attribute.
+	 * @see #getStrategyGraphicalIcon()
+	 * @generated
+	 */
+	void setStrategyGraphicalIcon(ICustomiseIcon value);
 
 } // HeuristicStrategySettings

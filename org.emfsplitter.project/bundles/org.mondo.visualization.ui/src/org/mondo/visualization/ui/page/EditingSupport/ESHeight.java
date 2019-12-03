@@ -6,6 +6,7 @@ import graphic_representation.Edge;
 import graphic_representation.Ellipse;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
+import graphic_representation.LabelOCL;
 import graphic_representation.Link;
 import graphic_representation.Node;
 import graphic_representation.Note;
@@ -51,8 +52,9 @@ public class ESHeight extends EditingSupport{
 			return false;
 		if(element instanceof Edge)
 			return false;
-		if(element instanceof LabelEAttribute || element instanceof Object[] || element instanceof Link)
+		if(element instanceof LabelEAttribute || element instanceof Object[] || element instanceof Link || element instanceof LabelOCL)
 			return false;
+				
 		return true;		
 	}
 

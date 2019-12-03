@@ -1,16 +1,20 @@
 package org.mondo.acceleo.generate.sirius.createProject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.acceleo.common.preference.AcceleoPreferences;
 import org.eclipse.core.resources.ICommand;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
@@ -24,6 +28,7 @@ import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -39,8 +44,12 @@ import org.eclipse.m2m.atl.graphictoviewpoint.files.GraphicToViewPoint;
 
 import org.mondo.acceleo.generate.sirius.main.WorkFlowSiriusProject;
 
+import dslPatterns.impl.DslPatternsFactoryImpl;
 import runtimePatterns.PatternInstance;
 import runtimePatterns.PatternInstances;
+import runtimePatterns.impl.PatternInstanceImpl;
+import runtimePatterns.impl.PatternInstancesImpl;
+import runtimePatterns.impl.RuntimePatternsFactoryImpl;
 import splitterLibrary.EcoreEMF;
 import splitterLibrary.impl.CreateEclipseProjectImpl;
 
@@ -94,7 +103,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 
 	@Override
 	public void CreateProject() {
-		// TODO Auto-generated method stub
+		
 		super.CreateProject();
 		final IWorkspaceRunnable create = new IWorkspaceRunnable(){
 
@@ -118,7 +127,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	                 boolean before = SwitchSuccessNotification(false);
 		             Generate_Files();
 		             SwitchSuccessNotification(before);
-	                 Execute_Transformation();
+	                 executeTransformation();
 	                 project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 				 }
 			}			
@@ -127,7 +136,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 		try {
 			ResourcesPlugin.getWorkspace().run(create, monitor);
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -198,13 +207,13 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 			final List<Object> generatorargs = new ArrayList<Object>();
 			generatorargs.add(current_project_name);
 			generatorargs.add(nemf.GetIFile().getFullPath().toString());
-			generatorargs.add(modularPattern);
+			generatorargs.add(modularPattern);//
 			WorkFlowSiriusProject sirius_files = null;
 			sirius_files = new WorkFlowSiriusProject(getLoadModel(), targetFolder,generatorargs);
 					
 			sirius_files.doGenerate(BasicMonitor.toMonitor(monitor));
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
 		}
 		
@@ -224,30 +233,69 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 				return patternInstance;
 		}
 		
-		return null;
+		return RuntimePatternsFactoryImpl.eINSTANCE.createPatternInstance();
 	}
 
-	public void Execute_Transformation(){
+	public void executeTransformation(){
 			//Run ATL Transformation Java			
 			try {
 			GraphicToViewPoint cgraph = new GraphicToViewPoint();
 			
 			cgraph.loadModels(GetGraphicRepresentationModel());
 			cgraph.doGraphicToViewPoint(monitor);
-			cgraph.saveModels(project.getFullPath().toString().
-						concat("/description/"+current_project_name+".odesign"));
-			} catch (ATLCoreException | ATLExecutionException | IOException e) {
-				// TODO Auto-generated catch block
+			String odesingPath = project.getFullPath().toString().
+					concat("/description/"+current_project_name+".odesign");
+			cgraph.saveModels(odesingPath);
+			applyChanges();			
+			} catch (ATLCoreException | ATLExecutionException | IOException | CoreException e) {
+				
 				e.printStackTrace();
 			}		
 	}	
 	
+	public void applyChanges() throws FileNotFoundException, CoreException {
+		
+		// find file *.change
+		ResourceSet reset = new ResourceSetImpl();
+		URI changeURI = URI.createURI(getChangeDescriptionURI(),true);
+		if (reset.getURIConverter().exists(changeURI, Collections.EMPTY_MAP)) {			
+			//copy changes into the odesign folder
+			IFolder odesignFolder = project.getFolder("description");
+			FileInputStream fileStream = new FileInputStream(getChangeDescriptionURI().substring(5, getChangeDescriptionURI().length()));
+			IFile newChangeDescription = odesignFolder.getFile(changeURI.lastSegment());
+			if (newChangeDescription.exists() == false)
+				newChangeDescription.create(fileStream, false, null);
+			//Apply Transformation			
+			URI uriNewChangeDescription = URI.createURI(newChangeDescription.getLocationURI().toString(),true);
+			Resource changeResource = reset.getResource(uriNewChangeDescription, true);
+			ChangeDescription changeDescription = (ChangeDescription) changeResource.getContents().get(0);
+			changeDescription.applyAndReverse();
+			saveAllResources(reset);
+		}		
+	}
+	
+	private void saveAllResources(ResourceSet reset) {
+		Iterator<Resource> itResources = reset.getResources().iterator();
+		while (itResources.hasNext()) {
+			Resource resource = (Resource) itResources.next();
+			try {
+				resource.save(Collections.EMPTY_MAP);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+
 	public String GetModel(){
 		return nemf.getFileuri().substring(0, nemf.getFileuri().lastIndexOf('.')).concat("." + runtime_pattern_ext);
 	}
 	
 	public String GetGraphicRepresentationModel(){
 		return nemf.getFileuri().substring(0, nemf.getFileuri().lastIndexOf('.')).concat("." + graphic_ext);
+	}
+	
+	public String getChangeDescriptionURI() {
+		return nemf.getFileuri().substring(0, nemf.getFileuri().lastIndexOf('/')).concat("/" + current_project_name + ".change");
 	}
 		
 	public EObject getLoadModel() {

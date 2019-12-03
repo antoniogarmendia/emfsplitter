@@ -3,7 +3,6 @@
 package dslHeuristicVisualization.util;
 
 import dslHeuristicVisualization.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -186,6 +185,26 @@ public class DslHeuristicVisualizationAdapterFactory extends AdapterFactoryImpl 
 			@Override
 			public Adapter caseRepreHeurSS(RepreHeurSS object) {
 				return createRepreHeurSSAdapter();
+			}
+			@Override
+			public Adapter caseStrategyGraphicalStyle(StrategyGraphicalStyle object) {
+				return createStrategyGraphicalStyleAdapter();
+			}
+			@Override
+			public Adapter caseGraphicalShapesEdgeStyle(GraphicalShapesEdgeStyle object) {
+				return createGraphicalShapesEdgeStyleAdapter();
+			}
+			@Override
+			public Adapter caseGraphicalIconsContainment(GraphicalIconsContainment object) {
+				return createGraphicalIconsContainmentAdapter();
+			}
+			@Override
+			public Adapter caseGraphicalEdgeStyle(GraphicalEdgeStyle object) {
+				return createGraphicalEdgeStyleAdapter();
+			}
+			@Override
+			public Adapter caseGraphicalCompartmentStyle(GraphicalCompartmentStyle object) {
+				return createGraphicalCompartmentStyleAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -624,6 +643,76 @@ public class DslHeuristicVisualizationAdapterFactory extends AdapterFactoryImpl 
 	 * @generated
 	 */
 	public Adapter createRepreHeurSSAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dslHeuristicVisualization.StrategyGraphicalStyle <em>Strategy Graphical Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dslHeuristicVisualization.StrategyGraphicalStyle
+	 * @generated
+	 */
+	public Adapter createStrategyGraphicalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle <em>Graphical Shapes Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle
+	 * @generated
+	 */
+	public Adapter createGraphicalShapesEdgeStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dslHeuristicVisualization.GraphicalIconsContainment <em>Graphical Icons Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dslHeuristicVisualization.GraphicalIconsContainment
+	 * @generated
+	 */
+	public Adapter createGraphicalIconsContainmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dslHeuristicVisualization.GraphicalEdgeStyle <em>Graphical Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle
+	 * @generated
+	 */
+	public Adapter createGraphicalEdgeStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dslHeuristicVisualization.GraphicalCompartmentStyle <em>Graphical Compartment Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle
+	 * @generated
+	 */
+	public Adapter createGraphicalCompartmentStyleAdapter() {
 		return null;
 	}
 

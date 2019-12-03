@@ -7,6 +7,7 @@ import java.util.List;
 import graphic_representation.CompartmentEdge;
 import graphic_representation.CompartmentElement;
 import graphic_representation.CompartmentView;
+import graphic_representation.ConditionalRepresentation;
 import graphic_representation.DiagramElement;
 import graphic_representation.Edge;
 import graphic_representation.Edge_Direction;
@@ -15,7 +16,11 @@ import graphic_representation.Ellipse;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.Layer;
 import graphic_representation.Link;
+import graphic_representation.LinkedListRepresentation;
+import graphic_representation.LoopRepresentation;
 import graphic_representation.Node;
+import graphic_representation.RepresentationStyle;
+import graphic_representation.TreeRepresentation;
 import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 import org.eclipse.emf.ecore.EClass;
@@ -100,7 +105,16 @@ public class ESType extends EditingSupport{
 					compartElement.setCompartmentView(newView);
 					if (newView.equals(CompartmentView.LINKED_LIST)) {
 						createNonContainmentFeatures(compartElement);						
-					}
+					} else if (newView.equals(CompartmentView.LOOP_REPRESENTATION)) {
+						createLoopRepresentation(compartElement);
+					} else if (newView.equals(CompartmentView.CONDITIONAL_REPRESENTATION)) {
+						createConditionalRepresentation(compartElement);
+					} else if (newView.equals(CompartmentView.TREE_REPRESENTATION)) {
+						createTreeRepresentation(compartElement);
+					}					
+					else if (newView.equals(CompartmentView.NONE))
+						compartElement.setRepresentationStyle(null);
+					
 					getViewer().refresh(element);
 				}
 			}		
@@ -122,8 +136,9 @@ public class ESType extends EditingSupport{
 				Edge edg = Graphic_representationFactoryImpl.eINSTANCE.createEdge();
 				edg.getContainerReference().clear();
 				edg.getContainerReference().addAll(nod.getContainerReference());
-				//edg.setContainerReference(nod.getContainerReference());
-				edg.setEdge_style(Graphic_representationFactory.eINSTANCE.createEdge_Style());
+				Edge_Style edgStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
+				edgStyle.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+				edg.setEdge_style(edgStyle);
 				EClass anEClass = nod.getAnEClass();
 				List<EReference> listReferences = anEClass.getEAllReferences();
 				int count = listReferences.size();
@@ -168,14 +183,28 @@ public class ESType extends EditingSupport{
 	
 	public static void createNonContainmentFeatures(CompartmentElement compart) {
 		
+		// Create Representation Style
+		RepresentationStyle repre = compart.getRepresentationStyle();
+		LinkedListRepresentation linkedListRepre = null;
+		if (repre != null) {
+			if (repre instanceof LinkedListRepresentation)
+				return;
+			else {
+				linkedListRepre = Graphic_representationFactoryImpl.eINSTANCE.createLinkedListRepresentation();
+				compart.setRepresentationStyle(linkedListRepre);				
+			}				
+		} else {
+			linkedListRepre = Graphic_representationFactoryImpl.eINSTANCE.createLinkedListRepresentation();
+			compart.setRepresentationStyle(linkedListRepre);
+		}
 		Ellipse ellipse = Graphic_representationFactory.eINSTANCE.createEllipse();
 		ellipse.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
 		ellipse.setBorderColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
-		ellipse.setBorderStyle("solid");
+		ellipse.setBorderStyle("solid");		
 		//Nodes
-		compart.setInit(ellipse);
-		compart.setNodeShape(EcoreUtil.copy(ellipse));
-		compart.setEnd(EcoreUtil.copy(ellipse));
+		linkedListRepre.setInit(ellipse);
+		linkedListRepre.setNodeShape(EcoreUtil.copy(ellipse));
+		linkedListRepre.setEnd(EcoreUtil.copy(ellipse));
 		//Edges
 		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
 		Edge_Style edgeStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
@@ -184,10 +213,100 @@ public class ESType extends EditingSupport{
 		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
 		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
 		
-		compart.setInitToFirst(compartEdge);
-		compart.setNodeToNode(EcoreUtil.copy(compartEdge));
-		compart.setNodeToEnd(EcoreUtil.copy(compartEdge));
+		linkedListRepre.setInitToFirst(compartEdge);
+		linkedListRepre.setNodeToNode(EcoreUtil.copy(compartEdge));
+		linkedListRepre.setNodeToEnd(EcoreUtil.copy(compartEdge));
 	}
+	
+	public static void createLoopRepresentation(CompartmentElement compart) {
+		
+		// Create Representation Style
+		LoopRepresentation loopRepresentation = Graphic_representationFactoryImpl.eINSTANCE.createLoopRepresentation();
+		compart.setRepresentationStyle(loopRepresentation);
+		//Node
+		Ellipse ellipse = Graphic_representationFactory.eINSTANCE.createEllipse();
+		ellipse.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderStyle("solid");
+		//Edge
+		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
+		Edge_Style edgeStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
+		edgeStyle.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		compartEdge.setEdge_style(edgeStyle);
+		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());		
+		//Nodes
+		loopRepresentation.setInitShape(ellipse);
+		loopRepresentation.setNodeShape(EcoreUtil.copy(ellipse));
+		loopRepresentation.setEndShape(EcoreUtil.copy(ellipse));
+		//Edges
+		loopRepresentation.setInitToNode(compartEdge);
+		loopRepresentation.setRecursiveEdge(EcoreUtil.copy(compartEdge));
+		loopRepresentation.setNodeToEnd(EcoreUtil.copy(compartEdge));		
+	}
+	
+	public static void createConditionalRepresentation(CompartmentElement compart) {
+		
+		// Create Representation Style
+		ConditionalRepresentation conditionalRepresentation = Graphic_representationFactoryImpl.eINSTANCE.createConditionalRepresentation();
+		compart.setRepresentationStyle(conditionalRepresentation);
+		//Node
+		Ellipse ellipse = Graphic_representationFactory.eINSTANCE.createEllipse();
+		ellipse.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderStyle("solid");
+		//Edge
+		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
+		Edge_Style edgeStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
+		edgeStyle.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		compartEdge.setEdge_style(edgeStyle);
+		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());	
+		
+		//Nodes
+		conditionalRepresentation.setInitShape(ellipse);
+		conditionalRepresentation.setIfShape(EcoreUtil.copy(ellipse));
+		conditionalRepresentation.setThenShape(EcoreUtil.copy(ellipse));
+		conditionalRepresentation.setElseShape(EcoreUtil.copy(ellipse));
+		conditionalRepresentation.setEndShape(EcoreUtil.copy(ellipse));
+		//Edges
+		conditionalRepresentation.setInitToIf(compartEdge);
+		conditionalRepresentation.setIfToThenNode(EcoreUtil.copy(compartEdge));
+		conditionalRepresentation.setThenNodeToEndNode(EcoreUtil.copy(compartEdge));
+		conditionalRepresentation.setIfNodeToElseNode(EcoreUtil.copy(compartEdge));
+		conditionalRepresentation.setElseNodeToEndNode(EcoreUtil.copy(compartEdge));		
+	}	
+	
+	public static void createTreeRepresentation(CompartmentElement compart) {
+		
+		// Create Representation Style
+		TreeRepresentation treeRepresentation = Graphic_representationFactoryImpl.eINSTANCE.createTreeRepresentation();
+		compart.setRepresentationStyle(treeRepresentation);
+		
+		//Node
+		Ellipse ellipse = Graphic_representationFactory.eINSTANCE.createEllipse();
+		ellipse.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		ellipse.setBorderStyle("solid");
+		//Edge
+		CompartmentEdge compartEdge = Graphic_representationFactory.eINSTANCE.createCompartmentEdge();
+		Edge_Style edgeStyle = Graphic_representationFactory.eINSTANCE.createEdge_Style();
+		edgeStyle.setColor(Graphic_representationFactory.eINSTANCE.createSiriusSystemColors());
+		compartEdge.setEdge_style(edgeStyle);
+		compartEdge.setSource(Graphic_representationFactory.eINSTANCE.createCompartmentLink());
+		compartEdge.setTarget(Graphic_representationFactory.eINSTANCE.createCompartmentLink());	
+		
+		//Nodes
+		treeRepresentation.setInitShape(ellipse);
+		treeRepresentation.setRootShape(EcoreUtil.copy(ellipse));
+		treeRepresentation.setNodeShape(EcoreUtil.copy(ellipse));
+		treeRepresentation.setEndShape(EcoreUtil.copy(ellipse));		
+		//Edges
+		treeRepresentation.setInitToRootShape(compartEdge);
+		treeRepresentation.setRootShapeToNode(EcoreUtil.copy(compartEdge));
+		treeRepresentation.setNodeShapeToEndShape(EcoreUtil.copy(compartEdge));				
+	}
+	
 	
 	private void SetOldToNewEObject(DiagramElement element, DiagramElement newElement) {
 		

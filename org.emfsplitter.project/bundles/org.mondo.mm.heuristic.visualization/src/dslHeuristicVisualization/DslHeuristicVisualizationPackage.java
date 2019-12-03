@@ -4,6 +4,7 @@ package dslHeuristicVisualization;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -122,13 +123,31 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 	int HEURISTIC_STRATEGY__LIST_REPRESENTATION = 5;
 
 	/**
+	 * The feature id for the '<em><b>Folder Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEURISTIC_STRATEGY__FOLDER_PATH = 6;
+
+	/**
+	 * The feature id for the '<em><b>Platform Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEURISTIC_STRATEGY__PLATFORM_PATH = 7;
+
+	/**
 	 * The number of structural features of the '<em>Heuristic Strategy</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HEURISTIC_STRATEGY_FEATURE_COUNT = 6;
+	int HEURISTIC_STRATEGY_FEATURE_COUNT = 8;
 
 	/**
 	 * The operation id for the '<em>Execute Heuristics</em>' operation.
@@ -1348,13 +1367,31 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 	int HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT = 6;
 
 	/**
+	 * The feature id for the '<em><b>Strategy Graphical Shape</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Strategy Graphical Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON = 8;
+
+	/**
 	 * The number of structural features of the '<em>Heuristic Strategy Settings</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HEURISTIC_STRATEGY_SETTINGS_FEATURE_COUNT = 7;
+	int HEURISTIC_STRATEGY_SETTINGS_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Heuristic Strategy Settings</em>' class.
@@ -1659,6 +1696,436 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 	int REPRE_HEUR_SS_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link dslHeuristicVisualization.StrategyGraphicalStyle <em>Strategy Graphical Style</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.StrategyGraphicalStyle
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getStrategyGraphicalStyle()
+	 * @generated
+	 */
+	int STRATEGY_GRAPHICAL_STYLE = 30;
+
+	/**
+	 * The number of structural features of the '<em>Strategy Graphical Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Get Node Shape</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGY_GRAPHICAL_STYLE___GET_NODE_SHAPE__NODE_STRING_STRING = 0;
+
+	/**
+	 * The number of operations of the '<em>Strategy Graphical Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRATEGY_GRAPHICAL_STYLE_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link dslHeuristicVisualization.impl.GraphicalShapesEdgeStyleImpl <em>Graphical Shapes Edge Style</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.impl.GraphicalShapesEdgeStyleImpl
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE = 31;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Node Shapes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_NODE_SHAPES = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Index Node Shape</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_NODE_SHAPE = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Line</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_LINE = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Color</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_COLOR = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Index Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_COLOR = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Index Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_LINE = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Shapes Edge Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE_FEATURE_COUNT = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Get Node Shape</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE___GET_NODE_SHAPE__NODE_STRING_STRING = STRATEGY_GRAPHICAL_STYLE___GET_NODE_SHAPE__NODE_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Compartment Color</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE___GET_COMPARTMENT_COLOR = STRATEGY_GRAPHICAL_STYLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Compartment Line</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE___GET_COMPARTMENT_LINE = STRATEGY_GRAPHICAL_STYLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Graphical Shapes Edge Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_SHAPES_EDGE_STYLE_OPERATION_COUNT = STRATEGY_GRAPHICAL_STYLE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link dslHeuristicVisualization.impl.GraphicalIconsContainmentImpl <em>Graphical Icons Containment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.impl.GraphicalIconsContainmentImpl
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalIconsContainment()
+	 * @generated
+	 */
+	int GRAPHICAL_ICONS_CONTAINMENT = 32;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Icons Containment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_ICONS_CONTAINMENT_FEATURE_COUNT = STRATEGY_GRAPHICAL_STYLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Node Shape</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_ICONS_CONTAINMENT___GET_NODE_SHAPE__NODE_STRING_STRING = STRATEGY_GRAPHICAL_STYLE___GET_NODE_SHAPE__NODE_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Search String</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_ICONS_CONTAINMENT___GET_SEARCH_STRING__STRING = STRATEGY_GRAPHICAL_STYLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Graphical Icons Containment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_ICONS_CONTAINMENT_OPERATION_COUNT = STRATEGY_GRAPHICAL_STYLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link dslHeuristicVisualization.impl.GraphicalEdgeStyleImpl <em>Graphical Edge Style</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.impl.GraphicalEdgeStyleImpl
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalEdgeStyle()
+	 * @generated
+	 */
+	int GRAPHICAL_EDGE_STYLE = 33;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Color</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE__SEQUENCE_COLOR = 0;
+
+	/**
+	 * The feature id for the '<em><b>Index Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE__INDEX_COLOR = 1;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Line</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE__SEQUENCE_LINE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Index Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE__INDEX_LINE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Edge Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE_FEATURE_COUNT = 4;
+
+	/**
+	 * The operation id for the '<em>Get Edge Style</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE___GET_EDGE_STYLE = 0;
+
+	/**
+	 * The operation id for the '<em>Get Target Decorator</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE___GET_TARGET_DECORATOR = 1;
+
+	/**
+	 * The operation id for the '<em>Get Source Decorator</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE___GET_SOURCE_DECORATOR = 2;
+
+	/**
+	 * The operation id for the '<em>Get Edge Color</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE___GET_EDGE_COLOR = 3;
+
+	/**
+	 * The operation id for the '<em>Get Edge Line</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE___GET_EDGE_LINE = 4;
+
+	/**
+	 * The number of operations of the '<em>Graphical Edge Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_EDGE_STYLE_OPERATION_COUNT = 5;
+
+	/**
+	 * The meta object id for the '{@link dslHeuristicVisualization.impl.GraphicalCompartmentStyleImpl <em>Graphical Compartment Style</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.impl.GraphicalCompartmentStyleImpl
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE = 34;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Shapes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_SHAPES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Line</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_LINE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Color</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_COLOR = 2;
+
+	/**
+	 * The feature id for the '<em><b>Index Shape</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE__INDEX_SHAPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Index Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE__INDEX_COLOR = 4;
+
+	/**
+	 * The feature id for the '<em><b>Index Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE__INDEX_LINE = 5;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Compartment Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE_FEATURE_COUNT = 6;
+
+	/**
+	 * The operation id for the '<em>Get Compartment Shape</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_SHAPE = 0;
+
+	/**
+	 * The operation id for the '<em>Get Compartment Color</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_COLOR = 1;
+
+	/**
+	 * The operation id for the '<em>Get Compartment Line</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_LINE = 2;
+
+	/**
+	 * The number of operations of the '<em>Graphical Compartment Style</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPHICAL_COMPARTMENT_STYLE_OPERATION_COUNT = 3;
+
+	/**
+	 * The meta object id for the '<em>DT Customise Shape</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.extension.shape.ICustomiseShape
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getDTCustomiseShape()
+	 * @generated
+	 */
+	int DT_CUSTOMISE_SHAPE = 35;
+
+	/**
+	 * The meta object id for the '<em>DT Customise Icon</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dslHeuristicVisualization.extension.icon.ICustomiseIcon
+	 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getDTCustomiseIcon()
+	 * @generated
+	 */
+	int DT_CUSTOMISE_ICON = 36;
+
+	/**
 	 * Returns the meta object for class '{@link dslHeuristicVisualization.HeuristicStrategy <em>Heuristic Strategy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1733,6 +2200,28 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHeuristicStrategy_ListRepresentation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.HeuristicStrategy#getFolderPath <em>Folder Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Folder Path</em>'.
+	 * @see dslHeuristicVisualization.HeuristicStrategy#getFolderPath()
+	 * @see #getHeuristicStrategy()
+	 * @generated
+	 */
+	EAttribute getHeuristicStrategy_FolderPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.HeuristicStrategy#getPlatformPath <em>Platform Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Platform Path</em>'.
+	 * @see dslHeuristicVisualization.HeuristicStrategy#getPlatformPath()
+	 * @see #getHeuristicStrategy()
+	 * @generated
+	 */
+	EAttribute getHeuristicStrategy_PlatformPath();
 
 	/**
 	 * Returns the meta object for the '{@link dslHeuristicVisualization.HeuristicStrategy#ExecuteHeuristics() <em>Execute Heuristics</em>}' operation.
@@ -2421,6 +2910,28 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 	EReference getHeuristicStrategySettings_Strategy_linkcompartment();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalShape <em>Strategy Graphical Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Strategy Graphical Shape</em>'.
+	 * @see dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalShape()
+	 * @see #getHeuristicStrategySettings()
+	 * @generated
+	 */
+	EAttribute getHeuristicStrategySettings_StrategyGraphicalShape();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalIcon <em>Strategy Graphical Icon</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Strategy Graphical Icon</em>'.
+	 * @see dslHeuristicVisualization.HeuristicStrategySettings#getStrategyGraphicalIcon()
+	 * @see #getHeuristicStrategySettings()
+	 * @generated
+	 */
+	EAttribute getHeuristicStrategySettings_StrategyGraphicalIcon();
+
+	/**
 	 * Returns the meta object for class '{@link dslHeuristicVisualization.StrategyLinkCompartment <em>Strategy Link Compartment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2525,6 +3036,374 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 	EReference getRepreHeurSS_HeuristicStrategySettings();
 
 	/**
+	 * Returns the meta object for class '{@link dslHeuristicVisualization.StrategyGraphicalStyle <em>Strategy Graphical Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Strategy Graphical Style</em>'.
+	 * @see dslHeuristicVisualization.StrategyGraphicalStyle
+	 * @generated
+	 */
+	EClass getStrategyGraphicalStyle();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.StrategyGraphicalStyle#getNodeShape(graphic_representation.Node, java.lang.String, java.lang.String) <em>Get Node Shape</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Node Shape</em>' operation.
+	 * @see dslHeuristicVisualization.StrategyGraphicalStyle#getNodeShape(graphic_representation.Node, java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getStrategyGraphicalStyle__GetNodeShape__Node_String_String();
+
+	/**
+	 * Returns the meta object for class '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle <em>Graphical Shapes Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Shapes Edge Style</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle
+	 * @generated
+	 */
+	EClass getGraphicalShapesEdgeStyle();
+
+	/**
+	 * Returns the meta object for the reference list '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getSequenceNodeShapes <em>Sequence Node Shapes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sequence Node Shapes</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getSequenceNodeShapes()
+	 * @see #getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	EReference getGraphicalShapesEdgeStyle_SequenceNodeShapes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getIndexNodeShape <em>Index Node Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Node Shape</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getIndexNodeShape()
+	 * @see #getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalShapesEdgeStyle_IndexNodeShape();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getSequenceLine <em>Sequence Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sequence Line</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getSequenceLine()
+	 * @see #getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalShapesEdgeStyle_SequenceLine();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getSequenceColor <em>Sequence Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sequence Color</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getSequenceColor()
+	 * @see #getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalShapesEdgeStyle_SequenceColor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getIndexColor <em>Index Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Color</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getIndexColor()
+	 * @see #getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalShapesEdgeStyle_IndexColor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getIndexLine <em>Index Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Line</em>'.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getIndexLine()
+	 * @see #getGraphicalShapesEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalShapesEdgeStyle_IndexLine();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getCompartmentColor() <em>Get Compartment Color</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Compartment Color</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getCompartmentColor()
+	 * @generated
+	 */
+	EOperation getGraphicalShapesEdgeStyle__GetCompartmentColor();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalShapesEdgeStyle#getCompartmentLine() <em>Get Compartment Line</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Compartment Line</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalShapesEdgeStyle#getCompartmentLine()
+	 * @generated
+	 */
+	EOperation getGraphicalShapesEdgeStyle__GetCompartmentLine();
+
+	/**
+	 * Returns the meta object for class '{@link dslHeuristicVisualization.GraphicalIconsContainment <em>Graphical Icons Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Icons Containment</em>'.
+	 * @see dslHeuristicVisualization.GraphicalIconsContainment
+	 * @generated
+	 */
+	EClass getGraphicalIconsContainment();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalIconsContainment#getSearchString(java.lang.String) <em>Get Search String</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Search String</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalIconsContainment#getSearchString(java.lang.String)
+	 * @generated
+	 */
+	EOperation getGraphicalIconsContainment__GetSearchString__String();
+
+	/**
+	 * Returns the meta object for class '{@link dslHeuristicVisualization.GraphicalEdgeStyle <em>Graphical Edge Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Edge Style</em>'.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle
+	 * @generated
+	 */
+	EClass getGraphicalEdgeStyle();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getSequenceColor <em>Sequence Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sequence Color</em>'.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getSequenceColor()
+	 * @see #getGraphicalEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalEdgeStyle_SequenceColor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getIndexColor <em>Index Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Color</em>'.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getIndexColor()
+	 * @see #getGraphicalEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalEdgeStyle_IndexColor();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getSequenceLine <em>Sequence Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sequence Line</em>'.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getSequenceLine()
+	 * @see #getGraphicalEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalEdgeStyle_SequenceLine();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getIndexLine <em>Index Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Line</em>'.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getIndexLine()
+	 * @see #getGraphicalEdgeStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalEdgeStyle_IndexLine();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getEdgeStyle() <em>Get Edge Style</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Edge Style</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getEdgeStyle()
+	 * @generated
+	 */
+	EOperation getGraphicalEdgeStyle__GetEdgeStyle();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getTargetDecorator() <em>Get Target Decorator</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Target Decorator</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getTargetDecorator()
+	 * @generated
+	 */
+	EOperation getGraphicalEdgeStyle__GetTargetDecorator();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getSourceDecorator() <em>Get Source Decorator</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Source Decorator</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getSourceDecorator()
+	 * @generated
+	 */
+	EOperation getGraphicalEdgeStyle__GetSourceDecorator();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getEdgeColor() <em>Get Edge Color</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Edge Color</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getEdgeColor()
+	 * @generated
+	 */
+	EOperation getGraphicalEdgeStyle__GetEdgeColor();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalEdgeStyle#getEdgeLine() <em>Get Edge Line</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Edge Line</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalEdgeStyle#getEdgeLine()
+	 * @generated
+	 */
+	EOperation getGraphicalEdgeStyle__GetEdgeLine();
+
+	/**
+	 * Returns the meta object for class '{@link dslHeuristicVisualization.GraphicalCompartmentStyle <em>Graphical Compartment Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Compartment Style</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle
+	 * @generated
+	 */
+	EClass getGraphicalCompartmentStyle();
+
+	/**
+	 * Returns the meta object for the reference list '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getSequenceShapes <em>Sequence Shapes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Sequence Shapes</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getSequenceShapes()
+	 * @see #getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	EReference getGraphicalCompartmentStyle_SequenceShapes();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getSequenceLine <em>Sequence Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sequence Line</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getSequenceLine()
+	 * @see #getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalCompartmentStyle_SequenceLine();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getIndexShape <em>Index Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Shape</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getIndexShape()
+	 * @see #getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalCompartmentStyle_IndexShape();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getIndexColor <em>Index Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Color</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getIndexColor()
+	 * @see #getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalCompartmentStyle_IndexColor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getIndexLine <em>Index Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index Line</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getIndexLine()
+	 * @see #getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalCompartmentStyle_IndexLine();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getSequenceColor <em>Sequence Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sequence Color</em>'.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getSequenceColor()
+	 * @see #getGraphicalCompartmentStyle()
+	 * @generated
+	 */
+	EAttribute getGraphicalCompartmentStyle_SequenceColor();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getCompartmentShape() <em>Get Compartment Shape</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Compartment Shape</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getCompartmentShape()
+	 * @generated
+	 */
+	EOperation getGraphicalCompartmentStyle__GetCompartmentShape();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getCompartmentColor() <em>Get Compartment Color</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Compartment Color</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getCompartmentColor()
+	 * @generated
+	 */
+	EOperation getGraphicalCompartmentStyle__GetCompartmentColor();
+
+	/**
+	 * Returns the meta object for the '{@link dslHeuristicVisualization.GraphicalCompartmentStyle#getCompartmentLine() <em>Get Compartment Line</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Compartment Line</em>' operation.
+	 * @see dslHeuristicVisualization.GraphicalCompartmentStyle#getCompartmentLine()
+	 * @generated
+	 */
+	EOperation getGraphicalCompartmentStyle__GetCompartmentLine();
+
+	/**
+	 * Returns the meta object for data type '{@link dslHeuristicVisualization.extension.shape.ICustomiseShape <em>DT Customise Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>DT Customise Shape</em>'.
+	 * @see dslHeuristicVisualization.extension.shape.ICustomiseShape
+	 * @model instanceClass="dslHeuristicVisualization.extension.shape.ICustomiseShape"
+	 * @generated
+	 */
+	EDataType getDTCustomiseShape();
+
+	/**
+	 * Returns the meta object for data type '{@link dslHeuristicVisualization.extension.icon.ICustomiseIcon <em>DT Customise Icon</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>DT Customise Icon</em>'.
+	 * @see dslHeuristicVisualization.extension.icon.ICustomiseIcon
+	 * @model instanceClass="dslHeuristicVisualization.extension.icon.ICustomiseIcon"
+	 * @generated
+	 */
+	EDataType getDTCustomiseIcon();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2604,6 +3483,22 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HEURISTIC_STRATEGY__LIST_REPRESENTATION = eINSTANCE.getHeuristicStrategy_ListRepresentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Folder Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HEURISTIC_STRATEGY__FOLDER_PATH = eINSTANCE.getHeuristicStrategy_FolderPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Platform Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HEURISTIC_STRATEGY__PLATFORM_PATH = eINSTANCE.getHeuristicStrategy_PlatformPath();
 
 		/**
 		 * The meta object literal for the '<em><b>Execute Heuristics</b></em>' operation.
@@ -3190,6 +4085,22 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 		EReference HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT = eINSTANCE.getHeuristicStrategySettings_Strategy_linkcompartment();
 
 		/**
+		 * The meta object literal for the '<em><b>Strategy Graphical Shape</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE = eINSTANCE.getHeuristicStrategySettings_StrategyGraphicalShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Strategy Graphical Icon</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON = eINSTANCE.getHeuristicStrategySettings_StrategyGraphicalIcon();
+
+		/**
 		 * The meta object literal for the '{@link dslHeuristicVisualization.StrategyLinkCompartment <em>Strategy Link Compartment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3278,6 +4189,300 @@ public interface DslHeuristicVisualizationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REPRE_HEUR_SS__HEURISTIC_STRATEGY_SETTINGS = eINSTANCE.getRepreHeurSS_HeuristicStrategySettings();
+
+		/**
+		 * The meta object literal for the '{@link dslHeuristicVisualization.StrategyGraphicalStyle <em>Strategy Graphical Style</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.StrategyGraphicalStyle
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getStrategyGraphicalStyle()
+		 * @generated
+		 */
+		EClass STRATEGY_GRAPHICAL_STYLE = eINSTANCE.getStrategyGraphicalStyle();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Node Shape</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STRATEGY_GRAPHICAL_STYLE___GET_NODE_SHAPE__NODE_STRING_STRING = eINSTANCE.getStrategyGraphicalStyle__GetNodeShape__Node_String_String();
+
+		/**
+		 * The meta object literal for the '{@link dslHeuristicVisualization.impl.GraphicalShapesEdgeStyleImpl <em>Graphical Shapes Edge Style</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.impl.GraphicalShapesEdgeStyleImpl
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalShapesEdgeStyle()
+		 * @generated
+		 */
+		EClass GRAPHICAL_SHAPES_EDGE_STYLE = eINSTANCE.getGraphicalShapesEdgeStyle();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Node Shapes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_NODE_SHAPES = eINSTANCE.getGraphicalShapesEdgeStyle_SequenceNodeShapes();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Node Shape</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_NODE_SHAPE = eINSTANCE.getGraphicalShapesEdgeStyle_IndexNodeShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Line</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_LINE = eINSTANCE.getGraphicalShapesEdgeStyle_SequenceLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Color</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_SHAPES_EDGE_STYLE__SEQUENCE_COLOR = eINSTANCE.getGraphicalShapesEdgeStyle_SequenceColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_COLOR = eINSTANCE.getGraphicalShapesEdgeStyle_IndexColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_SHAPES_EDGE_STYLE__INDEX_LINE = eINSTANCE.getGraphicalShapesEdgeStyle_IndexLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Compartment Color</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_SHAPES_EDGE_STYLE___GET_COMPARTMENT_COLOR = eINSTANCE.getGraphicalShapesEdgeStyle__GetCompartmentColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Compartment Line</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_SHAPES_EDGE_STYLE___GET_COMPARTMENT_LINE = eINSTANCE.getGraphicalShapesEdgeStyle__GetCompartmentLine();
+
+		/**
+		 * The meta object literal for the '{@link dslHeuristicVisualization.impl.GraphicalIconsContainmentImpl <em>Graphical Icons Containment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.impl.GraphicalIconsContainmentImpl
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalIconsContainment()
+		 * @generated
+		 */
+		EClass GRAPHICAL_ICONS_CONTAINMENT = eINSTANCE.getGraphicalIconsContainment();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Search String</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_ICONS_CONTAINMENT___GET_SEARCH_STRING__STRING = eINSTANCE.getGraphicalIconsContainment__GetSearchString__String();
+
+		/**
+		 * The meta object literal for the '{@link dslHeuristicVisualization.impl.GraphicalEdgeStyleImpl <em>Graphical Edge Style</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.impl.GraphicalEdgeStyleImpl
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalEdgeStyle()
+		 * @generated
+		 */
+		EClass GRAPHICAL_EDGE_STYLE = eINSTANCE.getGraphicalEdgeStyle();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Color</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_EDGE_STYLE__SEQUENCE_COLOR = eINSTANCE.getGraphicalEdgeStyle_SequenceColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_EDGE_STYLE__INDEX_COLOR = eINSTANCE.getGraphicalEdgeStyle_IndexColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Line</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_EDGE_STYLE__SEQUENCE_LINE = eINSTANCE.getGraphicalEdgeStyle_SequenceLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_EDGE_STYLE__INDEX_LINE = eINSTANCE.getGraphicalEdgeStyle_IndexLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Edge Style</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_EDGE_STYLE___GET_EDGE_STYLE = eINSTANCE.getGraphicalEdgeStyle__GetEdgeStyle();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Target Decorator</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_EDGE_STYLE___GET_TARGET_DECORATOR = eINSTANCE.getGraphicalEdgeStyle__GetTargetDecorator();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Source Decorator</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_EDGE_STYLE___GET_SOURCE_DECORATOR = eINSTANCE.getGraphicalEdgeStyle__GetSourceDecorator();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Edge Color</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_EDGE_STYLE___GET_EDGE_COLOR = eINSTANCE.getGraphicalEdgeStyle__GetEdgeColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Edge Line</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_EDGE_STYLE___GET_EDGE_LINE = eINSTANCE.getGraphicalEdgeStyle__GetEdgeLine();
+
+		/**
+		 * The meta object literal for the '{@link dslHeuristicVisualization.impl.GraphicalCompartmentStyleImpl <em>Graphical Compartment Style</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.impl.GraphicalCompartmentStyleImpl
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getGraphicalCompartmentStyle()
+		 * @generated
+		 */
+		EClass GRAPHICAL_COMPARTMENT_STYLE = eINSTANCE.getGraphicalCompartmentStyle();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Shapes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_SHAPES = eINSTANCE.getGraphicalCompartmentStyle_SequenceShapes();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Line</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_LINE = eINSTANCE.getGraphicalCompartmentStyle_SequenceLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Shape</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_COMPARTMENT_STYLE__INDEX_SHAPE = eINSTANCE.getGraphicalCompartmentStyle_IndexShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_COMPARTMENT_STYLE__INDEX_COLOR = eINSTANCE.getGraphicalCompartmentStyle_IndexColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Index Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_COMPARTMENT_STYLE__INDEX_LINE = eINSTANCE.getGraphicalCompartmentStyle_IndexLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Color</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GRAPHICAL_COMPARTMENT_STYLE__SEQUENCE_COLOR = eINSTANCE.getGraphicalCompartmentStyle_SequenceColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Compartment Shape</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_SHAPE = eINSTANCE.getGraphicalCompartmentStyle__GetCompartmentShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Compartment Color</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_COLOR = eINSTANCE.getGraphicalCompartmentStyle__GetCompartmentColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Compartment Line</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation GRAPHICAL_COMPARTMENT_STYLE___GET_COMPARTMENT_LINE = eINSTANCE.getGraphicalCompartmentStyle__GetCompartmentLine();
+
+		/**
+		 * The meta object literal for the '<em>DT Customise Shape</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.extension.shape.ICustomiseShape
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getDTCustomiseShape()
+		 * @generated
+		 */
+		EDataType DT_CUSTOMISE_SHAPE = eINSTANCE.getDTCustomiseShape();
+
+		/**
+		 * The meta object literal for the '<em>DT Customise Icon</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dslHeuristicVisualization.extension.icon.ICustomiseIcon
+		 * @see dslHeuristicVisualization.impl.DslHeuristicVisualizationPackageImpl#getDTCustomiseIcon()
+		 * @generated
+		 */
+		EDataType DT_CUSTOMISE_ICON = eINSTANCE.getDTCustomiseIcon();
 
 	}
 

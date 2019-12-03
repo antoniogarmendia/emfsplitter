@@ -3,8 +3,10 @@
 package dslHeuristicVisualization.impl;
 
 import dslHeuristicVisualization.*;
-
+import dslHeuristicVisualization.extension.icon.ICustomiseIcon;
+import dslHeuristicVisualization.extension.shape.ICustomiseShape;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -77,8 +79,46 @@ public class DslHeuristicVisualizationFactoryImpl extends EFactoryImpl implement
 			case DslHeuristicVisualizationPackage.CONCRETE_CONTAINMENTAS_LINKS: return createConcreteContainmentasLinks();
 			case DslHeuristicVisualizationPackage.CONCRETE_CONTAINMENTAS_COMPARTMENTS: return createConcreteContainmentasCompartments();
 			case DslHeuristicVisualizationPackage.REPRE_HEUR_SS: return createRepreHeurSS();
+			case DslHeuristicVisualizationPackage.GRAPHICAL_SHAPES_EDGE_STYLE: return createGraphicalShapesEdgeStyle();
+			case DslHeuristicVisualizationPackage.GRAPHICAL_ICONS_CONTAINMENT: return createGraphicalIconsContainment();
+			case DslHeuristicVisualizationPackage.GRAPHICAL_EDGE_STYLE: return createGraphicalEdgeStyle();
+			case DslHeuristicVisualizationPackage.GRAPHICAL_COMPARTMENT_STYLE: return createGraphicalCompartmentStyle();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case DslHeuristicVisualizationPackage.DT_CUSTOMISE_SHAPE:
+				return createDTCustomiseShapeFromString(eDataType, initialValue);
+			case DslHeuristicVisualizationPackage.DT_CUSTOMISE_ICON:
+				return createDTCustomiseIconFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case DslHeuristicVisualizationPackage.DT_CUSTOMISE_SHAPE:
+				return convertDTCustomiseShapeToString(eDataType, instanceValue);
+			case DslHeuristicVisualizationPackage.DT_CUSTOMISE_ICON:
+				return convertDTCustomiseIconToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -290,6 +330,82 @@ public class DslHeuristicVisualizationFactoryImpl extends EFactoryImpl implement
 	public RepreHeurSS createRepreHeurSS() {
 		RepreHeurSSImpl repreHeurSS = new RepreHeurSSImpl();
 		return repreHeurSS;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GraphicalShapesEdgeStyle createGraphicalShapesEdgeStyle() {
+		GraphicalShapesEdgeStyleImpl graphicalShapesEdgeStyle = new GraphicalShapesEdgeStyleImpl();
+		return graphicalShapesEdgeStyle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GraphicalIconsContainment createGraphicalIconsContainment() {
+		GraphicalIconsContainmentImpl graphicalIconsContainment = new GraphicalIconsContainmentImpl();
+		return graphicalIconsContainment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GraphicalEdgeStyle createGraphicalEdgeStyle() {
+		GraphicalEdgeStyleImpl graphicalEdgeStyle = new GraphicalEdgeStyleImpl();
+		return graphicalEdgeStyle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GraphicalCompartmentStyle createGraphicalCompartmentStyle() {
+		GraphicalCompartmentStyleImpl graphicalCompartmentStyle = new GraphicalCompartmentStyleImpl();
+		return graphicalCompartmentStyle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ICustomiseShape createDTCustomiseShapeFromString(EDataType eDataType, String initialValue) {
+		return (ICustomiseShape)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDTCustomiseShapeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ICustomiseIcon createDTCustomiseIconFromString(EDataType eDataType, String initialValue) {
+		return (ICustomiseIcon)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDTCustomiseIconToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

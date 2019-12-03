@@ -11,6 +11,11 @@ import dslHeuristicVisualization.StrategyNodeSelection;
 import dslHeuristicVisualization.StrategyPalette;
 import dslHeuristicVisualization.StrategyPossibleElements;
 import dslHeuristicVisualization.StrategyRootSelection;
+import dslHeuristicVisualization.extension.icon.ICustomiseIcon;
+import dslHeuristicVisualization.extension.icon.SearchGoogleIcon;
+import dslHeuristicVisualization.extension.shape.ICustomiseShape;
+import dslHeuristicVisualization.extension.shape.SemioticClarity;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -33,6 +38,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategySettingsImpl#getStrategy_node_selection <em>Strategy node selection</em>}</li>
  *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategySettingsImpl#getStrategy_possibleElements <em>Strategy possible Elements</em>}</li>
  *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategySettingsImpl#getStrategy_linkcompartment <em>Strategy linkcompartment</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategySettingsImpl#getStrategyGraphicalShape <em>Strategy Graphical Shape</em>}</li>
+ *   <li>{@link dslHeuristicVisualization.impl.HeuristicStrategySettingsImpl#getStrategyGraphicalIcon <em>Strategy Graphical Icon</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,6 +116,46 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 	protected StrategyLinkCompartment strategy_linkcompartment;
 
 	/**
+	 * The default value of the '{@link #getStrategyGraphicalShape() <em>Strategy Graphical Shape</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategyGraphicalShape()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ICustomiseShape STRATEGY_GRAPHICAL_SHAPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStrategyGraphicalShape() <em>Strategy Graphical Shape</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategyGraphicalShape()
+	 * @generated
+	 * @ordered
+	 */
+	protected ICustomiseShape strategyGraphicalShape = STRATEGY_GRAPHICAL_SHAPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStrategyGraphicalIcon() <em>Strategy Graphical Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategyGraphicalIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ICustomiseIcon STRATEGY_GRAPHICAL_ICON_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStrategyGraphicalIcon() <em>Strategy Graphical Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategyGraphicalIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected ICustomiseIcon strategyGraphicalIcon = STRATEGY_GRAPHICAL_ICON_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -122,7 +169,9 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 		strategy_arcSelection = new ConcreteStrategyArcSelectionImpl();
 		strategy_label = new ConcreteStrategyLabelFirstStringImpl();
 		strategy_palette = new ConcreteStrategyPaletteImpl();
-		strategy_linkcompartment = new ConcreteContainmentasLinksImpl();
+		strategy_linkcompartment = new ConcreteContainmentasLinksImpl();	
+		strategyGraphicalShape = new SemioticClarity();
+		strategyGraphicalIcon = new SearchGoogleIcon();	
 	}
 
 	/**
@@ -431,6 +480,48 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ICustomiseShape getStrategyGraphicalShape() {
+		return strategyGraphicalShape;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStrategyGraphicalShape(ICustomiseShape newStrategyGraphicalShape) {
+		ICustomiseShape oldStrategyGraphicalShape = strategyGraphicalShape;
+		strategyGraphicalShape = newStrategyGraphicalShape;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE, oldStrategyGraphicalShape, strategyGraphicalShape));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ICustomiseIcon getStrategyGraphicalIcon() {
+		return strategyGraphicalIcon;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStrategyGraphicalIcon(ICustomiseIcon newStrategyGraphicalIcon) {
+		ICustomiseIcon oldStrategyGraphicalIcon = strategyGraphicalIcon;
+		strategyGraphicalIcon = newStrategyGraphicalIcon;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON, oldStrategyGraphicalIcon, strategyGraphicalIcon));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -472,6 +563,10 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT:
 				if (resolve) return getStrategy_linkcompartment();
 				return basicGetStrategy_linkcompartment();
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE:
+				return getStrategyGraphicalShape();
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON:
+				return getStrategyGraphicalIcon();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -504,6 +599,12 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 				return;
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT:
 				setStrategy_linkcompartment((StrategyLinkCompartment)newValue);
+				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE:
+				setStrategyGraphicalShape((ICustomiseShape)newValue);
+				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON:
+				setStrategyGraphicalIcon((ICustomiseIcon)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -538,6 +639,12 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT:
 				setStrategy_linkcompartment((StrategyLinkCompartment)null);
 				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE:
+				setStrategyGraphicalShape(STRATEGY_GRAPHICAL_SHAPE_EDEFAULT);
+				return;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON:
+				setStrategyGraphicalIcon(STRATEGY_GRAPHICAL_ICON_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -564,8 +671,30 @@ public class HeuristicStrategySettingsImpl extends MinimalEObjectImpl.Container 
 				return strategy_possibleElements != null;
 			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_LINKCOMPARTMENT:
 				return strategy_linkcompartment != null;
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_SHAPE:
+				return STRATEGY_GRAPHICAL_SHAPE_EDEFAULT == null ? strategyGraphicalShape != null : !STRATEGY_GRAPHICAL_SHAPE_EDEFAULT.equals(strategyGraphicalShape);
+			case DslHeuristicVisualizationPackage.HEURISTIC_STRATEGY_SETTINGS__STRATEGY_GRAPHICAL_ICON:
+				return STRATEGY_GRAPHICAL_ICON_EDEFAULT == null ? strategyGraphicalIcon != null : !STRATEGY_GRAPHICAL_ICON_EDEFAULT.equals(strategyGraphicalIcon);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (strategyGraphicalShape: ");
+		result.append(strategyGraphicalShape);
+		result.append(", strategyGraphicalIcon: ");
+		result.append(strategyGraphicalIcon);
+		result.append(')');
+		return result.toString();
 	}
 
 } //HeuristicStrategySettingsImpl

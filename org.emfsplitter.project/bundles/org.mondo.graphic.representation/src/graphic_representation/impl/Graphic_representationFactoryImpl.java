@@ -83,7 +83,13 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 			case Graphic_representationPackage.ADDITIONAL_LAYER: return createAdditionalLayer();
 			case Graphic_representationPackage.AFFIXED_ELEMENT: return createAffixedElement();
 			case Graphic_representationPackage.COMPARTMENT_ELEMENT: return createCompartmentElement();
+			case Graphic_representationPackage.LOOP_REPRESENTATION: return createLoopRepresentation();
+			case Graphic_representationPackage.LINKED_LIST_REPRESENTATION: return createLinkedListRepresentation();
+			case Graphic_representationPackage.CONDITIONAL_REPRESENTATION: return createConditionalRepresentation();
+			case Graphic_representationPackage.TREE_REPRESENTATION: return createTreeRepresentation();
+			case Graphic_representationPackage.GENERAL_LABEL: return createGeneralLabel();
 			case Graphic_representationPackage.LABEL_EATTRIBUTE: return createLabelEAttribute();
+			case Graphic_representationPackage.LABEL_OCL: return createLabelOCL();
 			case Graphic_representationPackage.GR_USER_COLOR_DEF: return createGRUserColorDef();
 			case Graphic_representationPackage.RGB_COLOR: return createRGBColor();
 			case Graphic_representationPackage.SIRIUS_SYSTEM_COLORS: return createSiriusSystemColors();
@@ -95,6 +101,9 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 			case Graphic_representationPackage.VIRTUAL_COMPARTMENT_OCL: return createVirtualCompartmentOCL();
 			case Graphic_representationPackage.COMPARTMENT_EDGE: return createCompartmentEdge();
 			case Graphic_representationPackage.COMPARTMENT_LINK: return createCompartmentLink();
+			case Graphic_representationPackage.WE_ATTRIBUTE: return createWEAttribute();
+			case Graphic_representationPackage.CONDITIONAL_EDGE_STYLE: return createConditionalEdgeStyle();
+			case Graphic_representationPackage.EDGE_DECORATOR: return createEdgeDecorator();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -112,10 +121,14 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 				return createGRFontFormatFromString(eDataType, initialValue);
 			case Graphic_representationPackage.LABEL_POSITION:
 				return createLabelPositionFromString(eDataType, initialValue);
+			case Graphic_representationPackage.LABEL_ALIGMENT:
+				return createLabelAligmentFromString(eDataType, initialValue);
 			case Graphic_representationPackage.CHILDREN_PRESENTATION:
 				return createChildrenPresentationFromString(eDataType, initialValue);
 			case Graphic_representationPackage.COMPARTMENT_VIEW:
 				return createCompartmentViewFromString(eDataType, initialValue);
+			case Graphic_representationPackage.LABEL_BORDERED_STYLE:
+				return createLabelBorderedStyleFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -133,10 +146,14 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 				return convertGRFontFormatToString(eDataType, instanceValue);
 			case Graphic_representationPackage.LABEL_POSITION:
 				return convertLabelPositionToString(eDataType, instanceValue);
+			case Graphic_representationPackage.LABEL_ALIGMENT:
+				return convertLabelAligmentToString(eDataType, instanceValue);
 			case Graphic_representationPackage.CHILDREN_PRESENTATION:
 				return convertChildrenPresentationToString(eDataType, instanceValue);
 			case Graphic_representationPackage.COMPARTMENT_VIEW:
 				return convertCompartmentViewToString(eDataType, instanceValue);
+			case Graphic_representationPackage.LABEL_BORDERED_STYLE:
+				return convertLabelBorderedStyleToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -417,9 +434,69 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LoopRepresentation createLoopRepresentation() {
+		LoopRepresentationImpl loopRepresentation = new LoopRepresentationImpl();
+		return loopRepresentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkedListRepresentation createLinkedListRepresentation() {
+		LinkedListRepresentationImpl linkedListRepresentation = new LinkedListRepresentationImpl();
+		return linkedListRepresentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConditionalRepresentation createConditionalRepresentation() {
+		ConditionalRepresentationImpl conditionalRepresentation = new ConditionalRepresentationImpl();
+		return conditionalRepresentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TreeRepresentation createTreeRepresentation() {
+		TreeRepresentationImpl treeRepresentation = new TreeRepresentationImpl();
+		return treeRepresentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralLabel createGeneralLabel() {
+		GeneralLabelImpl generalLabel = new GeneralLabelImpl();
+		return generalLabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LabelEAttribute createLabelEAttribute() {
 		LabelEAttributeImpl labelEAttribute = new LabelEAttributeImpl();
 		return labelEAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LabelOCL createLabelOCL() {
+		LabelOCLImpl labelOCL = new LabelOCLImpl();
+		return labelOCL;
 	}
 
 	/**
@@ -537,6 +614,36 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public WEAttribute createWEAttribute() {
+		WEAttributeImpl weAttribute = new WEAttributeImpl();
+		return weAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConditionalEdgeStyle createConditionalEdgeStyle() {
+		ConditionalEdgeStyleImpl conditionalEdgeStyle = new ConditionalEdgeStyleImpl();
+		return conditionalEdgeStyle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EdgeDecorator createEdgeDecorator() {
+		EdgeDecoratorImpl edgeDecorator = new EdgeDecoratorImpl();
+		return edgeDecorator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public GRFontFormat createGRFontFormatFromString(EDataType eDataType, String initialValue) {
 		GRFontFormat result = GRFontFormat.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -577,6 +684,26 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LabelAligment createLabelAligmentFromString(EDataType eDataType, String initialValue) {
+		LabelAligment result = LabelAligment.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLabelAligmentToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ChildrenPresentation createChildrenPresentationFromString(EDataType eDataType, String initialValue) {
 		ChildrenPresentation result = ChildrenPresentation.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -609,6 +736,26 @@ public class Graphic_representationFactoryImpl extends EFactoryImpl implements G
 	 * @generated
 	 */
 	public String convertCompartmentViewToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LabelBorderedStyle createLabelBorderedStyleFromString(EDataType eDataType, String initialValue) {
+		LabelBorderedStyle result = LabelBorderedStyle.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLabelBorderedStyleToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

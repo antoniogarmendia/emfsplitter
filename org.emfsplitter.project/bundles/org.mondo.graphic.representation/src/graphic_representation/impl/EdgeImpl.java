@@ -2,18 +2,23 @@
  */
 package graphic_representation.impl;
 
+import graphic_representation.ConditionalEdgeStyle;
 import graphic_representation.Edge;
-import graphic_representation.EdgeLabelEAttribute;
 import graphic_representation.Edge_Direction;
 import graphic_representation.Edge_Style;
+import graphic_representation.GeneralLabel;
 import graphic_representation.Graphic_representationPackage;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link graphic_representation.impl.EdgeImpl#getDirections <em>Directions</em>}</li>
  *   <li>{@link graphic_representation.impl.EdgeImpl#getEdge_style <em>Edge style</em>}</li>
  *   <li>{@link graphic_representation.impl.EdgeImpl#getEdgeLabel <em>Edge Label</em>}</li>
+ *   <li>{@link graphic_representation.impl.EdgeImpl#getConditionalEdgeStyle <em>Conditional Edge Style</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,7 +65,17 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 	 * @generated
 	 * @ordered
 	 */
-	protected EdgeLabelEAttribute edgeLabel;
+	protected GeneralLabel edgeLabel;
+
+	/**
+	 * The cached value of the '{@link #getConditionalEdgeStyle() <em>Conditional Edge Style</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConditionalEdgeStyle()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ConditionalEdgeStyle> conditionalEdgeStyle;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,7 +187,7 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EdgeLabelEAttribute getEdgeLabel() {
+	public GeneralLabel getEdgeLabel() {
 		return edgeLabel;
 	}
 
@@ -180,8 +196,8 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEdgeLabel(EdgeLabelEAttribute newEdgeLabel, NotificationChain msgs) {
-		EdgeLabelEAttribute oldEdgeLabel = edgeLabel;
+	public NotificationChain basicSetEdgeLabel(GeneralLabel newEdgeLabel, NotificationChain msgs) {
+		GeneralLabel oldEdgeLabel = edgeLabel;
 		edgeLabel = newEdgeLabel;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Graphic_representationPackage.EDGE__EDGE_LABEL, oldEdgeLabel, newEdgeLabel);
@@ -195,7 +211,7 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEdgeLabel(EdgeLabelEAttribute newEdgeLabel) {
+	public void setEdgeLabel(GeneralLabel newEdgeLabel) {
 		if (newEdgeLabel != edgeLabel) {
 			NotificationChain msgs = null;
 			if (edgeLabel != null)
@@ -214,6 +230,18 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ConditionalEdgeStyle> getConditionalEdgeStyle() {
+		if (conditionalEdgeStyle == null) {
+			conditionalEdgeStyle = new EObjectContainmentEList<ConditionalEdgeStyle>(ConditionalEdgeStyle.class, this, Graphic_representationPackage.EDGE__CONDITIONAL_EDGE_STYLE);
+		}
+		return conditionalEdgeStyle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -223,6 +251,8 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 				return basicSetEdge_style(null, msgs);
 			case Graphic_representationPackage.EDGE__EDGE_LABEL:
 				return basicSetEdgeLabel(null, msgs);
+			case Graphic_representationPackage.EDGE__CONDITIONAL_EDGE_STYLE:
+				return ((InternalEList<?>)getConditionalEdgeStyle()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -241,6 +271,8 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 				return getEdge_style();
 			case Graphic_representationPackage.EDGE__EDGE_LABEL:
 				return getEdgeLabel();
+			case Graphic_representationPackage.EDGE__CONDITIONAL_EDGE_STYLE:
+				return getConditionalEdgeStyle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -250,6 +282,7 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -260,7 +293,11 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 				setEdge_style((Edge_Style)newValue);
 				return;
 			case Graphic_representationPackage.EDGE__EDGE_LABEL:
-				setEdgeLabel((EdgeLabelEAttribute)newValue);
+				setEdgeLabel((GeneralLabel)newValue);
+				return;
+			case Graphic_representationPackage.EDGE__CONDITIONAL_EDGE_STYLE:
+				getConditionalEdgeStyle().clear();
+				getConditionalEdgeStyle().addAll((Collection<? extends ConditionalEdgeStyle>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,7 +318,10 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 				setEdge_style((Edge_Style)null);
 				return;
 			case Graphic_representationPackage.EDGE__EDGE_LABEL:
-				setEdgeLabel((EdgeLabelEAttribute)null);
+				setEdgeLabel((GeneralLabel)null);
+				return;
+			case Graphic_representationPackage.EDGE__CONDITIONAL_EDGE_STYLE:
+				getConditionalEdgeStyle().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -301,6 +341,8 @@ public class EdgeImpl extends DiagramElementImpl implements Edge {
 				return edge_style != null;
 			case Graphic_representationPackage.EDGE__EDGE_LABEL:
 				return edgeLabel != null;
+			case Graphic_representationPackage.EDGE__CONDITIONAL_EDGE_STYLE:
+				return conditionalEdgeStyle != null && !conditionalEdgeStyle.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

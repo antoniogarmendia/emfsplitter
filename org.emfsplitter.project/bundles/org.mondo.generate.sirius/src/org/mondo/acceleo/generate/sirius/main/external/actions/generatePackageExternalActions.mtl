@@ -3,11 +3,13 @@
 
 [import org::mondo::acceleo::generate::sirius::main::external::actions::generateDeleteInstanceFile /]
 [import org::mondo::acceleo::generate::sirius::main::external::actions::deleteEObjectFromCrossReference /]
+[import org::mondo::acceleo::generate::sirius::main::external::actions::generateShowRealObjectFile/]
 
 
 [template public generatePackageExternalActions(anProjectName : String)]
 
-[generateDeleteEObjectFromCrossReference(anProjectName)/]
-[generateDeleteInstance(anProjectName)/]
+[generateDeleteEObjectFromCrossReference(anProjectName) /]
+[generateDeleteInstance(anProjectName) /]
+[generateShowRealObject(anProjectName) /]
 
 [/template]

@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -29,6 +30,7 @@ import graphic_representation.Edge;
 import graphic_representation.GraphicRepresentation;
 import graphic_representation.IconElement;
 import graphic_representation.Layer;
+import graphic_representation.Link;
 import graphic_representation.MMGraphic_Representation;
 import graphic_representation.Node;
 import graphic_representation.PaletteDescriptionLink;
@@ -84,6 +86,7 @@ public class WizardConcreteVisualization extends Wizard{
 			//PerformRelationNodeElementsToAffixedCompartments
 			PerformRelationNodeElementsToAffixedCompartments(heuristicStrategy.getGraphic_representation());
 			PerformEReferenceContainer(heuristicStrategy.getGraphic_representation());
+			performDiagramElementsEdge(heuristicStrategy.getGraphic_representation());
 			// Register the XMI resource factory for the .graphicR extension
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -106,6 +109,73 @@ public class WizardConcreteVisualization extends Wizard{
 	    		
 		return true;
 	}
+
+	// diagram elements in edges
+	private void performDiagramElementsEdge(GraphicRepresentation graphic_representation) {
+		
+		Iterator<MMGraphic_Representation> mmGraphic = graphic_representation.getAllGraphicRepresentation().iterator();
+		while (mmGraphic.hasNext()) {
+			MMGraphic_Representation mmGraphic_Representation = (MMGraphic_Representation) mmGraphic.next();
+			Iterator<Representation> representations = mmGraphic_Representation.getListRepresentations().iterator();
+			while (representations.hasNext()) {
+				Representation representation = (Representation) representations.next();
+				if (representation instanceof RepresentationDD) {
+					RepresentationDD repreDD = (RepresentationDD) representation;
+					Iterator<Layer> layers = repreDD.getLayers().iterator();
+					while (layers.hasNext()) {
+						Layer layer = (Layer) layers.next();
+						Iterator<AllElements> allElements = layer.getElements().iterator();
+						while (allElements.hasNext()) {
+							AllElements element = (AllElements) allElements.next();
+							if (element instanceof Edge) {
+								Edge edge = (Edge) element;
+								edge.getDirections().getSourceLink().getAnDiagramElement().clear();
+								edge.getDirections().getTargetLink().getAnDiagramElement().clear();
+								assignEdgeDiagramElement(graphic_representation,edge.getDirections().getSourceLink());
+								assignEdgeDiagramElement(graphic_representation,edge.getDirections().getTargetLink());
+							}
+						}
+					}					
+				}
+			}
+		}		
+	}
+	
+	private void assignEdgeDiagramElement(GraphicRepresentation graphic_representation, Link link) {
+		
+		Iterator<MMGraphic_Representation> mmGraphic = graphic_representation.getAllGraphicRepresentation().iterator();
+		while (mmGraphic.hasNext()) {
+			MMGraphic_Representation mmGraphic_Representation = (MMGraphic_Representation) mmGraphic.next();
+			Iterator<Representation> representations = mmGraphic_Representation.getListRepresentations().iterator();
+			while (representations.hasNext()) {
+				Representation representation = (Representation) representations.next();
+				if (representation instanceof RepresentationDD) {
+					RepresentationDD repreDD = (RepresentationDD) representation;
+					Iterator<Layer> layers = repreDD.getLayers().iterator();
+					while (layers.hasNext()) {
+						Layer layer = (Layer) layers.next();
+						Iterator<AllElements> allElements = layer.getElements().iterator();
+						while (allElements.hasNext()) {
+							AllElements element = (AllElements) allElements.next();
+							if (element instanceof Node) {
+								Node node = (Node) element;
+								EClass nodeClass = node.getAnEClass();
+								EClassifier eClasssifier = link.getAnEReference().getEType();
+								if (eClasssifier instanceof EClass) {
+									EClass targetEClass = (EClass) eClasssifier;
+									if (nodeClass.getEAllSuperTypes().indexOf(targetEClass) != -1 || targetEClass.equals(nodeClass)) {
+										link.getAnDiagramElement().add(node);										
+									}
+								}
+							}
+						}
+					}					
+				}
+			}
+		}		
+	}
+	
+	
 
 	@Override
 	public void addPages() {
@@ -384,12 +454,7 @@ public class WizardConcreteVisualization extends Wizard{
 		}
 		//Didn't find the containment reference
 		return listOfresults;
-	}
-	
-	
-	
-	
-	
+	}	
 	
 	public void setUpdateGraphicR(boolean updateGraphicR) {
 		this.updateGraphicR = updateGraphicR;

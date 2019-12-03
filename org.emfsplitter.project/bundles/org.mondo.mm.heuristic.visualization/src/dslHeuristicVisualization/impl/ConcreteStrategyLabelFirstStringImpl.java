@@ -45,12 +45,13 @@ public class ConcreteStrategyLabelFirstStringImpl extends MinimalEObjectImpl.Con
 	 * @generated NOT
 	 */
 	public EAttribute GetLabel(EClass anEClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
 		EList<EAttribute> list_attr = anEClass.getEAllAttributes();
 		for (int i = 0; i < list_attr.size(); i++) {
-			if(list_attr.get(i).getEType().getInstanceClass().getName().contains("String"))
-				return list_attr.get(i);		
+			Class instanceClass = list_attr.get(i).getEType().getInstanceClass();
+			if (instanceClass != null) {
+				if(instanceClass.getName().contains("String"))
+					return list_attr.get(i);		
+			}
 		}		
 		return null;
 	}

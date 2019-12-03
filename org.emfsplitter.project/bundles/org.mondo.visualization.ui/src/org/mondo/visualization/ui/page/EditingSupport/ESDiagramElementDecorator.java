@@ -4,7 +4,9 @@ package org.mondo.visualization.ui.page.EditingSupport;
 import graphic_representation.CompartmentLink;
 import graphic_representation.ConditionalStyle;
 import graphic_representation.Diamond;
+import graphic_representation.EdgeDecorator;
 import graphic_representation.Ellipse;
+import graphic_representation.GeneralLabel;
 import graphic_representation.Graphic_representationFactory;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
@@ -20,6 +22,7 @@ import graphic_representation.ShapeColor;
 import graphic_representation.ShapeCompartmentGradient;
 import graphic_representation.ShapeCompartmentParallelogram;
 import graphic_representation.SiriusSystemColors;
+import graphic_representation.WEAttribute;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -94,9 +97,9 @@ public class ESDiagramElementDecorator extends EditingSupport{
 			}				
 		}	
 		
-		if(element instanceof Link || element instanceof Object[] || element instanceof CompartmentLink)
+		if(element instanceof Link || element instanceof Object[] || element instanceof CompartmentLink || element instanceof EdgeDecorator)
 			return cell_Editor;
-		if(element instanceof LabelEAttribute)
+		if(element instanceof GeneralLabel)
 		{
 			cell_labelEAttribute = new DialogCellEditor() {
 				
@@ -106,17 +109,19 @@ public class ESDiagramElementDecorator extends EditingSupport{
 				protected Object openDialogBox(Control cellEditorWindow) {
 					
 					FontDialog fontDialog = new FontDialog(cellEditorWindow.getShell());
-					if(element instanceof LabelEAttribute)
-					{
-						fontDialog.setListOfFontFormat(((LabelEAttribute) element).getLabelFormat());
-						fontDialog.setShowIcon(((LabelEAttribute) element).isShowIcon());
+					if(element instanceof GeneralLabel) {
+						
+							GeneralLabel generalLabel = (GeneralLabel) element;
+							fontDialog.setListOfFontFormat(generalLabel.getLabelFormat());
+							fontDialog.setShowIcon(generalLabel.isShowIcon());											
 					}
 					if(fontDialog.open() == Window.OK)
 						{
-							if(element instanceof LabelEAttribute)
-							{
-								((LabelEAttribute) element).setShowIcon(fontDialog.getShowIcon());								
+							if(element instanceof GeneralLabel) {
+									GeneralLabel generalLabel = (GeneralLabel) element;
+									generalLabel.setShowIcon(fontDialog.getShowIcon());								
 							}
+							getViewer().update(element, null);
 							return fontDialog.getListOfFontFormat();
 						}
 					return "";
@@ -136,8 +141,8 @@ public class ESDiagramElementDecorator extends EditingSupport{
 					labelPath = new Label(cell, SWT.LEFT);
 					labelPath.setFont(cell.getFont());
 					labelPath.setBackground(cell.getBackground());
-					if(element instanceof LabelEAttribute)
-						labelPath.setText("Font format: " + ((LabelEAttribute)element).getLabelFormat().toString());
+					if(element instanceof GeneralLabel)
+						labelPath.setText("Font format: " + ((GeneralLabel)element).getLabelFormat().toString());
 					return labelPath;				
 				}
 				
@@ -152,7 +157,8 @@ public class ESDiagramElementDecorator extends EditingSupport{
 			
 			cell_labelEAttribute.create((Composite) getViewer().getControl());
 			return cell_labelEAttribute;			
-		}
+		}	
+		
 		return null;
 	}
 
@@ -167,7 +173,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 		}
 		if(element instanceof Object[])
 			return true;
-		if(element instanceof Shape || element instanceof CompartmentLink)
+		if(element instanceof Shape || element instanceof CompartmentLink || element instanceof EdgeDecorator)
 			return true;
 		
 		return true;
@@ -205,6 +211,11 @@ public class ESDiagramElementDecorator extends EditingSupport{
 			String decoratorName = ((CompartmentLink) element).getDecoratorName();
 			return CDiagramElementDecorator.getEdgesImages().indexOf(decoratorName);
 		}
+		
+		if (element instanceof EdgeDecorator) {
+			String decoratorName = ((EdgeDecorator) element).getDecoratorName();
+			return CDiagramElementDecorator.getEdgesImages().indexOf(decoratorName);
+		}
 			
 		if ( shape != null && nodeElements != null) {
 			if (nodeElements.isCompartmentAffixed() == true)
@@ -226,7 +237,14 @@ public class ESDiagramElementDecorator extends EditingSupport{
 			link.setDecoratorName(decoratorName);	
 			getViewer().update(element, null);
 			
-		} else if (element instanceof ConditionalStyle) {
+		} else if (element instanceof EdgeDecorator) {
+			
+			String decoratorName = CDiagramElementDecorator.GetDecoratorName((Integer)value);
+			((EdgeDecorator) element).setDecoratorName(decoratorName);
+			getViewer().update(element, null);
+		}	
+		
+		else if (element instanceof ConditionalStyle) {
 			
 			Integer valShape = (Integer)value;
 			setValueConditionalStyle((ConditionalStyle) element, valShape);	
@@ -253,7 +271,7 @@ public class ESDiagramElementDecorator extends EditingSupport{
 				EObject obj = oldShape.eContainer();
 				EcoreUtil.remove((EObject) element);
 				obj.eSet(feat, newShape);
-				getViewer().refresh(obj);				
+				getViewer().refresh(obj.eContainer());							
 			}			
 		}	
 		

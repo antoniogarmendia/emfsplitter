@@ -10,6 +10,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ScopeDefinition.ecore#//ScopeDefinitionEnum">
       <genEnumLiterals ecoreEnumLiteral="ScopeDefinition.ecore#//ScopeDefinitionEnum/SAME_WORKSPACE"/>
       <genEnumLiterals ecoreEnumLiteral="ScopeDefinition.ecore#//ScopeDefinitionEnum/SAME_PROJECT"/>
+      <genEnumLiterals ecoreEnumLiteral="ScopeDefinition.ecore#//ScopeDefinitionEnum/SAME_ROOT_PACKAGE"/>
       <genEnumLiterals ecoreEnumLiteral="ScopeDefinition.ecore#//ScopeDefinitionEnum/SAME_PACKAGE"/>
       <genEnumLiterals ecoreEnumLiteral="ScopeDefinition.ecore#//ScopeDefinitionEnum/SAME_UNIT"/>
     </genEnums>

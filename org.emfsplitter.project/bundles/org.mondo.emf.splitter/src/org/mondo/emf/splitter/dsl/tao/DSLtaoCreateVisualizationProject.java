@@ -86,7 +86,10 @@ import graphic_representation.impl.Graphic_representationFactoryImpl;
 
 
 public class DSLtaoCreateVisualizationProject implements IPatternImplementation {
-
+	
+	static final String PATTERNS_FOLDER = "patterns";
+	static final String PATTERNS_FILE_NAME = "repository.dslpatterns";
+	
 	public DSLtaoCreateVisualizationProject() {
 		
 	}
@@ -147,6 +150,8 @@ public class DSLtaoCreateVisualizationProject implements IPatternImplementation 
 		
 		//Create Heuristic Strategy
 		HeuristicStrategy heuristicStrategy = DslHeuristicVisualizationFactoryImpl.eINSTANCE.createHeuristicStrategy();
+		heuristicStrategy.setFolderPath(iPath.removeLastSegments(1).toString());
+		heuristicStrategy.setPlatformPath("/" + resourceURI.segment(1));
 		//Insert a resource
 		ResourceSet reset = new ResourceSetImpl();
 		Resource resStrategy = reset.createResource(resourceURI.trimFileExtension().appendFileExtension("strategy"));
@@ -224,7 +229,7 @@ public class DSLtaoCreateVisualizationProject implements IPatternImplementation 
 			Diagram currentDiagram = editor.getDiagramTypeProvider().getDiagram();
 			
 			// obtain Graph-Representation Pattern
-			PatternSet patternModel = PatternUtils.getPatternSetModelByDiagrama(currentDiagram);
+			PatternSet patternModel = this.getPatternSetModelByDiagrama(currentDiagram);
 			Pattern graphPattern = DSLtaoUtils.getGraphRepresentation(patternModel);
 			PatternInstances graphInstance = DSLtaoUtils.createPatternInstances();
 			
@@ -249,6 +254,39 @@ public class DSLtaoCreateVisualizationProject implements IPatternImplementation 
 		}	
 		
 		return true;
+	}
+	
+	/**
+	 * Static method that returns the PatternSet object stored on the given project relative to the diagram
+	 * @param project
+	 * @return PatternSet, null if it's not possible
+	 */
+	
+	private PatternSet getPatternSetModelByDiagrama(Diagram diagram) {
+		URI diagramURI = diagram.eResource().getURI();
+		URI parentURI = diagramURI.trimSegments(1);
+		URI repositoryURI = parentURI.appendSegment(PATTERNS_FOLDER).appendSegment(PATTERNS_FILE_NAME);
+		ResourceSet resourceSet = new ResourceSetImpl();
+		try{
+			Resource resource = resourceSet.getResource(repositoryURI, true);		
+			if (resource != null){
+				PatternSet patternSet = (PatternSet) resource.getContents().get(0);	
+				//Set Relative
+				//setRelativeURI(patternSet.eResource());
+				return patternSet;
+			}
+		}catch (RuntimeException e){
+		}		
+		return null;
+	}
+	
+	/**
+	 * Static method that change the uri of the given Patterns resource to convert it into relative.
+	 * @param resource
+	 */
+	public static void setPatternsRelativeURI(Resource resource){
+		URI relativeURI = URI.createURI(PATTERNS_FOLDER+"/"+PATTERNS_FILE_NAME, false);
+		resource.setURI(relativeURI);
 	}
 	
 	private DiagramBehavior getDiagramDSLtao() {

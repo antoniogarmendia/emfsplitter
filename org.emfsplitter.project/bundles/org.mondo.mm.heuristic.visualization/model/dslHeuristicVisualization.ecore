@@ -24,6 +24,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentMMGR" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listRepresentation" upperBound="-1"
         eType="#//RepreHeurSS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="folderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platformPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConcreteStrategyLink"/>
   <eClassifiers xsi:type="ecore:EClass" name="StrategyLabel" abstract="true" interface="true">
@@ -180,6 +182,10 @@
         eType="#//StrategyPossibleElements"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategy_linkcompartment"
         eType="#//StrategyLinkCompartment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategyGraphicalShape"
+        eType="#//DTCustomiseShape"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategyGraphicalIcon"
+        eType="#//DTCustomiseIcon"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StrategyLinkCompartment" abstract="true"
       interface="true">
@@ -200,4 +206,59 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="heuristicStrategySettings"
         upperBound="-1" eType="#//HeuristicStrategySettings" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StrategyGraphicalStyle" abstract="true"
+      interface="true">
+    <eOperations name="getNodeShape" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//Shape">
+      <eParameters name="node" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//Node"/>
+      <eParameters name="folderPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="platformPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphicalShapesEdgeStyle" eSuperTypes="#//StrategyGraphicalStyle">
+    <eOperations name="getCompartmentColor" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//SiriusSystemColors"/>
+    <eOperations name="getCompartmentLine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceNodeShapes" upperBound="-1"
+        eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//Shape"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexNodeShape" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceLine" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceColor" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexColor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexLine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphicalIconsContainment" eSuperTypes="#//StrategyGraphicalStyle">
+    <eOperations name="getSearchString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphicalEdgeStyle">
+    <eOperations name="getEdgeStyle" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//Edge_Style"/>
+    <eOperations name="getTargetDecorator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getSourceDecorator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getEdgeColor" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//SiriusSystemColors"/>
+    <eOperations name="getEdgeLine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceColor" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexColor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceLine" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexLine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphicalCompartmentStyle">
+    <eOperations name="getCompartmentShape" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//Shape"/>
+    <eOperations name="getCompartmentColor" eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//SiriusSystemColors"/>
+    <eOperations name="getCompartmentLine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceShapes" upperBound="-1"
+        eType="ecore:EClass ../../org.mondo.graphic.representation/model/Graphic_Representation.ecore#//Shape"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceLine" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceColor" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexShape" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexColor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexLine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DTCustomiseShape" instanceClassName="dslHeuristicVisualization.extension.shape.ICustomiseShape"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DTCustomiseIcon" instanceClassName="dslHeuristicVisualization.extension.icon.ICustomiseIcon"/>
 </ecore:EPackage>

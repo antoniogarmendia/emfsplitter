@@ -28,6 +28,8 @@ public class ESImage extends EditingSupport{
 	@Override
 	protected CellEditor getCellEditor(Object element) {
 		
+		IconElement iconElement = getElementIconElement(element);	
+		
 		DialogCellEditor cellEditor = new DialogCellEditor() {
 			
 			private Label labelPath;
@@ -35,11 +37,11 @@ public class ESImage extends EditingSupport{
 			@Override
 			protected Object openDialogBox(Control cellEditorWindow) {
 				
-				LoadResourceDialog dialog = new LoadResourceDialog(cellEditorWindow.getShell(),"Select Image", SWT.NONE);
+				LoadResourceDialog dialog = new LoadResourceDialog(cellEditorWindow.getShell(),"Select Image", SWT.NONE,iconElement);
 				if(dialog.open() == Window.OK) {
 					return dialog.fileURI;
 				}				
-				return "";
+				return iconElement.getFilepath();
 			}
 			
 			@Override
@@ -135,10 +137,28 @@ public class ESImage extends EditingSupport{
 		else if (element instanceof Shape)
 			sh = (Shape) element;
 		
-		if(sh instanceof IconElement)
+		if(sh instanceof IconElement && !value.equals("Define path"))
 			((IconElement)sh).setFilepath((String)value);		
 		
 		getViewer().update(element, null);
+	}
+	
+	public IconElement getElementIconElement (Object element) {
+		
+		Shape sh = null;
+		if (element instanceof Node)
+			sh = ((Node)element).getNode_shape();
+		else if (element instanceof Root)
+			sh = ((Root) element).getRoot_shape();				
+		else if (element instanceof ConditionalStyle)
+			sh = ((ConditionalStyle) element).getConditionalStyle();
+		else if (element instanceof Shape)
+			sh = (Shape) element;
+		
+		if(sh instanceof IconElement)
+			return ((IconElement)sh);
+			else	
+		return null;		
 	}
 
 }

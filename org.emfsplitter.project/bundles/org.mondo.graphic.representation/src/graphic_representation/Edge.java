@@ -2,6 +2,8 @@
  */
 package graphic_representation;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Edge</b></em>'.
@@ -14,6 +16,7 @@ package graphic_representation;
  *   <li>{@link graphic_representation.Edge#getDirections <em>Directions</em>}</li>
  *   <li>{@link graphic_representation.Edge#getEdge_style <em>Edge style</em>}</li>
  *   <li>{@link graphic_representation.Edge#getEdgeLabel <em>Edge Label</em>}</li>
+ *   <li>{@link graphic_representation.Edge#getConditionalEdgeStyle <em>Conditional Edge Style</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getEdge()
@@ -82,12 +85,12 @@ public interface Edge extends DiagramElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Edge Label</em>' containment reference.
-	 * @see #setEdgeLabel(EdgeLabelEAttribute)
+	 * @see #setEdgeLabel(GeneralLabel)
 	 * @see graphic_representation.Graphic_representationPackage#getEdge_EdgeLabel()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EdgeLabelEAttribute getEdgeLabel();
+	GeneralLabel getEdgeLabel();
 
 	/**
 	 * Sets the value of the '{@link graphic_representation.Edge#getEdgeLabel <em>Edge Label</em>}' containment reference.
@@ -97,6 +100,22 @@ public interface Edge extends DiagramElement {
 	 * @see #getEdgeLabel()
 	 * @generated
 	 */
-	void setEdgeLabel(EdgeLabelEAttribute value);
+	void setEdgeLabel(GeneralLabel value);
+
+	/**
+	 * Returns the value of the '<em><b>Conditional Edge Style</b></em>' containment reference list.
+	 * The list contents are of type {@link graphic_representation.ConditionalEdgeStyle}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Conditional Edge Style</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Conditional Edge Style</em>' containment reference list.
+	 * @see graphic_representation.Graphic_representationPackage#getEdge_ConditionalEdgeStyle()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ConditionalEdgeStyle> getConditionalEdgeStyle();
 
 } // Edge

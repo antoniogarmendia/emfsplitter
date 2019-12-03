@@ -2,6 +2,8 @@
  */
 package graphic_representation;
 
+import graphic_representation.rest.Search;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +16,7 @@ package graphic_representation;
  * <ul>
  *   <li>{@link graphic_representation.IconElement#getFilepath <em>Filepath</em>}</li>
  *   <li>{@link graphic_representation.IconElement#getEmbeddedImage <em>Embedded Image</em>}</li>
+ *   <li>{@link graphic_representation.IconElement#getFigureSearch <em>Figure Search</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getIconElement()
@@ -73,6 +76,32 @@ public interface IconElement extends Shape {
 	 * @generated
 	 */
 	void setEmbeddedImage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Figure Search</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Figure Search</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Figure Search</em>' containment reference.
+	 * @see #setFigureSearch(Search)
+	 * @see graphic_representation.Graphic_representationPackage#getIconElement_FigureSearch()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Search getFigureSearch();
+
+	/**
+	 * Sets the value of the '{@link graphic_representation.IconElement#getFigureSearch <em>Figure Search</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Figure Search</em>' containment reference.
+	 * @see #getFigureSearch()
+	 * @generated
+	 */
+	void setFigureSearch(Search value);
 
 	/**
 	 * <!-- begin-user-doc -->

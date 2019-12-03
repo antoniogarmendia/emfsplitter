@@ -17,6 +17,7 @@ package graphic_representation;
  *   <li>{@link graphic_representation.ShapeCompartmentGradient#getCornerHeight <em>Corner Height</em>}</li>
  *   <li>{@link graphic_representation.ShapeCompartmentGradient#getCornerWidth <em>Corner Width</em>}</li>
  *   <li>{@link graphic_representation.ShapeCompartmentGradient#getForeGroundColor <em>Fore Ground Color</em>}</li>
+ *   <li>{@link graphic_representation.ShapeCompartmentGradient#getLabelStyle <em>Label Style</em>}</li>
  * </ul>
  *
  * @see graphic_representation.Graphic_representationPackage#getShapeCompartmentGradient()
@@ -157,5 +158,35 @@ public interface ShapeCompartmentGradient extends Shape, ShapeColor, Border {
 	 * @generated
 	 */
 	void setForeGroundColor(Color value);
+
+	/**
+	 * Returns the value of the '<em><b>Label Style</b></em>' attribute.
+	 * The default value is <code>"NotDefined"</code>.
+	 * The literals are from the enumeration {@link graphic_representation.LabelBorderedStyle}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label Style</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label Style</em>' attribute.
+	 * @see graphic_representation.LabelBorderedStyle
+	 * @see #setLabelStyle(LabelBorderedStyle)
+	 * @see graphic_representation.Graphic_representationPackage#getShapeCompartmentGradient_LabelStyle()
+	 * @model default="NotDefined"
+	 * @generated
+	 */
+	LabelBorderedStyle getLabelStyle();
+
+	/**
+	 * Sets the value of the '{@link graphic_representation.ShapeCompartmentGradient#getLabelStyle <em>Label Style</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label Style</em>' attribute.
+	 * @see graphic_representation.LabelBorderedStyle
+	 * @see #getLabelStyle()
+	 * @generated
+	 */
+	void setLabelStyle(LabelBorderedStyle value);
 
 } // ShapeCompartmentGradient

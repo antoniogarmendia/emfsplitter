@@ -77,7 +77,7 @@ public class ESColumnName extends EditingSupport{
 		EAttribute eAttribute = node.getName();
 		if(eAttribute!=null){
 			
-			int indexOf = this.listAttributes.indexOf(eAttribute.getName());
+			int indexOf = this.listAttributes.indexOf(eAttribute);
 			if(indexOf!=-1)
 				return indexOf;
 		}

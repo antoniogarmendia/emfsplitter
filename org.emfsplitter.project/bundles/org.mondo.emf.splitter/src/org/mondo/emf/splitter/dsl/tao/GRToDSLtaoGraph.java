@@ -26,6 +26,7 @@ import graphic_representation.AllElements;
 import graphic_representation.Diamond;
 import graphic_representation.Edge;
 import graphic_representation.Ellipse;
+import graphic_representation.GeneralLabel;
 import graphic_representation.GraphicRepresentation;
 import graphic_representation.IconElement;
 import graphic_representation.LabelEAttribute;
@@ -37,6 +38,7 @@ import graphic_representation.Representation;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
 import graphic_representation.Shape;
+import graphic_representation.WEAttribute;
 import runtimePatterns.ClassRoleInstance;
 import runtimePatterns.InstanceFeatureRoleInstance;
 import runtimePatterns.PatternInstance;
@@ -264,14 +266,18 @@ public class GRToDSLtaoGraph {
 	
 	private void addLabel(graphic_representation.Node node, ClassRoleInstance cRoleInstance) {
 		
-		Node_Element elements = node.getNode_elements();
-		EList<LabelEAttribute> listLabels = elements.getLabelanEAttribute();
-		if (listLabels.size()>0) {
-			TypeFeatureRoleInstance typeFeat = RuntimePatternsFactoryImpl.eINSTANCE.createTypeFeatureRoleInstance();
-			typeFeat.setElement(node.getNode_elements().getLabelanEAttribute().get(0).getAnEAttribute());
-			typeFeat.setRole((FeatureType) this.label);
-			cRoleInstance.getFeatureInstances().add(typeFeat);
-		}
+		GeneralLabel label = node.getNode_shape().getLabelanEAttribute();
+		if (label instanceof LabelEAttribute) {
+			LabelEAttribute labelEAttributes = (LabelEAttribute) label;
+			Iterator<WEAttribute> itAttributes = labelEAttributes.getLabelAttributes().iterator();
+			while (itAttributes.hasNext()) {
+				WEAttribute eAttribute = (WEAttribute) itAttributes.next();
+				TypeFeatureRoleInstance typeFeat = RuntimePatternsFactoryImpl.eINSTANCE.createTypeFeatureRoleInstance();
+				typeFeat.setElement(eAttribute.getEAttribute());
+				typeFeat.setRole((FeatureType) this.label);
+				cRoleInstance.getFeatureInstances().add(typeFeat);
+			}
+		}		
 	}
 
 	private void addReferenceInstance() {

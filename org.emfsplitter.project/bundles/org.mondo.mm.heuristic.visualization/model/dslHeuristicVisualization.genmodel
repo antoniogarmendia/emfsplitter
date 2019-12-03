@@ -3,11 +3,13 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.mondo.mm.heuristic.visualization/src" modelPluginID="org.mondo.mm.heuristic.visualization"
     modelName="DslHeuristicVisualization" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../../org.mondo.graphic.representation/model/Graphic_Representation.genmodel#//graphic_representation ../../org.mondo.emf.splitter.library/model/splitter_library.genmodel#//splitterLibrary ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.mondo.graphic.representation/model/Graphic_Representation.genmodel#//graphic_representation ../../org.mondo.emf.splitter.library/model/splitter_library.genmodel#//splitterLibrary ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
     operationReflection="true" importOrganizing="true">
   <foreignModel>dslHeuristicVisualization.ecore</foreignModel>
   <genPackages prefix="DslHeuristicVisualization" disposableProviderFactory="true"
       ecorePackage="dslHeuristicVisualization.ecore#/">
+    <genDataTypes ecoreDataType="dslHeuristicVisualization.ecore#//DTCustomiseShape"/>
+    <genDataTypes ecoreDataType="dslHeuristicVisualization.ecore#//DTCustomiseIcon"/>
     <genClasses ecoreClass="dslHeuristicVisualization.ecore#//HeuristicStrategy">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//HeuristicStrategy/graphic_representation"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//HeuristicStrategy/nemf"/>
@@ -15,6 +17,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//HeuristicStrategy/currentRepresentation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//HeuristicStrategy/currentMMGR"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//HeuristicStrategy/listRepresentation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//HeuristicStrategy/folderPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//HeuristicStrategy/platformPath"/>
       <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//HeuristicStrategy/ExecuteHeuristics"/>
       <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//HeuristicStrategy/Execute_Root_Element"/>
       <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//HeuristicStrategy/Execute_Graphical_Elements"/>
@@ -135,6 +139,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//HeuristicStrategySettings/strategy_node_selection"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//HeuristicStrategySettings/strategy_possibleElements"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//HeuristicStrategySettings/strategy_linkcompartment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//HeuristicStrategySettings/strategyGraphicalShape"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//HeuristicStrategySettings/strategyGraphicalIcon"/>
     </genClasses>
     <genClasses image="false" ecoreClass="dslHeuristicVisualization.ecore#//StrategyLinkCompartment">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//StrategyLinkCompartment/listLinks"/>
@@ -149,6 +155,50 @@
     <genClasses ecoreClass="dslHeuristicVisualization.ecore#//ConcreteContainmentasCompartments"/>
     <genClasses ecoreClass="dslHeuristicVisualization.ecore#//RepreHeurSS">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//RepreHeurSS/heuristicStrategySettings"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dslHeuristicVisualization.ecore#//StrategyGraphicalStyle">
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//StrategyGraphicalStyle/getNodeShape">
+        <genParameters ecoreParameter="dslHeuristicVisualization.ecore#//StrategyGraphicalStyle/getNodeShape/node"/>
+        <genParameters ecoreParameter="dslHeuristicVisualization.ecore#//StrategyGraphicalStyle/getNodeShape/folderPath"/>
+        <genParameters ecoreParameter="dslHeuristicVisualization.ecore#//StrategyGraphicalStyle/getNodeShape/platformPath"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/sequenceNodeShapes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/indexNodeShape"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/sequenceLine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/sequenceColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/indexColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/indexLine"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/getCompartmentColor"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalShapesEdgeStyle/getCompartmentLine"/>
+    </genClasses>
+    <genClasses ecoreClass="dslHeuristicVisualization.ecore#//GraphicalIconsContainment">
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalIconsContainment/getSearchString">
+        <genParameters ecoreParameter="dslHeuristicVisualization.ecore#//GraphicalIconsContainment/getSearchString/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="dslHeuristicVisualization.ecore#//GraphicalEdgeStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/sequenceColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/indexColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/sequenceLine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/indexLine"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/getEdgeStyle"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/getTargetDecorator"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/getSourceDecorator"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/getEdgeColor"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalEdgeStyle/getEdgeLine"/>
+    </genClasses>
+    <genClasses ecoreClass="dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/sequenceShapes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/sequenceLine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/sequenceColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/indexShape"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/indexColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/indexLine"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/getCompartmentShape"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/getCompartmentColor"/>
+      <genOperations ecoreOperation="dslHeuristicVisualization.ecore#//GraphicalCompartmentStyle/getCompartmentLine"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
