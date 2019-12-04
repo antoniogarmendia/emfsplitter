@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.emfsplitter.feature"
-      label="Feature"
+      label="EMF-Stencil and EMF-Splitter"
       version="1.0.0.qualifier"
       provider-name="VOGELLA">
 
