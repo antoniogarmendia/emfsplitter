@@ -754,7 +754,7 @@ rule CreateSubNodeMappingConditional {
 								thisModule->LazyCreateSquare(shape)
 			 				 else
 									if(shape->oclIsKindOf(graphicR!Ellipse)) then
-									thisModule->LazyCreateEllipse(shape)
+											thisModule->LazyCreateEllipse(shape)
 										else
 											if(shape->oclIsKindOf(graphicR!Note)) then
 												thisModule->LazyCreateNote(shape)
@@ -1237,7 +1237,11 @@ rule CreateEllipse{
 		to e: diagram!EllipseNodeDescription(
 			horizontalDiameterComputationExpression <- d.horizontalDiameter.toString(), 
 			verticalDiameterComputationExpression <- d.verticalDiameter.toString(),
-			labelExpression <- thisModule.getLabelExpressionRuleShape(d.LabelanEAttribute),
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+									thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+									''
+									endif,
 			showIcon <- thisModule.getShowIcon(d.LabelanEAttribute),
 			resizeKind <- 'NSEW',
 			color <- if(d.color->oclIsUndefined() = true) then OclUndefined else
@@ -1897,7 +1901,11 @@ lazy rule LazyCreateEllipse{
 							endif,
 			borderLineStyle <- d.borderStyle,
 			borderSizeComputationExpression <- d.borderWidth,
-			
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+										thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+										''
+									endif,
 			labelFormat <- if(d.refImmediateComposite()->oclIsKindOf(graphicR!Node) = true) then
 							 if(d.refImmediateComposite().node_elements.LabelanEAttribute->first().labelFormat->oclIsUndefined() = true) then
 								OclUndefined

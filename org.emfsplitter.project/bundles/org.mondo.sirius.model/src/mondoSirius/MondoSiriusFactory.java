@@ -22,6 +22,15 @@ public interface MondoSiriusFactory extends EFactory {
 	MondoSiriusFactory eINSTANCE = mondoSirius.impl.MondoSiriusFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Test Table Edition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test Table Edition</em>'.
+	 * @generated
+	 */
+	TestTableEdition createTestTableEdition();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

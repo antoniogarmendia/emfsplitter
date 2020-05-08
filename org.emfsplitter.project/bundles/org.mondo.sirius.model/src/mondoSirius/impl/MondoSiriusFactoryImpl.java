@@ -56,6 +56,7 @@ public class MondoSiriusFactoryImpl extends EFactoryImpl implements MondoSiriusF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case MondoSiriusPackage.TEST_TABLE_EDITION: return createTestTableEdition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -66,6 +67,18 @@ public class MondoSiriusFactoryImpl extends EFactoryImpl implements MondoSiriusF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public TestTableEdition createTestTableEdition() {
+		TestTableEditionImpl testTableEdition = new TestTableEditionImpl();
+		return testTableEdition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MondoSiriusPackage getMondoSiriusPackage() {
 		return (MondoSiriusPackage)getEPackage();
 	}

@@ -109,7 +109,6 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 
 			@Override
 			public void run(IProgressMonitor monitor) throws CoreException {
-				// TODO Auto-generated method stub
 				project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 				 if (!project.exists()) {
 					 final IJavaProject javaproc = JavaCore.create(project);
@@ -124,9 +123,9 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	                 Create_Src(monitor,javaproc);
 	                 CreateAllPackages(javaproc);
 	                 Copy_Icons();
-	                 boolean before = SwitchSuccessNotification(false);
+	                 boolean before = switchSuccessNotification(false);
 		             Generate_Files();
-		             SwitchSuccessNotification(before);
+		             switchSuccessNotification(before);
 	                 executeTransformation();
 	                 project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 				 }
@@ -319,8 +318,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 		return res.getContents().get(0);
 	}	
 	
-	private boolean SwitchSuccessNotification(boolean notify) {
-		// TODO Auto-generated method stub
+	private boolean switchSuccessNotification(boolean notify) {
 		boolean successNotifications = AcceleoPreferences.areSuccessNotificationsEnabled();
 		if(successNotifications != notify)
 		{

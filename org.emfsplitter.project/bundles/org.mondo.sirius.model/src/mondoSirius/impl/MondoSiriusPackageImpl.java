@@ -10,6 +10,8 @@ import mondoSirius.TestViewpoint;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -18,6 +20,8 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,7 +79,7 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link MondoSiriusPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -89,13 +93,16 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 		if (isInited) return (MondoSiriusPackage)EPackage.Registry.INSTANCE.getEPackage(MondoSiriusPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MondoSiriusPackageImpl theMondoSiriusPackage = (MondoSiriusPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MondoSiriusPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MondoSiriusPackageImpl());
+		Object registeredMondoSiriusPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		MondoSiriusPackageImpl theMondoSiriusPackage = registeredMondoSiriusPackage instanceof MondoSiriusPackageImpl ? (MondoSiriusPackageImpl)registeredMondoSiriusPackage : new MondoSiriusPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
 		DiagramPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		TablePackage.eINSTANCE.eClass();
+		ViewpointPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theMondoSiriusPackage.createPackageContents();
@@ -106,7 +113,6 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 		// Mark meta-data to indicate it can't be changed
 		theMondoSiriusPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(MondoSiriusPackage.eNS_URI, theMondoSiriusPackage);
 		return theMondoSiriusPackage;
@@ -117,6 +123,7 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTestDiagramDescription() {
 		return testDiagramDescriptionEClass;
 	}
@@ -126,6 +133,17 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getTestDiagramDescription_DiagramDescription() {
+		return (EReference)testDiagramDescriptionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTestTableEdition() {
 		return testTableEditionEClass;
 	}
@@ -135,6 +153,17 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getTestTableEdition_EditionTableDescription() {
+		return (EReference)testTableEditionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTestViewpoint() {
 		return testViewpointEClass;
 	}
@@ -144,6 +173,17 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getTestViewpoint_Viewpoint() {
+		return (EReference)testViewpointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MondoSiriusFactory getMondoSiriusFactory() {
 		return (MondoSiriusFactory)getEFactoryInstance();
 	}
@@ -168,10 +208,13 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 
 		// Create classes and their features
 		testDiagramDescriptionEClass = createEClass(TEST_DIAGRAM_DESCRIPTION);
+		createEReference(testDiagramDescriptionEClass, TEST_DIAGRAM_DESCRIPTION__DIAGRAM_DESCRIPTION);
 
 		testTableEditionEClass = createEClass(TEST_TABLE_EDITION);
+		createEReference(testTableEditionEClass, TEST_TABLE_EDITION__EDITION_TABLE_DESCRIPTION);
 
 		testViewpointEClass = createEClass(TEST_VIEWPOINT);
+		createEReference(testViewpointEClass, TEST_VIEWPOINT__VIEWPOINT);
 	}
 
 	/**
@@ -207,16 +250,16 @@ public class MondoSiriusPackageImpl extends EPackageImpl implements MondoSiriusP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		testDiagramDescriptionEClass.getESuperTypes().add(theDescriptionPackage.getDiagramDescription());
-		testTableEditionEClass.getESuperTypes().add(theDescriptionPackage_1.getEditionTableDescription());
-		testViewpointEClass.getESuperTypes().add(theDescriptionPackage_2.getViewpoint());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(testDiagramDescriptionEClass, TestDiagramDescription.class, "TestDiagramDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestDiagramDescription_DiagramDescription(), theDescriptionPackage.getDiagramDescription(), null, "diagramDescription", null, 0, 1, TestDiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(testTableEditionEClass, TestTableEdition.class, "TestTableEdition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(testTableEditionEClass, TestTableEdition.class, "TestTableEdition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestTableEdition_EditionTableDescription(), theDescriptionPackage_1.getEditionTableDescription(), null, "editionTableDescription", null, 0, 1, TestTableEdition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testViewpointEClass, TestViewpoint.class, "TestViewpoint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestViewpoint_Viewpoint(), theDescriptionPackage_2.getViewpoint(), null, "viewpoint", null, 0, 1, TestViewpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

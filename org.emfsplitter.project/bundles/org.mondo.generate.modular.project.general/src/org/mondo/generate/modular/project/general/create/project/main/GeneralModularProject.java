@@ -353,9 +353,6 @@ public class GeneralModularProject extends AbstractAcceleoGenerator {
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
         }
-        if (!isInWorkspace(runtimePatterns.RuntimePatternsPackage.class)) {
-            resourceSet.getPackageRegistry().put(runtimePatterns.RuntimePatternsPackage.eINSTANCE.getNsURI(), runtimePatterns.RuntimePatternsPackage.eINSTANCE);
-        }
         if (!isInWorkspace(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
         }

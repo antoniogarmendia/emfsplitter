@@ -63,7 +63,7 @@ public class CustomSiriusEditorWrapper extends CustomSiriusEditor {
 		   changeDescription = ChangeFactory.eINSTANCE.createChangeDescription();
 		   changeResource.getContents().add(changeDescription); 
 	   } else {
-		   changeDescription = (ChangeDescription) changeResource.getContents().get(0);
+		   changeDescription = (ChangeDescription) changeResource.getContents().get(0);		   
 	   } 
 	   return changeDescription;	   
    }
