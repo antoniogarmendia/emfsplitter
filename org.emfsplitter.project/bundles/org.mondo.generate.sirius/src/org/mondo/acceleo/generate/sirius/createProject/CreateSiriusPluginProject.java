@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,6 +16,7 @@ import org.eclipse.acceleo.common.preference.AcceleoPreferences;
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -45,6 +46,7 @@ import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.m2m.atl.graphictoviewpoint.files.GraphicToViewPoint;
 
 import org.mondo.acceleo.generate.sirius.main.WorkFlowSiriusProject;
+import org.osgi.framework.Bundle;
 
 import runtimePatterns.PatternInstance;
 import runtimePatterns.PatternInstances;
@@ -97,13 +99,24 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	}
 	
 	public void Copy_Icons(){
+		Bundle bundle = Platform.getBundle("org.mondo.generate.sirius");
+		try {
+			InputStream stream = FileLocator.openStream(bundle,new Path("icons/sirius_icon.png"), false);
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(this.projectName);
+			IFile file = project.getFile( "icons/sirius_icon.png" );
+			file.create( stream, true, null );
+		} catch (IOException | CoreException e) {
+			e.printStackTrace();
+		}		
+		/*
 		URL siriusiConPath = org.mondo.acceleo.generate.sirius.Activator.getDefault().getBundle().getEntry("icons/sirius_icon.png");
 		try {
 			URL iconURL = FileLocator.resolve(siriusiConPath);
-			Copy_Image(iconURL.getPath(),"sirius_icon.png", "icons");			
+			//Copy_Image(iconURL.getPath(),"sirius_icon.png", "icons");			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}				
+		}	
+		*/			
 	}
 
 	@Override
