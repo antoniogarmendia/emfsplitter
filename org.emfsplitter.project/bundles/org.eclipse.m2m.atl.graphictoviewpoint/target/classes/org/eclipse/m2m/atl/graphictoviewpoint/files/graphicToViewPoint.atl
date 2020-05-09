@@ -1,0 +1,2464 @@
+-- @nsURI graphicR=http://mondo.org/graphic_representation/1.0.3
+-- @nsURI ecore=http://www.eclipse.org/emf/2002/Ecore
+-- @nsURI diagram=http://mondo.import.mm.sirius
+-- @nsURI table = http://www.eclipse.org/sirius/table/description/1.1.0
+
+module graphicToViewPoint;
+create OUT : diagram from IN : graphicR;
+
+rule GraphicRepresentationToGoup {
+	from g: graphicR!GraphicRepresentation
+	to o: diagram!Group(
+		name <- g.name,
+		ownedViewpoints <- g.allGraphicRepresentation,
+		userColorsPalettes <- thisModule.CreateUserPalette(g)
+	)
+}
+
+lazy rule CreateUserPalette{
+	from g:graphicR!GraphicRepresentation
+	to o: diagram!UserColorsPalette
+	(
+		name <- 'DefaultPalette',
+		entries <- g.userColors
+	)
+}
+
+rule MMGraphicRepresentationTo{
+	from mm:graphicR!MMGraphic_Representation
+	to o: diagram!Viewpoint(
+			name <- 'Vp'.concat(mm.extension),		
+			modelFileExtension <- mm.extension,
+			ownedRepresentations <- mm.listRepresentations
+		)	
+}
+
+rule RepresentationDD{
+	from mm:graphicR!RepresentationDD
+	to o: diagram!DiagramDescription(
+			name <- 'Vp'.concat(mm.root.anEClass.name),	
+			initialisation <- true,
+			label <- mm.root.anEClass.name,
+			domainClass <- mm.root.anEClass.ePackage.name.concat('.').concat(mm.root.anEClass.name),
+			defaultLayer <- mm.layers->select(dl | dl.isDefaultLayer()),
+			additionalLayers <- mm.layers->select(dl | not dl.isDefaultLayer()), 
+			metamodel <-mm.root.anEClass.getEPackage()
+		)	
+}
+
+rule CreateDefaultLayer{
+	from
+		dl:graphicR!DefaultLayer
+	to 
+		layer : diagram!Layer (
+			name <- dl.name,
+			label <- dl.name,
+			nodeMappings <- dl.elements->select(e | e.isNode())->select(f | not f.isContainer()),
+			edgeMappings <- dl.elements->
+							select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->select(e | e.node_elements.linkPalette->oclIsUndefined() = false) 
+							->select(e | e.node_elements.linkPalette->size() > 0)->collect(f | f.node_elements.linkPalette)
+							->flatten()->union(  
+							dl.elements->select(f | f.isEdge())	
+							),	
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsUndefined() = false)
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!LinkedListRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.initToFirst->oclIsUndefined() = false)->collect(a | a.initToFirst)->flatten()
+							->collect(edge | thisModule.CreateCompartmentEdge(Tuple{compartEdge = edge, feature = 'InitToFirst'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsUndefined() = false)
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!LinkedListRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.nodeToNode->oclIsUndefined() = false)->collect(a | a.nodeToNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentEdgeNodeToNode(Tuple{compartEdge = edge, feature = 'NodeToNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!LinkedListRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.nodeToEnd->oclIsUndefined() = false)->collect(a | a.nodeToEnd)->flatten()
+							->collect(edge | thisModule.CreateCompartmentLastNodeToFinalNode(Tuple{compartEdge = edge, feature = 'FinalNodeToEndNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->flatten()->select(a | a.representationStyle.oclIsKindOf(graphicR!LoopRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.initToNode->oclIsUndefined() = false)->collect(a | a.initToNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentEdgeInitToNode(Tuple{compartEdge = edge, feature = 'InitToNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->flatten()->select(a | a.representationStyle.oclIsKindOf(graphicR!LoopRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.nodeToEnd->oclIsUndefined() = false)->collect(a | a.nodeToEnd)->flatten()
+							->collect(edge | thisModule.CreateCompartmentEdgeNodeToEnd(Tuple{compartEdge = edge, feature = 'NodeToEnd'})),	
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!LoopRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.recursiveEdge->oclIsUndefined() = false)->collect(a | a.recursiveEdge)->flatten()
+							->collect(edge | thisModule.CreateCompartmentRecursiveEdge(Tuple{compartEdge = edge, feature = 'RecursiveEdge'})),				
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.initToIf->oclIsUndefined() = false)->collect(a | a.initToIf)->flatten()
+							->collect(edge | thisModule.CreateCompartmentConditionalInit(Tuple{compartEdge = edge, feature = 'InitToIf'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.ifToThenNode->oclIsUndefined() = false)->collect(a | a.ifToThenNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentConditionalIfToThenNode(Tuple{compartEdge = edge, feature = 'IfToThenNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.thenNodeToEndNode->oclIsUndefined() = false)->collect(a | a.thenNodeToEndNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentConditionalThenNodeToEndNode(Tuple{compartEdge = edge, feature = 'ThenNodeToEndNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.ifNodeToElseNode->oclIsUndefined() = false)->collect(a | a.ifNodeToElseNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentConditionalIfNodeToElseNode(Tuple{compartEdge = edge, feature = 'IfNodeToElseNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.elseNodeToEndNode->oclIsUndefined() = false)->collect(a | a.elseNodeToEndNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentConditionalElseNodeToEndNode(Tuple{compartEdge = edge, feature = 'ElseNodeToEndNode'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.initToRootShape->oclIsUndefined() = false)->collect(a | a.initToRootShape)->flatten()
+							->collect(edge | thisModule.CreateCompartmentTreeInit(Tuple{compartEdge = edge, feature = 'initToRootShape'})),
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.rootShapeToNode->oclIsUndefined() = false)->collect(a | a.rootShapeToNode)->flatten()
+							->collect(edge | thisModule.CreateCompartmentTreeInitToRoot(Tuple{compartEdge = edge, feature = 'rootShapeToNode'})),				
+			edgeMappings <- dl.elements->select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+							->collect(e | e.node_elements)->flatten()->select(a | a.affixedCompartmentElements->size() > 0)
+							->collect(a | a.affixedCompartmentElements)->flatten()->select(a | a.oclIsKindOf(graphicR!CompartmentElement))
+							->select(a | a.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+							->collect(compart | compart.representationStyle)->flatten()
+							->select(a | a.nodeShapeToEndShape->oclIsUndefined() = false)->collect(a | a.nodeShapeToEndShape)->flatten()
+							->collect(edge | thisModule.CreateCompartmentTreeNodeToEnd(Tuple{compartEdge = edge, feature = 'nodeShapeToEndShape'})),				
+			containerMappings <- dl.elements->select(e | e.isNode())->select(f | f.isContainer()),
+			toolSections <- thisModule.CreateToolSection(dl)			
+			)			
+}
+
+rule CreateAdditionalLayer{
+	from
+		dl:graphicR!AdditionalLayer
+	to 
+		layer : diagram!AdditionalLayer (
+			name <- dl.name,
+			label <- dl.name,
+			nodeMappings <- dl.elements->select(e | e.isNode())->select(f | not f.isContainer()),
+			edgeMappings <- dl.elements->
+							select(n | n.isNode())->select(e | e.node_elements.linkPalette->oclIsUndefined() = false)
+							->select(e | e.node_elements.linkPalette->size() > 0)->collect(f | f.node_elements.linkPalette)
+							->flatten()->union(  
+							dl.elements->select(f | f.isEdge())	
+							),			
+			containerMappings <- dl.elements->select(e | e.isNode())->select(f | f.isContainer()),
+			toolSections <- thisModule.CreateToolSection(dl)
+			)			
+}
+
+--Method for Create the Palette Section
+lazy rule CreateToolSection{
+	from 
+		dl:graphicR!Layer
+	to 
+		ownedRepresentation:diagram!ToolSection(
+			name <- 'DefaultPalette',
+			ownedTools <- dl.elements->
+						  select(n | n.AbstractElementOrNode())->select(e | e.node_elements->oclIsUndefined() = false)
+						  ->select(f | f.node_elements.linkPalette->oclIsUndefined() = false)
+						  ->select(e | e.node_elements.linkPalette->size() > 0)->collect(f | f.node_elements.linkPalette)
+						  ->flatten()->collect(g | thisModule.resolveTemp(g, 'CreateSection'))
+						  ->union
+						  (dl.elements->collect(d | thisModule.resolveTemp(d, 'CreateSection'))),
+			
+			ownedTools <- thisModule.CreateElementDescription(dl),
+			ownedTools <- thisModule.ShowRealObjectDescription(dl)						  
+		)
+}
+
+--Node Mapping & Node with Affixed
+rule CreateNodeMapping {
+	from
+		diagElement:graphicR!Node(not diagElement.isContainer())
+	to 
+		CreationNodeMapping : diagram!NodeMapping (
+			name <- 'Id'.concat(diagElement.anEClass.name),
+			domainClass <-  diagElement.refImmediateComposite().refImmediateComposite().root.
+							anEClass.ePackage.name.concat('.').concat(diagElement.anEClass.name),														
+			semanticCandidatesExpression <- if(diagElement.containerReference->oclIsUndefined()) then 
+												'[self/]'
+													else --(diagElement.virtualCompartments->oclIsUndefined() = true) then
+														if (diagElement.virtualCompartments->size() = 0) then
+															if (diagElement.containerReference->size() = 1) then
+																if diagElement.refImmediateComposite().refImmediateComposite().root.anEClass.equals(diagElement.containerReference->asSequence()->first().getEContainingClass()) then
+													  				'feature:'.concat(diagElement.containerReference->asSequence()->first().name)
+																else
+																	'aql:if(self.oclIsKindOf('+ diagElement.refImmediateComposite().refImmediateComposite().root.
+																			anEClass.ePackage.name + '::' + diagElement.containerReference->asSequence()->first().getEContainingClass().name
+																			+ ')) then self.' + diagElement.containerReference->asSequence()->first().name + ' else self endif'
+																endif 
+											  				else
+												  				thisModule.getSemanticExpressionUsingContainers(diagElement.containerReference->asSequence())
+															endif
+														else
+															thisModule.getSemanticExpressionUsingVirtualCompartments(diagElement.virtualCompartments->asSequence())																
+														endif														
+											endif,
+			style <- diagElement.node_shape,
+			conditionnalStyles <- diagElement.conditionalStyle->collect(a | thisModule.CreateConditionalNodeStyle(a)),
+			reusedBorderedNodeMappings <-  if(diagElement.node_elements->oclIsUndefined()) then
+													OclUndefined
+												else
+													diagElement.node_elements.affixedCompartmentElements->select(e | e.isAffixed())
+													->select(f | f.anEReference.isContainment() = true)
+													->collect(f | f.nodes)->flatten()										
+												endif,
+			borderedNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+												OclUndefined
+											else
+												diagElement.node_elements.affixedCompartmentElements->select(e | e.isAffixed())
+												->select(f | f.anEReference.isContainment() = false)
+												->collect(a | a.nodes->collect(n | thisModule.LazyCreateNodeMapping(Tuple{diagElement = n, diagRef = a.anEReference.name})))												
+											endif			
+		),
+		CreateSection : diagram!NodeCreationDescription (
+			name <- 'IdCreation'.concat(diagElement.anEClass.name),
+			nodeMappings <- CreationNodeMapping,
+			label <-  if(diagElement.diag_palette->oclIsUndefined())
+						then 
+							''
+							else
+								diagElement.diag_palette.palette_name
+						endif,
+			iconPath <- if(diagElement.diag_palette->oclIsUndefined() = true)
+						then 
+							''
+							else
+								diagElement.diag_palette.icon_filepath
+						endif,
+			initialOperation <- InitialOperation
+		),
+		InitialOperation : diagram!InitialNodeCreationOperation(
+			firstModelOperations <- if(diagElement.containerReference->oclIsUndefined() = true) then
+										if (diagElement.virtualCompartments->oclIsUndefined() = false) then
+											if (diagElement.virtualCompartments->size() = 1) then
+												if (diagElement.virtualCompartments->asSequence()->first().oclIsKindOf(graphicR!VirtualCompartmentReference)) then
+													thisModule.CreateContextVirtualCompartment(diagElement.virtualCompartments->asSequence()->first())
+													else
+													OclUndefined
+												endif
+											else
+												thisModule.SwitchOperationVirtualCompartment(diagElement) 		
+											endif
+										else
+										  OclUndefined
+										endif
+									else
+										if (diagElement.virtualCompartments->oclIsUndefined() = false) then
+											if (diagElement.virtualCompartments->asSequence()->union(diagElement.containerReference->asSequence())->size() = 1) then 
+													if (diagElement.virtualCompartments->size() = 1) then
+														if (diagElement.virtualCompartments->asSequence()->first().oclIsKindOf(graphicR!VirtualCompartmentReference)) then
+															thisModule.CreateContextVirtualCompartment(diagElement.virtualCompartments->asSequence()->first())
+															else
+																OclUndefined
+															endif
+														else
+														thisModule.CreateFirstOperation(diagElement)	
+													endif	
+													else
+													thisModule.SwitchOperationVirtualReference(diagElement)	
+												endif
+											else
+												if (diagElement.containerReference->asSequence()->size() = 1) then
+														thisModule.CreateFirstOperation(diagElement)
+													else
+														thisModule.SwitchOperation(diagElement)
+												endif
+										endif
+									endif										
+		)		
+}
+
+--Container Mapping
+rule CreateContainerMapping{
+	from 
+		diagElement:graphicR!Node(diagElement.isContainer())
+	to 
+			CreateContainer : diagram!ContainerMapping(
+				name <- 'Id'.concat(if(diagElement.anEClass->oclIsUndefined() = true) then
+										''
+									     else
+												diagElement.anEClass.name
+										endif			
+									),
+				domainClass <- diagElement.refImmediateComposite().refImmediateComposite().root.
+								anEClass.ePackage.name.concat('.').concat(if(diagElement.anEClass->oclIsUndefined() = true) then
+										''
+									     else
+												diagElement.anEClass.name
+										endif),
+				semanticCandidatesExpression <- if(diagElement.containerReference->oclIsUndefined()) then 
+												'[self/]'
+													else 
+														if (diagElement.virtualCompartments->size() = 0) then
+															if (diagElement.containerReference->size() = 1) then 
+													  			'feature:'.concat(diagElement.containerReference->asSequence()->first().name)
+											  				else
+												  				thisModule.getSemanticExpressionUsingContainers(diagElement.containerReference->asSequence())
+															endif
+														else
+															thisModule.getSemanticExpressionUsingVirtualCompartments(diagElement.virtualCompartments->asSequence())																
+														endif														
+											endif,
+				style <- if (diagElement.node_shape->oclIsUndefined() = true) then 
+									Sequence{}
+							else
+									diagElement.node_shape
+								endif,
+				conditionnalStyles <- diagElement.conditionalStyle->collect(a | thisModule.CreateConditionalContainerStyle(a)),	
+				childrenPresentation <- thisModule.getChildrenPresentation(diagElement.presentation),
+				borderedNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+											OclUndefined
+										else
+											if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+												diagElement.node_elements.affixedCompartmentElements->select(e | e.isAffixed())->
+														select(f | f.nodes->oclIsUndefined() = false)->flatten()
+														->collect(e | e.nodes)->flatten()->select(g | not g.isContainer())
+													else
+												Sequence{}	
+											endif
+										endif,
+				
+				reusedContainerMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+													OclUndefined
+												else
+													if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+														diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())->
+																select(f | f.nodes->oclIsUndefined() = false)->flatten()
+																->collect(e | e.nodes)->flatten()->select(g | g.isContainer())-->select(h | h.equals(diagElement))
+															else
+														Sequence{}	
+													endif
+												endif,
+				reusedNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										OclUndefined
+										else
+											if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+												diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())->
+														select(f | f.nodes->oclIsUndefined() = false)->flatten()
+														->collect(e | e.nodes)->flatten()->select(g | not g.isContainer())
+												else
+												Sequence{}	
+											endif
+										endif,
+				reusedNodeMappings <- if (diagElement.node_elements->oclIsUndefined()) then 
+										OclUndefined
+										else
+											if (diagElement.node_elements.virtualCompartment->oclIsUndefined()) then
+												OclUndefined
+												else
+													diagElement.node_elements.virtualCompartment->select(e| not e.node.isContainer())->
+														collect(e | e.node)->flatten()
+											endif
+										endif,	
+				reusedContainerMappings	<- if (diagElement.node_elements->oclIsUndefined()) then 
+										OclUndefined
+										else
+											if (diagElement.node_elements.virtualCompartment->oclIsUndefined()) then
+												OclUndefined
+												else
+													diagElement.node_elements.virtualCompartment->select(e| e.node.isContainer())->
+														collect(e | e.node)->flatten()
+											endif
+										endif,
+				reusedBorderedNodeMappings <-  if(diagElement.node_elements->oclIsUndefined()) then
+													OclUndefined
+												else
+													diagElement.node_elements.affixedCompartmentElements->select(e | e.isAffixed())
+													->select(f | f.anEReference.isContainment() = true)
+													->collect(f | f.nodes)->flatten()										
+												endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!LinkedListRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.init->oclIsUndefined() = false)->collect(f | f.init)->flatten()											
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!LinkedListRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.end->oclIsUndefined() = false)->collect(f | f.end)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!LinkedListRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.nodeShape->oclIsUndefined() = false)->collect(f | f.nodeShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!LoopRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.initShape->oclIsUndefined() = false)->collect(f | f.initShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!LoopRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.nodeShape->oclIsUndefined() = false)->collect(f | f.nodeShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!LoopRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.endShape->oclIsUndefined() = false)->collect(f | f.endShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.initShape->oclIsUndefined() = false)->collect(f | f.initShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.ifShape->oclIsUndefined() = false)->collect(f | f.ifShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,					
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.thenShape->oclIsUndefined() = false)->collect(f | f.thenShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.elseShape->oclIsUndefined() = false)->collect(f | f.elseShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!ConditionalRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.endShape->oclIsUndefined() = false)->collect(f | f.endShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.initShape->oclIsUndefined() = false)->collect(f | f.initShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.rootShape->oclIsUndefined() = false)->collect(f | f.rootShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.nodeShape->oclIsUndefined() = false)->collect(f | f.nodeShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif,
+				subNodeMappings <- if(diagElement.node_elements->oclIsUndefined()) then
+										Sequence{}
+									else
+										if (diagElement.node_elements.affixedCompartmentElements->oclIsUndefined() = false)	then
+										 	diagElement.node_elements.affixedCompartmentElements->select(e | e.isCompartment())
+													->select(repre | repre.representationStyle.oclIsKindOf(graphicR!TreeRepresentation))
+													->collect(repre | repre.representationStyle)->flatten()
+													->select(f | f.endShape->oclIsUndefined() = false)->collect(f | f.endShape)->flatten()										
+											else
+											Sequence{}	
+										endif
+									endif									
+			),
+			CreateSection : diagram!ContainerCreationDescription (
+			name <- 'IdCreation'.concat(if(diagElement.anEClass->oclIsUndefined() = true) then
+											''
+									     else
+											diagElement.anEClass.name
+										endif),
+			containerMappings <- CreateContainer,
+			label <- if(diagElement.diag_palette->oclIsUndefined())
+						then 
+							''
+							else
+								diagElement.diag_palette.palette_name
+						endif
+						,
+			iconPath <- if(diagElement.diag_palette->oclIsUndefined())
+						then 
+							''
+							else
+								diagElement.diag_palette.icon_filepath
+						endif,
+			initialOperation <- InitialOperation
+			),
+			InitialOperation : diagram!InitialNodeCreationOperation(
+				firstModelOperations <- if(diagElement.containerReference->oclIsUndefined() = true) then
+										if (diagElement.virtualCompartments->oclIsUndefined() = false) then
+											if (diagElement.virtualCompartments->size() = 1) then
+												if (diagElement.virtualCompartments->asSequence()->first().oclIsKindOf(graphicR!VirtualCompartmentReference)) then
+													thisModule.CreateContextVirtualCompartment(diagElement.virtualCompartments->asSequence()->first())
+													else
+													OclUndefined
+												endif
+											else
+												thisModule.SwitchOperationVirtualCompartment(diagElement) 		
+											endif
+										else
+										  OclUndefined
+										endif
+									else
+										if (diagElement.virtualCompartments->oclIsUndefined() = false) then
+											if (diagElement.virtualCompartments->asSequence()->union(diagElement.containerReference->asSequence())->size() = 1) then 
+													if (diagElement.virtualCompartments->size() = 1) then
+														if (diagElement.virtualCompartments->asSequence()->first().oclIsKindOf(graphicR!VirtualCompartmentReference)) then
+															thisModule.CreateContextVirtualCompartment(diagElement.virtualCompartments->asSequence()->first())
+															else
+																OclUndefined
+															endif
+														else
+														thisModule.CreateFirstOperation(diagElement)	
+													endif	
+													else
+													thisModule.SwitchOperationVirtualReference(diagElement)	
+												endif
+											else
+												if (diagElement.containerReference->asSequence()->size() = 1) then
+														thisModule.CreateFirstOperation(diagElement)
+													else
+														thisModule.SwitchOperation(diagElement)
+												endif
+										endif
+									endif						
+			)			
+}
+
+--Create SubNode Lazy Rule LinkedListRepresentation
+rule CreateSubNodeMappingLinkedList {
+	from
+		shape:graphicR!Shape(shape.refImmediateComposite().oclIsKindOf(graphicR!LinkedListRepresentation)) 		
+	to 
+		CreationNodeMapping : diagram!NodeMapping (
+			name <- 'Id'.concat(thisModule.getContainingFeature(shape) + shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			domainClass <- shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.
+								ePackage.name.concat('.').concat(shape.refImmediateComposite().refImmediateComposite().anEReference.eType.name),--Type of the Node
+			semanticCandidatesExpression <- if (shape.eContainingFeature().name = 'nodeShape') then
+												'feature:' + shape.refImmediateComposite().refImmediateComposite().anEReference.name
+												else
+													'aql:self'
+												endif,
+			style <- if(shape->oclIsKindOf(graphicR!IconElement)) then
+						thisModule->LazyCreateWorkspaceImage(shape) 
+						else
+							if(shape->oclIsKindOf(graphicR!Rectangle)) then
+								thisModule->LazyCreateSquare(shape)
+								else
+									if(shape->oclIsKindOf(graphicR!Ellipse)) then
+										thisModule->LazyCreateEllipse(shape)
+										else
+											if(shape->oclIsKindOf(graphicR!Note)) then
+												thisModule->LazyCreateNote(shape)
+												else
+													if(shape->oclIsKindOf(graphicR!Diamond)) then
+														thisModule->LazyCreateDiamond(shape)
+														else
+															OclUndefined
+														endif
+												endif
+										endif
+								endif
+							endif
+	)
+}
+
+rule CreateSubNodeMappingLoop {
+	from
+		shape:graphicR!Shape(shape.refImmediateComposite().oclIsKindOf(graphicR!LoopRepresentation)) 		
+	to 
+		CreationNodeMapping : diagram!NodeMapping (
+			name <- 'Id'.concat(thisModule.getContainingFeatureLoop(shape) + shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			domainClass <- shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.
+							ePackage.name.concat('.').concat(shape.refImmediateComposite().refImmediateComposite().anEReference.eType.name),--Type of the Node
+			semanticCandidatesExpression <- if (shape.eContainingFeature().name = 'nodeShape') then
+												'feature:' + shape.refImmediateComposite().refImmediateComposite().anEReference.name
+												else
+													'aql:self'
+												endif,
+			style <- if(shape->oclIsKindOf(graphicR!IconElement)) then
+						thisModule->LazyCreateWorkspaceImage(shape) 
+						else
+							if(shape->oclIsKindOf(graphicR!Rectangle)) then
+								thisModule->LazyCreateSquare(shape)
+			 				 else
+									if(shape->oclIsKindOf(graphicR!Ellipse)) then
+										thisModule->LazyCreateEllipse(shape)
+										else
+											if(shape->oclIsKindOf(graphicR!Note)) then
+												thisModule->LazyCreateNote(shape)
+												else
+													if(shape->oclIsKindOf(graphicR!Diamond)) then
+														thisModule->LazyCreateDiamond(shape)
+														else
+															OclUndefined
+														endif
+												endif
+										endif
+								endif
+							endif
+	)
+}
+
+rule CreateSubNodeMappingConditional {
+	from
+		shape:graphicR!Shape(shape.refImmediateComposite().oclIsKindOf(graphicR!ConditionalRepresentation)) 		
+	to 
+		CreationNodeMapping : diagram!NodeMapping (
+			name <- 'Id'.concat(thisModule.getContainingFeatureConditional(shape) + shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			domainClass <- shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.
+							ePackage.name.concat('.').concat(shape.refImmediateComposite().refImmediateComposite().anEReference.eType.name),--Type of the Node
+			semanticCandidatesExpression <- if (shape.eContainingFeature().name = 'ifShape') then
+												'feature:' + shape.refImmediateComposite().refImmediateComposite().anEReference.name
+													else
+													  if (shape.eContainingFeature().name = 'thenShape') then
+															'feature:' + shape.refImmediateComposite().thenReference.name
+															else
+															  if (shape.eContainingFeature().name = 'elseShape') then
+																'feature:' + shape.refImmediateComposite().elseReference.name
+																	else
+																	  'aql:self'
+															   endif
+													   endif
+												endif,
+			style <- if(shape->oclIsKindOf(graphicR!IconElement)) then
+						thisModule->LazyCreateWorkspaceImage(shape) 
+						else
+							if(shape->oclIsKindOf(graphicR!Rectangle)) then
+								thisModule->LazyCreateSquare(shape)
+			 				 else
+									if(shape->oclIsKindOf(graphicR!Ellipse)) then
+											thisModule->LazyCreateEllipse(shape)
+										else
+											if(shape->oclIsKindOf(graphicR!Note)) then
+												thisModule->LazyCreateNote(shape)
+												else
+													if(shape->oclIsKindOf(graphicR!Diamond)) then
+														thisModule->LazyCreateDiamond(shape)
+														else
+															OclUndefined
+														endif
+												endif
+										endif
+								endif
+							endif
+	)
+}
+
+rule CreateSubNodeMappingTreeRepresentation {
+	from
+		shape:graphicR!Shape(shape.refImmediateComposite().oclIsKindOf(graphicR!TreeRepresentation)) 		
+	to 
+		CreationNodeMapping : diagram!NodeMapping (
+			name <- 'Id'.concat(thisModule.getContainingFeatureTree(shape) + shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			domainClass <- shape.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.
+							ePackage.name.concat('.').concat(shape.refImmediateComposite().refImmediateComposite().anEReference.eType.name),--Type of the Node
+			semanticCandidatesExpression <- if (shape.eContainingFeature().name = 'nodeShape') then
+												'feature:' + shape.refImmediateComposite().refImmediateComposite().anEReference.name
+													else											 
+													  'aql:self'													 
+											endif,
+			style <- if(shape->oclIsKindOf(graphicR!IconElement)) then
+						thisModule->LazyCreateWorkspaceImage(shape) 
+						else
+							if(shape->oclIsKindOf(graphicR!Rectangle)) then
+								thisModule->LazyCreateSquare(shape)
+			 				 else
+									if(shape->oclIsKindOf(graphicR!Ellipse)) then
+									thisModule->LazyCreateEllipse(shape)
+										else
+											if(shape->oclIsKindOf(graphicR!Note)) then
+												thisModule->LazyCreateNote(shape)
+												else
+													if(shape->oclIsKindOf(graphicR!Diamond)) then
+														thisModule->LazyCreateDiamond(shape)
+														else
+															OclUndefined
+														endif
+												endif
+										endif
+								endif
+							endif
+	)
+}
+
+--Edge Mapping
+rule CreateEdgeMapping {
+		from
+			diagElement:graphicR!Edge
+		to 
+			e : diagram!EdgeMapping (
+				name <- 'Id'.concat(diagElement.anEClass.name),
+				domainClass <- diagElement.refImmediateComposite().refImmediateComposite().root.
+							anEClass.ePackage.name.concat('.').concat(diagElement.anEClass.name),
+				useDomainElement <- true,
+				sourceFinderExpression <- '[self.'.concat(diagElement.directions.sourceLink.anEReference.name).concat('/]'),
+				targetFinderExpression <- '[self.'.concat(diagElement.directions.targetLink.anEReference.name).concat('/]'),						
+				sourceMapping <- diagElement.directions.sourceLink.anDiagramElement,
+				targetMapping <- diagElement.directions.targetLink.anDiagramElement,
+				style <- thisModule.CreateDefaultStyle(diagElement),
+				conditionnalStyles <- diagElement.conditionalEdgeStyle->collect(condEdge | thisModule.createConditionalEdgeStyle(condEdge))
+			),
+			CreateSection : diagram!EdgeCreationDescription(
+				name <- 'IdCreation'.concat(diagElement.anEClass.name),
+				edgeMappings <- e,
+				label <- if(diagElement.diag_palette->oclIsUndefined())
+						then 
+							''
+							else
+								diagElement.diag_palette.palette_name
+						endif,
+				iconPath <- if(diagElement.diag_palette->oclIsUndefined())
+						then 
+							''
+							else
+								diagElement.diag_palette.icon_filepath
+						endif,
+				initialOperation <- InitialOperation
+			),
+			InitialOperation : diagram!InitEdgeCreationOperation(
+				firstModelOperations <- if(diagElement.containerReference->oclIsUndefined()) then
+											''
+											else if (diagElement.containerReference->asSequence()->size() = 1) then
+												FirstEdgeOperation
+												else
+													''--The edge is contained by two EClass TODO
+													endif
+											endif
+			),
+			FirstEdgeOperation : diagram!ChangeContext(
+				browseExpression <- '[source.eContainer("'.concat(diagElement.containerReference->asSequence()->first().eContainingClass.name).concat('")/]'),
+				subModelOperations <- OperationInstance				
+			),
+			OperationInstance : diagram!CreateInstance(
+				typeName <- diagElement.refImmediateComposite().refImmediateComposite().root.
+							anEClass.ePackage.name.concat('.').concat(diagElement.anEClass.name),
+				referenceName <- diagElement.containerReference->asSequence()->first().name,
+				subModelOperations <- SubModelOperation
+			),
+			SubModelOperation : diagram!SetValue(
+				featureName <- diagElement.directions.sourceLink.anEReference.name,
+				valueExpression <- 'var:source',
+				subModelOperations <- SubSubModelOperation
+			),
+			SubSubModelOperation : diagram!SetValue(
+				featureName <- diagElement.directions.targetLink.anEReference.name,
+				valueExpression <- 'var:target'
+			)
+}
+
+--Create Relation-Based Edge
+rule CreateRelationalEdge{
+	
+	from 
+		linkPalette:graphicR!PaletteDescriptionLink
+	to
+		e: diagram!EdgeMapping(
+			
+			name <- 'Id'.concat(linkPalette.refImmediateComposite().refImmediateComposite().anEClass.name).concat(linkPalette.anEReference.eType.name).concat(linkPalette.anEReference.name),
+			sourceMapping <- if linkPalette.refImmediateComposite().refImmediateComposite()->oclIsTypeOf(graphicR!AbstractElement) = true then
+										thisModule.geteAllChildren(linkPalette.refImmediateComposite().refImmediateComposite().refImmediateComposite(),
+														linkPalette.refImmediateComposite().refImmediateComposite())
+										else
+										 linkPalette.refImmediateComposite().refImmediateComposite()
+										endif,
+			targetMapping <-  if linkPalette.refImmediateComposite().refImmediateComposite()->oclIsTypeOf(graphicR!AbstractElement) = true then	
+								  thisModule.geteAllChildrenEClass(linkPalette.refImmediateComposite().refImmediateComposite().refImmediateComposite(),
+														linkPalette.anEReference.getEType())	
+								else
+									linkPalette.anDiagramElement
+								endif,
+			useDomainElement <- false,
+			targetFinderExpression <- if(linkPalette.anEReference.name->oclIsUndefined() = true) then
+											OclUndefined
+											else
+												'feature:'.concat(linkPalette.anEReference.name)
+												endif,
+			style <- thisModule.CreateRelationBasedStyle(linkPalette)
+		),
+		CreateSection : diagram!EdgeCreationDescription(
+				name <- 'IdCreation'.concat(linkPalette.refImmediateComposite().refImmediateComposite().anEClass.name).concat(linkPalette.anEReference.eType.name).concat(linkPalette.anEReference.name),
+				edgeMappings <- e,
+				label <- if(linkPalette.palette_name->oclIsUndefined())
+						then 
+							''
+							else
+								linkPalette.palette_name
+						endif,
+				iconPath <- if(linkPalette.icon_filepath->oclIsUndefined())
+						then 
+							''
+							else
+								linkPalette.icon_filepath
+						endif,
+				initialOperation <- InitialOperation
+			),
+			InitialOperation : diagram!InitEdgeCreationOperation(
+				firstModelOperations <- SubModelOperation	
+			),
+			SubModelOperation : diagram!SetValue(
+				featureName <- linkPalette.anEReference.name,
+				valueExpression <- 'var:target'				
+			)
+			
+}
+
+--Create Compartment Edge (Init Node to the First Node) 
+lazy rule CreateCompartmentEdge {
+		from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().init,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'aql:self.'.concat(s.compartEdge.refImmediateComposite().refImmediateComposite().anEReference.name + '->asSequence()->first()'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+--Create Compartment Edge (Node to Node)
+lazy rule CreateCompartmentEdgeNodeToNode {
+		from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'aql:self.eInverse('.concat(thisModule.getDomainClass(s.compartEdge) + ').' + thisModule.getReference(s.compartEdge).name +
+				'->asSequence()->select(' + thisModule.getReference(s.compartEdge).eType.name.toString().toLower() + '| self.eInverse(' +
+					thisModule.getDomainClass(s.compartEdge) +').' + thisModule.getReference(s.compartEdge).name + '->indexOf(self) + 1 = self.eInverse(' +
+						thisModule.getDomainClass(s.compartEdge) + ').' + thisModule.getReference(s.compartEdge).name + '->indexOf(' +
+							thisModule.getReference(s.compartEdge).eType.name.toString().toLower() + '))'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+--LoopRepresentation
+lazy rule CreateCompartmentEdgeInitToNode {
+		from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().initShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'aql:self.'.concat(s.compartEdge.refImmediateComposite().refImmediateComposite().anEReference.name + '->asSequence()->first()'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+lazy rule CreateCompartmentEdgeNodeToEnd {
+		from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().endShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'aql:self.' + thisModule.getReference(s.compartEdge).name,
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+lazy rule CreateCompartmentRecursiveEdge {
+		from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'aql:self',
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+--End Loop Representation
+
+
+--ConditionalRepresentation
+lazy rule CreateCompartmentConditionalInit{
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().initShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().ifShape,
+			targetFinderExpression <- 'feature:'.concat(s.compartEdge.refImmediateComposite().refImmediateComposite().anEReference.name),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)	
+}
+
+lazy rule CreateCompartmentConditionalIfToThenNode {
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().ifShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().thenShape,
+			targetFinderExpression <- '[self.eInverse('.concat(thisModule.getDomainClass(s.compartEdge) + ').'+ thisModule.convertReferenceKeyWords(s.compartEdge.refImmediateComposite().thenReference.name) +'/]'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+lazy rule CreateCompartmentConditionalThenNodeToEndNode {
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().endShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().thenShape,
+			targetFinderExpression <- '[self.'.concat(thisModule.convertReferenceKeyWords(s.compartEdge.refImmediateComposite().thenReference.name) +'/]'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+lazy rule CreateCompartmentConditionalIfNodeToElseNode {
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().ifShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().elseShape,
+			targetFinderExpression <- '[self.eInverse('.concat(thisModule.getDomainClass(s.compartEdge) + ').'+ thisModule.convertReferenceKeyWords(s.compartEdge.refImmediateComposite().elseReference.name) +'/]'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+lazy rule CreateCompartmentConditionalElseNodeToEndNode {
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().endShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().elseShape,
+			targetFinderExpression <- '[self.'.concat(thisModule.convertReferenceKeyWords(s.compartEdge.refImmediateComposite().elseReference.name) +'/]'),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+
+--End ConditionalRepresentation
+
+--TreeRepresentation
+lazy rule CreateCompartmentTreeInit{
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().initShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().rootShape,
+			targetFinderExpression <- 'aql:self',
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)	
+}
+
+lazy rule CreateCompartmentTreeInitToRoot{
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().rootShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'feature:'.concat(s.compartEdge.refImmediateComposite().refImmediateComposite().anEReference.name),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)	
+}
+
+lazy rule CreateCompartmentTreeNodeToEnd{
+	from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().endShape,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'feature:'.concat(s.compartEdge.refImmediateComposite().refImmediateComposite().anEReference.name),
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)	
+}
+
+--End TreeRepresentation
+
+
+
+lazy rule CreateCompartmentLastNodeToFinalNode {
+		from s :TupleType (compartEdge:graphicR!CompartmentEdge, feature: String)
+		to e: diagram!EdgeMapping (
+			name <- 'Id'.concat(s.feature + s.compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name),
+			sourceMapping <- s.compartEdge.refImmediateComposite().end,
+			targetMapping <- s.compartEdge.refImmediateComposite().nodeShape,
+			targetFinderExpression <- 'aql:self.' + thisModule.getReference(s.compartEdge).name + '->last()',
+			preconditionExpression <- 'aql:sourceView.eContainer()=targetView.eContainer()',
+			style <- thisModule.CreateEdgeStyle(s.compartEdge)
+			)
+}
+
+
+lazy rule CreateEdgeStyle {
+		from compartEdge:graphicR!CompartmentEdge
+		to e: diagram!EdgeStyleDescription(
+			targetArrow <- compartEdge.source.decoratorName,
+			sourceArrow <- compartEdge.target.decoratorName,
+			centerLabelStyleDescription <- thisModule.CreateCenterLabelStyleDescriptionRelationalEdge(compartEdge),
+			strokeColor <-  if(compartEdge.edge_style.color->oclIsUndefined() = true) then
+								OclUndefined
+							else if(compartEdge.edge_style.color.isSiriusSystemColors() = true) then 
+									compartEdge.edge_style.color.getSystemColorDescription(compartEdge.edge_style.color.name)
+								else
+									compartEdge.edge_style.color.color
+								endif
+							endif,
+			lineStyle <- compartEdge.edge_style.LineStyle
+			)
+	
+}
+
+--Styles
+rule CreateSquare{
+		from d:graphicR!Rectangle(not d.refImmediateComposite().oclIsKindOf(graphicR!CompartmentElement))
+		to e: diagram!SquareDescription(
+			width <- d.width, 
+			height <- d.height,
+			labelExpression <- thisModule.LabelExpression(d.LabelanEAttribute),																	
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.showIcon(d.refImmediateComposite().labelOcl)
+										else
+										  false
+									endif
+								else
+									false
+								endif
+							else
+								thisModule.showIcon(d.LabelanEAttribute)
+							endif,
+			resizeKind <- 'NSEW',
+			labelFormat <-   if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.getLabelFormat(d.refImmediateComposite().labelOcl)
+										else
+										  OclUndefined
+									endif
+								else
+									OclUndefined
+								endif
+							else
+								thisModule.getLabelFormat(d.LabelanEAttribute)
+							endif,
+			color <- if(d.color->oclIsUndefined() = true) then
+					 	OclUndefined
+						else
+							if(d.color.isSiriusSystemColors() = true) then
+								d.color.getSystemColorDescription(d.color.name)
+							else
+								d.color.color
+							endif
+						endif,							
+			labelColor <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.getLabelColorShape(d.refImmediateComposite().labelOcl)
+										else
+										  OclUndefined
+									endif
+								else
+									OclUndefined
+								endif
+							else
+								thisModule.getLabelColorShape(d.LabelanEAttribute)
+							endif,				
+			
+			borderColor <- if(d.borderColor->oclIsUndefined() = true) then
+					 		OclUndefined
+							else
+								if(d.borderColor.isSiriusSystemColors() = true) then
+									d.borderColor.getSystemColorDescription(d.borderColor.name)
+								else
+									d.borderColor.color
+								endif
+							endif,
+			borderLineStyle <- d.borderStyle,
+			borderSizeComputationExpression <- d.borderWidth,
+			labelPosition <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.getLabelPosition(d.refImmediateComposite().labelOcl)
+										else
+										  OclUndefined
+									endif
+								else
+									OclUndefined
+								endif
+							else
+								thisModule.getLabelPosition(d.LabelanEAttribute)
+							endif,
+			labelAlignment <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.getLabelAlignment(d.refImmediateComposite().labelOcl)
+										else
+										  OclUndefined
+									endif
+								else
+									OclUndefined
+								endif
+							else
+								thisModule.getLabelAlignment(d.LabelanEAttribute)
+							endif
+		)
+}
+
+rule CreateEllipse{
+		from d:graphicR!Ellipse(not d.refImmediateComposite().oclIsKindOf(graphicR!RepresentationStyle))
+		to e: diagram!EllipseNodeDescription(
+			horizontalDiameterComputationExpression <- d.horizontalDiameter.toString(), 
+			verticalDiameterComputationExpression <- d.verticalDiameter.toString(),
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+									thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+									''
+									endif,
+			showIcon <- thisModule.getShowIcon(d.LabelanEAttribute),
+			resizeKind <- 'NSEW',
+			color <- if(d.color->oclIsUndefined() = true) then OclUndefined else
+						if(d.color.isSiriusSystemColors() = true) then
+								d.color.getSystemColorDescription(d.color.name)
+								else
+									d.color.color
+								endif
+						endif,
+			labelColor <- 	thisModule.getLabelColorShape(d.LabelanEAttribute),
+			borderColor <- if(d.borderColor.isSiriusSystemColors() = true) then
+								d.borderColor.getSystemColorDescription(d.borderColor.name)
+							else
+								d.borderColor.color
+							endif,
+			borderLineStyle <- d.borderStyle,
+			borderSizeComputationExpression <- d.borderWidth,
+			labelFormat <- if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelFormat(d.LabelanEAttribute)
+								else
+									OclUndefined
+									endif,	
+			labelAlignment <- if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelAlignment(d.LabelanEAttribute)
+								else
+									OclUndefined
+									endif,						
+			labelPosition <- if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelPosition(d.LabelanEAttribute)
+								else 
+									OclUndefined
+							 endif	
+		)		
+}
+
+rule CreateParalellogram{
+	
+		from d: graphicR!ShapeCompartmentParallelogram
+		to e: diagram!ShapeContainerStyleDescription(
+			labelExpression <- thisModule.LabelExpression(d.LabelanEAttribute),
+			widthComputationExpression <- d.width.toString(),
+			heightComputationExpression <- d.height.toString(),
+			backgroundColor <- if(d.color->oclIsUndefined() = true) then
+									OclUndefined
+									else if(d.color.isSiriusSystemColors() = true) then
+										d.color.getSystemColorDescription(d.color.name)
+										else
+											d.color.color
+											endif
+								endif,
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = false then
+							thisModule.showIcon(d.LabelanEAttribute)
+							else
+								OclUndefined
+								endif,
+			labelFormat <-  if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelFormat(d.LabelanEAttribute)
+								else
+									OclUndefined
+									endif,								
+			labelAlignment <- if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelAlignment(d.LabelanEAttribute)
+								else
+									OclUndefined
+									endif
+		)	
+}
+
+rule CreateWorkspaceImage{
+		from d:graphicR!IconElement(not d.refImmediateComposite().oclIsKindOf(graphicR!RepresentationStyle))
+		to e: diagram!WorkspaceImageDescription(
+			workspacePath <- d.filepath,
+			resizeKind <- 'NSEW',
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = true then
+									if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+										if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+											thisModule.LabelExpression(d.refImmediateComposite().labelOcl)
+											else
+											''
+										endif
+									else
+										''
+									endif
+								else
+									thisModule.LabelExpression(d.LabelanEAttribute)
+								endif,										
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.showIcon(d.refImmediateComposite().labelOcl)
+										else
+										  false
+									endif
+								else
+									false
+								endif
+							else
+								thisModule.showIcon(d.LabelanEAttribute)
+						endif
+		)
+}
+
+rule CreateGradient{
+		from d: graphicR!ShapeCompartmentGradient
+		to e: diagram!FlatContainerStyleDescription(
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = true then
+									if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+										if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+											thisModule.LabelExpression(d.refImmediateComposite().labelOcl)
+											else
+											''
+										endif
+									else
+										''
+									endif
+								else
+									thisModule.LabelExpression(d.LabelanEAttribute)
+								endif,			
+			widthComputationExpression <- d.width.toString(),
+			heightComputationExpression <- d.height.toString(),
+			borderSizeComputationExpression <- d.borderWidth.toString(),
+			backgroundColor <- if(d.color.isSiriusSystemColors() = true) then
+									d.color.getSystemColorDescription(d.color.name)
+										else
+											d.color.color
+								endif,
+			foregroundColor <- 	if(d.foreGroundColor.isSiriusSystemColors() = true) then
+									d.foreGroundColor.getSystemColorDescription(d.color.name)
+										else
+											d.foreGroundColor.color
+								endif,				
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.showIcon(d.refImmediateComposite().labelOcl)
+										else
+										  false
+									endif
+								else
+									false
+								endif
+							else
+								thisModule.showIcon(d.LabelanEAttribute)
+							endif,
+			labelFormat <-   if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.getLabelFormat(d.refImmediateComposite().labelOcl)
+										else
+										  OclUndefined
+									endif
+								else
+									OclUndefined
+								endif
+							else
+								thisModule.getLabelFormat(d.LabelanEAttribute)
+							endif,													
+			labelAlignment <- if d.LabelanEAttribute->oclIsUndefined() = true then
+								if (d.refImmediateComposite().oclIsKindOf(graphicR!ConditionalStyle)) then
+									if d.refImmediateComposite().labelOcl->oclIsUndefined() = false then
+										thisModule.getLabelAlignment(d.refImmediateComposite().labelOcl)
+										else
+										  OclUndefined
+									endif
+								else
+									OclUndefined
+								endif
+							else
+								thisModule.getLabelAlignment(d.LabelanEAttribute)
+							endif,	
+			labelBorderStyle <- if d.labelStyle->oclIsUndefined() = false then
+									if d.labelStyle.name = 'NotDefined' then
+										OclUndefined
+										else
+											if d.labelStyle.name = 'LabelBorderForContainer' then 
+													thisModule.createLabelStyleDescriptionForContainer(d)	
+												else
+													if d.labelStyle.name = 'LabelBorderStyleWithBeveledCorner' then 
+														thisModule.createLabelStyleBeveledCorner(d)	
+														else
+														if d.labelStyle.name = 'NoLabelBorderForList' then 
+															thisModule.createLabelStyleForList(d)
+															else
+																OclUndefined
+														endif
+													endif	
+											endif	
+									endif
+								else
+									OclUndefined
+								endif,
+			borderColor <- if(d.borderColor->oclIsUndefined() = true) then
+					 		OclUndefined
+							else
+								if(d.borderColor.isSiriusSystemColors() = true) then
+									d.borderColor.getSystemColorDescription(d.borderColor.name)
+								else
+									d.borderColor.color
+								endif
+							endif					
+		)
+}
+
+lazy rule createLabelStyleDescriptionForContainer {
+	
+	from d: graphicR!ShapeCompartmentGradient
+	to e : diagram!LabelBorderStyleDescription (
+		name  <- 'Label Border For Container',
+		id <- 'labelBorderForContainer'
+	)
+}
+
+lazy rule createLabelStyleBeveledCorner {
+	
+	from d: graphicR!ShapeCompartmentGradient
+	to e : diagram!LabelBorderStyleDescription (
+		name  <- 'Label Border Style With Beveled Corner',
+		id <- 'labelBorderStyleWithBeveledCorner'
+	)
+}
+
+lazy rule createLabelStyleForList {
+	
+	from d: graphicR!ShapeCompartmentGradient
+	to e : diagram!LabelBorderStyleDescription (
+		name  <- 'No Label Border For List',
+		id <- 'nolabelBorderForList'
+	)
+}
+
+rule CreateDiamond{
+		from d: graphicR!Diamond(not d.refImmediateComposite().oclIsKindOf(graphicR!RepresentationStyle))
+		to e: diagram!LozengeNodeDescription(
+			labelExpression <- thisModule.getLabelExpressionRuleShape(d.LabelanEAttribute),
+			resizeKind <- 'NSEW',
+			color <- if(d.color.isSiriusSystemColors() = true) then
+									d.color.getSystemColorDescription(d.color.name)
+										else
+											d.color.color
+								endif,
+			sizeComputationExpression <- d.size.toString(),
+			showIcon <- thisModule.getShowIcon(d.LabelanEAttribute)
+		)		
+}
+
+rule CreateNote{
+		from d: graphicR!Note
+		to e: diagram!NoteDescription(
+			labelExpression <- thisModule.getLabelExpressionRuleShape(d.LabelanEAttribute),
+			resizeKind <- 'NSEW',
+			color <- if(d.color.isSiriusSystemColors() = true) then
+									d.color.getSystemColorDescription(d.color.name)
+										else
+											d.color.color
+								endif,
+			sizeComputationExpression <- d.size.toString(),
+			showIcon <- thisModule.getShowIcon(d.LabelanEAttribute)
+		)
+}
+
+--End Styles
+
+--Some Lazy Rules about Palette
+--Create Switch Case
+lazy rule SwitchOperation {
+	
+	from d : graphicR!Node
+	to e : diagram!Switch (
+		cases <- d.containerReference->collect(g | thisModule.CreateSwitchCase(g,d))	
+	)
+}
+
+--Switch for containers and Virtual Compartments
+lazy rule SwitchOperationVirtualReference {
+		
+	from d : graphicR!Node
+	to e : diagram!Switch (
+		cases <- d.virtualCompartments->union(d.containerReference)->collect(g | 
+			if g.oclIsKindOf(graphicR!VirtualCompartmentReference) then
+			 	thisModule.CreateSwitchCaseVirtualCompartment(g,d)
+				else
+					if g.oclIsKindOf(graphicR!VirtualCompartmentOCL) then 
+						OclUndefined
+						else
+						thisModule.CreateSwitchCase(g,d)
+					endif
+			endif
+			)	
+	)
+}
+
+lazy rule SwitchOperationVirtualCompartment {
+	
+	from d : graphicR!Node
+	to e : diagram!Switch (
+		cases <- d.virtualCompartments->collect(g | thisModule.CreateSwitchCaseVirtualCompartment(g,d))	
+	)
+}
+
+--Conditional
+lazy rule CreateSwitchCaseVirtualCompartment {
+	
+	from d : Ecore!VirtualCompartment, 
+		 diagElement : graphicR!Node
+	to e: diagram!Case (
+		conditionExpression <- 'aql:container.oclIsKindOf(' + d.refImmediateComposite().refImmediateComposite().anEClass.ePackage.name + '::' +
+									d.refImmediateComposite().refImmediateComposite().anEClass.name + ')',
+		subModelOperations <- thisModule.CreateContextVirtualCompartment(d)
+	)	
+}
+
+lazy rule CreateSwitchCase {
+	
+	from d : Ecore!EReference, 
+		 diagElement : graphicR!Node			 
+	to e: diagram!Case (
+		conditionExpression <- 'aql:container.oclIsKindOf(' + d.eContainer().getEPackage().name + '::' + d.eContainer().name +')',	
+		subModelOperations <- thisModule.CreateInstance(d,diagElement)
+	)
+}
+
+--Create Instance
+lazy rule CreateInstance {
+	
+	from d : Ecore!EReference,
+	     diagElement : graphicR!Node
+	to e : diagram!CreateInstance (
+		referenceName <- d.name,
+		typeName <- d.eContainer().getEPackage().name + '.' + diagElement.anEClass.name
+	)
+}
+
+
+
+lazy rule CreateFirstOperation {
+	
+	from d: graphicR!Node
+	to e: diagram!CreateInstance(
+				referenceName <- d.containerReference->asSequence()->first().name,										
+				typeName <- d.refImmediateComposite().refImmediateComposite().root.
+							anEClass.ePackage.name.concat('.').concat(d.anEClass.name)						
+	)			
+
+}
+
+lazy rule CreateContextVirtualCompartment{
+	from virtual: graphicR!VirtualCompartmentReference
+	to e: diagram!ChangeContext(
+		browseExpression <- 'aql:self.' + virtual.virtualReference.name,
+		subModelOperations <- thisModule.CreateFirstOperationVirtualCompartment(virtual)
+	)
+}
+
+lazy rule CreateFirstOperationVirtualCompartment {
+	
+	from d: graphicR!VirtualCompartment
+	to e: diagram!CreateInstance(
+				referenceName <- d.containerReference.name,										
+				typeName <- thisModule.getTypeNameClass(d)			
+	)			
+
+}
+
+lazy rule CreateConditionalContainerStyle {
+	
+	from d: graphicR!ConditionalStyle
+	to e: diagram!ConditionalContainerStyleDescription(
+		
+		predicateExpression <- 'aql:self.'+ d.eAttribute.name.toString() + '.toString()=\'' +  d.value.toString() + '\'',
+		style <- d.conditionalStyle
+	)
+}
+
+lazy rule CreateConditionalNodeStyle {
+	
+	from d: graphicR!ConditionalStyle
+	to e: diagram!ConditionalNodeStyleDescription(
+		
+		predicateExpression <- 'aql:self.'+ d.eAttribute.name.toString() + '.toString()=\'' +  d.value.toString() + '\'',
+		style <- d.conditionalStyle
+	)
+}
+
+--Create Relation Based Style
+lazy rule CreateRelationBasedStyle{
+	from  linkPalette:graphicR!PaletteDescriptionLink
+	to f: diagram!EdgeStyleDescription(
+		targetArrow <- linkPalette.decoratorName,
+		sourceArrow <- linkPalette.sourceDecoratorName,	
+		strokeColor <- if(linkPalette.color->oclIsUndefined() = true) then
+								OclUndefined
+							else if(linkPalette.color.isSiriusSystemColors() = true) then 
+									linkPalette.color.getSystemColorDescription(linkPalette.color.name)
+								else
+									linkPalette.color.color
+								endif
+							endif,
+		lineStyle <- linkPalette.LineStyle,
+		centerLabelStyleDescription <- thisModule.CreateCenterLabelStyleDescriptionRelationalEdge(linkPalette)
+	)
+}
+
+lazy rule CreateCenterLabelStyleDescriptionRelationalEdge{
+	from diagElement:graphicR!PaletteDescriptionLink
+	to e: diagram!CenterLabelStyleDescription(
+			
+		)
+}
+
+lazy rule CreateDefaultStyle{
+		from diagElement:graphicR!Edge
+		to e: diagram!EdgeStyleDescription(
+			targetArrow <- diagElement.directions.targetLink.decoratorName,
+			sourceArrow <- diagElement.directions.sourceLink.decoratorName,
+			centerLabelStyleDescription <- thisModule.CreateCenterLabelStyleDescription(diagElement),
+			strokeColor <-  if(diagElement.edge_style.color->oclIsUndefined() = true) then
+								OclUndefined
+							else if(diagElement.edge_style.color.isSiriusSystemColors() = true) then 
+									diagElement.edge_style.color.getSystemColorDescription(diagElement.edge_style.color.name)
+								else
+									diagElement.edge_style.color.color
+								endif
+							endif,
+			lineStyle <- diagElement.edge_style.LineStyle			
+			)
+}
+
+lazy rule createConditionalEdgeStyle {
+	
+	from d: graphicR!ConditionalEdgeStyle
+	to e: diagram!ConditionalEdgeStyleDescription(
+		
+		predicateExpression <- 'aql:'+ d.conditionalOCL,
+		style <- thisModule.createConditionalEdgeStyleDecorators(d)
+	)
+}
+
+lazy rule createConditionalEdgeStyleDecorators {
+	
+	from d: graphicR!ConditionalEdgeStyle
+	to e: diagram!EdgeStyleDescription(
+		
+		 sourceArrow <- d.decoratorSource.decoratorName,
+		 targetArrow <- d.decoratorTarget.decoratorName,
+		centerLabelStyleDescription <- thisModule.createCenterLabelStyleDescriptionEdge(d),
+		strokeColor <-  if(d.conditionalEdge.color->oclIsUndefined() = true) then
+								OclUndefined
+							else if(d.conditionalEdge.color.isSiriusSystemColors() = true) then 
+									d.conditionalEdge.color.getSystemColorDescription(d.conditionalEdge.color.name)
+								else
+									d.conditionalEdge.color.color
+								endif
+							endif		
+	)
+}
+
+lazy rule createCenterLabelStyleDescriptionEdge{
+	from diagElement:graphicR!ConditionalEdgeStyle
+	to e: diagram!CenterLabelStyleDescription(
+			labelExpression <- if diagElement.generalLabel->oclIsUndefined() = true then
+									''
+								else
+									thisModule.LabelExpression(diagElement.generalLabel)
+								endif,								
+			showIcon <- if diagElement.generalLabel->oclIsUndefined() = true then
+									false
+								else
+									thisModule.showIcon(diagElement.generalLabel)
+								endif
+		)
+}
+
+lazy rule CreateCenterLabelStyleDescription{
+	from diagElement:graphicR!Edge
+	to e: diagram!CenterLabelStyleDescription(
+			labelExpression <- if diagElement.edgeLabel->oclIsUndefined() = true then
+									''
+								else
+									thisModule.LabelExpression(diagElement.edgeLabel)
+								endif,								
+			showIcon <- if diagElement.edgeLabel->oclIsUndefined() = true then
+									false
+								else
+									thisModule.showIcon(diagElement.edgeLabel)
+								endif
+		)
+}
+
+rule CreateRGBColor{
+	from d:graphicR!RGBColor
+	to e:diagram!ComputedColor(
+		name <- d.name,
+		red <- d.red.toString(),
+		green <- d.green.toString(),
+		blue <- d.blue.toString()
+	)	
+}
+
+--End
+
+--Lazy Rule to create borderedNodes
+lazy rule LazyCreateNodeMapping {
+	from
+		 s :TupleType (diagElement:graphicR!Node, diagRef: String)
+	to 
+		CreationNodeMapping : diagram!NodeMapping (
+			name <- 'Id'.concat(s.diagElement.anEClass.name),
+			domainClass <-  s.diagElement.refImmediateComposite().refImmediateComposite().root.
+							anEClass.ePackage.name.concat('.').concat(s.diagElement.anEClass.name),														
+			semanticCandidatesExpression <- if(s.diagElement.containerReference->oclIsUndefined()) then 
+												'[self/]'
+													else if (s.diagElement.containerReference->size() = 1) then 
+													  'feature:'.concat(s.diagElement.containerReference->asSequence()->first().name)
+											  else
+												  	thisModule.getSemanticExpressionUsingContainers(s.diagElement.containerReference->asSequence())
+													endif
+											endif,
+			style <- if(s.diagElement.node_shape->oclIsKindOf(graphicR!IconElement)) then
+						thisModule->LazyCreateWorkspaceImage(s.diagElement.node_shape) 
+						else
+							if(s.diagElement.node_shape->oclIsKindOf(graphicR!Rectangle)) then
+								thisModule->LazyCreateSquare(s.diagElement.node_shape)
+								else
+									if(s.diagElement.node_shape->oclIsKindOf(graphicR!Ellipse)) then
+										thisModule->LazyCreateEllipse(s.diagElement.node_shape)
+										else
+											if(s.diagElement.node_shape->oclIsKindOf(graphicR!Note)) then
+												thisModule->LazyCreateNote(s.diagElement.node_shape)
+												else
+													if(s.diagElement.node_shape->oclIsKindOf(graphicR!Diamond)) then
+														thisModule->LazyCreateDiamond(s.diagElement.node_shape)
+														else
+															OclUndefined
+														endif
+												endif
+										endif
+								endif
+							endif
+		)
+}
+
+lazy rule LazyCreateWorkspaceImage{
+		from d:graphicR!IconElement
+		to e: diagram!WorkspaceImageDescription(
+			workspacePath <- d.filepath,
+			resizeKind <- 'NSEW',
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+									thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+									''
+									endif,										
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = false then
+							thisModule.getShowIcon(d.LabelanEAttribute)
+							else
+							 false
+						endif
+		)
+}
+
+lazy rule LazyCreateSquare{
+		from d:graphicR!Rectangle
+		to e: diagram!SquareDescription(
+			width <- d.width, 
+			height <- d.height,
+			--labelExpression <- if(d.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+			--						''
+			--						else
+			--							thisModule.LabelExpression(d.refImmediateComposite().node_elements.LabelanEAttribute)										
+			--							endif, 
+			--showIcon <- if(d.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+			--					false
+			--					else
+			--						d.refImmediateComposite().node_elements.LabelanEAttribute->first().showIcon
+			--			endif,
+			resizeKind <- 'NSEW',
+			color <- if(d.color.isSiriusSystemColors() = true) then
+								d.color.getSystemColorDescription(d.color.name)
+							else
+								d.color.color
+							endif,			
+							
+			--labelColor <- 	if(d.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+			--					OclUndefined
+			--					else 
+			--						if(d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.isSiriusSystemColors() = true) then
+			--							d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.getSystemColorDescription
+			--								(d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.name)
+			--							else
+			--								d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.color
+			--						endif
+			--				endif,				
+			
+			borderColor <- if(d.borderColor.isSiriusSystemColors() = true) then
+								d.borderColor.getSystemColorDescription(d.borderColor.name)
+							else
+								d.borderColor.color
+							endif,
+			borderLineStyle <- d.borderStyle,
+			borderSizeComputationExpression <- d.borderWidth,
+			labelPosition <- if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelPosition(d.LabelanEAttribute)
+								else 
+									OclUndefined
+							 endif
+			--labelFormat <- if(d.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+			--					OclUndefined
+			--				else		
+			--					d.refImmediateComposite().node_elements.LabelanEAttribute->first().labelFormat								
+			--				endif,	
+			--labelPosition <-if(d.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+			--					OclUndefined
+			--				else		
+			--					d.refImmediateComposite().node_elements.LabelanEAttribute->first().labelPosition								
+			--				endif
+		)
+}
+
+lazy rule LazyCreateEllipse{
+		from d:graphicR!Ellipse
+		to e: diagram!EllipseNodeDescription(
+			horizontalDiameterComputationExpression <- d.horizontalDiameter.toString(), 
+			verticalDiameterComputationExpression <- d.verticalDiameter.toString(),
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+									thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+									''
+									endif,								
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = false then
+							thisModule.getShowIcon(d.LabelanEAttribute)
+							else
+							 false
+						endif,
+			resizeKind <- 'NSEW',
+			color <- if(d.color.isSiriusSystemColors() = true) then
+							d.color.getSystemColorDescription(d.color.name)
+							else
+								d.color.color
+							endif,
+			labelColor <- 	if(d.refImmediateComposite()->oclIsKindOf(graphicR!Node) = true) then
+									if(d.refImmediateComposite().node_elements.LabelanEAttribute->first().color->oclIsUndefined() = true) then
+										OclUndefined
+										else
+											if(d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.isSiriusSystemColors() = true) then
+												d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.getSystemColorDescription
+													(d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.name)
+												else
+													d.refImmediateComposite().node_elements.LabelanEAttribute->first().color.color
+													endif
+									endif
+								else
+									OclUndefined
+						 	endif,
+			borderColor <- if(d.borderColor.isSiriusSystemColors() = true) then
+								d.borderColor.getSystemColorDescription(d.borderColor.name)
+							else
+								d.borderColor.color
+							endif,
+			borderLineStyle <- d.borderStyle,
+			borderSizeComputationExpression <- d.borderWidth,
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+										thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+										''
+									endif,
+			labelFormat <- if(d.refImmediateComposite()->oclIsKindOf(graphicR!Node) = true) then
+							 if(d.refImmediateComposite().node_elements.LabelanEAttribute->first().labelFormat->oclIsUndefined() = true) then
+								OclUndefined
+								else		
+									d.refImmediateComposite().node_elements.LabelanEAttribute->first().labelFormat								
+								endif
+							else
+								OclUndefined
+							endif,	
+			labelPosition <- if d.LabelanEAttribute->oclIsUndefined() = false then
+								thisModule.getLabelPosition(d.LabelanEAttribute)
+								else 
+									OclUndefined
+							 endif	
+		)		
+}
+
+lazy rule LazyCreateDiamond{
+		from d: graphicR!Diamond
+		to e: diagram!LozengeNodeDescription(
+			labelExpression <- if d.LabelanEAttribute->oclIsUndefined() = false then
+										thisModule.LabelExpression(d.LabelanEAttribute)
+									else
+										''
+									endif,
+			resizeKind <- 'NSEW',
+			color <- if(d.color.isSiriusSystemColors() = true) then
+									d.color.getSystemColorDescription(d.color.name)
+										else
+											d.color.color
+								endif,
+			sizeComputationExpression <- d.size.toString(),
+			showIcon <- if d.LabelanEAttribute->oclIsUndefined() = false then
+							thisModule.getShowIcon(d.LabelanEAttribute)
+							else
+							 false
+						endif
+		)		
+}
+
+lazy rule LazyCreateNote{
+		from d: graphicR!Note
+		to e: diagram!NoteDescription(
+			labelExpression <- if(d.refImmediateComposite().node_elements->oclIsUndefined() = true) then
+									''
+										else 
+											if(d.refImmediateComposite().node_elements.LabelanEAttribute->asSequence()->size() = 0 ) then
+														''
+														else															
+															thisModule.LabelExpression(d.refImmediateComposite().node_elements.LabelanEAttribute)
+													endif
+												endif,
+			resizeKind <- 'NSEW',
+			color <- if(d.color.isSiriusSystemColors() = true) then
+									d.color.getSystemColorDescription(d.color.name)
+										else
+											d.color.color
+								endif,
+			sizeComputationExpression <- d.size.toString(),
+			showIcon <- if(d.refImmediateComposite().node_elements.LabelanEAttribute->first().showIcon->oclIsUndefined() = true) then
+								false
+								else
+									d.refImmediateComposite().node_elements.LabelanEAttribute->first().showIcon
+						endif
+		)
+}
+
+--Table Representation
+
+rule RepresentationTable{
+	from mm:graphicR!RepresentationTable
+	to o:diagram!EditionTableDescription(
+		    name <- 'Table '.concat(mm.rootTable.name).concat('[').concat(mm.lines->first().featureReference.name).concat(']'),
+			label <- 'Table '.concat(mm.rootTable.name).concat('[').concat(mm.lines->first().featureReference.name).concat(']'),
+			domainClass <- mm.rootTable.ePackage.name.concat('.').concat(mm.rootTable.name),
+			initialisation <- true,
+			ownedLineMappings <- mm.lines->collect(l | l.listEClasses->collect(c | thisModule.LazyTableLineGroup(Tuple{mm = c, diagRef = l.featureReference.name}))),
+			ownedColumnMappings <- mm.columns->collect(attr | thisModule.LazyTableColumns(attr))
+		)	
+}
+
+lazy rule LazyTableLineGroup{
+	from  s :TupleType (mm:MMEcore!EClass, diagRef: String)
+	to o:diagram!LineMapping(
+		name <- s.mm.name.concat('Line'),
+		domainClass <- s.mm.ePackage.name.concat('.').concat(s.mm.name),
+		semanticCandidatesExpression <- '[self.'.concat(s.diagRef).concat('/]')
+	)	
+}
+
+lazy rule LazyTableColumns{
+	from mm:MMEcore!EAttribute
+	to o:diagram!FeatureColumnMapping(
+		name <- mm.name.concat('Column'),
+		featureName <- mm.name,
+		headerLabelExpression <- mm.name
+	)	
+}
+
+helper context graphicR!Layer def: isDefaultLayer(): Boolean =
+	if self.oclIsTypeOf(graphicR!DefaultLayer) then
+		true
+		else
+			false
+			endif;
+
+helper context graphicR!AllElements def: isNode(): Boolean =
+	if self.oclIsTypeOf(graphicR!Node) then
+		true
+		else
+			false
+			endif;
+
+--Indentify Containers
+helper context graphicR!Node def: isContainer(): Boolean =
+	if self.node_elements->oclIsUndefined() = false
+		then 
+			if self.node_elements.affixedCompartmentElements->oclIsUndefined() then
+				self.isVirtualCompartment()
+			else
+				if self.node_elements.affixedCompartmentElements->select(e | e.isCompartment() or e.isAffixed())->asSequence()->size() > 0 then
+					true
+					else
+					 self.isVirtualCompartment()
+				endif
+			endif
+	else
+		false	
+	endif;
+
+helper context graphicR!Node def: isVirtualCompartment(): Boolean = 
+if self.node_elements.virtualCompartment->oclIsUndefined() = false then 
+	if self.node_elements.virtualCompartment->size() > 0 then
+			true
+		else
+			false
+	endif
+	else
+		false
+	endif;
+
+--Identify Compartments
+helper context graphicR!AffixedCompartmentElement def: isCompartment() : Boolean =
+	if self.oclIsTypeOf(graphicR!CompartmentElement) then
+		true
+		else
+			false
+			endif;
+
+--Identify Affixed
+helper context graphicR!AffixedCompartmentElement def : isAffixed(): Boolean =
+	if self.oclIsTypeOf(graphicR!AffixedElement) then
+		true
+		else
+			false
+			endif;
+
+helper context graphicR!AllElements def : AbstractElementOrNode() : Boolean = 
+	if self.oclIsTypeOf(graphicR!Node) or self.oclIsTypeOf(graphicR!AbstractElement) then
+		true
+			else
+				false
+				endif;
+
+helper context graphicR!AllElements def: isEdge(): Boolean =
+	if self.oclIsTypeOf(graphicR!Edge) then
+		true
+		else
+			false
+			endif;
+
+helper def: getSemanticExpressionUsingContainers(s : Sequence(Ecore!EReference)) : String = 
+	thisModule.getIfExpressionUsingContainers(s) + ' else self' + thisModule.getEndIfUsingContainers(s);
+	
+helper def: getSemanticExpressionUsingVirtualCompartments(virtualSeq : Sequence(graphicR!VirtualCompartment)) : String = 
+	thisModule.getIfExpressionUsingContainersVirtual(virtualSeq) + ' else self' + thisModule.getEndIfUsingContainersVirtual(virtualSeq);
+	
+	
+helper def: getEndIfUsingContainers(s : Sequence(Ecore!EReference)) : String = 
+	s->iterate(e; acc: String = '' |
+	acc + ' endif'
+);
+	
+helper def: getEndIfUsingContainersVirtual(s : Sequence(graphic!VirtualCompartment)) : String = 
+	s->iterate(e; acc: String = '' | if (s->subSequence(1,s->indexOf(e))->excluding(e)->select(f | e.refImmediateComposite().refImmediateComposite().anEClass = 
+	    		f.refImmediateComposite().refImmediateComposite().anEClass)->size() = 0) then	
+			acc + ' endif'
+			else
+				acc
+			endif
+);	
+	
+helper def: getIfExpressionUsingContainers(s : Sequence(Ecore!EReference)) : String = 
+	s->iterate(e; acc: String = 'aql:if' |
+		if (acc = 'aql:if') then 
+			acc + '(self.oclIsKindOf('+ e.eContainer().getEPackage().name +'::'+ e.eContainer().name +')) then self.' + e.name
+				else
+					acc + ' else if ' + '(self.oclIsKindOf('+ e.eContainer().getEPackage().name +'::'+ e.eContainer().name +')) then self.' + e.name
+		endif);
+--Create expression for virtual compartments
+helper def: getIfExpressionUsingContainersVirtual(s : Sequence(graphic!VirtualCompartment)) : String = 
+	s->iterate(e; acc: String = 'aql:if' |
+	    if (s->subSequence(1,s->indexOf(e))->excluding(e)->select(f | e.refImmediateComposite().refImmediateComposite().anEClass = 
+	    		f.refImmediateComposite().refImmediateComposite().anEClass)->size() = 0) then
+			if (acc = 'aql:if') then 
+					if (e.oclIsKindOf(graphicR!VirtualCompartmentReference)) then 
+						acc  + '(self.oclIsKindOf(' + e.refImmediateComposite().refImmediateComposite().anEClass.ePackage.name
+							 +'::'+ e.refImmediateComposite().refImmediateComposite().anEClass.name +')) then self.'  + e.virtualReference.name + '.'
+								 + e.containerReference.name + thisModule.getUnionExpressionVirtual(e)
+						else
+						acc  + '(self.oclIsKindOf(' + e.refImmediateComposite().refImmediateComposite().anEClass.ePackage.name
+							 +'::'+ e.refImmediateComposite().refImmediateComposite().anEClass.name +')) then '  + e.oclExpression 
+								+ thisModule.getUnionExpressionVirtual(e)	
+							
+					endif
+				else 
+					if (e.oclIsKindOf(graphicR!VirtualCompartmentReference)) then
+							acc + ' else if' + '(self.oclIsKindOf('+ e.refImmediateComposite().refImmediateComposite().anEClass.ePackage.name
+								 +'::'+ e.refImmediateComposite().refImmediateComposite().anEClass.name +')) then self.' + e.virtualReference.name + '.'
+									 + e.containerReference.name + thisModule.getUnionExpressionVirtual(e)
+									 else
+							acc + ' else if' + '(self.oclIsKindOf('+ e.refImmediateComposite().refImmediateComposite().anEClass.ePackage.name
+								 +'::'+ e.refImmediateComposite().refImmediateComposite().anEClass.name +')) then self.' + e.oclExpression + '.'
+									+ thisModule.getUnionExpressionVirtual(e)		 	
+					endif
+			endif
+			else
+				acc
+		endif
+		);		
+	
+helper def: getUnionExpressionVirtual(virtualCompart : graphic!VirtualCompartment) : String = 
+	virtualCompart.refImmediateComposite().virtualCompartment->asSequence()->excluding(virtualCompart)
+				->iterate(v; acc: String = '' | 
+					if (v.oclIsKindOf(graphicR!VirtualCompartmentReference) = true) then
+						acc + '->union(self.' + v.virtualReference.name + '.'	+ v.containerReference.name  +')'
+						 else
+						 	acc + '->union(' +  v.oclExpression  +')'
+					endif
+				);
+	
+--Identify Sirius Colors
+helper context graphicR!Color def : isSiriusSystemColors(): Boolean =
+	if self.oclIsTypeOf(graphicR!SiriusSystemColors) then
+		true
+		else
+			false
+			endif;
+
+helper context graphicR!AllElements def: isNodeOrEdge(): Boolean =
+	if self.oclIsTypeOf(graphicR!Node) or self.oclIsTypeOf(graphicR!Edge) then
+		true
+			else
+				false
+				endif;
+
+--Identify RGB Colors
+helper context graphicR!Color def : isRGBColor(): Boolean =
+	if self.oclIsTypeOf(graphicR!RGBColor) then
+		true
+		else
+			false
+			endif;
+
+--Label Expression 
+helper def : LabelExpression(s : graphicR!GeneralLabel) : String = 
+		if s->oclIsUndefined() = false then			
+			if s.oclIsKindOf(graphicR!LabelEAttribute) then
+				if (s.labelAttributes.size() = 1) then
+					'feature:' + s.labelAttributes->first().eAttribute.name
+					else
+						s.labelAttributes->iterate(e; acc: String = 'aql:self.' | 
+						if acc = 'aql:self.' then
+							acc + e.eAttribute.name
+							else
+							acc + '+ \' \' + self.' + e.eAttribute.name	
+						endif)
+				endif		
+				else if s.oclIsKindOf(graphicR!LabelOCL) then
+							if s.oclExpression.oclIsUndefined() = false then
+								'aql:' + s.oclExpression
+							else
+								''
+							endif	
+						else
+							''
+				endif	
+			endif
+		else
+			''
+		endif;
+--Show Icon
+helper def : showIcon(g : graphicR!GeneralLabel) : Boolean =
+	if g.oclIsUndefined() = false then
+		g.showIcon
+		else
+			false
+	endif;
+
+
+--Find all classes that inherit from an AbstractElement
+helper def : geteAllChildren(layer : graphicR!Layer, abstractElement : graphicR!AbstractElement) : Sequence(graphicR!DiagramElement) = 
+	layer.elements->select(e | e.isNodeOrEdge())->select(f | abstractElement.anEClass.isSuperTypeOf(f.anEClass).booleanValue());
+										
+--Find all classes that inherit from an AbstractElement
+helper def : geteAllChildrenEClass(layer : graphicR!Layer, anEClass : MMEcore!EClass) : Sequence(graphicR!DiagramElement) = 
+	layer.elements->select(e | e.isNodeOrEdge())->select(f | anEClass.isSuperTypeOf(f.anEClass).booleanValue());
+
+--Find node_elements
+helper def : getNodeElements(icon : graphicR!IconElement) : graphicR!Node =
+	if(icon.refImmediateComposite().oclIsKindOf(graphicR!Node)) then
+			icon.refImmediateComposite()
+		else 
+			if (icon.refImmediateComposite().oclIsKindOf(graphicR!CompartmentElement)) then 
+				icon.refImmediateComposite().refImmediateComposite().refImmediateComposite()
+				else
+					icon.refImmediateComposite().refImmediateComposite()
+				endif
+			endif;		
+
+--Children Presentation
+helper def: getChildrenPresentation(presentation : graphicR!ChildrenPresentation) : String =
+	if(presentation.name.toString() = 'FREEFORM')then
+		'FreeForm'
+		else if (presentation.name.toString() = 'LIST') then
+			'List'
+			else if (presentation.name.toString() = 'HORIZONTALSTACK') then
+				'HorizontalStack'
+				else
+					'VerticalStack'
+			endif
+		endif
+	endif;
+
+--First test with Ellipse
+helper def: getLabelExpressionRuleShape(shape: graphicR!Shape) : String = 
+	if (shape.refImmediateComposite().oclIsTypeOf(graphicR!Node)) then
+		if(shape.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+			''
+			 else
+				thisModule.LabelExpression(shape.refImmediateComposite().node_elements.LabelanEAttribute)										
+		endif
+	else 
+		''
+	endif;
+
+--helper def: getShowIconRule(shape: graphicR!Shape) : String =
+--	if (shape.refImmediateComposite().oclIsTypeOf(graphicR!Node)) then
+--		if(shape.refImmediateComposite().node_elements.LabelanEAttribute->first()->oclIsUndefined() = true) then
+--			false
+--			 else
+--				if(shape.refImmediateComposite().node_elements.LabelanEAttribute->first().showIcon->oclIsUndefined() = true) then
+--					false
+--					else
+--						shape.refImmediateComposite().node_elements.LabelanEAttribute->first().showIcon
+--				endif
+--		endif
+--	else
+--	   false
+--	endif;
+
+helper def: getLabelColorShape(label: graphicR!GeneralLabel): String = 
+	if label.color.oclIsUndefined() = false then
+			if(label.color.isSiriusSystemColors() = true) then
+				label.color.getSystemColorDescription(label.color.name)
+				else
+					label.color.color
+			endif
+		else 
+			OclUndefined
+	endif;
+
+
+helper def: getLabelFormat(label: graphicR!GeneralLabel): String =
+	if label.labelFormat.oclIsUndefined() = false then
+		if (label.labelFormat.size() = 0) then
+			OclUndefined
+			else
+				label.labelFormat
+		endif
+		else
+			OclUndefined
+endif;
+
+helper def: getLabelAlignment(label: graphicR!GeneralLabel): String = 
+	if label.labelAligment.oclIsUndefined() = false then
+		label.labelAligment.toString()
+		else
+			OclUndefined	
+	endif;
+
+
+helper def: getLabelPosition(label: graphicR!GeneralLabel): String = 
+	if label.labelPosition.oclIsUndefined() = false then
+		label.labelPosition
+		else
+			OclUndefined
+	endif;
+
+helper def: getShowIcon(label: graphicR!GeneralLabel): Boolean = 
+	if label.showIcon.oclIsUndefined() = false then
+		label.showIcon
+		else
+			OclUndefined
+	endif;
+
+helper def: getContainingFeature(shape: graphicR!Shape): String =
+	if (shape.refImmediateComposite().init.equals(shape)) then
+		'Init'
+		else
+			if (shape.refImmediateComposite().end.equals(shape)) then
+				'End'
+			else
+				if (shape.refImmediateComposite().nodeShape.equals(shape)) then
+						'NodeShape'
+					else
+					  'NoName'
+				endif
+			endif
+	endif;	
+
+helper def: getContainingFeatureLoop(shape: graphicR!Shape): String =
+	if (shape.refImmediateComposite().initShape.equals(shape)) then
+		'Init'
+		else
+			if (shape.refImmediateComposite().endShape.equals(shape)) then
+				'End'
+			else
+				if (shape.refImmediateComposite().nodeShape.equals(shape)) then
+						'NodeShape'
+					else
+					  'NoName'
+				endif
+			endif
+	endif;
+
+helper def: getContainingFeatureConditional(shape: graphicR!Shape): String =
+	if (shape.refImmediateComposite().initShape.equals(shape)) then
+		'InitShape'
+		else
+			if (shape.refImmediateComposite().thenShape.equals(shape)) then
+				'ThenShape'
+			else
+				if (shape.refImmediateComposite().elseShape.equals(shape)) then
+						'ElseShape'
+					else
+					  if (shape.refImmediateComposite().endShape.equals(shape)) then
+						'EndShape'
+						else
+						   if (shape.refImmediateComposite().ifShape.equals(shape)) then
+							'IfShape'
+								else
+								  'NoName'
+							endif
+					  endif
+				endif
+			endif
+	endif;
+
+helper def: getContainingFeatureTree(shape: graphicR!Shape): String =
+	if (shape.refImmediateComposite().initShape.equals(shape)) then
+		'InitTreeShape'
+		else
+			if (shape.refImmediateComposite().rootShape.equals(shape)) then
+				'RootTreeShape'
+			else
+				if (shape.refImmediateComposite().nodeShape.equals(shape)) then
+						'NodeTreeShape'
+					else
+					  if (shape.refImmediateComposite().endShape.equals(shape)) then
+						'EndTreeShape'
+						else				  
+							'NoName'							
+					  endif
+				endif
+			endif
+	endif;
+
+helper def: getDomainClass(compartEdge: graphicR!CompartmentEdge): String = 
+	compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.
+								ePackage.name.concat('::').concat(if(compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass
+																->oclIsUndefined() = true) then
+															''
+														     else
+																	compartEdge.refImmediateComposite().refImmediateComposite().refImmediateComposite().refImmediateComposite().anEClass.name
+															endif);
+
+helper def: getReference(compartEdge: graphicR!CompartmentEdge): graphicR!EReference = 
+	compartEdge.refImmediateComposite().refImmediateComposite().anEReference;
+
+helper def: getTypeNameClass(virtual: graphicR!VirtualCompartment): String = 
+	virtual.refImmediateComposite().refImmediateComposite().anEClass.ePackage.name.concat('.' + virtual.containerReference.eType.name);
+
+--Create Delete Element Instance Description
+lazy rule CreateElementDescription {
+	from 
+		dl:graphicR!Layer
+	to o:diagram!DeleteElementDescription(
+		initialOperation <- InitialOperation
+	),
+	InitialOperation : diagram!InitialOperation(
+		
+		firstModelOperations <- CreateExternalJavaAction		
+	),
+	CreateExternalJavaAction : diagram!ExternalJavaAction(
+		
+		name <- 'DeleteEMFElement',
+		id <- dl.refImmediateComposite().root.anEClass.name  + '.odesign.DeleteEObjectInstanceAction',
+		parameters <- CreateParameter
+	),
+	CreateParameter : diagram!ExternalJavaActionParameter (
+		name <- 'eObject',
+		value <- 'var:element'
+	)
+}
+
+--Create Show Real Object Description
+lazy rule ShowRealObjectDescription {
+	from 
+		dl:graphicR!Layer
+	to o:diagram!ExternalJavaAction(
+		
+		name <- 'ShowRealEMFElement',
+		id <- dl.refImmediateComposite().root.anEClass.name  + '.odesign.ShowRealObjectAction',
+		parameters <- CreateParameter
+	),
+	CreateParameter : diagram!ExternalJavaActionParameter (
+		name <- 'eObject',
+		value <- 'var:element'
+	)
+}
+
+--Conditional Style Helpers
+helper def: getConditionalStyleLabelExpression(conditionalStyle: graphicR!ConditionalStyle): String =
+	if (conditionalStyle.labelOcl->oclIsUndefined()) then
+		thisModule.LabelExpression(conditionalStyle.refImmediateComposite().node_elements.LabelanEAttribute)
+	else
+		conditionalStyle.labelOcl.oclExpression.toString()
+		endif;	
+--End 
+
+helper def: convertReferenceKeyWords(reference: String): String =
+	if (reference = 'then') then
+		'_then'
+	else 
+		if (reference = 'if') then
+			'_if'
+		else 
+			if (reference = 'else') then
+				'_else'
+			else 
+				reference
+			endif
+		endif
+	endif;
+

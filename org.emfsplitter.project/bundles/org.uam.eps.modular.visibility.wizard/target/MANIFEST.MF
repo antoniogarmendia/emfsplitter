@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.uam.eps.modular.visibility.wizard
+Export-Package: org.uam.eps.modular.visibility.wizard.def
+Bundle-Name: Wizard
+Bundle-Version: 1.0.0.202005090847
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.uam.eps.mo
+ dular.visibility,org.mondo.emf.splitter.library,org.eclipse.core.reso
+ urces,org.miso.wizard.instantiate.modular.pattern
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.uam.eps.modular.visibility.wizard.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

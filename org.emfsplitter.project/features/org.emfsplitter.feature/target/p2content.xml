@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='org.emfsplitter.feature.feature.group' version='1.0.0.202005090847' singleton='false'>
+    <update id='org.emfsplitter.feature.feature.group' range='[0.0.0,1.0.0.202005090847)' severity='0'/>
+    <properties size='8'>
+      <property name='org.eclipse.equinox.p2.name' value='EMF-Stencil and EMF-Splitter'/>
+      <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+      <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      <property name='org.eclipse.equinox.p2.provider' value='Miso Group'/>
+      <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      <property name='maven-groupId' value='org.emfsplitter.project'/>
+      <property name='maven-artifactId' value='org.emfsplitter.feature'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.emfsplitter.feature.feature.group' version='1.0.0.202005090847'/>
+    </provides>
+    <requires size='34'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.constraint.project' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.scope.project' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.emf.splitter.library' range='[0.1.0.202005090847,0.1.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.modular.sirius.ext' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.m2m.atl.graphictoviewpoint' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.sirius' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.modular.filterui.ext' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.index.wizard' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.modular.references.ext' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.sirius.model' range='[0.1.0.202005090847,0.1.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.visibility.wizard' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.modular.project' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.modular.project.general' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.index.project' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.miso.diagram.editor.json' range='[1.0.0,1.0.0]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.emf.splitter' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.filter.project' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.index' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.constraints.dialog' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.scope.wizard' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.miso.table.ui' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.mm.heuristic.visualization' range='[0.1.0.202005090847,0.1.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.miso.diagram.editor.jersey' range='[1.0.0,1.0.0]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.modular.constraint.ext' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.graphic.representation' range='[0.1.0.202005090847,0.1.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.model.filters' range='[0.1.0.202005090847,0.1.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.visibility' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.generate.visibility.project' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.contraints' range='[0.1.0.202005090847,0.1.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mondo.visualization.ui' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.miso.wizard.instantiate.modular.pattern' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.miso.diagram.editor.mobile' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.miso.ecore.statistics' range='[1.0.0.202005090847,1.0.0.202005090847]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.emfsplitter.feature.feature.jar' range='[1.0.0.202005090847,1.0.0.202005090847]'>
+        <filter>
+          (org.eclipse.update.install.features=true)
+        </filter>
+      </required>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+    <licenses size='1'>
+      <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+        [Enter License Description here.]
+      </license>
+    </licenses>
+    <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+      [Enter Copyright Description here.]
+    </copyright>
+  </unit>
+  <unit id='org.emfsplitter.feature.feature.jar' version='1.0.0.202005090847'>
+    <properties size='7'>
+      <property name='org.eclipse.equinox.p2.name' value='EMF-Stencil and EMF-Splitter'/>
+      <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+      <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      <property name='org.eclipse.equinox.p2.provider' value='Miso Group'/>
+      <property name='maven-groupId' value='org.emfsplitter.project'/>
+      <property name='maven-artifactId' value='org.emfsplitter.feature'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='3'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.emfsplitter.feature.feature.jar' version='1.0.0.202005090847'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+      <provided namespace='org.eclipse.update.feature' name='org.emfsplitter.feature' version='1.0.0.202005090847'/>
+    </provides>
+    <filter>
+      (org.eclipse.update.install.features=true)
+    </filter>
+    <artifacts size='1'>
+      <artifact classifier='org.eclipse.update.feature' id='org.emfsplitter.feature' version='1.0.0.202005090847'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='zipped'>
+          true
+        </instruction>
+      </instructions>
+    </touchpointData>
+    <licenses size='1'>
+      <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+        [Enter License Description here.]
+      </license>
+    </licenses>
+    <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+      [Enter Copyright Description here.]
+    </copyright>
+  </unit>
+</units>

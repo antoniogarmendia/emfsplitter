@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.uam.eps.modular.index;singleton:=true
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.em
+ f.ecore;visibility:=reexport,org.eclipse.core.resources,org.mondo.dsl
+ ,org.mondo.emf.splitter.library,org.mondo.editor.ui
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: index,index.impl,index.util
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202005090847
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: org.uam.eps.modular.index.Activator
+

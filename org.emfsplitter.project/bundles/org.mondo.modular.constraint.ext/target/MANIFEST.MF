@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.modular.constraint.ext;singleton:=true
+Export-Package: org.mondo.modular.constraint.ext.def
+Bundle-Name: Ext
+Bundle-Version: 1.0.0.202005090847
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.e4
+ .core.di.annotations
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.mondo.modular.constraint.ext.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

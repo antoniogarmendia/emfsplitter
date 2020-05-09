@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.miso.table.ui;singleton:=true
+Export-Package: org.mondo.miso.table.ui.wizard
+Bundle-Name: TableUi
+Bundle-Version: 1.0.0.202005090847
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.mondo.emf.
+ splitter.library,org.mondo.graphic.representation,org.mondo.mm.heuris
+ tic.visualization
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.mondo.miso.table.ui.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

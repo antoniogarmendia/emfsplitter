@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='org.mondo.graphic.representation' version='0.1.0.202005090847' generation='2'>
+    <update id='org.mondo.graphic.representation' range='[0.0.0,0.1.0.202005090847)' severity='0'/>
+    <properties size='8'>
+      <property name='df_LT.pluginName' value='Graphic_Representation Model'/>
+      <property name='df_LT.providerName' value='www.example.org'/>
+      <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      <property name='maven-groupId' value='org.emfsplitter.project'/>
+      <property name='maven-artifactId' value='org.mondo.graphic.representation'/>
+      <property name='maven-version' value='0.1.0-SNAPSHOT'/>
+    </properties>
+    <provides size='11'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.mondo.graphic.representation' version='0.1.0.202005090847'/>
+      <provided namespace='osgi.bundle' name='org.mondo.graphic.representation' version='0.1.0.202005090847'/>
+      <provided namespace='java.package' name='graphic_representation' version='0.0.0'/>
+      <provided namespace='java.package' name='graphic_representation.impl' version='0.0.0'/>
+      <provided namespace='java.package' name='graphic_representation.rest' version='0.0.0'/>
+      <provided namespace='java.package' name='graphic_representation.rest.impl' version='0.0.0'/>
+      <provided namespace='java.package' name='graphic_representation.rest.util' version='0.0.0'/>
+      <provided namespace='java.package' name='graphic_representation.util' version='0.0.0'/>
+      <provided namespace='osgi.identity' name='org.mondo.graphic.representation' version='0.1.0.202005090847'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+    </provides>
+    <requires size='8'>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.sirius' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.10.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.apache.commons.codec' range='1.6.0'/>
+      <required namespace='osgi.bundle' name='org.apache.commons.io' range='2.2.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+      <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.mondo.graphic.representation' version='0.1.0.202005090847'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.mondo.graphic.representation;singleton:=true&#xA;Bundle-Version: 0.1.0.202005090847&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

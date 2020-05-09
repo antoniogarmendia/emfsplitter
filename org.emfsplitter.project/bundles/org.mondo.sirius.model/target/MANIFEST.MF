@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.mondo.sirius.model
+Bundle-SymbolicName: org.mondo.sirius.model;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;visibil
+ ity:=reexport,org.eclipse.sirius.table;bundle-version="6.3.0";visibil
+ ity:=reexport,org.eclipse.sirius;visibility:=reexport,org.eclipse.sir
+ ius.diagram;bundle-version="6.3.0";visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: mondoSirius,mondoSirius.impl,mondoSirius.util
+Bundle-Name: %pluginName
+Bundle-Version: 0.1.0.202005090847
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+

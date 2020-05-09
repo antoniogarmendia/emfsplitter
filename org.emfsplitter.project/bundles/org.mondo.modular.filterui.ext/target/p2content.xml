@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='org.mondo.modular.filterui.ext' version='1.0.0.202005090847' generation='2'>
+    <update id='org.mondo.modular.filterui.ext' range='[0.0.0,1.0.0.202005090847)' severity='0'/>
+    <properties size='6'>
+      <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      <property name='maven-groupId' value='org.emfsplitter.project'/>
+      <property name='maven-artifactId' value='org.mondo.modular.filterui.ext'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='5'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.mondo.modular.filterui.ext' version='1.0.0.202005090847'/>
+      <provided namespace='osgi.bundle' name='org.mondo.modular.filterui.ext' version='1.0.0.202005090847'/>
+      <provided namespace='java.package' name='org.mondo.modular.filterui.ext' version='0.0.0'/>
+      <provided namespace='osgi.identity' name='org.mondo.modular.filterui.ext' version='1.0.0.202005090847'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='8'>
+      <required namespace='osgi.bundle' name='org.eclipse.swt' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.10.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.e4.core.di' range='1.4.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.ui.workbench' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.jface' range='0.0.0'/>
+      <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.mondo.modular.filterui.ext' version='1.0.0.202005090847'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.mondo.modular.filterui.ext;singleton:=true&#xA;Bundle-Version: 1.0.0.202005090847&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

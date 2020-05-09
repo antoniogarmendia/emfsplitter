@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='org.uam.eps.modular.scope.wizard' version='1.0.0.202005090847' singleton='false' generation='2'>
+    <update id='org.uam.eps.modular.scope.wizard' range='[0.0.0,1.0.0.202005090847)' severity='0'/>
+    <properties size='4'>
+      <property name='org.eclipse.equinox.p2.name' value='Scope'/>
+      <property name='maven-groupId' value='org.emfsplitter.project'/>
+      <property name='maven-artifactId' value='org.uam.eps.modular.scope.wizard'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='5'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.uam.eps.modular.scope.wizard' version='1.0.0.202005090847'/>
+      <provided namespace='osgi.bundle' name='org.uam.eps.modular.scope.wizard' version='1.0.0.202005090847'/>
+      <provided namespace='java.package' name='org.uam.eps.modular.scope.wizard.def' version='0.0.0'/>
+      <provided namespace='osgi.identity' name='org.uam.eps.modular.scope.wizard' version='1.0.0.202005090847'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='7'>
+      <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.mondo.generate.scope.project' range='1.0.0'/>
+      <required namespace='osgi.bundle' name='org.mondo.emf.splitter.library' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.miso.wizard.instantiate.modular.pattern' range='0.0.0'/>
+      <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.uam.eps.modular.scope.wizard' version='1.0.0.202005090847'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.uam.eps.modular.scope.wizard&#xA;Bundle-Version: 1.0.0.202005090847&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

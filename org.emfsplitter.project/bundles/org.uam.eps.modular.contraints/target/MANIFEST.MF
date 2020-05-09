@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.uam.eps.modular.contraints;singleton:=true
+Export-Package: constraints,constraints.impl,constraints.util
+Bundle-Name: %pluginName
+Bundle-Version: 0.1.0.202005090847
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;visibil
+ ity:=reexport,org.eclipse.core.resources,org.mondo.dsl,org.mondo.emf.
+ splitter.library,org.mondo.editor.ui
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+

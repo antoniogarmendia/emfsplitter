@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.graphic.representation;singleton:=true
+Export-Package: graphic_representation,graphic_representation.impl,gra
+ phic_representation.rest,graphic_representation.rest.impl,graphic_rep
+ resentation.rest.util,graphic_representation.util
+Bundle-Name: %pluginName
+Bundle-Version: 0.1.0.202005090847
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,org.eclipse
+ .sirius;visibility:=reexport,org.eclipse.core.runtime;bundle-version=
+ "3.10.0",org.eclipse.ui,org.apache.commons.codec;bundle-version="1.6.
+ 0",org.apache.commons.io;bundle-version="2.2.0",org.eclipse.core.reso
+ urces
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+

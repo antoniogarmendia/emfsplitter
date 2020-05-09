@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.emf.splitter.library;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;visibil
+ ity:=reexport,org.eclipse.core.resources;bundle-version="3.9.1",org.e
+ clipse.emf.codegen.ecore;bundle-version="2.10.1",com.google.guava;bun
+ dle-version="15.0.0",org.eclipse.jdt.ui;bundle-version="3.10.1",org.m
+ ondo.dsl;bundle-version="0.1.0";visibility:=reexport,org.eclipse.grap
+ hiti.ui,org.eclipse.ui.workbench,org.eclipse.graphiti;bundle-version=
+ "0.13.2",org.mondo.editor.ui
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Import-Package: org.eclipse.emf.ecore.xmi,org.eclipse.emf.ecore.xmi.im
+ pl,org.eclipse.jdt.core,org.eclipse.jdt.internal.core
+Export-Package: splitterLibrary,splitterLibrary.impl,splitterLibrary.u
+ til
+Bundle-Name: %pluginName
+Bundle-Version: 0.1.0.202005090847
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+

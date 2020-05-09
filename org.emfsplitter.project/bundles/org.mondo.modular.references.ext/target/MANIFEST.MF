@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.modular.references.ext;singleton:=true
+Export-Package: org.mondo.modular.references.ext
+Bundle-Name: References.Ext
+Bundle-Version: 1.0.0.202005090847
+Require-Bundle: org.eclipse.emf.ecore
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.eclipse.core.runtime,org.eclipse.e4.core.di.annota
+ tions
+

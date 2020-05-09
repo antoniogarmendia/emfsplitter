@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.generate.scope.project;singleton:=true
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.em
+ f.ecore;visibility:=reexport,org.mondo.emf.splitter.library;bundle-ve
+ rsion="0.1.0",org.eclipse.core.resources;bundle-version="3.9.1",org.e
+ clipse.jdt.core;bundle-version="3.10.1",org.eclipse.jdt;bundle-versio
+ n="3.10.1",org.eclipse.jdt.ui;bundle-version="3.10.1",org.eclipse.acc
+ eleo.engine,org.mondo.editor.ui
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Import-Package: org.eclipse.e4.core.di.annotations
+Export-Package: Scope,Scope.impl,Scope.util,ScopeDefinition,ScopeDefin
+ ition.impl,ScopeDefinition.util,org.mondo.generate.scope.project.crea
+ teProject,org.mondo.generate.scope.project.ext,org.mondo.generate.sco
+ pe.project.main
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.202005090847
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: org.mondo.generate.scope.project.Activator
+
