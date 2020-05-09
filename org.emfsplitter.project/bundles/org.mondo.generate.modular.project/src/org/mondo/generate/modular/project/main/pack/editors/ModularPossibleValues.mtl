@@ -53,9 +53,9 @@ public class ModularPossibleValues {
 		EvaluateCrossReferencesContributor eval = new EvaluateCrossReferencesContributor();
 
 		if (res == null)
-			eval.execute(Platform.getExtensionRegistry(), this.idExtension, CAEXFileNewProjectNature.ID, eObject.eResource(), true, (EClass)feature.getEType(), eolExp);
+			eval.execute(Platform.getExtensionRegistry(), this.idExtension, [anEClass.name/]NewProjectNature.ID, eObject.eResource(), true, (EClass)feature.getEType(), eolExp);
 		else
-			eval.execute(Platform.getExtensionRegistry(), this.idExtension, CAEXFileNewProjectNature.ID, res, false, (EClass)feature.getEType(), eolExp);
+			eval.execute(Platform.getExtensionRegistry(), this.idExtension, [anEClass.name/]NewProjectNature.ID, res, false, (EClass)feature.getEType(), eolExp);
 
 		return eval.getChoicesofValues();
 	}

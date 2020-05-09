@@ -72,7 +72,23 @@
           </source>
           <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectNature;&#xA;&#xA;import ScopeDefinition.ScopeDefinitionEnum;&#xA;&#xA;public class ModularPossibleValues {&#xA;&#x9;&#xA;&#x9;private String idExtension;&#xA;&#x9;private ScopeDefinitionEnum current_scope;&#xA;&#x9;private EStructuralFeature feature;&#xA;&#x9;private Resource res;&#xA;&#x9;private EObject eObject;&#xA;&#x9;&#xA;&#x9;public ModularPossibleValues(String idExtension, EStructuralFeature feature, EObject eObject) {&#xA;&#x9;&#x9;this.idExtension = idExtension;&#xA;&#x9;&#x9;this.current_scope = null;&#xA;&#x9;&#x9;this.feature = feature;&#xA;&#x9;&#x9;this.res = null;&#xA;&#x9;&#x9;this.eObject = eObject;&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;public List &lt;?> getChoicesofValues() {&#xA;&#xA;&#x9;&#x9;EvaluateVisibilityEClass evalVisibility = new EvaluateVisibilityEClass();&#xA;&#x9;&#x9;evalVisibility.executeEClass(Platform.getExtensionRegistry(), (EClass)feature.getEType());&#xA;&#x9;&#x9;evalVisibility.executeEOL(Platform.getExtensionRegistry(), (EClass)feature.getEType());&#xA;&#xA;&#x9;&#x9;ScopeDefinitionEnum scopeEnum = evalVisibility.getDef();&#xA;&#x9;&#x9;String eolExp = evalVisibility.getEolExpression();&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;if(scopeEnum != null)&#xA;&#x9;&#x9;&#x9;if(scopeEnum.getValue() > getCurrentScope().getValue())&#xA;&#x9;&#x9;&#x9;&#x9;return null;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;EvaluateCrossReferencesContributor eval = new EvaluateCrossReferencesContributor();&#xA;&#xA;&#x9;&#x9;if (res == null)&#xA;&#x9;&#x9;&#x9;eval.execute(Platform.getExtensionRegistry(), this.idExtension, CAEXFileNewProjectNature.ID, eObject.eResource(), true, (EClass)feature.getEType(), eolExp);&#xA;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;eval.execute(Platform.getExtensionRegistry(), this.idExtension, CAEXFileNewProjectNature.ID, res, false, (EClass)feature.getEType(), eolExp);&#xA;&#xA;&#x9;&#x9;return eval.getChoicesofValues();&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public ScopeDefinitionEnum getCurrentScope()&#xA;&#x9;{&#xA;&#x9;&#x9;if(current_scope == null)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;EvaluateScopeCrossReferences eval = new EvaluateScopeCrossReferences();&#xA;&#x9;&#x9;&#x9;current_scope = eval.execute(Platform.getExtensionRegistry(), (EReference)feature);&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;if(current_scope == null)&#xA;&#x9;&#x9;&#x9;&#x9;current_scope = ScopeDefinitionEnum.SAME_WORKSPACE;&#xA;&#x9;&#x9;}&#x9;&#xA;&#x9;&#x9;return current_scope;&#xA;&#x9;}&#xA;}&#xA;&#xA;&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectNature;&#xA;&#xA;import ScopeDefinition.ScopeDefinitionEnum;&#xA;&#xA;public class ModularPossibleValues {&#xA;&#x9;&#xA;&#x9;private String idExtension;&#xA;&#x9;private ScopeDefinitionEnum current_scope;&#xA;&#x9;private EStructuralFeature feature;&#xA;&#x9;private Resource res;&#xA;&#x9;private EObject eObject;&#xA;&#x9;&#xA;&#x9;public ModularPossibleValues(String idExtension, EStructuralFeature feature, EObject eObject) {&#xA;&#x9;&#x9;this.idExtension = idExtension;&#xA;&#x9;&#x9;this.current_scope = null;&#xA;&#x9;&#x9;this.feature = feature;&#xA;&#x9;&#x9;this.res = null;&#xA;&#x9;&#x9;this.eObject = eObject;&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;public List &lt;?> getChoicesofValues() {&#xA;&#xA;&#x9;&#x9;EvaluateVisibilityEClass evalVisibility = new EvaluateVisibilityEClass();&#xA;&#x9;&#x9;evalVisibility.executeEClass(Platform.getExtensionRegistry(), (EClass)feature.getEType());&#xA;&#x9;&#x9;evalVisibility.executeEOL(Platform.getExtensionRegistry(), (EClass)feature.getEType());&#xA;&#xA;&#x9;&#x9;ScopeDefinitionEnum scopeEnum = evalVisibility.getDef();&#xA;&#x9;&#x9;String eolExp = evalVisibility.getEolExpression();&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;if(scopeEnum != null)&#xA;&#x9;&#x9;&#x9;if(scopeEnum.getValue() > getCurrentScope().getValue())&#xA;&#x9;&#x9;&#x9;&#x9;return null;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;EvaluateCrossReferencesContributor eval = new EvaluateCrossReferencesContributor();&#xA;&#xA;&#x9;&#x9;if (res == null)&#xA;&#x9;&#x9;&#x9;eval.execute(Platform.getExtensionRegistry(), this.idExtension, "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anEClass" referredVariable="/0/generateModularPossibleValues/anEClass">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectNature.ID, eObject.eResource(), true, (EClass)feature.getEType(), eolExp);&#xA;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;eval.execute(Platform.getExtensionRegistry(), this.idExtension, "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anEClass" referredVariable="/0/generateModularPossibleValues/anEClass">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectNature.ID, res, false, (EClass)feature.getEType(), eolExp);&#xA;&#xA;&#x9;&#x9;return eval.getChoicesofValues();&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public ScopeDefinitionEnum getCurrentScope()&#xA;&#x9;{&#xA;&#x9;&#x9;if(current_scope == null)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;EvaluateScopeCrossReferences eval = new EvaluateScopeCrossReferences();&#xA;&#x9;&#x9;&#x9;current_scope = eval.execute(Platform.getExtensionRegistry(), (EReference)feature);&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;if(current_scope == null)&#xA;&#x9;&#x9;&#x9;&#x9;current_scope = ScopeDefinitionEnum.SAME_WORKSPACE;&#xA;&#x9;&#x9;}&#x9;&#xA;&#x9;&#x9;return current_scope;&#xA;&#x9;}&#xA;}&#xA;&#xA;&#xA;"/>
         <fileUrl xsi:type="ocl.ecore:OperationCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:OperationCallExp">
@@ -273,17 +289,23 @@
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generateModularPossibleValues">
       <details key="start" value="103"/>
-      <details key="end" value="2976"/>
+      <details key="end" value="2992"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateModularPossibleValues/%">
       <details key="start" value="190"/>
-      <details key="end" value="2964"/>
+      <details key="end" value="2980"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateModularPossibleValues/%/%">
@@ -403,125 +425,155 @@
     </eAnnotations>
     <eAnnotations source="positions.25" references="/0/generateModularPossibleValues/%/%.12">
       <details key="start" value="1111"/>
-      <details key="end" value="2957"/>
+      <details key="end" value="2304"/>
       <details key="line" value="20"/>
     </eAnnotations>
     <eAnnotations source="positions.26" references="/0/generateModularPossibleValues/%/%.13">
+      <details key="start" value="2305"/>
+      <details key="end" value="2318"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateModularPossibleValues/%/%.13/anEClass">
+      <details key="start" value="2305"/>
+      <details key="end" value="2313"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateModularPossibleValues/%/%.14">
+      <details key="start" value="2320"/>
+      <details key="end" value="2479"/>
+      <details key="line" value="56"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateModularPossibleValues/%/%.15">
+      <details key="start" value="2480"/>
+      <details key="end" value="2493"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateModularPossibleValues/%/%.15/anEClass">
+      <details key="start" value="2480"/>
+      <details key="end" value="2488"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateModularPossibleValues/%/%.16">
+      <details key="start" value="2495"/>
+      <details key="end" value="2973"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateModularPossibleValues/%/%.17">
       <details key="start" value="197"/>
       <details key="end" value="375"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/generateModularPossibleValues/%/%.13/%">
+    <eAnnotations source="positions.33" references="/0/generateModularPossibleValues/%/%.17/%">
       <details key="start" value="197"/>
       <details key="end" value="338"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/generateModularPossibleValues/%/%.13/%/%">
+    <eAnnotations source="positions.34" references="/0/generateModularPossibleValues/%/%.17/%/%">
       <details key="start" value="197"/>
       <details key="end" value="318"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/generateModularPossibleValues/%/%.13/%/%/%">
+    <eAnnotations source="positions.35" references="/0/generateModularPossibleValues/%/%.17/%/%/%">
       <details key="start" value="197"/>
       <details key="end" value="296"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%">
+    <eAnnotations source="positions.36" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%">
       <details key="start" value="197"/>
       <details key="end" value="203"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1">
+    <eAnnotations source="positions.37" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1">
       <details key="start" value="211"/>
       <details key="end" value="295"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%">
+    <eAnnotations source="positions.38" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%">
       <details key="start" value="211"/>
       <details key="end" value="266"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%">
+    <eAnnotations source="positions.39" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%">
       <details key="start" value="211"/>
       <details key="end" value="236"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%/%">
+    <eAnnotations source="positions.40" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%/%">
       <details key="start" value="211"/>
       <details key="end" value="230"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%/%/anProName">
+    <eAnnotations source="positions.41" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%/%/anProName">
       <details key="start" value="211"/>
       <details key="end" value="220"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%/%.1">
+    <eAnnotations source="positions.42" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%/%.1">
       <details key="start" value="233"/>
       <details key="end" value="236"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%.1">
+    <eAnnotations source="positions.43" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%.1">
       <details key="start" value="239"/>
       <details key="end" value="266"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.38" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%.1/%">
+    <eAnnotations source="positions.44" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%.1/%">
       <details key="start" value="239"/>
       <details key="end" value="252"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%/%.1/%/anEClass">
+    <eAnnotations source="positions.45" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%/%.1/%/anEClass">
       <details key="start" value="239"/>
       <details key="end" value="247"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%.1">
+    <eAnnotations source="positions.46" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%.1">
       <details key="start" value="269"/>
       <details key="end" value="295"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%.1/self">
+    <eAnnotations source="positions.47" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%.1/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/generateModularPossibleValues/%/%.13/%/%/%/%.1/%.1/%">
+    <eAnnotations source="positions.48" references="/0/generateModularPossibleValues/%/%.17/%/%/%/%.1/%.1/%">
       <details key="start" value="281"/>
       <details key="end" value="294"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.43" references="/0/generateModularPossibleValues/%/%.13/%/%/%.1">
+    <eAnnotations source="positions.49" references="/0/generateModularPossibleValues/%/%.17/%/%/%.1">
       <details key="start" value="308"/>
       <details key="end" value="313"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/generateModularPossibleValues/%/%.13/%/%/%.2">
+    <eAnnotations source="positions.50" references="/0/generateModularPossibleValues/%/%.17/%/%/%.2">
       <details key="start" value="314"/>
       <details key="end" value="317"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.45" references="/0/generateModularPossibleValues/%/%.13/%/%.1">
+    <eAnnotations source="positions.51" references="/0/generateModularPossibleValues/%/%.17/%/%.1">
       <details key="start" value="326"/>
       <details key="end" value="337"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.46" references="/0/generateModularPossibleValues/%/%.13/%.1">
+    <eAnnotations source="positions.52" references="/0/generateModularPossibleValues/%/%.17/%.1">
       <details key="start" value="346"/>
       <details key="end" value="374"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.47" references="/0/generateModularPossibleValues/%/%.14">
+    <eAnnotations source="positions.53" references="/0/generateModularPossibleValues/%/%.18">
       <details key="start" value="383"/>
       <details key="end" value="390"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.48" references="/0/generateModularPossibleValues/anProName">
+    <eAnnotations source="positions.54" references="/0/generateModularPossibleValues/anProName">
       <details key="start" value="150"/>
       <details key="end" value="168"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.49" references="/0/generateModularPossibleValues/anEClass">
+    <eAnnotations source="positions.55" references="/0/generateModularPossibleValues/anEClass">
       <details key="start" value="170"/>
       <details key="end" value="187"/>
       <details key="line" value="5"/>
