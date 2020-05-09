@@ -1,0 +1,26 @@
+[comment encoding = UTF-8 /]
+[module global_queriesScopeProject('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns')]
+
+
+[query public global_queriesScopeProject (aPatternInstances : PatternInstances) : OclAny = self/]
+
+[query public PatternInstanceScope(anPatternInstances : PatternInstances) : 
+			PatternInstance = anPatternInstances.appliedPatterns->asSequence()->select
+							  (anPatternInstance : PatternInstance | anPatternInstance.pattern.name='Scope')->first() /]
+
+[query public getAllPackages(classInstances : Sequence(ClassRoleInstance)) : 
+					Sequence(String) = classInstances->collect(class : ClassRoleInstance | class.element.ePackage.name)->flatten()
+										/]
+
+[query public getEnumScopeDefinition(role : String) : String = if(role.equalsIgnoreCase('rSameWorkSpace')) then
+																	'SAME_WORKSPACE'
+																else if(role.equalsIgnoreCase('rSameProject')) then
+																	'SAME_PROJECT'		
+																else if(role.equalsIgnoreCase('rSamePackage')) then
+																	'SAME_PACKAGE'
+																else	
+																	'SAME_UNIT'
+																		endif
+																	endif
+																endif
+																/]

@@ -1,0 +1,1758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="ModularModelJAVA" nsURI="org::mondo::generate::modular::project::main::ModularModelJAVA" startHeaderPosition="29" endHeaderPosition="267">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://mondo.org/runtimePatterns#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/GenModel#/"/>
+    </input>
+    <imports href="requests/global_queriesModularProject.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="Modular_DiagramJAVA" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/Modular_DiagramJAVA/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                </argument>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+        </body>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/10">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;&#xA;import java.io.IOException;&#xA;&#xA;import org.eclipse.core.resources.IContainer;&#xA;import org.eclipse.core.resources.IFile;&#xA;import org.eclipse.core.resources.IProject;&#xA;import org.eclipse.core.runtime.CoreException;&#xA;import org.eclipse.emf.common.util.URI;&#xA;import org.eclipse.emf.ecore.resource.Resource;&#xA;import org.eclipse.emf.ecore.resource.ResourceSet;&#xA;import org.mondo.generate.modular.project.general.create.project.main.api.PerformantXMIUtils;&#xA;import org.mondo.generate.modular.project.general.create.project.main.api.CopierReverseEngineering;&#xA;import "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/Modular_DiagramJAVA/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                </argument>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+        </body>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/13">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".wizard."/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo;&#xA;import org.osgi.service.prefs.BackingStoreException;&#xA;&#xA;"/>
+        <body xsi:type="mtl:LetBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/ecorePackage"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="requests/global_queriesModularProject.emtl#/0/generateEClassImportBasePackage"/>
+                <argument xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                  <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                  </argument>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/interfacePackageSuffix"/>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+              </ifExpr>
+              <else>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/ecorePackage"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/interfacePackageSuffix"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                <body xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <definition href="requests/global_queriesModularProject.emtl#/0/generateEClassImportBasePackage"/>
+                  <argument xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                    <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                    </argument>
+                  </argument>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;"/>
+              </else>
+            </body>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:CollectionLiteralExp" eType="/21/Set(String)">
+                  <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL/Annotations">
+                    <details key="IMPLICIT_SET_CONVERSION" value="true"/>
+                  </eAnnotations>
+                  <part xsi:type="ocl.ecore:CollectionItem">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <item xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+                    </item>
+                  </part>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/isEmpty"/>
+              </source>
+              <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
+            </ifExpr>
+            <else>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="requests/global_queriesModularProject.emtl#/0/generateEClassImport"/>
+                <argument xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                  <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                  </argument>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;"/>
+            </else>
+          </body>
+          <letVariable name="genPackage">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+            <initExpression xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+                <source xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenClass"/>
+                  <definition href="requests/global_queriesModularProject.emtl#/0/getGenClassFromEClass"/>
+                  <argument xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                    <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                    </argument>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/Modular_DiagramJAVA/anEObjectGenModel">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                  </argument>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/emf/2002/Ecore#//EObject/eContainer"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/17/GenPackage">
+                <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+            </initExpression>
+          </letVariable>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;public class ModularModel {&#xA;&#x9;&#xA;&#x9;public ModularModel(){}&#xA;&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;private String projectName;&#x9;&#xA;"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;&#x9;public void createCompleteModel(IProject pro, URI modelUri) throws CoreException, IOException&#xA;&#x9;{&#xA;&#x9;&#x9;IFile projectFile = pro.getFile(pro.getName().concat(&quot;.xmi&quot;));&#xA;&#x9;&#x9;URI projectUri = URI.createPlatformResourceURI(projectFile.getFullPath().toString(),true);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;// Create the resources&#xA;&#x9;&#x9;Resource projectResource = PerformantXMIUtils.getPerformantResource(projectUri);&#x9;&#xA;&#x9;&#x9;Resource completeModel = PerformantXMIUtils.createPerformantResource(modelUri);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;// Copier all objects&#xA;&#x9;&#x9;CopierReverseEngineering copier = new CopierReverseEngineering(true, true);&#xA;&#x9;&#x9;completeModel.getContents().addAll(copier.copyAll(projectResource.getContents()));&#xA;&#x9;&#x9;copier.copyReferences();&#xA;&#x9;&#x9;copier.copyIds();&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;// Save and Unload resources &#xA;&#x9;&#x9;completeModel.save(null);&#x9;&#x9;&#xA;&#x9;&#x9;completeModel.unload();&#xA;&#x9;&#x9;projectResource.unload();&#x9;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public void Reverse_Engineering(URI fileURI) throws IOException, CoreException, BackingStoreException&#xA;&#x9;{&#xA;&#x9;&#x9;//Create Performant Resource&#xA;&#x9;&#x9;Resource modelResource = PerformantXMIUtils.getPerformantResource(fileURI);&#xA;&#xA;&#x9;&#x9;//The first element(Root)&#xA;&#x9;&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" root = ("/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") modelResource.getContents().get(0);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;if(root instanceof "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/toUpperFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                </argument>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toString"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="){&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo project = new "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo(root,modelResource);&#xA;&#x9;&#x9;&#x9;project.createProject();&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;Reverse_Engineering_Create_Project_Complete&quot;);&#xA;&#x9;&#x9;}&#xA;&#xA;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;public void reverseEngineeringContainer(URI modelURI, IProject pro){&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;//Create Performant Resource&#xA;&#x9;&#x9;Resource modelResource = PerformantXMIUtils.getPerformantResource(modelURI);&#xA;&#xA;&#x9;&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" root = ("/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") modelResource.getContents().get(0);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;//Create Performant Resource&#xA;&#x9;&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo project = new "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo(root,modelResource);&#xA;&#x9;&#x9;project.setProject(pro);&#xA;&#x9;&#x9;IContainer newFolder = project.createFolder();&#x9;&#x9;&#xA;&#x9;&#x9;project.reverseEngineering(newFolder);&#x9;&#x9;&#xA;&#x9;}&#xA;&#xA;&#x9;&#xA;&#x9;public String getProjectName() {&#xA;&#x9;&#x9;return projectName;&#xA;&#x9;}&#xA;&#xA;&#x9;public void setProjectName(String projectName) {&#xA;&#x9;&#x9;this.projectName = projectName;&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;&#x9;// join methods&#xA;&#x9;public Resource reverseEngineeringContainer("/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" root, IProject pro, CopierReverseEngineering copier, ResourceSet reset) {&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;//Create Performant Resource&#xA;&#x9;&#x9;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo project = new "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectInfo(root,null);&#xA;&#x9;&#x9;project.setProject(pro);&#xA;&#x9;&#x9;IContainer newFolder = project.createFolder();&#x9;&#x9;&#xA;&#x9;&#x9;return project.reverseEngineering(newFolder,root,copier,reset);&#x9;&#x9;&#x9;&#xA;&#x9;}&#x9;&#xA;}&#xA;&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/Modular_DiagramJAVA/anProjectName">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <argument xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                        <source xsi:type="mtl:QueryInvocation">
+                          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                          <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                          <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/Modular_DiagramJAVA/anPatternInstance">
+                            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                          </argument>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/6">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </argument>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/ModularModel.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPackageName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPatternInstance">
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </parameter>
+      <parameter name="anEObjectGenModel">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="toUpperFirst">
+        <eAnnotations source="MTL"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="Modular_DiagramJAVA">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/Modular_DiagramJAVA"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_ProjectClassRoleInstance">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_ProjectClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClass"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEClassImportBasePackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/generateEClassImportBasePackage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEClassImport">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/generateEClassImport"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getGenClassFromEClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/getGenClassFromEClass"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenClass"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstances_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_ClassRoleInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EAttribute_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_Sequence(GenPackage)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="requests/global_queriesModularProject.emtl#/3/Sequence(GenPackage)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="GenPackage">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(String)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/Modular_DiagramJAVA">
+      <details key="start" value="271"/>
+      <details key="end" value="5340"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/Modular_DiagramJAVA/%">
+      <details key="start" value="425"/>
+      <details key="end" value="426"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/Modular_DiagramJAVA/%.1">
+      <details key="start" value="426"/>
+      <details key="end" value="5327"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/Modular_DiagramJAVA/%.1/%">
+      <details key="start" value="653"/>
+      <details key="end" value="661"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/Modular_DiagramJAVA/%.1/%.1">
+      <details key="start" value="662"/>
+      <details key="end" value="685"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/Modular_DiagramJAVA/%.1/%.1/anProjectName">
+      <details key="start" value="662"/>
+      <details key="end" value="675"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/Modular_DiagramJAVA/%.1/%.2">
+      <details key="start" value="687"/>
+      <details key="end" value="688"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/Modular_DiagramJAVA/%.1/%.3">
+      <details key="start" value="689"/>
+      <details key="end" value="764"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/Modular_DiagramJAVA/%.1/%.3/%">
+      <details key="start" value="689"/>
+      <details key="end" value="750"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/Modular_DiagramJAVA/%.1/%.3/%/%">
+      <details key="start" value="689"/>
+      <details key="end" value="745"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/Modular_DiagramJAVA/%.1/%.3/%/%/%">
+      <details key="start" value="689"/>
+      <details key="end" value="737"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/Modular_DiagramJAVA/%.1/%.3/%/%/%/anPatternInstance">
+      <details key="start" value="689"/>
+      <details key="end" value="706"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/Modular_DiagramJAVA/%.1/%.4">
+      <details key="start" value="767"/>
+      <details key="end" value="793"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/Modular_DiagramJAVA/%.1/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/Modular_DiagramJAVA/%.1/%.4/%">
+      <details key="start" value="779"/>
+      <details key="end" value="792"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/Modular_DiagramJAVA/%.1/%.5">
+      <details key="start" value="795"/>
+      <details key="end" value="1345"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/Modular_DiagramJAVA/%.1/%.6">
+      <details key="start" value="1346"/>
+      <details key="end" value="1369"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/Modular_DiagramJAVA/%.1/%.6/anProjectName">
+      <details key="start" value="1346"/>
+      <details key="end" value="1359"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/Modular_DiagramJAVA/%.1/%.7">
+      <details key="start" value="1371"/>
+      <details key="end" value="1372"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/Modular_DiagramJAVA/%.1/%.8">
+      <details key="start" value="1373"/>
+      <details key="end" value="1448"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/Modular_DiagramJAVA/%.1/%.8/%">
+      <details key="start" value="1373"/>
+      <details key="end" value="1434"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/Modular_DiagramJAVA/%.1/%.8/%/%">
+      <details key="start" value="1373"/>
+      <details key="end" value="1429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/Modular_DiagramJAVA/%.1/%.8/%/%/%">
+      <details key="start" value="1373"/>
+      <details key="end" value="1421"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/Modular_DiagramJAVA/%.1/%.8/%/%/%/anPatternInstance">
+      <details key="start" value="1373"/>
+      <details key="end" value="1390"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/Modular_DiagramJAVA/%.1/%.9">
+      <details key="start" value="1451"/>
+      <details key="end" value="1477"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/Modular_DiagramJAVA/%.1/%.9/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/Modular_DiagramJAVA/%.1/%.9/%">
+      <details key="start" value="1463"/>
+      <details key="end" value="1476"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/Modular_DiagramJAVA/%.1/%.10">
+      <details key="start" value="1479"/>
+      <details key="end" value="1487"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/Modular_DiagramJAVA/%.1/%.11">
+      <details key="start" value="1488"/>
+      <details key="end" value="1528"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/Modular_DiagramJAVA/%.1/%.11/%">
+      <details key="start" value="1488"/>
+      <details key="end" value="1523"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/Modular_DiagramJAVA/%.1/%.11/%/anPatternInstance">
+      <details key="start" value="1505"/>
+      <details key="end" value="1522"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/Modular_DiagramJAVA/%.1/%.12">
+      <details key="start" value="1530"/>
+      <details key="end" value="1600"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/Modular_DiagramJAVA/%.1/%.13">
+      <details key="start" value="1600"/>
+      <details key="end" value="2255"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/Modular_DiagramJAVA/%.1/%.13/%">
+      <details key="start" value="1746"/>
+      <details key="end" value="2248"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%">
+      <details key="start" value="1795"/>
+      <details key="end" value="2166"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%">
+      <details key="start" value="1841"/>
+      <details key="end" value="1848"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.1">
+      <details key="start" value="1849"/>
+      <details key="end" value="1871"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.1/genPackage">
+      <details key="start" value="1849"/>
+      <details key="end" value="1859"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.2">
+      <details key="start" value="1873"/>
+      <details key="end" value="1874"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.3">
+      <details key="start" value="1875"/>
+      <details key="end" value="1903"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.3/%">
+      <details key="start" value="1875"/>
+      <details key="end" value="1898"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.3/%/genPackage">
+      <details key="start" value="1875"/>
+      <details key="end" value="1885"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.4">
+      <details key="start" value="1905"/>
+      <details key="end" value="1906"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.5">
+      <details key="start" value="1907"/>
+      <details key="end" value="1975"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.5/%">
+      <details key="start" value="1939"/>
+      <details key="end" value="1974"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.5/%/anPatternInstance">
+      <details key="start" value="1956"/>
+      <details key="end" value="1973"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.6">
+      <details key="start" value="1977"/>
+      <details key="end" value="1979"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.7">
+      <details key="start" value="1799"/>
+      <details key="end" value="1839"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.7/%">
+      <details key="start" value="1800"/>
+      <details key="end" value="1833"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.7/%/genPackage">
+      <details key="start" value="1800"/>
+      <details key="end" value="1810"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.7/%.1">
+      <details key="start" value="1836"/>
+      <details key="end" value="1838"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8">
+      <details key="start" value="1979"/>
+      <details key="end" value="2161"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%">
+      <details key="start" value="1986"/>
+      <details key="end" value="1993"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.1">
+      <details key="start" value="1994"/>
+      <details key="end" value="2016"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.1/genPackage">
+      <details key="start" value="1994"/>
+      <details key="end" value="2004"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.2">
+      <details key="start" value="2018"/>
+      <details key="end" value="2019"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.3">
+      <details key="start" value="2020"/>
+      <details key="end" value="2048"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.3/%">
+      <details key="start" value="2020"/>
+      <details key="end" value="2043"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.3/%/genPackage">
+      <details key="start" value="2020"/>
+      <details key="end" value="2030"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.4">
+      <details key="start" value="2050"/>
+      <details key="end" value="2051"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.5">
+      <details key="start" value="2052"/>
+      <details key="end" value="2085"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.5/genPackage">
+      <details key="start" value="2052"/>
+      <details key="end" value="2062"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.6">
+      <details key="start" value="2087"/>
+      <details key="end" value="2088"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.7">
+      <details key="start" value="2089"/>
+      <details key="end" value="2157"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.7/%">
+      <details key="start" value="2121"/>
+      <details key="end" value="2156"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.7/%/anPatternInstance">
+      <details key="start" value="2138"/>
+      <details key="end" value="2155"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%/%.8/%.8">
+      <details key="start" value="2159"/>
+      <details key="end" value="2161"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.1">
+      <details key="start" value="1750"/>
+      <details key="end" value="1793"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.1/%">
+      <details key="start" value="1751"/>
+      <details key="end" value="1784"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.1/%/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.1/%/%/%/%">
+      <details key="start" value="1751"/>
+      <details key="end" value="1773"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.1/%/%/%/%/genPackage">
+      <details key="start" value="1751"/>
+      <details key="end" value="1761"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.1/%.1">
+      <details key="start" value="1787"/>
+      <details key="end" value="1792"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.2">
+      <details key="start" value="2167"/>
+      <details key="end" value="2243"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.2/%">
+      <details key="start" value="2174"/>
+      <details key="end" value="2181"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.2/%.1">
+      <details key="start" value="2182"/>
+      <details key="end" value="2239"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.2/%.1/%">
+      <details key="start" value="2203"/>
+      <details key="end" value="2238"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.2/%.1/%/anPatternInstance">
+      <details key="start" value="2220"/>
+      <details key="end" value="2237"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/Modular_DiagramJAVA/%.1/%.13/%/%.2/%.2">
+      <details key="start" value="2241"/>
+      <details key="end" value="2243"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage">
+      <details key="start" value="1605"/>
+      <details key="end" value="1743"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%">
+      <details key="start" value="1634"/>
+      <details key="end" value="1745"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%/%">
+      <details key="start" value="1634"/>
+      <details key="end" value="1723"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%/%/%">
+      <details key="start" value="1634"/>
+      <details key="end" value="1710"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%/%/%/%">
+      <details key="start" value="1656"/>
+      <details key="end" value="1691"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%/%/%/%/anPatternInstance">
+      <details key="start" value="1673"/>
+      <details key="end" value="1690"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%/%/%/anEObjectGenModel">
+      <details key="start" value="1692"/>
+      <details key="end" value="1709"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/Modular_DiagramJAVA/%.1/%.13/genPackage/%/%.1">
+      <details key="start" value="1734"/>
+      <details key="end" value="1744"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/Modular_DiagramJAVA/%.1/%.14">
+      <details key="start" value="2256"/>
+      <details key="end" value="2313"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/Modular_DiagramJAVA/%.1/%.15">
+      <details key="start" value="2418"/>
+      <details key="end" value="2448"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/Modular_DiagramJAVA/%.1/%.16">
+      <details key="start" value="2464"/>
+      <details key="end" value="3526"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/Modular_DiagramJAVA/%.1/%.17">
+      <details key="start" value="3527"/>
+      <details key="end" value="3567"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/Modular_DiagramJAVA/%.1/%.17/%">
+      <details key="start" value="3527"/>
+      <details key="end" value="3562"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/Modular_DiagramJAVA/%.1/%.17/%/anPatternInstance">
+      <details key="start" value="3544"/>
+      <details key="end" value="3561"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/Modular_DiagramJAVA/%.1/%.18">
+      <details key="start" value="3569"/>
+      <details key="end" value="3578"/>
+      <details key="line" value="71"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/Modular_DiagramJAVA/%.1/%.19">
+      <details key="start" value="3579"/>
+      <details key="end" value="3619"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/Modular_DiagramJAVA/%.1/%.19/%">
+      <details key="start" value="3579"/>
+      <details key="end" value="3614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/Modular_DiagramJAVA/%.1/%.19/%/anPatternInstance">
+      <details key="start" value="3596"/>
+      <details key="end" value="3613"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/Modular_DiagramJAVA/%.1/%.20">
+      <details key="start" value="3621"/>
+      <details key="end" value="3683"/>
+      <details key="line" value="71"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/Modular_DiagramJAVA/%.1/%.21">
+      <details key="start" value="3684"/>
+      <details key="end" value="3750"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/Modular_DiagramJAVA/%.1/%.21/%">
+      <details key="start" value="3684"/>
+      <details key="end" value="3735"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/Modular_DiagramJAVA/%.1/%.21/%/%">
+      <details key="start" value="3684"/>
+      <details key="end" value="3724"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/Modular_DiagramJAVA/%.1/%.21/%/%/%">
+      <details key="start" value="3684"/>
+      <details key="end" value="3719"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/Modular_DiagramJAVA/%.1/%.21/%/%/%/anPatternInstance">
+      <details key="start" value="3701"/>
+      <details key="end" value="3718"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/Modular_DiagramJAVA/%.1/%.22">
+      <details key="start" value="3752"/>
+      <details key="end" value="3762"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/Modular_DiagramJAVA/%.1/%.23">
+      <details key="start" value="3763"/>
+      <details key="end" value="3803"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/Modular_DiagramJAVA/%.1/%.23/%">
+      <details key="start" value="3763"/>
+      <details key="end" value="3798"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/Modular_DiagramJAVA/%.1/%.23/%/anPatternInstance">
+      <details key="start" value="3780"/>
+      <details key="end" value="3797"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/Modular_DiagramJAVA/%.1/%.24">
+      <details key="start" value="3805"/>
+      <details key="end" value="3834"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/Modular_DiagramJAVA/%.1/%.25">
+      <details key="start" value="3835"/>
+      <details key="end" value="3875"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/Modular_DiagramJAVA/%.1/%.25/%">
+      <details key="start" value="3835"/>
+      <details key="end" value="3870"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/Modular_DiagramJAVA/%.1/%.25/%/anPatternInstance">
+      <details key="start" value="3852"/>
+      <details key="end" value="3869"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/Modular_DiagramJAVA/%.1/%.26">
+      <details key="start" value="3877"/>
+      <details key="end" value="4208"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/Modular_DiagramJAVA/%.1/%.27">
+      <details key="start" value="4209"/>
+      <details key="end" value="4249"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/Modular_DiagramJAVA/%.1/%.27/%">
+      <details key="start" value="4209"/>
+      <details key="end" value="4244"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/Modular_DiagramJAVA/%.1/%.27/%/anPatternInstance">
+      <details key="start" value="4226"/>
+      <details key="end" value="4243"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/Modular_DiagramJAVA/%.1/%.28">
+      <details key="start" value="4251"/>
+      <details key="end" value="4260"/>
+      <details key="line" value="87"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/Modular_DiagramJAVA/%.1/%.29">
+      <details key="start" value="4261"/>
+      <details key="end" value="4301"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/Modular_DiagramJAVA/%.1/%.29/%">
+      <details key="start" value="4261"/>
+      <details key="end" value="4296"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/Modular_DiagramJAVA/%.1/%.29/%/anPatternInstance">
+      <details key="start" value="4278"/>
+      <details key="end" value="4295"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/Modular_DiagramJAVA/%.1/%.30">
+      <details key="start" value="4303"/>
+      <details key="end" value="4377"/>
+      <details key="line" value="87"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/Modular_DiagramJAVA/%.1/%.31">
+      <details key="start" value="4378"/>
+      <details key="end" value="4418"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/Modular_DiagramJAVA/%.1/%.31/%">
+      <details key="start" value="4378"/>
+      <details key="end" value="4413"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/Modular_DiagramJAVA/%.1/%.31/%/anPatternInstance">
+      <details key="start" value="4395"/>
+      <details key="end" value="4412"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/Modular_DiagramJAVA/%.1/%.32">
+      <details key="start" value="4420"/>
+      <details key="end" value="4449"/>
+      <details key="line" value="90"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/Modular_DiagramJAVA/%.1/%.33">
+      <details key="start" value="4450"/>
+      <details key="end" value="4490"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/Modular_DiagramJAVA/%.1/%.33/%">
+      <details key="start" value="4450"/>
+      <details key="end" value="4485"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/Modular_DiagramJAVA/%.1/%.33/%/anPatternInstance">
+      <details key="start" value="4467"/>
+      <details key="end" value="4484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/Modular_DiagramJAVA/%.1/%.34">
+      <details key="start" value="4492"/>
+      <details key="end" value="4867"/>
+      <details key="line" value="90"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/Modular_DiagramJAVA/%.1/%.35">
+      <details key="start" value="4868"/>
+      <details key="end" value="4909"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/Modular_DiagramJAVA/%.1/%.35/%">
+      <details key="start" value="4868"/>
+      <details key="end" value="4904"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/Modular_DiagramJAVA/%.1/%.35/%/anPatternInstance">
+      <details key="start" value="4868"/>
+      <details key="end" value="4885"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/Modular_DiagramJAVA/%.1/%.36">
+      <details key="start" value="4911"/>
+      <details key="end" value="5023"/>
+      <details key="line" value="106"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/Modular_DiagramJAVA/%.1/%.37">
+      <details key="start" value="5024"/>
+      <details key="end" value="5064"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/Modular_DiagramJAVA/%.1/%.37/%">
+      <details key="start" value="5024"/>
+      <details key="end" value="5059"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/Modular_DiagramJAVA/%.1/%.37/%/anPatternInstance">
+      <details key="start" value="5041"/>
+      <details key="end" value="5058"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/Modular_DiagramJAVA/%.1/%.38">
+      <details key="start" value="5066"/>
+      <details key="end" value="5095"/>
+      <details key="line" value="109"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/Modular_DiagramJAVA/%.1/%.39">
+      <details key="start" value="5096"/>
+      <details key="end" value="5136"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/Modular_DiagramJAVA/%.1/%.39/%">
+      <details key="start" value="5096"/>
+      <details key="end" value="5131"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/Modular_DiagramJAVA/%.1/%.39/%/anPatternInstance">
+      <details key="start" value="5113"/>
+      <details key="end" value="5130"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/Modular_DiagramJAVA/%.1/%.40">
+      <details key="start" value="5138"/>
+      <details key="end" value="5320"/>
+      <details key="line" value="109"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/Modular_DiagramJAVA/%.1/%.41">
+      <details key="start" value="433"/>
+      <details key="end" value="635"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/Modular_DiagramJAVA/%.1/%.41/%">
+      <details key="start" value="433"/>
+      <details key="end" value="606"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%">
+      <details key="start" value="433"/>
+      <details key="end" value="584"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%">
+      <details key="start" value="433"/>
+      <details key="end" value="439"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1">
+      <details key="start" value="447"/>
+      <details key="end" value="583"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%">
+      <details key="start" value="447"/>
+      <details key="end" value="554"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%">
+      <details key="start" value="447"/>
+      <details key="end" value="476"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%/%">
+      <details key="start" value="447"/>
+      <details key="end" value="470"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%/%/anProjectName">
+      <details key="start" value="447"/>
+      <details key="end" value="460"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%/%.1">
+      <details key="start" value="473"/>
+      <details key="end" value="476"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%.1">
+      <details key="start" value="479"/>
+      <details key="end" value="554"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%.1/%">
+      <details key="start" value="479"/>
+      <details key="end" value="540"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%.1/%/%">
+      <details key="start" value="479"/>
+      <details key="end" value="535"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%.1/%/%/%">
+      <details key="start" value="479"/>
+      <details key="end" value="527"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%/%.1/%/%/%/anPatternInstance">
+      <details key="start" value="479"/>
+      <details key="end" value="496"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%.1">
+      <details key="start" value="557"/>
+      <details key="end" value="583"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%/%.1/%.1/%">
+      <details key="start" value="569"/>
+      <details key="end" value="582"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%.1">
+      <details key="start" value="596"/>
+      <details key="end" value="601"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/Modular_DiagramJAVA/%.1/%.41/%/%.2">
+      <details key="start" value="602"/>
+      <details key="end" value="605"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/Modular_DiagramJAVA/%.1/%.41/%.1">
+      <details key="start" value="614"/>
+      <details key="end" value="634"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/Modular_DiagramJAVA/%.1/%.42">
+      <details key="start" value="643"/>
+      <details key="end" value="650"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/Modular_DiagramJAVA/%.2">
+      <details key="start" value="5328"/>
+      <details key="end" value="5329"/>
+      <details key="line" value="118"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/Modular_DiagramJAVA/anProjectName">
+      <details key="start" value="308"/>
+      <details key="end" value="330"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/Modular_DiagramJAVA/anPackageName">
+      <details key="start" value="332"/>
+      <details key="end" value="355"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/Modular_DiagramJAVA/anPatternInstance">
+      <details key="start" value="357"/>
+      <details key="end" value="392"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/Modular_DiagramJAVA/anEObjectGenModel">
+      <details key="start" value="394"/>
+      <details key="end" value="422"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="constraintDialogFile" nsURI="org::mondo::generate::constraint::project::files::dialog::constraintDialogFile" startHeaderPosition="30" endHeaderPosition="394">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateconstraintDialogFile" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".dialog;&#xD;&#xA;&#xD;&#xA;import java.util.Iterator;&#xD;&#xA;&#xD;&#xA;import org.eclipse.core.resources.IFile;&#xD;&#xA;import org.eclipse.core.resources.IResource;&#xD;&#xA;import org.eclipse.core.resources.ResourcesPlugin;&#xD;&#xA;import org.eclipse.core.runtime.CoreException;&#xD;&#xA;import org.eclipse.core.runtime.Path;&#xD;&#xA;import org.eclipse.emf.common.util.BasicEList;&#xD;&#xA;import org.eclipse.emf.common.util.EList;&#xD;&#xA;import org.eclipse.emf.ecore.resource.Resource;&#xD;&#xA;import org.eclipse.emf.ecore.resource.ResourceSet;&#xD;&#xA;import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;&#xD;&#xA;import org.eclipse.jface.dialogs.Dialog;&#xD;&#xA;import org.eclipse.jface.viewers.TreeViewer;&#xD;&#xA;import org.eclipse.jface.viewers.TreeViewerColumn;&#xD;&#xA;import org.eclipse.swt.SWT;&#xD;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xD;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xD;&#xA;import org.eclipse.swt.layout.FillLayout;&#xD;&#xA;import org.eclipse.swt.layout.GridData;&#xD;&#xA;import org.eclipse.swt.layout.GridLayout;&#xD;&#xA;import org.eclipse.swt.widgets.Button;&#xD;&#xA;import org.eclipse.swt.widgets.Composite;&#xD;&#xA;import org.eclipse.swt.widgets.Control;&#xD;&#xA;import org.eclipse.swt.widgets.Shell;&#xD;&#xA;import org.eclipse.swt.widgets.TreeItem;&#xD;&#xA;import "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/11">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".builder.ConstraintScopeCategorizer;&#xD;&#xA;import "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/13">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".builder.ExecuteEOLConstraint;&#xD;&#xA;import "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/15">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".expression.NameExpressionColumnLabelProvider;&#xD;&#xA;import "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/17">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".result.ResultColumnLabelProvider;&#xD;&#xA;import "/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/19">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".result.ResultEditingProvider;&#xD;&#xA;&#xD;&#xA;import constraints.Constraint;&#xD;&#xA;import constraints.MetamodelConstraint;&#xD;&#xA;import constraints.ConstraintDefinition;&#xD;&#xA;&#xD;&#xA;public class ConstraintDialog extends Dialog{&#xD;&#xA;&#xD;&#xA;&#x9;private String modelURI;&#xD;&#xA;&#x9;&#xD;&#xA;    private final ExecuteEOLConstraint executeConstraint = new ExecuteEOLConstraint();&#xD;&#xA;    &#xD;&#xA;&#x9;public ConstraintDialog(Shell parent,String modelURI) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;super(parent);&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;this.modelURI = modelURI;&#x9;&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;protected Control createDialogArea(Composite parent) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;Composite contents =  (Composite) super.createDialogArea(parent); &#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;GridData containerData = new GridData(SWT.FILL, SWT.FILL, true, true);&#xD;&#xA;&#x9;&#x9;containerData.widthHint = 400;&#xD;&#xA;&#x9;&#x9;containerData.heightHint = 250;&#xD;&#xA;&#x9;&#x9;containerData.minimumHeight = 250;&#xD;&#xA;&#x9;&#x9;contents.setLayoutData(containerData);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;GridLayout containerLayout = new GridLayout();&#xD;&#xA;&#x9;    containerLayout.numColumns = 1;&#xD;&#xA;&#x9;    contents.setLayout(containerLayout);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;    TreeViewer viewer = new TreeViewer(contents, SWT.FULL_SELECTION | SWT.CHECK);&#x9;&#x9;&#xD;&#xA;&#x9;    viewer.setContentProvider(new ConstraintTreeContentProvider());&#xD;&#xA;&#x9;    viewer.getTree().setHeaderVisible(true);&#xD;&#xA;&#x9;    viewer.getTree().setLinesVisible(true);&#x9;&#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;    GridData treedata = new GridData(SWT.FILL, SWT.FILL, true, true);&#xD;&#xA;&#x9;    viewer.getTree().setLayoutData(treedata);&#xD;&#xA;&#x9;    viewer.getTree().setLayout(new FillLayout());&#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;    TreeViewerColumn eNameColumn = new TreeViewerColumn(viewer, SWT.NONE);&#x9;    &#xD;&#xA;&#x9;    eNameColumn.getColumn().setWidth(150);&#xD;&#xA;&#x9;    eNameColumn.getColumn().setText(&quot;EOL Expression Name&quot;);&#xD;&#xA;&#x9;    eNameColumn.setLabelProvider(new NameExpressionColumnLabelProvider());&#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;&#x9;TreeViewerColumn eResultColumn = new TreeViewerColumn(viewer, SWT.NONE);&#xD;&#xA;&#x9;    eResultColumn.getColumn().setWidth(200);&#xD;&#xA;&#x9;    eResultColumn.getColumn().setText(&quot;Result&quot;);&#xD;&#xA;&#x9;    eResultColumn.setLabelProvider(new ResultColumnLabelProvider());&#xD;&#xA;&#x9;&#x9;eResultColumn.setEditingSupport(new ResultEditingProvider(viewer));&#xD;&#xA;&#x9;&#x9;    &#x9;    &#x9;    &#xD;&#xA;&#x9;    Composite contentsButton = new Composite(contents, SWT.NONE);&#xD;&#xA;&#x9;    &#x9;&#x9;&#xD;&#xA;&#x9;&#x9;GridLayout contentsButtonLayout = new GridLayout();&#xD;&#xA;&#x9;&#x9;contentsButtonLayout.numColumns = 3;&#xD;&#xA;&#x9;&#x9;contentsButton.setLayout(contentsButtonLayout);&#x9;    &#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;    Button buttonSelectAll = new Button(contentsButton, SWT.PUSH);&#xD;&#xA;&#x9;    buttonSelectAll.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,&#xD;&#xA;                false));&#xD;&#xA;&#x9;    buttonSelectAll.setText(&quot;Select All Constraints&quot;);&#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;    buttonSelectAll.addSelectionListener(new SelectionAdapter() {&#xD;&#xA;&#x9;    &#x9;&#xD;&#xA;&#x9;    &#x9;@Override&#xD;&#xA;&#x9;    &#x9;public void widgetSelected(SelectionEvent e) {&#xD;&#xA;&#x9;    &#x9;&#x9;&#xD;&#xA;&#x9;    &#x9;&#x9;checkedAllItemsWith(viewer, true);&#x9;&#xD;&#xA;&#x9;    &#x9;&#x9;viewer.refresh();&#xD;&#xA;&#x9;    &#x9;}&#xD;&#xA;&#x9;    &#x9;&#xD;&#xA;&#x9;&#x9;});   &#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;    Button buttonUnSelectAll = new Button(contentsButton, SWT.PUSH);&#xD;&#xA;&#x9;    buttonUnSelectAll.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,&#xD;&#xA;                false));&#x9;    &#xD;&#xA;&#x9;    buttonUnSelectAll.setText(&quot;Unselect All Constraints&quot;);&#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;    buttonUnSelectAll.addSelectionListener(new SelectionAdapter() {&#xD;&#xA;&#x9;    &#x9;&#xD;&#xA;&#x9;    &#x9;@Override&#xD;&#xA;&#x9;    &#x9;public void widgetSelected(SelectionEvent e) {&#xD;&#xA;&#x9;    &#x9;&#x9;&#xD;&#xA;&#x9;    &#x9;&#x9;checkedAllItemsWith(viewer, false);&#xD;&#xA;&#x9;    &#x9;&#x9;viewer.refresh();&#xD;&#xA;&#x9;    &#x9;}&#xD;&#xA;&#x9;    &#x9;&#xD;&#xA;&#x9;&#x9;});     &#xD;&#xA;&#x9;    &#xD;&#xA;        Button buttonValidateAll = new Button(contentsButton, SWT.PUSH);&#xD;&#xA;        buttonValidateAll.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,&#xD;&#xA;                false));&#xD;&#xA;        buttonValidateAll.setText(&quot;Validate&quot;);   &#xD;&#xA;                &#xD;&#xA;        buttonValidateAll.addSelectionListener(new SelectionAdapter() {&#xD;&#xA;        &#x9;&#xD;&#xA;        &#x9;@Override&#xD;&#xA;        &#x9;public void widgetSelected(SelectionEvent e) {&#xD;&#xA;        &#x9;&#x9;&#xD;&#xA;        &#x9;&#x9;IFile file = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(modelURI));&#xD;&#xA;        &#x9;&#x9;ConstraintDefinition constraintDefinition = getCategoriser();&#xD;&#xA;        &#x9;&#x9;Iterator&lt;Constraint> itOfConstraints = getCheckedConstraint(viewer).iterator();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;while (itOfConstraints.hasNext()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Constraint constraint = itOfConstraints.next();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;boolean result = false;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (constraintDefinition.equals(ConstraintDefinition.GLOBAL)) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;result = executeConstraint.executeQueries(constraint, file);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else if (constraintDefinition.equals(ConstraintDefinition.SAME_ROOT_PACKAGE) || &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;constraintDefinition.equals(ConstraintDefinition.SAME_PACKAGE)) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;result = executeConstraint.executeQueriesCheckContext(constraint, file,false);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else if (constraintDefinition.equals(ConstraintDefinition.UNIT))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;result = executeConstraint.executeQueriesCheckContext(constraint, file,true);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (result == true)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;constraint.setResult(&quot;Successful&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;constraint.setResult(&quot;Unsuccessful (See Problems View)&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;viewer.update(constraint, null);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;try {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;file.refreshLocal(IResource.DEPTH_ZERO, null);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;} catch (CoreException e1) {&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;e1.printStackTrace();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;        &#x9;}        &#x9;&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#x9;    &#xD;&#xA;        org.eclipse.emf.common.util.URI asd = org.eclipse.emf.common.util.URI.createFileURI(modelURI);&#xD;&#xA;        ResourceSet reset = new ResourceSetImpl();&#xD;&#xA;        Resource res = reset.getResource(asd, true);&#xD;&#xA;        &#xD;&#xA;&#x9;    viewer.setInput(executeConstraint.getConstraints(res, getCategoriser()));&#xD;&#xA;&#x9;    &#xD;&#xA;&#x9;&#x9;return contents;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;private ConstraintDefinition getCategoriser() {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;ConstraintScopeCategorizer categoriser = new ConstraintScopeCategorizer();&#xD;&#xA;&#x9;&#x9;IFile file = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(this.modelURI));&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;if (categoriser.isProject(file) == true)&#xD;&#xA;&#x9;&#x9;&#x9;return ConstraintDefinition.GLOBAL;&#xD;&#xA;&#x9;&#x9;else if (categoriser.isRootPackage(file) == true)&#xD;&#xA;&#x9;&#x9;&#x9;return ConstraintDefinition.SAME_ROOT_PACKAGE;&#xD;&#xA;&#x9;&#x9;else if (categoriser.isPackage(file) == true)&#xD;&#xA;&#x9;&#x9;&#x9;return ConstraintDefinition.SAME_PACKAGE;&#xD;&#xA;&#x9;&#x9;return ConstraintDefinition.UNIT;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;private void checkedAllItemsWith(TreeViewer viewer,boolean checked) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;TreeItem"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="] items = viewer.getTree().getItems();  &#xD;&#xA;&#x9;&#x9;for (int i = 0; i &lt; items.length; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;TreeItem item = items"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="i];&#xD;&#xA;&#x9;&#x9;&#x9;item.setChecked(checked);&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;}&#x9;&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;private EList&lt;Constraint> getCheckedConstraint(TreeViewer viewer) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;EList&lt;Constraint> listOfConstraint = new BasicEList&lt;Constraint>();&#xD;&#xA;&#x9;&#x9;TreeItem"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="] items = viewer.getTree().getItems();&#xD;&#xA;&#x9;&#x9;for (int i = 0; i &lt; items.length; i++) {&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;TreeItem item = items"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="i];&#xD;&#xA;&#x9;&#x9;&#x9;if (item.getChecked() == true) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;listOfConstraint.add((Constraint) item.getData());&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;return listOfConstraint;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintDialogFile/anProjectName">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/6">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </argument>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/dialog/">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ConstraintDialog.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="pathEcore">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateconstraintDialogFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateconstraintDialogFile"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="pathEcore">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateconstraintDialogFile">
+      <details key="start" value="106"/>
+      <details key="end" value="8580"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateconstraintDialogFile/%">
+      <details key="start" value="198"/>
+      <details key="end" value="200"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateconstraintDialogFile/%.1">
+      <details key="start" value="200"/>
+      <details key="end" value="8565"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateconstraintDialogFile/%.1/%">
+      <details key="start" value="372"/>
+      <details key="end" value="380"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateconstraintDialogFile/%.1/anProjectName">
+      <details key="start" value="381"/>
+      <details key="end" value="394"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateconstraintDialogFile/%.1/%.1">
+      <details key="start" value="396"/>
+      <details key="end" value="397"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateconstraintDialogFile/%.1/%.2">
+      <details key="start" value="398"/>
+      <details key="end" value="424"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateconstraintDialogFile/%.1/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateconstraintDialogFile/%.1/%.2/%">
+      <details key="start" value="410"/>
+      <details key="end" value="423"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateconstraintDialogFile/%.1/%.3">
+      <details key="start" value="426"/>
+      <details key="end" value="1552"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateconstraintDialogFile/%.1/anProjectName.1">
+      <details key="start" value="1553"/>
+      <details key="end" value="1566"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateconstraintDialogFile/%.1/%.4">
+      <details key="start" value="1568"/>
+      <details key="end" value="1569"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateconstraintDialogFile/%.1/%.5">
+      <details key="start" value="1570"/>
+      <details key="end" value="1596"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateconstraintDialogFile/%.1/%.5/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateconstraintDialogFile/%.1/%.5/%">
+      <details key="start" value="1582"/>
+      <details key="end" value="1595"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateconstraintDialogFile/%.1/%.6">
+      <details key="start" value="1598"/>
+      <details key="end" value="1643"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateconstraintDialogFile/%.1/anProjectName.2">
+      <details key="start" value="1644"/>
+      <details key="end" value="1657"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateconstraintDialogFile/%.1/%.7">
+      <details key="start" value="1659"/>
+      <details key="end" value="1660"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateconstraintDialogFile/%.1/%.8">
+      <details key="start" value="1661"/>
+      <details key="end" value="1687"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateconstraintDialogFile/%.1/%.8/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateconstraintDialogFile/%.1/%.8/%">
+      <details key="start" value="1673"/>
+      <details key="end" value="1686"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateconstraintDialogFile/%.1/%.9">
+      <details key="start" value="1689"/>
+      <details key="end" value="1728"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateconstraintDialogFile/%.1/anProjectName.3">
+      <details key="start" value="1729"/>
+      <details key="end" value="1742"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateconstraintDialogFile/%.1/%.10">
+      <details key="start" value="1744"/>
+      <details key="end" value="1745"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateconstraintDialogFile/%.1/%.11">
+      <details key="start" value="1746"/>
+      <details key="end" value="1772"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateconstraintDialogFile/%.1/%.11/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateconstraintDialogFile/%.1/%.11/%">
+      <details key="start" value="1758"/>
+      <details key="end" value="1771"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateconstraintDialogFile/%.1/%.12">
+      <details key="start" value="1774"/>
+      <details key="end" value="1829"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateconstraintDialogFile/%.1/anProjectName.4">
+      <details key="start" value="1830"/>
+      <details key="end" value="1843"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateconstraintDialogFile/%.1/%.13">
+      <details key="start" value="1845"/>
+      <details key="end" value="1846"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateconstraintDialogFile/%.1/%.14">
+      <details key="start" value="1847"/>
+      <details key="end" value="1873"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateconstraintDialogFile/%.1/%.14/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateconstraintDialogFile/%.1/%.14/%">
+      <details key="start" value="1859"/>
+      <details key="end" value="1872"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateconstraintDialogFile/%.1/%.15">
+      <details key="start" value="1875"/>
+      <details key="end" value="1918"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateconstraintDialogFile/%.1/anProjectName.5">
+      <details key="start" value="1919"/>
+      <details key="end" value="1932"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateconstraintDialogFile/%.1/%.16">
+      <details key="start" value="1934"/>
+      <details key="end" value="1935"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateconstraintDialogFile/%.1/%.17">
+      <details key="start" value="1936"/>
+      <details key="end" value="1962"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateconstraintDialogFile/%.1/%.17/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateconstraintDialogFile/%.1/%.17/%">
+      <details key="start" value="1948"/>
+      <details key="end" value="1961"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateconstraintDialogFile/%.1/%.18">
+      <details key="start" value="1964"/>
+      <details key="end" value="7945"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateconstraintDialogFile/%.1/%.19">
+      <details key="start" value="7946"/>
+      <details key="end" value="7949"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateconstraintDialogFile/%.1/%.20">
+      <details key="start" value="7951"/>
+      <details key="end" value="8061"/>
+      <details key="line" value="195"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateconstraintDialogFile/%.1/%.21">
+      <details key="start" value="8062"/>
+      <details key="end" value="8065"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateconstraintDialogFile/%.1/%.22">
+      <details key="start" value="8067"/>
+      <details key="end" value="8274"/>
+      <details key="line" value="197"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateconstraintDialogFile/%.1/%.23">
+      <details key="start" value="8275"/>
+      <details key="end" value="8278"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateconstraintDialogFile/%.1/%.24">
+      <details key="start" value="8280"/>
+      <details key="end" value="8393"/>
+      <details key="line" value="205"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateconstraintDialogFile/%.1/%.25">
+      <details key="start" value="8394"/>
+      <details key="end" value="8397"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateconstraintDialogFile/%.1/%.26">
+      <details key="start" value="8399"/>
+      <details key="end" value="8558"/>
+      <details key="line" value="208"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateconstraintDialogFile/%.1/%.27">
+      <details key="start" value="207"/>
+      <details key="end" value="353"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateconstraintDialogFile/%.1/%.27/%">
+      <details key="start" value="207"/>
+      <details key="end" value="321"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateconstraintDialogFile/%.1/%.27/%/%">
+      <details key="start" value="207"/>
+      <details key="end" value="302"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%">
+      <details key="start" value="207"/>
+      <details key="end" value="280"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%">
+      <details key="start" value="207"/>
+      <details key="end" value="213"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1">
+      <details key="start" value="221"/>
+      <details key="end" value="279"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%">
+      <details key="start" value="221"/>
+      <details key="end" value="250"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%/%">
+      <details key="start" value="221"/>
+      <details key="end" value="244"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%/%/anProjectName">
+      <details key="start" value="221"/>
+      <details key="end" value="234"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%/%.1">
+      <details key="start" value="247"/>
+      <details key="end" value="250"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%.1">
+      <details key="start" value="253"/>
+      <details key="end" value="279"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%/%.1/%.1/%">
+      <details key="start" value="265"/>
+      <details key="end" value="278"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%.1">
+      <details key="start" value="292"/>
+      <details key="end" value="297"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateconstraintDialogFile/%.1/%.27/%/%/%.2">
+      <details key="start" value="298"/>
+      <details key="end" value="301"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateconstraintDialogFile/%.1/%.27/%/%.1">
+      <details key="start" value="310"/>
+      <details key="end" value="320"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateconstraintDialogFile/%.1/%.27/%.1">
+      <details key="start" value="329"/>
+      <details key="end" value="352"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateconstraintDialogFile/%.1/%.28">
+      <details key="start" value="361"/>
+      <details key="end" value="368"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateconstraintDialogFile/%.2">
+      <details key="start" value="8567"/>
+      <details key="end" value="8569"/>
+      <details key="line" value="220"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateconstraintDialogFile/anProjectName">
+      <details key="start" value="152"/>
+      <details key="end" value="174"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateconstraintDialogFile/pathEcore">
+      <details key="start" value="176"/>
+      <details key="end" value="194"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

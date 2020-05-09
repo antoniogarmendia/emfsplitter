@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="FilterViewerPaneJAVA" nsURI="org::mondo::acceleo::generate::filterui::main::pack::ext::FilterViewerPaneJAVA" startHeaderPosition="29" endHeaderPosition="182">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <imports href="../../../requests/global_queriesFilterUI.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="FilterViewerPaneJAVA" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/FilterViewerPaneJAVA/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".ext;&#xA;&#xA;import org.eclipse.jface.viewers.ViewerFilter;&#xA;import "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/FilterViewerPaneJAVA/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/11">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".eclass.ContextFilterRoot;&#xA;import org.eclipse.swt.SWT;&#xA;import org.eclipse.swt.custom.ViewForm;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xA;import org.eclipse.swt.layout.GridData;&#xA;import org.eclipse.swt.layout.GridLayout;&#xA;import org.eclipse.swt.widgets.Button;&#xA;import org.eclipse.swt.widgets.Composite;&#xA;import org.eclipse.swt.widgets.Control;&#xA;import org.eclipse.swt.widgets.ExpandBar;&#xA;import org.eclipse.swt.widgets.Label;&#xA;import org.eclipse.swt.widgets.Text;&#xA;import org.mondo.modular.filterui.ext.FilterAttribute;&#xA;import org.mondo.modular.filterui.ext.IFilterPage;&#xA;import org.mondo.modular.filterui.ext.IFilterTabItem;&#xA;import org.mondo.modular.filterui.ext.IObtainClassFeatures;&#xA;&#xA;import dslFilter.impl.AllFiltersImpl;&#xA;&#xA;public class FilterViewerPane extends AllFiltersImpl implements IFilterPage {&#xA;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;//The Constructor Attributes&#xA;&#x9;protected FilterAttribute anFilterAttribute;&#xA;&#x9;&#xA;&#x9;//Attributes&#xA;&#x9;protected Composite container;&#xA;&#x9;protected ViewForm view;&#x9;&#xA;&#x9;protected Composite inner;&#x9;&#xA;&#x9;protected ExpandBar bar;&#xA;&#x9;&#xA;&#x9;//List Classes&#xA;&#x9;private ContextFilterRoot context;&#xA;&#x9;&#xA;&#x9;public FilterViewerPane(){&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;super();&#xA;&#x9;&#x9;this.anFilterAttribute = null;&#xA;&#x9;&#x9;//Attributes&#xA;&#x9;&#x9;this.container = null;&#xA;&#x9;&#x9;this.view = null;&#xA;&#x9;&#x9;this.inner = null;&#x9;&#xA;&#x9;&#x9;this.bar = null;&#xA;&#x9;&#x9;context = new ContextFilterRoot();&#xA;&#x9;}&#xA;&#xA;&#x9;public void CreateControl(Composite parent){&#xA;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9; &#xA;&#x9;&#x9;if (getControl() == null)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;container = parent;&#xA;&#x9;&#x9;&#x9;view = new ViewForm(container, SWT.NONE);&#xA;&#x9;&#x9;&#x9;inner = new Composite(view, SWT.NONE);&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;//Layout inner&#xA;&#x9;&#x9;&#x9;GridLayout layout = new GridLayout();&#xA;&#x9;&#x9;    layout.numColumns = 1;&#xA;&#x9;&#x9;    layout.marginLeft = 10;&#xA;&#x9;&#x9;   &#x9;inner.setLayout(layout);&#xA;&#x9;&#x9;   &#x9;&#xA;&#x9;&#x9;   &#x9;//Global Inner Data&#xA;&#x9;&#x9;   &#x9;GridData grd_inner = new GridData(SWT.DEFAULT, SWT.DEFAULT);//800 default&#xA;&#x9;&#x9;   &#x9;inner.setData(grd_inner);&#xA;&#x9;&#x9;   &#x9;//End&#x9;&#x9;&#xA;&#x9;&#x9;   &#x9;&#xA;&#x9;&#x9;&#x9;Create_AllFilters(inner);&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;Create_Expand_bar(inner);&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;view.setContent(inner);&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;&#xA;&#x9;/*&#xA;&#x9; * Create Filter Attributes&#x9;   &#xA;&#x9; * */&#xA;&#x9;&#x9;&#xA;&#x9;public void Create_AllFilters(Composite anComposite){&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;//Initialize Values&#xA;&#x9;&#x9;InitAllFilters();&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Composite anComposite_Filter = new Composite(anComposite, SWT.NONE);&#xA;&#x9;&#x9;GridLayout first = new GridLayout ();&#xA;        first.numColumns = 8;&#xA;        first.horizontalSpacing = 8;&#xA;        anComposite_Filter.setLayout(first);&#x9;&#xA;        &#xA;        //Label Name&#xA;      &#x9;Label lbl_name = new Label(anComposite_Filter, SWT.CENTER);&#xA;      &#x9;lbl_name.setText(&quot;Name: &quot;);&#xA;      &#x9;&#xA;      &#x9;//TextBox&#xA;      &#x9;Text txt_name = new Text(anComposite_Filter, SWT.BORDER | SWT.SINGLE | SWT.HORIZONTAL);&#xA;      &#x9;txt_name.setText(name);&#xA;      &#x9;&#xA;        //Label Negative&#xA;      &#x9;Label lbl_neg = new Label(anComposite_Filter, SWT.CENTER);&#xA;      &#x9;lbl_neg.setText(&quot;Negative: &quot;);&#xA;      &#x9;&#x9;&#x9;&#x9;&#xA;      &#x9;//CheckBox Negative&#xA;      &#x9;Button btn_neg = new Button(anComposite_Filter, SWT.CHECK); &#xA;      &#x9;btn_neg.setSelection(isNegative());&#xA;      &#x9;&#x9;&#xA;      &#x9;//Add Group Filter&#xA;      &#x9;Button btn_add = new Button(anComposite_Filter, SWT.PUSH);&#xA;      &#x9;btn_add.setText(&quot;Add Group&quot;);&#xA;      &#x9;&#xA;        //Execute Filters&#xA;        Button btn_exec = new Button(anComposite_Filter, SWT.PUSH);&#xA;      &#x9;btn_exec.setText(&quot;Execute All&quot;);&#xA;      &#x9;&#xA;      &#x9;//Reset Filters&#xA;        Button btn_reset = new Button(anComposite_Filter, SWT.PUSH);&#xA;        btn_reset.setText(&quot;Reset&quot;);&#xA;      &#x9;&#xA;       &#x9;//Save Configuration&#xA;      &#x9;Button btn_save = new Button(anComposite_Filter, SWT.PUSH);&#xA;      &#x9;btn_save.setText(&quot;Save Configuration&quot;);&#xA;      &#x9;&#xA;      &#x9;//Start Listeners&#xA;      &#x9;&#xA;      &#x9;//Execute &#xA;      &#x9;btn_exec.addSelectionListener(new SelectionAdapter() {&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void widgetSelected(SelectionEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;&#x9;&#x9;DeleteAllEObjectsSatisfiesCondition();&#xA;&#x9;&#x9;&#x9;&#x9;Execute(anFilterAttribute.getResource().getAllContents());&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;Delete_Filters();&#xA;&#x9;&#x9;&#x9;&#x9;Update_Filter_Viewer();&#xA;&#x9;&#x9;&#x9;}     &#x9;&#x9;&#xA;      &#x9;&#x9;&#xA;&#x9;&#x9;});&#xA;      &#x9;&#xA;        //Reset &#xA;    &#x9;btn_reset.addSelectionListener(new SelectionAdapter() {&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void widgetSelected(SelectionEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;&#x9;&#x9;Delete_Filters();&#xA;&#x9;&#x9;&#x9;}  &#x9;&#x9;&#xA;    &#x9;&#x9;&#xA;&#x9;&#x9;});      &#x9;&#xA;      &#x9;&#xA;    &#x9;//Add Group&#xA;    &#x9;btn_add.addSelectionListener(new SelectionAdapter() {&#xA;    &#x9;&#x9;&#xA;    &#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void widgetSelected(SelectionEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated method stub&#xA;    &#x9;&#x9;&#x9;Create_Group_Expand();&#xA;&#x9;&#x9;&#x9;}     &#x9;&#x9;&#xA;    &#x9;&#x9;&#xA;&#x9;&#x9;});&#xA;    &#x9;&#xA;    &#x9;//END Listeners&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private void Create_Expand_bar(Composite anComposite) {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;bar = new ExpandBar(anComposite, SWT.V_SCROLL);&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;Create_Group_Expand();&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;/*&#xA;&#x9; * Create Group Inside ExpandBar&#xA;&#x9; * */&#xA;&#x9;public void Create_Group_Expand()&#xA;&#x9;{&#xA;&#x9;&#x9;// First item&#xA;&#x9;&#x9;Composite composite = new Composite (bar, SWT.NONE);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;GridLayout grp_layout = new GridLayout ();&#xA;&#x9;&#x9;grp_layout.numColumns = 1;&#xA;&#x9;&#x9;composite.setLayout(grp_layout);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;FilterGroupUI fg_ui = new FilterGroupUI(groupfilters.size(),GetEClassFeat());&#xA;&#x9;&#x9;fg_ui.CreateControl(bar);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;fg_ui.GetBtn_Del().addSelectionListener(new SelectionAdapter() {&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void widgetSelected(SelectionEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;&#x9;&#x9;int count = groupfilters.size();&#xA;&#x9;&#x9;&#x9;&#x9;if(count>1){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;fg_ui.RemoveControl();&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;groupfilters.remove(fg_ui);&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;Update_Expand_Bar();&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;});&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;groupfilters.add(fg_ui);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;//Update Height of the Expand Bar&#xA;&#x9;&#x9;Update_Expand_Bar();&#xA;&#x9;}&#xA;&#xA;&#x9;public void Update_Filter_Viewer()&#xA;&#x9;{&#xA;&#x9;&#x9;anFilterAttribute.getFilterViewer().addFilter(new CustomizeFilter(AllEObjectsSatifiesCondition()));&#xA;&#x9;&#x9;anFilterAttribute.getFilterViewer().expandAll();&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;protected void Delete_Filters(){&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;ViewerFilter"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="] array_filter = anFilterAttribute.getFilterViewer().getFilters();&#xA;&#x9;&#x9;for (ViewerFilter viewerFilter : array_filter) {&#xA;&#x9;&#x9;&#x9;anFilterAttribute.getFilterViewer().removeFilter(viewerFilter);&#xA;&#x9;&#x9;}&#x9;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public void Update_Expand_Bar()&#xA;&#x9;{&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;int count = groupfilters.size();&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;if(count&lt;=3)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);&#xA;&#x9;&#x9;&#x9;gridData.widthHint = 900;&#xA;&#x9;&#x9;&#x9;gridData.heightHint = (165*count);&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;bar.setLayoutData(gridData);&#xA;&#x9;&#x9;&#x9;view.setContent(inner);&#xA;&#x9;&#x9;}&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;@Override&#xA;&#x9;public IObtainClassFeatures GetEClassFeat() {&#xA;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;return context.ListClasses(anFilterAttribute.getResource().getContents().get(0));&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;@Override&#xA;&#x9;public Control getControl() {&#xA;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;return view;&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public FilterAttribute getfilterattributes() {&#xA;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;return anFilterAttribute;&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public void setFilterAttribute(FilterAttribute anFilterAttribute) {&#xA;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;this.anFilterAttribute = anFilterAttribute;&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;public void CreateControl() {&#xA;&#x9;&#x9;// TODO Auto-generated method stub&#xA;&#x9;&#x9;CreateControl(anFilterAttribute.getComposite());&#xA;&#x9;&#x9;//Add Page&#xA;&#x9;&#x9;int pageIndex = ((IFilterTabItem)anFilterAttribute.getPart()).AddItemPage(getControl());&#xA;&#x9;&#x9;//Set Page Text&#xA;&#x9;&#x9;((IFilterTabItem)anFilterAttribute.getPart()).SetPageItemText(pageIndex, &quot;Filter View&quot;);&#xA;&#x9;}&#x9;&#xA;&#x9;&#xA;}&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/FilterViewerPaneJAVA/anProjectName">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/6">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </argument>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/ext/FilterViewerPane.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="FilterViewerPaneJAVA">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/FilterViewerPaneJAVA"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstances_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/FilterViewerPaneJAVA">
+      <details key="start" value="186"/>
+      <details key="end" value="7684"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/FilterViewerPaneJAVA/%">
+      <details key="start" value="250"/>
+      <details key="end" value="251"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/FilterViewerPaneJAVA/%.1">
+      <details key="start" value="251"/>
+      <details key="end" value="7671"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/FilterViewerPaneJAVA/%.1/%">
+      <details key="start" value="408"/>
+      <details key="end" value="416"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/FilterViewerPaneJAVA/%.1/%.1">
+      <details key="start" value="417"/>
+      <details key="end" value="440"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/FilterViewerPaneJAVA/%.1/%.1/anProjectName">
+      <details key="start" value="417"/>
+      <details key="end" value="430"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/FilterViewerPaneJAVA/%.1/%.2">
+      <details key="start" value="442"/>
+      <details key="end" value="443"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/FilterViewerPaneJAVA/%.1/%.3">
+      <details key="start" value="444"/>
+      <details key="end" value="470"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/FilterViewerPaneJAVA/%.1/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/FilterViewerPaneJAVA/%.1/%.3/%">
+      <details key="start" value="456"/>
+      <details key="end" value="469"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/FilterViewerPaneJAVA/%.1/%.4">
+      <details key="start" value="472"/>
+      <details key="end" value="533"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/FilterViewerPaneJAVA/%.1/%.5">
+      <details key="start" value="534"/>
+      <details key="end" value="557"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/FilterViewerPaneJAVA/%.1/%.5/anProjectName">
+      <details key="start" value="534"/>
+      <details key="end" value="547"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/FilterViewerPaneJAVA/%.1/%.6">
+      <details key="start" value="559"/>
+      <details key="end" value="560"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/FilterViewerPaneJAVA/%.1/%.7">
+      <details key="start" value="561"/>
+      <details key="end" value="587"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/FilterViewerPaneJAVA/%.1/%.7/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/FilterViewerPaneJAVA/%.1/%.7/%">
+      <details key="start" value="573"/>
+      <details key="end" value="586"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/FilterViewerPaneJAVA/%.1/%.8">
+      <details key="start" value="589"/>
+      <details key="end" value="6223"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/FilterViewerPaneJAVA/%.1/%.9">
+      <details key="start" value="6224"/>
+      <details key="end" value="6227"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/FilterViewerPaneJAVA/%.1/%.10">
+      <details key="start" value="6229"/>
+      <details key="end" value="7664"/>
+      <details key="line" value="226"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/FilterViewerPaneJAVA/%.1/%.11">
+      <details key="start" value="258"/>
+      <details key="end" value="390"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/FilterViewerPaneJAVA/%.1/%.11/%">
+      <details key="start" value="258"/>
+      <details key="end" value="353"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%">
+      <details key="start" value="258"/>
+      <details key="end" value="331"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%">
+      <details key="start" value="258"/>
+      <details key="end" value="264"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1">
+      <details key="start" value="272"/>
+      <details key="end" value="330"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%">
+      <details key="start" value="272"/>
+      <details key="end" value="301"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%/%">
+      <details key="start" value="272"/>
+      <details key="end" value="295"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%/%/anProjectName">
+      <details key="start" value="272"/>
+      <details key="end" value="285"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%/%.1">
+      <details key="start" value="298"/>
+      <details key="end" value="301"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%.1">
+      <details key="start" value="304"/>
+      <details key="end" value="330"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%/%.1/%.1/%">
+      <details key="start" value="316"/>
+      <details key="end" value="329"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%.1">
+      <details key="start" value="343"/>
+      <details key="end" value="348"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/FilterViewerPaneJAVA/%.1/%.11/%/%.2">
+      <details key="start" value="349"/>
+      <details key="end" value="352"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/FilterViewerPaneJAVA/%.1/%.11/%.1">
+      <details key="start" value="361"/>
+      <details key="end" value="389"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/FilterViewerPaneJAVA/%.1/%.12">
+      <details key="start" value="398"/>
+      <details key="end" value="405"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/FilterViewerPaneJAVA/%.2">
+      <details key="start" value="7672"/>
+      <details key="end" value="7673"/>
+      <details key="line" value="284"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/FilterViewerPaneJAVA/anProjectName">
+      <details key="start" value="224"/>
+      <details key="end" value="247"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,34 @@
+[comment encoding = UTF-8 /]
+[module manifestFile('http://www.eclipse.org/emf/2002/Ecore', 'http://mondo.org/runtimePatterns')]
+[import org::mondo::generate::constraint::project::request::queries/]
+
+[template public generateManifestFile(anProjectName : String, anPatternInstance : PatternInstance, modularPatternInstance : PatternInstance)]
+
+[file ('META-INF/MANIFEST.MF',false, 'UTF-8')]
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: [anProjectName/].[getProperty('prefix_name')/]
+Bundle-SymbolicName: [anProjectName/].[getProperty('prefix_name')/];singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: [anProjectName/].[getProperty('prefix_name')/].Activator
+Import-Package: org.osgi.framework
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.ui,
+ [anProjectName/],
+ [for (c :  ClassRoleInstance | modularPatternInstance.Get_ProjectClassRoleInstance())]
+ [anProjectName/].[getProperty('modular_prefix')/].[c.element.name.toLower()/], 
+ [/for]
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
+ org.uam.eps.modular.constraints.dialog,
+ org.apache.commons.io;bundle-version="2.2.0",
+ org.uam.eps.modular.contraints;bundle-version="0.1.0",
+ org.eclipse.epsilon.eol.engine;bundle-version="1.4.0",
+ org.eclipse.epsilon.emc.emf;bundle-version="1.4.0",
+ org.mondo.generate.modular.project;bundle-version="1.0.0",
+ org.mondo.modular.constraint.ext;bundle-version="1.0.0"
+Export-Package: [anProjectName/].[getProperty('prefix_name')/].builder
+[/file]
+[/template]

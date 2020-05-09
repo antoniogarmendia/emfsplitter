@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="pluginFile" nsURI="org::mondo::generate::constraint::project::files::pluginFile" startHeaderPosition="30" endHeaderPosition="194">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://mondo.org/runtimePatterns#/"/>
+    </input>
+    <imports href="../request/queries.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generatePluginFile" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;?eclipse version=&quot;3.4&quot;?>&#xD;&#xA;&lt;plugin>&#xD;&#xA;&#xD;&#xA;   &lt;extension&#xD;&#xA;         point=&quot;org.eclipse.ui.menus&quot;>&#xD;&#xA;      &lt;menuContribution&#xD;&#xA;            allPopups=&quot;false&quot;&#xD;&#xA;            locationURI=&quot;popup:org.eclipse.ui.popup.any?after=group.new&quot;>&#xD;&#xA;         &lt;menu&#xD;&#xA;               id=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".menu&quot;&#xD;&#xA;               label=&quot;Validate Project&quot;&#xD;&#xA;               mnemonic=&quot;L&quot;>&#xD;&#xA;            &lt;command&#xD;&#xA;                  commandId=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/11">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".command.validate.project&quot;&#xD;&#xA;                  id=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".execute&quot;&#xD;&#xA;                  label=&quot;Execute EOL exp&quot;&#xD;&#xA;                  mnemonic=&quot;L&quot;&#xD;&#xA;                  style=&quot;push&quot;>&#xD;&#xA;&#x9;&#x9;&#x9; &lt;visibleWhen&#xD;&#xA;                     checkEnabled=&quot;true&quot;>&#xD;&#xA;                  &lt;with&#xD;&#xA;                        variable=&quot;activeMenuSelection&quot;>&#xD;&#xA;                     &lt;count&#xD;&#xA;                           value=&quot;1&quot;>&#xD;&#xA;                     &lt;/count>&#xD;&#xA;                     &lt;iterate&#xD;&#xA;                           operator=&quot;and&quot;>&#xD;&#xA;                        &lt;test&#xD;&#xA;                              property=&quot;org.eclipse.core.resources.projectNature&quot;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  value=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".modular."/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                <definition href="../request/queries.emtl#/0/Get_ProjectClassRoleInstance"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/generatePluginFile/anPatternInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                </argument>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".ModularNature&quot;>&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;                        &lt;/test>&#xD;&#xA;                     &lt;/iterate>&#xD;&#xA;                  &lt;/with>&#xD;&#xA;               &lt;/visibleWhen>&#xD;&#xA;            &lt;/command>&#xD;&#xA;         &lt;/menu>&#xD;&#xA;      &lt;/menuContribution>&#xD;&#xA;   &lt;/extension>&#xD;&#xA;   &lt;extension&#xD;&#xA;         point=&quot;org.eclipse.ui.commands&quot;>&#xD;&#xA;      &lt;command&#xD;&#xA;            id=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/16">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".command.validate.project&quot;&#xD;&#xA;            name=&quot;Execute EOL Expression&quot;>&#xD;&#xA;      &lt;/command>&#xD;&#xA;   &lt;/extension>&#xD;&#xA;   &lt;extension&#xD;&#xA;         point=&quot;org.eclipse.ui.handlers&quot;>&#xD;&#xA;      &lt;handler&#xD;&#xA;            class=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/18">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".menu.ExecuteEOLMenu&quot;&#xD;&#xA;            commandId=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/20">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".command.validate.project&quot;>&#xD;&#xA;      &lt;/handler>&#xD;&#xA;   &lt;/extension>&#xD;&#xA;   &lt;extension&#xD;&#xA;         id=&quot;failedConstraint&quot;&#xD;&#xA;         name=&quot;Constraint Failed&quot;&#xD;&#xA;         point=&quot;org.eclipse.core.resources.markers&quot;>&#xD;&#xA;      &lt;persistent&#xD;&#xA;            value=&quot;true&quot;>&#xD;&#xA;      &lt;/persistent>&#xD;&#xA;      &lt;super&#xD;&#xA;            type=&quot;org.eclipse.core.resources.problemmarker&quot;>&#xD;&#xA;      &lt;/super>&#xD;&#xA;   &lt;/extension>&#xD;&#xA;   &lt;extension&#xD;&#xA;         point=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/22">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="modular_prefix">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                <definition href="../request/queries.emtl#/0/Get_ProjectClassRoleInstance"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/generatePluginFile/anPatternInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                </argument>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+            <source xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              <definition href="../request/queries.emtl#/0/Get_ProjectClassRoleInstance"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/generatePluginFile/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </argument>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ModularBuilders&quot;>&#xD;&#xA;      &lt;client&#xD;&#xA;            class=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/26">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".builder.ConstraintIncrementalProjectBuilder&quot;>&lt;/client>&#xD;&#xA;   &lt;/extension> &#xD;&#xA;   &lt;extension&#xD;&#xA;              point=&quot;org.eclipse.epsilon.common.dt.tool&quot;>&#xD;&#xA;           &lt;tool&#xD;&#xA;                 class=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/28">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".builder.ConstraintQueryTool&quot;&#xD;&#xA;                 defaultName=&quot;ConstraintQueryTool&quot;>&#xD;&#xA;           &lt;/tool>&#xD;&#xA;      &lt;/extension> &#xD;&#xA;&#x9;&lt;extension&#xD;&#xA;         point=&quot;org.model.constraint.execution.definition.ext&quot;>&#xD;&#xA;      &lt;client&#xD;&#xA;            Id=&quot;DefaultEolEngine&quot;&#xD;&#xA;            class=&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePluginFile/anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/30">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".builder.DefaultEolExecutionEngine&quot;>&#xD;&#xA;      &lt;/client>&#xD;&#xA;   &lt;/extension>&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&lt;/plugin>&#xD;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="plugin.xml">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPatternInstance">
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generatePluginFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generatePluginFile"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_ProjectClassRoleInstance">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../request/queries.emtl#/0/Get_ProjectClassRoleInstance"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_ClassRoleInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="dataStructureContain_PackageUnit_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://miso.org/dataStructureContain#//PackageUnit"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_Sequence(GenPackage)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../request/queries.emtl#/3/Sequence(GenPackage)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenPackage_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generatePluginFile">
+      <details key="start" value="200"/>
+      <details key="end" value="3666"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generatePluginFile/%">
+      <details key="start" value="299"/>
+      <details key="end" value="301"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generatePluginFile/%.1">
+      <details key="start" value="301"/>
+      <details key="end" value="3653"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generatePluginFile/%.1/%">
+      <details key="start" value="339"/>
+      <details key="end" value="639"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generatePluginFile/%.1/anProjectName">
+      <details key="start" value="640"/>
+      <details key="end" value="653"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generatePluginFile/%.1/%.1">
+      <details key="start" value="655"/>
+      <details key="end" value="656"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generatePluginFile/%.1/%.2">
+      <details key="start" value="657"/>
+      <details key="end" value="683"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generatePluginFile/%.1/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generatePluginFile/%.1/%.2/%">
+      <details key="start" value="669"/>
+      <details key="end" value="682"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generatePluginFile/%.1/%.3">
+      <details key="start" value="685"/>
+      <details key="end" value="815"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generatePluginFile/%.1/anProjectName.1">
+      <details key="start" value="816"/>
+      <details key="end" value="829"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generatePluginFile/%.1/%.4">
+      <details key="start" value="831"/>
+      <details key="end" value="832"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generatePluginFile/%.1/%.5">
+      <details key="start" value="833"/>
+      <details key="end" value="859"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generatePluginFile/%.1/%.5/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generatePluginFile/%.1/%.5/%">
+      <details key="start" value="845"/>
+      <details key="end" value="858"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generatePluginFile/%.1/%.6">
+      <details key="start" value="861"/>
+      <details key="end" value="911"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generatePluginFile/%.1/anProjectName.2">
+      <details key="start" value="912"/>
+      <details key="end" value="925"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generatePluginFile/%.1/%.7">
+      <details key="start" value="927"/>
+      <details key="end" value="1493"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generatePluginFile/%.1/anProjectName.3">
+      <details key="start" value="1494"/>
+      <details key="end" value="1507"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generatePluginFile/%.1/%.8">
+      <details key="start" value="1509"/>
+      <details key="end" value="1518"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generatePluginFile/%.1/%.9">
+      <details key="start" value="1519"/>
+      <details key="end" value="1594"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generatePluginFile/%.1/%.9/%">
+      <details key="start" value="1519"/>
+      <details key="end" value="1580"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generatePluginFile/%.1/%.9/%/%">
+      <details key="start" value="1519"/>
+      <details key="end" value="1575"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generatePluginFile/%.1/%.9/%/%/%">
+      <details key="start" value="1519"/>
+      <details key="end" value="1567"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generatePluginFile/%.1/%.9/%/%/%/anPatternInstance">
+      <details key="start" value="1519"/>
+      <details key="end" value="1536"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generatePluginFile/%.1/%.10">
+      <details key="start" value="1596"/>
+      <details key="end" value="1921"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generatePluginFile/%.1/anProjectName.4">
+      <details key="start" value="1922"/>
+      <details key="end" value="1935"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generatePluginFile/%.1/%.11">
+      <details key="start" value="1937"/>
+      <details key="end" value="1938"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generatePluginFile/%.1/%.12">
+      <details key="start" value="1939"/>
+      <details key="end" value="1965"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generatePluginFile/%.1/%.12/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generatePluginFile/%.1/%.12/%">
+      <details key="start" value="1951"/>
+      <details key="end" value="1964"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generatePluginFile/%.1/%.13">
+      <details key="start" value="1967"/>
+      <details key="end" value="2167"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generatePluginFile/%.1/anProjectName.5">
+      <details key="start" value="2168"/>
+      <details key="end" value="2181"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generatePluginFile/%.1/%.14">
+      <details key="start" value="2183"/>
+      <details key="end" value="2184"/>
+      <details key="line" value="57"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generatePluginFile/%.1/%.15">
+      <details key="start" value="2185"/>
+      <details key="end" value="2211"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generatePluginFile/%.1/%.15/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generatePluginFile/%.1/%.15/%">
+      <details key="start" value="2197"/>
+      <details key="end" value="2210"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generatePluginFile/%.1/%.16">
+      <details key="start" value="2213"/>
+      <details key="end" value="2259"/>
+      <details key="line" value="57"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generatePluginFile/%.1/anProjectName.6">
+      <details key="start" value="2260"/>
+      <details key="end" value="2273"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generatePluginFile/%.1/%.17">
+      <details key="start" value="2275"/>
+      <details key="end" value="2276"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generatePluginFile/%.1/%.18">
+      <details key="start" value="2277"/>
+      <details key="end" value="2303"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generatePluginFile/%.1/%.18/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generatePluginFile/%.1/%.18/%">
+      <details key="start" value="2289"/>
+      <details key="end" value="2302"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generatePluginFile/%.1/%.19">
+      <details key="start" value="2305"/>
+      <details key="end" value="2712"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generatePluginFile/%.1/anProjectName.7">
+      <details key="start" value="2713"/>
+      <details key="end" value="2726"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generatePluginFile/%.1/%.20">
+      <details key="start" value="2728"/>
+      <details key="end" value="2729"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generatePluginFile/%.1/%.21">
+      <details key="start" value="2730"/>
+      <details key="end" value="2759"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generatePluginFile/%.1/%.21/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generatePluginFile/%.1/%.21/%">
+      <details key="start" value="2742"/>
+      <details key="end" value="2758"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generatePluginFile/%.1/%.22">
+      <details key="start" value="2761"/>
+      <details key="end" value="2762"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generatePluginFile/%.1/%.23">
+      <details key="start" value="2763"/>
+      <details key="end" value="2838"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generatePluginFile/%.1/%.23/%">
+      <details key="start" value="2763"/>
+      <details key="end" value="2824"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generatePluginFile/%.1/%.23/%/%">
+      <details key="start" value="2763"/>
+      <details key="end" value="2819"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generatePluginFile/%.1/%.23/%/%/%">
+      <details key="start" value="2763"/>
+      <details key="end" value="2811"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generatePluginFile/%.1/%.23/%/%/%/anPatternInstance">
+      <details key="start" value="2763"/>
+      <details key="end" value="2780"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generatePluginFile/%.1/%.24">
+      <details key="start" value="2840"/>
+      <details key="end" value="2841"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generatePluginFile/%.1/%.25">
+      <details key="start" value="2842"/>
+      <details key="end" value="2903"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generatePluginFile/%.1/%.25/%">
+      <details key="start" value="2842"/>
+      <details key="end" value="2898"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generatePluginFile/%.1/%.25/%/%">
+      <details key="start" value="2842"/>
+      <details key="end" value="2890"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generatePluginFile/%.1/%.25/%/%/anPatternInstance">
+      <details key="start" value="2842"/>
+      <details key="end" value="2859"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generatePluginFile/%.1/%.26">
+      <details key="start" value="2905"/>
+      <details key="end" value="2958"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generatePluginFile/%.1/anProjectName.8">
+      <details key="start" value="2959"/>
+      <details key="end" value="2972"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generatePluginFile/%.1/%.27">
+      <details key="start" value="2974"/>
+      <details key="end" value="2975"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generatePluginFile/%.1/%.28">
+      <details key="start" value="2976"/>
+      <details key="end" value="3002"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generatePluginFile/%.1/%.28/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generatePluginFile/%.1/%.28/%">
+      <details key="start" value="2988"/>
+      <details key="end" value="3001"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generatePluginFile/%.1/%.29">
+      <details key="start" value="3004"/>
+      <details key="end" value="3195"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generatePluginFile/%.1/anProjectName.9">
+      <details key="start" value="3196"/>
+      <details key="end" value="3209"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generatePluginFile/%.1/%.30">
+      <details key="start" value="3211"/>
+      <details key="end" value="3212"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generatePluginFile/%.1/%.31">
+      <details key="start" value="3213"/>
+      <details key="end" value="3239"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generatePluginFile/%.1/%.31/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generatePluginFile/%.1/%.31/%">
+      <details key="start" value="3225"/>
+      <details key="end" value="3238"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generatePluginFile/%.1/%.32">
+      <details key="start" value="3241"/>
+      <details key="end" value="3513"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generatePluginFile/%.1/anProjectName.10">
+      <details key="start" value="3514"/>
+      <details key="end" value="3527"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generatePluginFile/%.1/%.33">
+      <details key="start" value="3529"/>
+      <details key="end" value="3530"/>
+      <details key="line" value="88"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generatePluginFile/%.1/%.34">
+      <details key="start" value="3531"/>
+      <details key="end" value="3557"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generatePluginFile/%.1/%.34/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generatePluginFile/%.1/%.34/%">
+      <details key="start" value="3543"/>
+      <details key="end" value="3556"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generatePluginFile/%.1/%.35">
+      <details key="start" value="3559"/>
+      <details key="end" value="3646"/>
+      <details key="line" value="88"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generatePluginFile/%.1/%.36">
+      <details key="start" value="308"/>
+      <details key="end" value="320"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generatePluginFile/%.1/%.37">
+      <details key="start" value="328"/>
+      <details key="end" value="335"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generatePluginFile/anProjectName">
+      <details key="start" value="236"/>
+      <details key="end" value="258"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generatePluginFile/anPatternInstance">
+      <details key="start" value="260"/>
+      <details key="end" value="295"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="wizardGeneralFile" nsURI="org::mondo::generate::modular::project::general::create::project::files::wizard::wizardGeneralFile" startHeaderPosition="30" endHeaderPosition="275">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://mondo.org/runtimePatterns#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/GenModel#/"/>
+    </input>
+    <imports href="../../request/generalQueries.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generatewizardGeneralFile" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatewizardGeneralFile/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".wizard;&#x9;&#xD;&#xA;&#xD;&#xA;import java.io.IOException;&#xD;&#xA;import java.util.ArrayList;&#xD;&#xA;import java.util.Iterator;&#xD;&#xA;import java.util.List;&#xD;&#xA;&#xD;&#xA;import org.eclipse.core.resources.IProject;&#xD;&#xA;import org.eclipse.core.resources.IProjectDescription;&#xD;&#xA;import org.eclipse.core.resources.IWorkspaceRunnable;&#xD;&#xA;import org.eclipse.core.resources.ResourcesPlugin;&#xD;&#xA;import org.eclipse.core.runtime.CoreException;&#xD;&#xA;import org.eclipse.core.runtime.IProgressMonitor;&#xD;&#xA;import org.eclipse.emf.common.util.URI;&#xD;&#xA;import org.eclipse.emf.ecore.EObject;&#xD;&#xA;import org.eclipse.emf.ecore.resource.Resource;&#xD;&#xA;import org.eclipse.emf.ecore.resource.ResourceSet;&#xD;&#xA;import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;&#xD;&#xA;import org.eclipse.jface.viewers.IStructuredSelection;&#xD;&#xA;import org.eclipse.jface.wizard.Wizard;&#xD;&#xA;import org.eclipse.ui.INewWizard;&#xD;&#xA;import org.eclipse.ui.IWorkbench;&#xD;&#xA;import "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatewizardGeneralFile/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/11">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".nature.GeneralProjectNature;&#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatewizardGeneralFile/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.9/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/17">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".wizard."/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.9/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectNature;&#xD;&#xA;"/>
+          <loopVariable name="c">
+            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/12/Sequence(ClassRoleInstance)">
+            <definition href="../../request/generalQueries.emtl#/0/getClassesRoleProject"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstances" referredVariable="/0/generatewizardGeneralFile/anPatternInstances">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import org.mondo.generate.modular.project.general.create.project.main.api.CopierReverseEngineering;&#xD;&#xA;&#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="../../request/generalQueries.emtl#/0/generateEClassImport"/>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/c">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:CollectionLiteralExp" eType="/12/Set(String)">
+                    <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL/Annotations">
+                      <details key="IMPLICIT_SET_CONVERSION" value="true"/>
+                    </eAnnotations>
+                    <part xsi:type="ocl.ecore:CollectionItem">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <item xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+                      </item>
+                    </part>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/isEmpty"/>
+                </source>
+                <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="true">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
+              </ifExpr>
+              <else>
+                <body xsi:type="mtl:IfBlock">
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+                  <body xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+                  </body>
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                  <body xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/ecorePackage"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                  </body>
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                  <body xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <definition href="../../request/generalQueries.emtl#/0/generateEClassImportBasePackage"/>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/c">
+                        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                    </argument>
+                  </body>
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;"/>
+                  <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/interfacePackageSuffix"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+                  </ifExpr>
+                  <else>
+                    <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+                    <body xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+                    </body>
+                    <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                    <body xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/ecorePackage"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                    </body>
+                    <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                    <body xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/interfacePackageSuffix"/>
+                    </body>
+                    <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+                    <body xsi:type="mtl:QueryInvocation">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <definition href="../../request/generalQueries.emtl#/0/generateEClassImportBasePackage"/>
+                      <argument xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/c">
+                          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                      </argument>
+                    </body>
+                    <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;"/>
+                  </else>
+                </body>
+              </else>
+            </body>
+            <letVariable name="genPackage">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenClass"/>
+                    <definition href="../../request/generalQueries.emtl#/0/getGenClassFromEClass"/>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.11/c">
+                        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/generatewizardGeneralFile/anEObjectGenModel">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                    </argument>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/emf/2002/Ecore#//EObject/eContainer"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/23/GenPackage">
+                  <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <loopVariable name="c">
+            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/12/Sequence(ClassRoleInstance)">
+            <definition href="../../request/generalQueries.emtl#/0/getClassesRoleProject"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstances" referredVariable="/0/generatewizardGeneralFile/anPatternInstances">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;public class GeneralModularProjectWizard extends Wizard implements INewWizard {&#xD;&#xA;&#xD;&#xA;&#x9;private GeneralModularCreationPage mainPage;&#xD;&#xA;&#x9;public List&lt;String> allNatures;&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;public GeneralModularProjectWizard() {&#xD;&#xA;&#x9;&#x9;setWindowTitle(&quot;Create a container project&quot;);&#xD;&#xA;&#x9;&#x9;allNatures = new ArrayList&lt;String>();&#xD;&#xA;&#x9;&#x9;initAllNatures();&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;private void initAllNatures() {&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;this.allNatures.add(GeneralProjectNature.ID);&#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;this.allNatures.add("/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.13/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="NewProjectNature.ID);&#xD;&#xA;"/>
+          <loopVariable name="c">
+            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/12/Sequence(ClassRoleInstance)">
+            <definition href="../../request/generalQueries.emtl#/0/getClassesRoleProject"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstances" referredVariable="/0/generatewizardGeneralFile/anPatternInstances">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;this.allNatures.add(&quot;org.eclipse.epsilon.concordance.nature.ConcordanceNature&quot;);&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;public void init(IWorkbench workbench, IStructuredSelection selection) {&#x9;&#x9;&#xD;&#xA;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;public void addPages() {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;super.addPages();&#xD;&#xA;&#x9;&#x9;mainPage = new GeneralModularCreationPage(&quot;Create General Modular Project&quot;);&#xD;&#xA;&#x9;&#x9;mainPage.setTitle(&quot;Create Container Project&quot;);&#xD;&#xA;&#x9;&#x9;mainPage.setDescription(&quot;Project that can contain several root&quot;);&#xD;&#xA;&#x9;&#x9;addPage(mainPage);&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;@Override&#xD;&#xA;&#x9;public boolean performFinish() {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;String modelUri = mainPage.getDiagramUri();&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;if (modelUri.equals(&quot;&quot;) == false) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;URI fileUri = URI.createFileURI(modelUri);&#xD;&#xA;&#x9;&#x9;&#x9;String name = fileUri.trimFileExtension().lastSegment();&#xD;&#xA;&#x9;&#x9;&#x9;createProject(name);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;ResourceSet resourceSet = new ResourceSetImpl();&#xD;&#xA;&#x9;&#x9;&#x9;Resource resource = resourceSet.getResource(fileUri, true);&#xD;&#xA;&#x9;&#x9;&#x9;reverseEngineering(name, resource);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;createProject(mainPage.getProjectName());&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;public void createProject(String name) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;final IWorkspaceRunnable create = new IWorkspaceRunnable() {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;@Override&#xD;&#xA;&#x9;&#x9;&#x9;public void run(IProgressMonitor monitor) throws CoreException {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(name);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (project.exists() == false) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;project.create(null);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;project.open(null);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;//Add Natures&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;addAllProjectNatures(project);&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;};&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;try {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;ResourcesPlugin.getWorkspace().run(create, null);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;} catch (CoreException e) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;e.printStackTrace();&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;public void addAllProjectNatures(IProject project) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;try {&#xD;&#xA;&#x9;&#x9;&#x9;IProjectDescription description = project.getDescription();&#xD;&#xA;&#x9;&#x9;&#x9;String"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="] natures = description.getNatureIds();&#xD;&#xA;&#x9;&#x9;&#x9;String"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="] newNatures = new String"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="natures.length + allNatures.size()];&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;for (int i = 0; i &lt; allNatures.size(); i++) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;newNatures"/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="natures.length + i] = allNatures.get(i);&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;System.arraycopy(natures, 0, newNatures, 0, natures.length);&#xD;&#xA;&#x9;&#x9;&#x9;description.setNatureIds(newNatures);&#xD;&#xA;&#x9;&#x9;&#x9;project.setDescription(description, null);&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;} catch (CoreException e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;e.printStackTrace();&#xD;&#xA;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;// join methods&#xD;&#xA;&#x9;public static void reverseEngineering(String name, Resource resource) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(name);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;Iterator&lt;EObject> itContents = resource.getContents().iterator();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;CopierReverseEngineering copier = new CopierReverseEngineering(true, true);&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;ResourceSet reset = new ResourceSetImpl();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;while (itContents.hasNext()) {&#xD;&#xA;&#x9;&#x9;&#x9;EObject eObject = (EObject) itContents.next();&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;if(eObject instanceof "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.23/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;"/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatewizardGeneralFile/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.23/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/51">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".ModularModel createProject = &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;new "/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatewizardGeneralFile/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.23/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/54">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".ModularModel();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;createProject.reverseEngineeringContainer(("/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generatewizardGeneralFile/%.1/%.23/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") eObject,project,copier,reset);&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;"/>
+          <loopVariable name="c">
+            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/12/Sequence(ClassRoleInstance)">
+            <definition href="../../request/generalQueries.emtl#/0/getClassesRoleProject"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstances" referredVariable="/0/generatewizardGeneralFile/anPatternInstances">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;copier.copyReferences();&#xD;&#xA;&#x9;&#x9;copier.copyIds();&#xD;&#xA;&#x9;&#x9;//save&#xD;&#xA;&#x9;&#x9;saveAll(reset);&#xD;&#xA;&#x9;&#x9;copier.clear();&#x9;&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;public static void saveAll(ResourceSet reset) {&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;Iterator&lt;Resource> itAllResources = reset.getResources().iterator();&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;while (itAllResources.hasNext()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;Resource resource = itAllResources.next();&#xD;&#xA;&#x9;&#x9;&#x9;try {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;resource.save(null);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;resource.unload();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;} catch (IOException e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;e.printStackTrace();&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatewizardGeneralFile/anProjectName">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/6">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </argument>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/wizard/GeneralModularProjectWizard.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPatternInstances">
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+      </parameter>
+      <parameter name="anEObjectGenModel">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generatewizardGeneralFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generatewizardGeneralFile"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstances">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEClassImportBasePackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/generalQueries.emtl#/0/generateEClassImportBasePackage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getClassesRoleProject">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/generalQueries.emtl#/0/getClassesRoleProject"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../../request/generalQueries.emtl#/3/Sequence(ClassRoleInstance)"/>
+        <eParameters name="anPatternInstances">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEClassImport">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/generalQueries.emtl#/0/generateEClassImport"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getGenClassFromEClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/generalQueries.emtl#/0/getGenClassFromEClass"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenClass"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstances_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_ClassRoleInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_Sequence(GenPackage)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../request/generalQueries.emtl#/3/Sequence(GenPackage)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(ClassRoleInstance)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(String)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="GenPackage">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generatewizardGeneralFile">
+      <details key="start" value="281"/>
+      <details key="end" value="6840"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generatewizardGeneralFile/%">
+      <details key="start" value="419"/>
+      <details key="end" value="421"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generatewizardGeneralFile/%.1">
+      <details key="start" value="421"/>
+      <details key="end" value="6827"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generatewizardGeneralFile/%.1/%">
+      <details key="start" value="600"/>
+      <details key="end" value="608"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generatewizardGeneralFile/%.1/%.1">
+      <details key="start" value="609"/>
+      <details key="end" value="632"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generatewizardGeneralFile/%.1/%.1/anProjectName">
+      <details key="start" value="609"/>
+      <details key="end" value="622"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generatewizardGeneralFile/%.1/%.2">
+      <details key="start" value="634"/>
+      <details key="end" value="635"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generatewizardGeneralFile/%.1/%.3">
+      <details key="start" value="636"/>
+      <details key="end" value="662"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generatewizardGeneralFile/%.1/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generatewizardGeneralFile/%.1/%.3/%">
+      <details key="start" value="648"/>
+      <details key="end" value="661"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generatewizardGeneralFile/%.1/%.4">
+      <details key="start" value="664"/>
+      <details key="end" value="1512"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generatewizardGeneralFile/%.1/%.5">
+      <details key="start" value="1513"/>
+      <details key="end" value="1536"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generatewizardGeneralFile/%.1/%.5/anProjectName">
+      <details key="start" value="1513"/>
+      <details key="end" value="1526"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generatewizardGeneralFile/%.1/%.6">
+      <details key="start" value="1538"/>
+      <details key="end" value="1539"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generatewizardGeneralFile/%.1/%.7">
+      <details key="start" value="1540"/>
+      <details key="end" value="1566"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generatewizardGeneralFile/%.1/%.7/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generatewizardGeneralFile/%.1/%.7/%">
+      <details key="start" value="1552"/>
+      <details key="end" value="1565"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generatewizardGeneralFile/%.1/%.8">
+      <details key="start" value="1568"/>
+      <details key="end" value="1599"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generatewizardGeneralFile/%.1/%.9">
+      <details key="start" value="1599"/>
+      <details key="end" value="1816"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generatewizardGeneralFile/%.1/%.9/%">
+      <details key="start" value="1676"/>
+      <details key="end" value="1683"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generatewizardGeneralFile/%.1/%.9/%.1">
+      <details key="start" value="1684"/>
+      <details key="end" value="1707"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generatewizardGeneralFile/%.1/%.9/%.1/anProjectName">
+      <details key="start" value="1684"/>
+      <details key="end" value="1697"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generatewizardGeneralFile/%.1/%.9/%.2">
+      <details key="start" value="1709"/>
+      <details key="end" value="1710"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generatewizardGeneralFile/%.1/%.9/%.3">
+      <details key="start" value="1711"/>
+      <details key="end" value="1735"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generatewizardGeneralFile/%.1/%.9/%.3/%">
+      <details key="start" value="1711"/>
+      <details key="end" value="1725"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generatewizardGeneralFile/%.1/%.9/%.3/%/%">
+      <details key="start" value="1711"/>
+      <details key="end" value="1720"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generatewizardGeneralFile/%.1/%.9/%.3/%/%/c">
+      <details key="start" value="1711"/>
+      <details key="end" value="1712"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generatewizardGeneralFile/%.1/%.9/%.4">
+      <details key="start" value="1738"/>
+      <details key="end" value="1764"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generatewizardGeneralFile/%.1/%.9/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generatewizardGeneralFile/%.1/%.9/%.4/%">
+      <details key="start" value="1750"/>
+      <details key="end" value="1763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generatewizardGeneralFile/%.1/%.9/%.5">
+      <details key="start" value="1766"/>
+      <details key="end" value="1774"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generatewizardGeneralFile/%.1/%.9/%.6">
+      <details key="start" value="1775"/>
+      <details key="end" value="1789"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generatewizardGeneralFile/%.1/%.9/%.6/%">
+      <details key="start" value="1775"/>
+      <details key="end" value="1784"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generatewizardGeneralFile/%.1/%.9/%.6/%/c">
+      <details key="start" value="1775"/>
+      <details key="end" value="1776"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generatewizardGeneralFile/%.1/%.9/%.7">
+      <details key="start" value="1791"/>
+      <details key="end" value="1810"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generatewizardGeneralFile/%.1/%.9/c">
+      <details key="start" value="1605"/>
+      <details key="end" value="1627"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generatewizardGeneralFile/%.1/%.9/%.8">
+      <details key="start" value="1630"/>
+      <details key="end" value="1672"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generatewizardGeneralFile/%.1/%.9/%.8/anPatternInstances">
+      <details key="start" value="1630"/>
+      <details key="end" value="1648"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generatewizardGeneralFile/%.1/%.10">
+      <details key="start" value="1818"/>
+      <details key="end" value="1921"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generatewizardGeneralFile/%.1/%.11">
+      <details key="start" value="1921"/>
+      <details key="end" value="2563"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generatewizardGeneralFile/%.1/%.11/%">
+      <details key="start" value="1996"/>
+      <details key="end" value="2555"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generatewizardGeneralFile/%.1/%.11/%/%">
+      <details key="start" value="2116"/>
+      <details key="end" value="2547"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%">
+      <details key="start" value="2165"/>
+      <details key="end" value="2172"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.1">
+      <details key="start" value="2173"/>
+      <details key="end" value="2204"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.1/%">
+      <details key="start" value="2194"/>
+      <details key="end" value="2203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.1/%/c">
+      <details key="start" value="2194"/>
+      <details key="end" value="2195"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.2">
+      <details key="start" value="2206"/>
+      <details key="end" value="2209"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.3">
+      <details key="start" value="2120"/>
+      <details key="end" value="2162"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.3/%">
+      <details key="start" value="2121"/>
+      <details key="end" value="2154"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.3/%/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.3/%/%/%/%">
+      <details key="start" value="2121"/>
+      <details key="end" value="2143"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.3/%/%/%/%/genPackage">
+      <details key="start" value="2121"/>
+      <details key="end" value="2131"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.3/%.1">
+      <details key="start" value="2157"/>
+      <details key="end" value="2161"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4">
+      <details key="start" value="2209"/>
+      <details key="end" value="2542"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%">
+      <details key="start" value="2217"/>
+      <details key="end" value="2540"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%">
+      <details key="start" value="2264"/>
+      <details key="end" value="2271"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.1">
+      <details key="start" value="2272"/>
+      <details key="end" value="2294"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.1/genPackage">
+      <details key="start" value="2272"/>
+      <details key="end" value="2282"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.2">
+      <details key="start" value="2296"/>
+      <details key="end" value="2297"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.3">
+      <details key="start" value="2298"/>
+      <details key="end" value="2326"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.3/%">
+      <details key="start" value="2298"/>
+      <details key="end" value="2321"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.3/%/genPackage">
+      <details key="start" value="2298"/>
+      <details key="end" value="2308"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.4">
+      <details key="start" value="2328"/>
+      <details key="end" value="2329"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.5">
+      <details key="start" value="2330"/>
+      <details key="end" value="2372"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.5/%">
+      <details key="start" value="2362"/>
+      <details key="end" value="2371"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.5/%/c">
+      <details key="start" value="2362"/>
+      <details key="end" value="2363"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.6">
+      <details key="start" value="2374"/>
+      <details key="end" value="2377"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.7">
+      <details key="start" value="2221"/>
+      <details key="end" value="2261"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.7/%">
+      <details key="start" value="2222"/>
+      <details key="end" value="2255"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.7/%/genPackage">
+      <details key="start" value="2222"/>
+      <details key="end" value="2232"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.7/%.1">
+      <details key="start" value="2258"/>
+      <details key="end" value="2260"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8">
+      <details key="start" value="2377"/>
+      <details key="end" value="2535"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%">
+      <details key="start" value="2385"/>
+      <details key="end" value="2392"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.1">
+      <details key="start" value="2393"/>
+      <details key="end" value="2415"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.1/genPackage">
+      <details key="start" value="2393"/>
+      <details key="end" value="2403"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.2">
+      <details key="start" value="2417"/>
+      <details key="end" value="2418"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.3">
+      <details key="start" value="2419"/>
+      <details key="end" value="2447"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.3/%">
+      <details key="start" value="2419"/>
+      <details key="end" value="2442"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.3/%/genPackage">
+      <details key="start" value="2419"/>
+      <details key="end" value="2429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.4">
+      <details key="start" value="2449"/>
+      <details key="end" value="2450"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.5">
+      <details key="start" value="2451"/>
+      <details key="end" value="2484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.5/genPackage">
+      <details key="start" value="2451"/>
+      <details key="end" value="2461"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.6">
+      <details key="start" value="2486"/>
+      <details key="end" value="2487"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.7">
+      <details key="start" value="2488"/>
+      <details key="end" value="2530"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.7/%">
+      <details key="start" value="2520"/>
+      <details key="end" value="2529"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.7/%/c">
+      <details key="start" value="2520"/>
+      <details key="end" value="2521"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generatewizardGeneralFile/%.1/%.11/%/%/%.4/%/%.8/%.8">
+      <details key="start" value="2532"/>
+      <details key="end" value="2535"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage">
+      <details key="start" value="2001"/>
+      <details key="end" value="2113"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%">
+      <details key="start" value="2030"/>
+      <details key="end" value="2115"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%/%">
+      <details key="start" value="2030"/>
+      <details key="end" value="2093"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%/%/%">
+      <details key="start" value="2030"/>
+      <details key="end" value="2080"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%/%/%/%">
+      <details key="start" value="2052"/>
+      <details key="end" value="2061"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%/%/%/%/c">
+      <details key="start" value="2052"/>
+      <details key="end" value="2053"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%/%/%/anEObjectGenModel">
+      <details key="start" value="2062"/>
+      <details key="end" value="2079"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generatewizardGeneralFile/%.1/%.11/%/genPackage/%/%.1">
+      <details key="start" value="2104"/>
+      <details key="end" value="2114"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generatewizardGeneralFile/%.1/%.11/c">
+      <details key="start" value="1926"/>
+      <details key="end" value="1947"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generatewizardGeneralFile/%.1/%.11/%.1">
+      <details key="start" value="1950"/>
+      <details key="end" value="1992"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generatewizardGeneralFile/%.1/%.11/%.1/anPatternInstances">
+      <details key="start" value="1950"/>
+      <details key="end" value="1968"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generatewizardGeneralFile/%.1/%.12">
+      <details key="start" value="2565"/>
+      <details key="end" value="2982"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generatewizardGeneralFile/%.1/%.13">
+      <details key="start" value="2984"/>
+      <details key="end" value="3131"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generatewizardGeneralFile/%.1/%.13/%">
+      <details key="start" value="3061"/>
+      <details key="end" value="3083"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generatewizardGeneralFile/%.1/%.13/%.1">
+      <details key="start" value="3084"/>
+      <details key="end" value="3098"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generatewizardGeneralFile/%.1/%.13/%.1/%">
+      <details key="start" value="3084"/>
+      <details key="end" value="3093"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generatewizardGeneralFile/%.1/%.13/%.1/%/c">
+      <details key="start" value="3084"/>
+      <details key="end" value="3085"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generatewizardGeneralFile/%.1/%.13/%.2">
+      <details key="start" value="3100"/>
+      <details key="end" value="3123"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generatewizardGeneralFile/%.1/%.13/c">
+      <details key="start" value="2990"/>
+      <details key="end" value="3012"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generatewizardGeneralFile/%.1/%.13/%.3">
+      <details key="start" value="3015"/>
+      <details key="end" value="3057"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generatewizardGeneralFile/%.1/%.13/%.3/anPatternInstances">
+      <details key="start" value="3015"/>
+      <details key="end" value="3033"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generatewizardGeneralFile/%.1/%.14">
+      <details key="start" value="3133"/>
+      <details key="end" value="4868"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generatewizardGeneralFile/%.1/%.15">
+      <details key="start" value="4869"/>
+      <details key="end" value="4872"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generatewizardGeneralFile/%.1/%.16">
+      <details key="start" value="4874"/>
+      <details key="end" value="4924"/>
+      <details key="line" value="141"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generatewizardGeneralFile/%.1/%.17">
+      <details key="start" value="4925"/>
+      <details key="end" value="4928"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generatewizardGeneralFile/%.1/%.18">
+      <details key="start" value="4930"/>
+      <details key="end" value="4955"/>
+      <details key="line" value="142"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generatewizardGeneralFile/%.1/%.19">
+      <details key="start" value="4956"/>
+      <details key="end" value="4959"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generatewizardGeneralFile/%.1/%.20">
+      <details key="start" value="4961"/>
+      <details key="end" value="5068"/>
+      <details key="line" value="142"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generatewizardGeneralFile/%.1/%.21">
+      <details key="start" value="5069"/>
+      <details key="end" value="5072"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generatewizardGeneralFile/%.1/%.22">
+      <details key="start" value="5074"/>
+      <details key="end" value="5836"/>
+      <details key="line" value="145"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generatewizardGeneralFile/%.1/%.23">
+      <details key="start" value="5839"/>
+      <details key="end" value="6313"/>
+      <details key="line" value="171"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generatewizardGeneralFile/%.1/%.23/%">
+      <details key="start" value="5914"/>
+      <details key="end" value="5939"/>
+      <details key="line" value="172"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generatewizardGeneralFile/%.1/%.23/%.1">
+      <details key="start" value="5940"/>
+      <details key="end" value="5954"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generatewizardGeneralFile/%.1/%.23/%.1/%">
+      <details key="start" value="5940"/>
+      <details key="end" value="5949"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generatewizardGeneralFile/%.1/%.23/%.1/%/c">
+      <details key="start" value="5940"/>
+      <details key="end" value="5941"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generatewizardGeneralFile/%.1/%.23/%.2">
+      <details key="start" value="5957"/>
+      <details key="end" value="5971"/>
+      <details key="line" value="172"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generatewizardGeneralFile/%.1/%.23/%.3">
+      <details key="start" value="5972"/>
+      <details key="end" value="5995"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generatewizardGeneralFile/%.1/%.23/%.3/anProjectName">
+      <details key="start" value="5972"/>
+      <details key="end" value="5985"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generatewizardGeneralFile/%.1/%.23/%.4">
+      <details key="start" value="5997"/>
+      <details key="end" value="5998"/>
+      <details key="line" value="174"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generatewizardGeneralFile/%.1/%.23/%.5">
+      <details key="start" value="5999"/>
+      <details key="end" value="6023"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generatewizardGeneralFile/%.1/%.23/%.5/%">
+      <details key="start" value="5999"/>
+      <details key="end" value="6013"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generatewizardGeneralFile/%.1/%.23/%.5/%/%">
+      <details key="start" value="5999"/>
+      <details key="end" value="6008"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/generatewizardGeneralFile/%.1/%.23/%.5/%/%/c">
+      <details key="start" value="5999"/>
+      <details key="end" value="6000"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/generatewizardGeneralFile/%.1/%.23/%.6">
+      <details key="start" value="6026"/>
+      <details key="end" value="6052"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/generatewizardGeneralFile/%.1/%.23/%.6/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/generatewizardGeneralFile/%.1/%.23/%.6/%">
+      <details key="start" value="6038"/>
+      <details key="end" value="6051"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/generatewizardGeneralFile/%.1/%.23/%.7">
+      <details key="start" value="6054"/>
+      <details key="end" value="6096"/>
+      <details key="line" value="174"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/generatewizardGeneralFile/%.1/%.23/%.8">
+      <details key="start" value="6097"/>
+      <details key="end" value="6120"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/generatewizardGeneralFile/%.1/%.23/%.8/anProjectName">
+      <details key="start" value="6097"/>
+      <details key="end" value="6110"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/generatewizardGeneralFile/%.1/%.23/%.9">
+      <details key="start" value="6122"/>
+      <details key="end" value="6123"/>
+      <details key="line" value="175"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/generatewizardGeneralFile/%.1/%.23/%.10">
+      <details key="start" value="6124"/>
+      <details key="end" value="6148"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/generatewizardGeneralFile/%.1/%.23/%.10/%">
+      <details key="start" value="6124"/>
+      <details key="end" value="6138"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/generatewizardGeneralFile/%.1/%.23/%.10/%/%">
+      <details key="start" value="6124"/>
+      <details key="end" value="6133"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/generatewizardGeneralFile/%.1/%.23/%.10/%/%/c">
+      <details key="start" value="6124"/>
+      <details key="end" value="6125"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/generatewizardGeneralFile/%.1/%.23/%.11">
+      <details key="start" value="6151"/>
+      <details key="end" value="6177"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/generatewizardGeneralFile/%.1/%.23/%.11/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/generatewizardGeneralFile/%.1/%.23/%.11/%">
+      <details key="start" value="6163"/>
+      <details key="end" value="6176"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/generatewizardGeneralFile/%.1/%.23/%.12">
+      <details key="start" value="6179"/>
+      <details key="end" value="6246"/>
+      <details key="line" value="175"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/generatewizardGeneralFile/%.1/%.23/%.13">
+      <details key="start" value="6247"/>
+      <details key="end" value="6261"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/generatewizardGeneralFile/%.1/%.23/%.13/%">
+      <details key="start" value="6247"/>
+      <details key="end" value="6256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/generatewizardGeneralFile/%.1/%.23/%.13/%/c">
+      <details key="start" value="6247"/>
+      <details key="end" value="6248"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/generatewizardGeneralFile/%.1/%.23/%.14">
+      <details key="start" value="6264"/>
+      <details key="end" value="6304"/>
+      <details key="line" value="176"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/generatewizardGeneralFile/%.1/%.23/c">
+      <details key="start" value="5844"/>
+      <details key="end" value="5865"/>
+      <details key="line" value="171"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/generatewizardGeneralFile/%.1/%.23/%.15">
+      <details key="start" value="5868"/>
+      <details key="end" value="5910"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/generatewizardGeneralFile/%.1/%.23/%.15/anPatternInstances">
+      <details key="start" value="5868"/>
+      <details key="end" value="5886"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/generatewizardGeneralFile/%.1/%.24">
+      <details key="start" value="6315"/>
+      <details key="end" value="6820"/>
+      <details key="line" value="179"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/generatewizardGeneralFile/%.1/%.25">
+      <details key="start" value="428"/>
+      <details key="end" value="581"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/generatewizardGeneralFile/%.1/%.25/%">
+      <details key="start" value="428"/>
+      <details key="end" value="523"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/generatewizardGeneralFile/%.1/%.25/%/%">
+      <details key="start" value="428"/>
+      <details key="end" value="501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%">
+      <details key="start" value="428"/>
+      <details key="end" value="434"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1">
+      <details key="start" value="442"/>
+      <details key="end" value="500"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%">
+      <details key="start" value="442"/>
+      <details key="end" value="471"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%/%">
+      <details key="start" value="442"/>
+      <details key="end" value="465"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%/%/anProjectName">
+      <details key="start" value="442"/>
+      <details key="end" value="455"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%/%.1">
+      <details key="start" value="468"/>
+      <details key="end" value="471"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%.1">
+      <details key="start" value="474"/>
+      <details key="end" value="500"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/generatewizardGeneralFile/%.1/%.25/%/%/%.1/%.1/%">
+      <details key="start" value="486"/>
+      <details key="end" value="499"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/generatewizardGeneralFile/%.1/%.25/%/%.1">
+      <details key="start" value="513"/>
+      <details key="end" value="518"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/generatewizardGeneralFile/%.1/%.25/%/%.2">
+      <details key="start" value="519"/>
+      <details key="end" value="522"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/generatewizardGeneralFile/%.1/%.25/%.1">
+      <details key="start" value="538"/>
+      <details key="end" value="580"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/generatewizardGeneralFile/%.1/%.26">
+      <details key="start" value="589"/>
+      <details key="end" value="596"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/generatewizardGeneralFile/anProjectName">
+      <details key="start" value="324"/>
+      <details key="end" value="346"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/generatewizardGeneralFile/anPatternInstances">
+      <details key="start" value="348"/>
+      <details key="end" value="385"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/generatewizardGeneralFile/anEObjectGenModel">
+      <details key="start" value="387"/>
+      <details key="end" value="415"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="diagramSelectionDialog" nsURI="org::mondo::acceleo::generate::sirius::main::pack::dialog::diagramSelectionDialog" startHeaderPosition="29" endHeaderPosition="383">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateDiagramSelectionDialog" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateDiagramSelectionDialog/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".editor.dialog;&#xA;&#xA;import org.eclipse.jface.viewers.ILabelProvider;&#xA;import org.eclipse.swt.SWT;&#xA;import org.eclipse.swt.events.FocusEvent;&#xA;import org.eclipse.swt.events.FocusListener;&#xA;import org.eclipse.swt.events.KeyEvent;&#xA;import org.eclipse.swt.events.KeyListener;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xA;import org.eclipse.swt.layout.GridData;&#xA;import org.eclipse.swt.layout.GridLayout;&#xA;import org.eclipse.swt.widgets.Button;&#xA;import org.eclipse.swt.widgets.Composite;&#xA;import org.eclipse.swt.widgets.Control;&#xA;import org.eclipse.swt.widgets.Label;&#xA;import org.eclipse.swt.widgets.Shell;&#xA;import org.eclipse.swt.widgets.Text;&#xA;import org.eclipse.ui.dialogs.ElementListSelectionDialog;&#xA;&#xA;public class DiagramSelectionDialog extends ElementListSelectionDialog{&#xA;&#xA;&#x9;private Text filterText;&#xA;&#x9;private boolean isNewDiagram;&#xA;&#x9;private String diagramName;&#xA;&#x9;private boolean hasRepresentations;&#xA;&#x9;&#xA;&#x9;public DiagramSelectionDialog(Shell parent, ILabelProvider renderer, boolean hasRepresentations) {&#xA;&#x9;&#x9;super(parent, renderer);&#xA;&#x9;&#x9;this.isNewDiagram = false;&#xA;&#x9;&#x9;this.hasRepresentations = hasRepresentations;&#xA;&#x9;&#x9;setTitle(&quot;Select or Create New Diagram&quot;);&#xA;&#x9;&#x9;setMessage(&quot;Select a String (* = any string, ? = any char):&quot;);&#xA;&#x9;}&#xA;&#xA;&#x9;@Override&#xA;&#x9;protected Control createDialogArea(Composite parent) {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;final Composite contents = (Composite) super.createDialogArea(parent);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Composite cont = new Composite(contents, SWT.NONE);&#xA;&#x9;&#x9;GridLayout layout_cont = new GridLayout(1,false);&#xA;&#x9;&#x9;GridData grid_cont = new GridData();&#xA;&#x9;&#x9;grid_cont.grabExcessVerticalSpace = false;&#xA;&#x9;&#x9;grid_cont.grabExcessHorizontalSpace = true;&#xA;&#x9;&#x9;grid_cont.horizontalAlignment = GridData.FILL;&#xA;&#x9;&#x9;grid_cont.verticalAlignment = GridData.BEGINNING;&#xA;&#x9;&#x9;cont.setLayoutData(grid_cont);&#xA;&#x9;&#x9;cont.setLayout(layout_cont);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Button createNewDiagram = new Button(cont, SWT.CHECK);&#xA;&#x9;&#x9;createNewDiagram.setText(&quot;Create New Diagram&quot;);&#xA;&#x9;&#x9;createNewDiagram.setSelection(false);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Composite container = new Composite(cont, SWT.NONE);&#x9;&#x9;&#xA;&#x9;&#x9;GridLayout layout = new GridLayout(2,false);&#xA;&#x9;&#x9;container.setLayout(layout);&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Label label_name = new Label(container, SWT.NONE);&#xA;&#x9;&#x9;label_name.setText(&quot;Diagram Name: &quot;);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;Text text_name = new Text(container, SWT.BORDER | SWT.SINGLE );&#xA;&#x9;&#x9;GridData gd = new GridData();&#xA;&#x9;&#x9;gd.grabExcessVerticalSpace = false;&#xA;&#x9;&#x9;gd.grabExcessHorizontalSpace = false;&#xA;&#x9;&#x9;gd.horizontalAlignment = GridData.FILL_HORIZONTAL;&#xA;&#x9;&#x9;gd.verticalAlignment = GridData.BEGINNING;&#xA;&#x9;&#x9;text_name.setLayoutData(gd);&#xA;&#x9;&#x9;text_name.setEnabled(false);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;//Listeners&#xA;&#x9;&#x9;createNewDiagram.addSelectionListener(new SelectionAdapter() {&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void widgetSelected(SelectionEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;if(createNewDiagram.getSelection() == true){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;text_name.setEnabled(true);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filterText.setEnabled(false);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;isNewDiagram = true;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;else{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;text_name.setEnabled(false);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;filterText.setEnabled(true);&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;isNewDiagram = false;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;});&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;text_name.addFocusListener(new FocusListener() {&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void focusGained(FocusEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;// do nothing&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;}&#xA;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void focusLost(FocusEvent e) {&#xA;&#x9;&#x9;&#x9;&#x9;diagramName = text_name.getText();&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;});&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;text_name.addKeyListener(new KeyListener() {&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void keyReleased(KeyEvent arg0) {&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;diagramName = text_name.getText();&#xA;&#x9;&#x9;&#x9;&#x9;if (diagramName.length() >= 1) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;getOkButton().setEnabled(true);&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;getOkButton().setEnabled(false);&#xA;&#x9;&#x9;&#x9;&#x9;}&#x9;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public void keyPressed(KeyEvent arg0) {&#xA;&#x9;&#x9;&#x9;&#x9;// Do nothing&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;});&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;if (hasRepresentations == false) {&#xA;&#x9;&#x9;&#x9;filterText.setEnabled(false);&#x9;&#xA;&#x9;&#x9;&#x9;createNewDiagram.setSelection(true);&#xA;&#x9;&#x9;&#x9;createNewDiagram.setEnabled(false);&#xA;&#x9;&#x9;&#x9;text_name.setEnabled(true);&#xA;&#x9;&#x9;&#x9;isNewDiagram = true;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;filterText.setEnabled(true);&#x9;&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;return contents;&#xA;&#x9;}&#x9;&#xA;&#xA;&#x9;@Override&#xA;&#x9;protected Text createFilterText(Composite parent) {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;filterText = super.createFilterText(parent);&#xA;&#x9;&#x9;return filterText;&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;public boolean isNewDiagram() {&#xA;&#x9;&#x9;return isNewDiagram;&#xA;&#x9;}&#xA;&#xA;&#x9;public String getDiagramName() {&#xA;&#x9;&#x9;return diagramName;&#xA;&#x9;}&#xA;&#x9;&#xA;}&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateDiagramSelectionDialog/anProjectName">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/6">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </argument>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/editor/dialog/DiagramSelectionDialog.java">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateDiagramSelectionDialog">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateDiagramSelectionDialog"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateDiagramSelectionDialog">
+      <details key="start" value="104"/>
+      <details key="end" value="4597"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateDiagramSelectionDialog/%">
+      <details key="start" value="177"/>
+      <details key="end" value="178"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateDiagramSelectionDialog/%.1">
+      <details key="start" value="178"/>
+      <details key="end" value="4585"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateDiagramSelectionDialog/%.1/%">
+      <details key="start" value="351"/>
+      <details key="end" value="359"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateDiagramSelectionDialog/%.1/%.1">
+      <details key="start" value="360"/>
+      <details key="end" value="383"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateDiagramSelectionDialog/%.1/%.1/anProjectName">
+      <details key="start" value="360"/>
+      <details key="end" value="373"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateDiagramSelectionDialog/%.1/%.2">
+      <details key="start" value="385"/>
+      <details key="end" value="386"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateDiagramSelectionDialog/%.1/%.3">
+      <details key="start" value="387"/>
+      <details key="end" value="413"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateDiagramSelectionDialog/%.1/%.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateDiagramSelectionDialog/%.1/%.3/%">
+      <details key="start" value="399"/>
+      <details key="end" value="412"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateDiagramSelectionDialog/%.1/%.4">
+      <details key="start" value="415"/>
+      <details key="end" value="4578"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateDiagramSelectionDialog/%.1/%.5">
+      <details key="start" value="185"/>
+      <details key="end" value="333"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateDiagramSelectionDialog/%.1/%.5/%">
+      <details key="start" value="185"/>
+      <details key="end" value="280"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%">
+      <details key="start" value="185"/>
+      <details key="end" value="258"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%">
+      <details key="start" value="185"/>
+      <details key="end" value="191"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1">
+      <details key="start" value="199"/>
+      <details key="end" value="257"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%">
+      <details key="start" value="199"/>
+      <details key="end" value="228"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%/%">
+      <details key="start" value="199"/>
+      <details key="end" value="222"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%/%/anProjectName">
+      <details key="start" value="199"/>
+      <details key="end" value="212"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%/%.1">
+      <details key="start" value="225"/>
+      <details key="end" value="228"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%.1">
+      <details key="start" value="231"/>
+      <details key="end" value="257"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%/%.1/%.1/%">
+      <details key="start" value="243"/>
+      <details key="end" value="256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%.1">
+      <details key="start" value="270"/>
+      <details key="end" value="275"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateDiagramSelectionDialog/%.1/%.5/%/%.2">
+      <details key="start" value="276"/>
+      <details key="end" value="279"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateDiagramSelectionDialog/%.1/%.5/%.1">
+      <details key="start" value="288"/>
+      <details key="end" value="332"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateDiagramSelectionDialog/%.1/%.6">
+      <details key="start" value="341"/>
+      <details key="end" value="348"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateDiagramSelectionDialog/anProjectName">
+      <details key="start" value="152"/>
+      <details key="end" value="174"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

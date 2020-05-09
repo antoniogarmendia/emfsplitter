@@ -1,0 +1,94 @@
+[comment encoding = UTF-8 /]
+[module pluginFile('http://www.eclipse.org/emf/2002/Ecore','http://mondo.org/runtimePatterns')]
+[import org::mondo::generate::constraint::project::request::queries/]
+
+[template public generatePluginFile(anProjectName : String, anPatternInstance : PatternInstance)]
+
+[file ('plugin.xml',false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.new">
+         <menu
+               id="[anProjectName/].[getProperty('prefix_name')/].menu"
+               label="Validate Project"
+               mnemonic="L">
+            <command
+                  commandId="[anProjectName/].[getProperty('prefix_name')/].command.validate.project"
+                  id="[anProjectName/].execute"
+                  label="Execute EOL exp"
+                  mnemonic="L"
+                  style="push">
+			 <visibleWhen
+                     checkEnabled="true">
+                  <with
+                        variable="activeMenuSelection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           operator="and">
+                        <test
+                              property="org.eclipse.core.resources.projectNature"
+							  value="[anProjectName/].modular.[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/].ModularNature">							
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="[anProjectName/].[getProperty('prefix_name')/].command.validate.project"
+            name="Execute EOL Expression">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="[anProjectName/].[getProperty('prefix_name')/].menu.ExecuteEOLMenu"
+            commandId="[anProjectName/].[getProperty('prefix_name')/].command.validate.project">
+      </handler>
+   </extension>
+   <extension
+         id="failedConstraint"
+         name="Constraint Failed"
+         point="org.eclipse.core.resources.markers">
+      <persistent
+            value="true">
+      </persistent>
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+   </extension>
+   <extension
+         point="[anProjectName/].[getProperty('modular_prefix')/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name.toLowerCase()/].[anPatternInstance.Get_ProjectClassRoleInstance().element.name/]ModularBuilders">
+      <client
+            class="[anProjectName/].[getProperty('prefix_name')/].builder.ConstraintIncrementalProjectBuilder"></client>
+   </extension> 
+   <extension
+              point="org.eclipse.epsilon.common.dt.tool">
+           <tool
+                 class="[anProjectName/].[getProperty('prefix_name')/].builder.ConstraintQueryTool"
+                 defaultName="ConstraintQueryTool">
+           </tool>
+      </extension> 
+	<extension
+         point="org.model.constraint.execution.definition.ext">
+      <client
+            Id="DefaultEolEngine"
+            class="[anProjectName/].[getProperty('prefix_name')/].builder.DefaultEolExecutionEngine">
+      </client>
+   </extension>
+		
+</plugin>
+[/file]
+[/template]

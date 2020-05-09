@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="containsStructureFiles" nsURI="org::mondo::generate::constraint::project::files::contains::containsStructureFiles" startHeaderPosition="29" endHeaderPosition="265">
+    <input>
+      <takesTypesFrom href="http://miso.org/dataStructureContain#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/GenModel#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <imports href="../../request/queries.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateconstraintFiles" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+          <body xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintFiles/anProjectName">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/11">
+              <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".contains;&#xA;&#xA;import org.eclipse.emf.common.util.ECollections;&#xA;import org.eclipse.emf.common.util.EList;&#xA;import org.eclipse.emf.ecore.EClass;&#xA;&#xA;"/>
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <body xsi:type="mtl:IfBlock">
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/6/Sequence(String)">
+                      <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(GenPackage)">
+                        <source xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/generateconstraintFiles/anEObjectGenModel">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel/genPackages"/>
+                      </source>
+                      <body xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect/temp1">
+                          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/classPackageSuffix"/>
+                      </body>
+                      <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                      </iterator>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/isEmpty"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="true">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
+                </source>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:CollectionLiteralExp" eType="/6/Set(String)">
+                      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL/Annotations">
+                        <details key="IMPLICIT_SET_CONVERSION" value="true"/>
+                      </eAnnotations>
+                      <part xsi:type="ocl.ecore:CollectionItem">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <item xsi:type="ocl.ecore:PropertyCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage">
+                            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                          </source>
+                          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+                        </item>
+                      </part>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/isEmpty"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../request/queries.emtl#/0/generateEClassImportFactory"/>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                  <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://miso.org/dataStructureContain#//PackageUnit/anEClass"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/prefix"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xA;"/>
+            <body xsi:type="mtl:IfBlock">
+              <ifExpr xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="usedGenPackages" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/usedGenPackages">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/basePackage"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+              <body xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="usedGenPackages" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/usedGenPackages">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/prefix"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+              </body>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="../../request/queries.emtl#/0/generateImportFactory"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="usedGenPackages" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/usedGenPackages">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="; &#xA;"/>
+              <loopVariable name="usedGenPackages">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/6/Sequence(GenPackage)">
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(GenPackage)">
+                  <source xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/generateconstraintFiles/anEObjectGenModel">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel/usedGenPackages"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/asSequence"/>
+              </iterSet>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;&#xA;public class "/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../request/queries.emtl#/0/getClassContainsName"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" {&#xA;&#xA;&#x9;public static final EClass getRoot() {&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;return "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/prefix"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Factory.eINSTANCE.get"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="genPackage" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/prefix"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Package()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;.get"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                  <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://miso.org/dataStructureContain#//PackageUnit/anEClass"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="();&#x9;&#xA;&#x9;}&#xA;&#xA;&#x9;public static final EList&lt;EClass> listOfContains = ECollections.&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;asEList(&#xA;&#xA;"/>
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  <definition href="../../request/queries.emtl#/0/getGenModelPackageByEClass"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/generateconstraintFiles/anEObjectGenModel">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/c">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                  </argument>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/prefix"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Factory.eINSTANCE.&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;get"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                  <definition href="../../request/queries.emtl#/0/getGenModelPackageByEClass"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/generateconstraintFiles/anEObjectGenModel">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/c">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                  </argument>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage/prefix"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Package().&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;get"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/c">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() &#xA;"/>
+              <body xsi:type="mtl:IfBlock">
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,&#xA;"/>
+                <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp" eType="/6/Sequence(EClass)">
+                        <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EClass)">
+                          <source xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                            <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                          </source>
+                          <referredProperty xsi:type="ecore:EReference" href="http://miso.org/dataStructureContain#//PackageUnit/contains"/>
+                        </source>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/asSequence"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/size"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/35">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/="/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+                </ifExpr>
+              </body>
+              <loopVariable name="c">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EClass)">
+                <source xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                  <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://miso.org/dataStructureContain#//PackageUnit/contains"/>
+              </iterSet>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;);&#xA;&#x9;&#xA;}&#xA;&#xA;"/>
+            <letVariable name="genPackage">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+              <initExpression xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenClass"/>
+                    <definition href="../../request/queries.emtl#/0/getGenClassFromEClass"/>
+                    <argument xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                        <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://miso.org/dataStructureContain#//PackageUnit/anEClass"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/generateconstraintFiles/anEObjectGenModel">
+                      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+                    </argument>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/emf/2002/Ecore#//EObject/eContainer"/>
+                </source>
+                <argument xsi:type="ocl.ecore:TypeExp" eType="/12/GenPackage">
+                  <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+              </initExpression>
+            </letVariable>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generateconstraintFiles/anProjectName">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        </source>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </argument>
+                    </source>
+                    <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/8">
+                        <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </argument>
+                    </argument>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/contains/">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+            </source>
+            <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="../../request/queries.emtl#/0/getClassContainsName"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="packUnit" referredVariable="/0/generateconstraintFiles/%.1/packUnit">
+                  <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".java">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+          </fileUrl>
+          <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </charset>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <loopVariable name="packUnit">
+          <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(PackageUnit)">
+          <source xsi:type="ocl.ecore:VariableExp" name="structureContain" referredVariable="/0/generateconstraintFiles/structureContain">
+            <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//ContainStructure"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://miso.org/dataStructureContain#//ContainStructure/packagesUnits"/>
+        </iterSet>
+      </body>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="structureContain">
+        <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//ContainStructure"/>
+      </parameter>
+      <parameter name="anEObjectGenModel">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateconstraintFiles">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateconstraintFiles"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="structureContain">
+          <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//ContainStructure"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getClassContainsName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/queries.emtl#/0/getClassContainsName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="packUnit">
+          <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getGenClassFromEClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/queries.emtl#/0/getGenClassFromEClass"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenClass"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEClassImportFactory">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/queries.emtl#/0/generateEClassImportFactory"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anEClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        </eParameters>
+        <eParameters name="prefix">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateImportFactory">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/queries.emtl#/0/generateImportFactory"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="genPackage">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getGenModelPackageByEClass">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../request/queries.emtl#/0/getGenModelPackageByEClass"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+        <eParameters name="genModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+        <eParameters name="eClass">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_ClassRoleInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="dataStructureContain_PackageUnit_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://miso.org/dataStructureContain#//PackageUnit"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_Sequence(GenPackage)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../request/queries.emtl#/3/Sequence(GenPackage)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenPackage_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(PackageUnit)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(GenPackage)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(String)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(GenPackage)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(EClass)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(EClass)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="GenPackage">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://miso.org/dataStructureContain#//PackageUnit"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateconstraintFiles">
+      <details key="start" value="269"/>
+      <details key="end" value="2174"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateconstraintFiles/%">
+      <details key="start" value="402"/>
+      <details key="end" value="403"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateconstraintFiles/%.1">
+      <details key="start" value="403"/>
+      <details key="end" value="2162"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateconstraintFiles/%.1/%">
+      <details key="start" value="466"/>
+      <details key="end" value="467"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateconstraintFiles/%.1/%.1">
+      <details key="start" value="467"/>
+      <details key="end" value="2154"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateconstraintFiles/%.1/%.1/%">
+      <details key="start" value="660"/>
+      <details key="end" value="668"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateconstraintFiles/%.1/%.1/anProjectName">
+      <details key="start" value="669"/>
+      <details key="end" value="682"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateconstraintFiles/%.1/%.1/%.1">
+      <details key="start" value="684"/>
+      <details key="end" value="685"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateconstraintFiles/%.1/%.1/%.2">
+      <details key="start" value="686"/>
+      <details key="end" value="712"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateconstraintFiles/%.1/%.1/%.2/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateconstraintFiles/%.1/%.1/%.2/%">
+      <details key="start" value="698"/>
+      <details key="end" value="711"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateconstraintFiles/%.1/%.1/%.3">
+      <details key="start" value="714"/>
+      <details key="end" value="855"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateconstraintFiles/%.1/%.1/%.4">
+      <details key="start" value="855"/>
+      <details key="end" value="2145"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateconstraintFiles/%.1/%.1/%.4/%">
+      <details key="start" value="983"/>
+      <details key="end" value="984"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1">
+      <details key="start" value="1003"/>
+      <details key="end" value="1124"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%">
+      <details key="start" value="1007"/>
+      <details key="end" value="1121"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%">
+      <details key="start" value="1007"/>
+      <details key="end" value="1075"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%">
+      <details key="start" value="1008"/>
+      <details key="end" value="1067"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect">
+      <details key="start" value="1008"/>
+      <details key="end" value="1056"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect/%">
+      <details key="start" value="1008"/>
+      <details key="end" value="1037"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect/%/anEObjectGenModel">
+      <details key="start" value="1008"/>
+      <details key="end" value="1025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect/%.1">
+      <details key="start" value="1038"/>
+      <details key="end" value="1056"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%/%.1">
+      <details key="start" value="1070"/>
+      <details key="end" value="1074"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%.1">
+      <details key="start" value="1080"/>
+      <details key="end" value="1121"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%.1/%">
+      <details key="start" value="1080"/>
+      <details key="end" value="1113"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%.1/%/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%.1/%/%/%/%">
+      <details key="start" value="1080"/>
+      <details key="end" value="1102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%.1/%/%/%/%/genPackage">
+      <details key="start" value="1080"/>
+      <details key="end" value="1090"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.1/%/%.1/%.1">
+      <details key="start" value="1116"/>
+      <details key="end" value="1121"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.2">
+      <details key="start" value="1125"/>
+      <details key="end" value="1132"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.3">
+      <details key="start" value="1133"/>
+      <details key="end" value="1155"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.3/genPackage">
+      <details key="start" value="1133"/>
+      <details key="end" value="1143"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.4">
+      <details key="start" value="1157"/>
+      <details key="end" value="1158"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.5">
+      <details key="start" value="1159"/>
+      <details key="end" value="1224"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.5/%">
+      <details key="start" value="1187"/>
+      <details key="end" value="1204"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.5/%/packUnit">
+      <details key="start" value="1187"/>
+      <details key="end" value="1195"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.5/%.1">
+      <details key="start" value="1206"/>
+      <details key="end" value="1223"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.5/%.1/genPackage">
+      <details key="start" value="1206"/>
+      <details key="end" value="1216"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.6">
+      <details key="start" value="1226"/>
+      <details key="end" value="1228"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.7">
+      <details key="start" value="1228"/>
+      <details key="end" value="1233"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.7/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.8">
+      <details key="start" value="1234"/>
+      <details key="end" value="1235"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9">
+      <details key="start" value="1235"/>
+      <details key="end" value="1449"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%">
+      <details key="start" value="1322"/>
+      <details key="end" value="1329"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.1">
+      <details key="start" value="1330"/>
+      <details key="end" value="1357"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.1/usedGenPackages">
+      <details key="start" value="1330"/>
+      <details key="end" value="1345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.2">
+      <details key="start" value="1359"/>
+      <details key="end" value="1360"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.3">
+      <details key="start" value="1361"/>
+      <details key="end" value="1397"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.3/%">
+      <details key="start" value="1361"/>
+      <details key="end" value="1383"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.3/%/usedGenPackages">
+      <details key="start" value="1361"/>
+      <details key="end" value="1376"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.4">
+      <details key="start" value="1400"/>
+      <details key="end" value="1438"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.4/usedGenPackages">
+      <details key="start" value="1422"/>
+      <details key="end" value="1437"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.5">
+      <details key="start" value="1440"/>
+      <details key="end" value="1443"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/usedGenPackages">
+      <details key="start" value="1241"/>
+      <details key="end" value="1269"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.6">
+      <details key="start" value="1272"/>
+      <details key="end" value="1319"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.6/%">
+      <details key="start" value="1272"/>
+      <details key="end" value="1305"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.9/%.6/%/anEObjectGenModel">
+      <details key="start" value="1272"/>
+      <details key="end" value="1289"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.10">
+      <details key="start" value="1479"/>
+      <details key="end" value="1495"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.11">
+      <details key="start" value="1496"/>
+      <details key="end" value="1527"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.11/packUnit">
+      <details key="start" value="1496"/>
+      <details key="end" value="1504"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.12">
+      <details key="start" value="1529"/>
+      <details key="end" value="1585"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.13">
+      <details key="start" value="1586"/>
+      <details key="end" value="1603"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.13/genPackage">
+      <details key="start" value="1586"/>
+      <details key="end" value="1596"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.14">
+      <details key="start" value="1605"/>
+      <details key="end" value="1626"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.15">
+      <details key="start" value="1627"/>
+      <details key="end" value="1644"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.15/genPackage">
+      <details key="start" value="1627"/>
+      <details key="end" value="1637"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.16">
+      <details key="start" value="1646"/>
+      <details key="end" value="1665"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.17">
+      <details key="start" value="1666"/>
+      <details key="end" value="1688"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.17/%">
+      <details key="start" value="1666"/>
+      <details key="end" value="1683"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.17/%/packUnit">
+      <details key="start" value="1666"/>
+      <details key="end" value="1674"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.18">
+      <details key="start" value="1690"/>
+      <details key="end" value="1782"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19">
+      <details key="start" value="1786"/>
+      <details key="end" value="2119"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%">
+      <details key="start" value="1825"/>
+      <details key="end" value="1843"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.1">
+      <details key="start" value="1844"/>
+      <details key="end" value="1898"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.1/%">
+      <details key="start" value="1844"/>
+      <details key="end" value="1891"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.1/%/anEObjectGenModel">
+      <details key="start" value="1871"/>
+      <details key="end" value="1888"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.1/%/c">
+      <details key="start" value="1889"/>
+      <details key="end" value="1890"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.2">
+      <details key="start" value="1900"/>
+      <details key="end" value="1930"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.3">
+      <details key="start" value="1931"/>
+      <details key="end" value="1985"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.3/%">
+      <details key="start" value="1931"/>
+      <details key="end" value="1978"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.3/%/anEObjectGenModel">
+      <details key="start" value="1958"/>
+      <details key="end" value="1975"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.3/%/c">
+      <details key="start" value="1976"/>
+      <details key="end" value="1977"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.4">
+      <details key="start" value="1987"/>
+      <details key="end" value="2008"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.5">
+      <details key="start" value="2009"/>
+      <details key="end" value="2015"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.5/c">
+      <details key="start" value="2009"/>
+      <details key="end" value="2010"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.6">
+      <details key="start" value="2017"/>
+      <details key="end" value="2021"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7">
+      <details key="start" value="2026"/>
+      <details key="end" value="2102"/>
+      <details key="line" value="49"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%">
+      <details key="start" value="2084"/>
+      <details key="end" value="2092"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1">
+      <details key="start" value="2030"/>
+      <details key="end" value="2082"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1/%">
+      <details key="start" value="2035"/>
+      <details key="end" value="2080"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1/%/%">
+      <details key="start" value="2036"/>
+      <details key="end" value="2075"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1/%/%/%">
+      <details key="start" value="2036"/>
+      <details key="end" value="2067"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1/%/%/%/%">
+      <details key="start" value="2036"/>
+      <details key="end" value="2053"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1/%/%/%/%/packUnit">
+      <details key="start" value="2036"/>
+      <details key="end" value="2044"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.7/%.1/%/i">
+      <details key="start" value="2078"/>
+      <details key="end" value="2079"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/c">
+      <details key="start" value="1792"/>
+      <details key="end" value="1802"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.8">
+      <details key="start" value="1805"/>
+      <details key="end" value="1822"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.19/%.8/packUnit">
+      <details key="start" value="1805"/>
+      <details key="end" value="1813"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateconstraintFiles/%.1/%.1/%.4/%.20">
+      <details key="start" value="2120"/>
+      <details key="end" value="2139"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage">
+      <details key="start" value="860"/>
+      <details key="end" value="980"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%">
+      <details key="start" value="889"/>
+      <details key="end" value="982"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%/%">
+      <details key="start" value="889"/>
+      <details key="end" value="960"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%/%/%">
+      <details key="start" value="889"/>
+      <details key="end" value="947"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%/%/%/%">
+      <details key="start" value="911"/>
+      <details key="end" value="928"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%/%/%/%/packUnit">
+      <details key="start" value="911"/>
+      <details key="end" value="919"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%/%/%/anEObjectGenModel">
+      <details key="start" value="929"/>
+      <details key="end" value="946"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateconstraintFiles/%.1/%.1/%.4/genPackage/%/%.1">
+      <details key="start" value="971"/>
+      <details key="end" value="981"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateconstraintFiles/%.1/%.1/%.5">
+      <details key="start" value="2146"/>
+      <details key="end" value="2147"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateconstraintFiles/%.1/%.1/%.6">
+      <details key="start" value="474"/>
+      <details key="end" value="642"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateconstraintFiles/%.1/%.1/%.6/%">
+      <details key="start" value="474"/>
+      <details key="end" value="590"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%">
+      <details key="start" value="474"/>
+      <details key="end" value="569"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%">
+      <details key="start" value="474"/>
+      <details key="end" value="547"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%">
+      <details key="start" value="474"/>
+      <details key="end" value="480"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1">
+      <details key="start" value="488"/>
+      <details key="end" value="546"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%">
+      <details key="start" value="488"/>
+      <details key="end" value="517"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%/%">
+      <details key="start" value="488"/>
+      <details key="end" value="511"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%/%/anProjectName">
+      <details key="start" value="488"/>
+      <details key="end" value="501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%/%.1">
+      <details key="start" value="514"/>
+      <details key="end" value="517"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%.1">
+      <details key="start" value="520"/>
+      <details key="end" value="546"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%/%.1/%.1/%">
+      <details key="start" value="532"/>
+      <details key="end" value="545"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%.1">
+      <details key="start" value="559"/>
+      <details key="end" value="564"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%/%.2">
+      <details key="start" value="565"/>
+      <details key="end" value="568"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generateconstraintFiles/%.1/%.1/%.6/%/%.1">
+      <details key="start" value="577"/>
+      <details key="end" value="589"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generateconstraintFiles/%.1/%.1/%.6/%.1">
+      <details key="start" value="600"/>
+      <details key="end" value="641"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generateconstraintFiles/%.1/%.1/%.6/%.1/%">
+      <details key="start" value="600"/>
+      <details key="end" value="631"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generateconstraintFiles/%.1/%.1/%.6/%.1/%/packUnit">
+      <details key="start" value="600"/>
+      <details key="end" value="608"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/generateconstraintFiles/%.1/%.1/%.6/%.1/%.1">
+      <details key="start" value="634"/>
+      <details key="end" value="641"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/generateconstraintFiles/%.1/%.1/%.7">
+      <details key="start" value="650"/>
+      <details key="end" value="657"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/generateconstraintFiles/%.1/%.2">
+      <details key="start" value="2155"/>
+      <details key="end" value="2156"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/generateconstraintFiles/%.1/packUnit">
+      <details key="start" value="408"/>
+      <details key="end" value="430"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/generateconstraintFiles/%.1/%.3">
+      <details key="start" value="433"/>
+      <details key="end" value="463"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/generateconstraintFiles/%.1/%.3/structureContain">
+      <details key="start" value="433"/>
+      <details key="end" value="449"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/generateconstraintFiles/anProjectName">
+      <details key="start" value="310"/>
+      <details key="end" value="332"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/generateconstraintFiles/structureContain">
+      <details key="start" value="334"/>
+      <details key="end" value="369"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/generateconstraintFiles/anEObjectGenModel">
+      <details key="start" value="371"/>
+      <details key="end" value="399"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

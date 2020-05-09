@@ -1,0 +1,2037 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="CreateFolderNewWizardPage" nsURI="org::mondo::generate::modular::project::main::pack::wizard::folder::CreateFolderNewWizardPage" startHeaderPosition="30" endHeaderPosition="235">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://mondo.org/runtimePatterns#/"/>
+    </input>
+    <imports href="../../../requests/global_queriesModularProject.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="CreateFolderNewWizardPage" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+        <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/CreateFolderNewWizardPage/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                  <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/CreateFolderNewWizardPage/anPatternInstance">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                  </argument>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+          </body>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/13">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".wizard.folder;&#xD;&#xA;&#xD;&#xA;import org.eclipse.core.resources.IContainer;&#xD;&#xA;import org.eclipse.core.resources.IResource;&#xD;&#xA;import org.eclipse.core.resources.ResourcesPlugin;&#xD;&#xA;import org.eclipse.core.runtime.Path;&#xD;&#xA;import org.eclipse.jface.viewers.ISelection;&#xD;&#xA;import org.eclipse.jface.viewers.IStructuredSelection;&#xD;&#xA;import org.eclipse.jface.wizard.WizardPage;&#xD;&#xA;import org.eclipse.swt.SWT;&#xD;&#xA;import org.eclipse.swt.events.ModifyEvent;&#xD;&#xA;import org.eclipse.swt.events.ModifyListener;&#xD;&#xA;import org.eclipse.swt.events.SelectionAdapter;&#xD;&#xA;import org.eclipse.swt.events.SelectionEvent;&#xD;&#xA;import org.eclipse.swt.layout.GridData;&#xD;&#xA;import org.eclipse.swt.layout.GridLayout;&#xD;&#xA;import org.eclipse.swt.widgets.Button;&#xD;&#xA;import org.eclipse.swt.widgets.Composite;&#xD;&#xA;import org.eclipse.swt.widgets.Label;&#xD;&#xA;import org.eclipse.swt.widgets.Text;&#xD;&#xA;import org.eclipse.ui.dialogs.ContainerSelectionDialog;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;/**&#xD;&#xA; * The &quot;New&quot; wizard page allows setting the container for the new file as well&#xD;&#xA; * as the file name. The page will only accept file name without the extension&#xD;&#xA; * OR with the extension that matches the expected one (figure).&#xD;&#xA; */&#xD;&#xA;&#xD;&#xA;public class "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CreateFolderWizardPage extends WizardPage {&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;private Text containerText;&#xD;&#xA;&#x9;private Text fileText;&#xD;&#xA;&#xD;&#xA;&#x9;private ISelection selection;&#xD;&#xA;&#xD;&#xA;&#x9;//Attributes&#xD;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;private Label lbl_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;&#x9;private Text txt_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                    <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="name">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/attr">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </ifExpr>
+            </body>
+            <loopVariable name="attr">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EAttribute)">
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eAllAttributes"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;/**&#xD;&#xA;&#x9; * Constructor for "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CreateFolderWizardPage.&#xD;&#xA;&#x9; * &#xD;&#xA;&#x9; * @param pageName&#xD;&#xA;&#x9; */&#xD;&#xA;&#x9;public "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CreateFolderWizardPage(ISelection selection) {&#xD;&#xA;&#x9;&#x9;super(&quot;wizardPage&quot;);&#xD;&#xA;&#x9;&#x9;setTitle(&quot;Create a Folder&quot;);&#xD;&#xA;&#x9;&#x9;setDescription(&quot;This wizard creates a new folder.&quot;);&#xD;&#xA;&#x9;&#x9;this.selection = selection;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;/**&#xD;&#xA;&#x9; * @see IDialogPage#createControl(Composite)&#xD;&#xA;&#x9; */&#xD;&#xA;&#x9;public void createControl(Composite parent) {&#xD;&#xA;&#x9;&#x9;Composite container = new Composite(parent, SWT.NULL);&#xD;&#xA;&#x9;&#x9;GridLayout layout = new GridLayout();&#xD;&#xA;&#x9;&#x9;container.setLayout(layout);&#xD;&#xA;&#x9;&#x9;layout.numColumns = 3;&#xD;&#xA;&#x9;&#x9;layout.verticalSpacing = 9;&#xD;&#xA;&#x9;&#x9;Label label = new Label(container, SWT.NULL);&#xD;&#xA;&#x9;&#x9;label.setText(&quot;&amp;Container:&quot;);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;containerText = new Text(container, SWT.BORDER | SWT.SINGLE);&#xD;&#xA;&#x9;&#x9;GridData gd = new GridData(GridData.FILL_HORIZONTAL);&#xD;&#xA;&#x9;&#x9;containerText.setLayoutData(gd);&#xD;&#xA;&#x9;&#x9;containerText.addModifyListener(new ModifyListener() {&#xD;&#xA;&#x9;&#x9;&#x9;public void modifyText(ModifyEvent e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;dialogChanged();&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;Button button = new Button(container, SWT.PUSH);&#xD;&#xA;&#x9;&#x9;button.setText(&quot;Browse...&quot;);&#xD;&#xA;&#x9;&#x9;button.addSelectionListener(new SelectionAdapter() {&#xD;&#xA;&#x9;&#x9;&#x9;public void widgetSelected(SelectionEvent e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;handleBrowse();&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#x9;&#x9;label = new Label(container, SWT.NULL);&#xD;&#xA;&#x9;&#x9;label.setText(&quot;&amp;Folder name("/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+              <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="name">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="):&quot;);&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;fileText = new Text(container, SWT.BORDER | SWT.SINGLE);&#xD;&#xA;&#x9;&#x9;gd = new GridData(GridData.FILL_HORIZONTAL);&#xD;&#xA;&#x9;&#x9;fileText.setLayoutData(gd);&#xD;&#xA;&#x9;&#x9;fileText.addModifyListener(new ModifyListener() {&#xD;&#xA;&#x9;&#x9;&#x9;public void modifyText(ModifyEvent e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;dialogChanged();&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;//Attributes&#xD;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;new Label(container, SWT.NONE);&#xD;&#xA;&#x9;&#x9;lbl_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = new Label(container, SWT.NONE);&#xD;&#xA;&#x9;&#x9;lbl_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".setText(&quot;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=": &quot;);&#xD;&#xA;&#x9;&#x9;txt_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = new Text(container, SWT.BORDER | SWT.SINGLE );&#xD;&#xA;&#x9;&#x9;txt_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".setLayoutData(new GridData(GridData.FILL_HORIZONTAL));&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                    <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="name">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#xD;&#xA;"/>
+            <loopVariable name="attr">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EAttribute)">
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eAllAttributes"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;&#x9;//Add Listeners for Attributes&#xD;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;txt_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".addModifyListener(new ModifyListener() {&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;@Override&#xD;&#xA;&#x9;&#x9;&#x9;public void modifyText(ModifyEvent e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated method stub&#xD;&#xA;&#x9;&#x9;&#x9;&#x9; &#xD;&#xA;&#x9;&#x9;&#x9;&#x9; Validate_Form();&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                    <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="name">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/attr">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </ifExpr>
+            </body>
+            <loopVariable name="attr">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EAttribute)">
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eAllAttributes"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;//End Attributes&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;initialize();&#xD;&#xA;&#x9;&#x9;dialogChanged();&#xD;&#xA;&#x9;&#x9;setControl(container);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;/**&#xD;&#xA;&#x9; * Tests if the current workbench selection is a suitable container to use.&#xD;&#xA;&#x9; */&#xD;&#xA;&#xD;&#xA;&#x9;private void initialize() {&#xD;&#xA;&#x9;&#x9;if (selection != null &amp;&amp; selection.isEmpty() == false&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&amp;&amp; selection instanceof IStructuredSelection) {&#xD;&#xA;&#x9;&#x9;&#x9;IStructuredSelection ssel = (IStructuredSelection) selection;&#xD;&#xA;&#x9;&#x9;&#x9;if (ssel.size() > 1)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;&#x9;Object obj = ssel.getFirstElement();&#xD;&#xA;&#x9;&#x9;&#x9;if (obj instanceof IResource) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;IContainer container;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (obj instanceof IContainer)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;container = (IContainer) obj;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;container = ((IResource) obj).getParent();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;containerText.setText(container.getFullPath().toString());&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;fileText.setText(&quot;new_folder&quot;);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;/**&#xD;&#xA;&#x9; * Uses the standard container selection dialog to choose the new value for&#xD;&#xA;&#x9; * the container field.&#xD;&#xA;&#x9; */&#xD;&#xA;&#xD;&#xA;&#x9;private void handleBrowse() {&#xD;&#xA;&#x9;&#x9;ContainerSelectionDialog dialog = new ContainerSelectionDialog(&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&quot;Select new container&quot;);&#xD;&#xA;&#x9;&#x9;if (dialog.open() == ContainerSelectionDialog.OK) {&#xD;&#xA;&#x9;&#x9;&#x9;Object"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[]">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" result = dialog.getResult();&#xD;&#xA;&#x9;&#x9;&#x9;if (result.length == 1) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;containerText.setText(((Path) result"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[0]">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=").toString());&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;/**&#xD;&#xA;&#x9; * Ensures that both text fields are set.&#xD;&#xA;&#x9; */&#xD;&#xA;&#xD;&#xA;&#x9;private void dialogChanged() {&#xD;&#xA;&#x9;&#x9;IResource container = ResourcesPlugin.getWorkspace().getRoot()&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;.findMember(new Path(getContainerName()));&#xD;&#xA;&#x9;&#x9;String fileName = getFileName();&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;if (getContainerName().length() == 0) {&#xD;&#xA;&#x9;&#x9;&#x9;updateStatus(&quot;File container must be specified&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (container == null&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;|| (container.getType() &amp; (IResource.PROJECT | IResource.FOLDER)) == 0) {&#xD;&#xA;&#x9;&#x9;&#x9;updateStatus(&quot;File container must exist&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (!container.isAccessible()) {&#xD;&#xA;&#x9;&#x9;&#x9;updateStatus(&quot;Project must be writable&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (fileName.length() == 0) {&#xD;&#xA;&#x9;&#x9;&#x9;updateStatus(&quot;File name must be specified&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {&#xD;&#xA;&#x9;&#x9;&#x9;updateStatus(&quot;File name must be valid&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;updateStatus(null);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;private void updateStatus(String message) {&#xD;&#xA;&#x9;&#x9;setErrorMessage(message);&#xD;&#xA;&#x9;&#x9;setPageComplete(message == null);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;public String getContainerName() {&#xD;&#xA;&#x9;&#x9;return containerText.getText();&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;public String getFileName() {&#xD;&#xA;&#x9;&#x9;return fileText.getText();&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;public void Validate_Form()&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;setPageComplete(false);&#xD;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;if(txt_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".getText().equals(&quot;&quot;))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return;&#xD;&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                    <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="name">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/attr">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </ifExpr>
+            </body>
+            <loopVariable name="attr">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EAttribute)">
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eAllAttributes"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;setPageComplete(true);&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;//Get the Attributes&#xD;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;public String Get_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="()&#xD;&#xA;&#x9;{&#x9;&#xD;&#xA;&#x9;&#x9;return txt_"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/attr">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".getText();&#xD;&#xA;&#x9;}&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="mtl:QueryInvocation">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                    <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    </argument>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="name">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="attr" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/attr">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </ifExpr>
+            </body>
+            <loopVariable name="attr">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(EAttribute)">
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eAllAttributes"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="}&#xD;&#xA;"/>
+          <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="src/">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:OperationCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/CreateFolderNewWizardPage/anProjectName">
+                              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            </source>
+                            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                          </source>
+                          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          </argument>
+                        </source>
+                        <argument xsi:type="ocl.ecore:OperationCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:PropertyCallExp">
+                              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                              <source xsi:type="mtl:QueryInvocation">
+                                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                                <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/CreateFolderNewWizardPage/anPatternInstance">
+                                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                                </argument>
+                              </source>
+                              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                          </source>
+                          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLowerCase"/>
+                        </argument>
+                      </source>
+                      <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+                          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                        </source>
+                        <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="prefix_name">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        </argument>
+                      </argument>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="\.">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/wizard/folder/">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/CreateFolderNewWizardPage/%.1/c">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toString"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CreateFolderWizardPage.java">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+          </fileUrl>
+          <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </charset>
+        </body>
+        <loopVariable name="c">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/6/Sequence(ClassRoleInstance)">
+          <source xsi:type="ocl.ecore:OperationCallExp" eType="/6/Sequence(ClassRoleInstance)">
+            <source xsi:type="mtl:QueryInvocation" eType="/6/Sequence(ClassRoleInstance)">
+              <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_FolderClassRoleInstance"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/CreateFolderNewWizardPage/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </argument>
+            </source>
+            <argument xsi:type="ocl.ecore:OperationCallExp" eType="/6/Sequence(ClassRoleInstance)">
+              <source xsi:type="ocl.ecore:IteratorExp" name="select" eType="/6/Set(ClassRoleInstance)">
+                <source xsi:type="ocl.ecore:CollectionLiteralExp" eType="/6/Set(ClassRoleInstance)">
+                  <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL/Annotations">
+                    <details key="IMPLICIT_SET_CONVERSION" value="true"/>
+                  </eAnnotations>
+                  <part xsi:type="ocl.ecore:CollectionItem">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                    <item xsi:type="mtl:QueryInvocation">
+                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                      <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                      <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/CreateFolderNewWizardPage/anPatternInstance">
+                        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                      </argument>
+                    </item>
+                  </part>
+                </source>
+                <body xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                    <source xsi:type="ocl.ecore:IteratorExp" name="select" eType="/6/OrderedSet(ReferenceRoleInstance)">
+                      <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(ReferenceRoleInstance)">
+                        <source xsi:type="ocl.ecore:VariableExp" name="anClassRoleInstance" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/anClassRoleInstance">
+                          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/referenceInstances"/>
+                      </source>
+                      <body xsi:type="ocl.ecore:OperationCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                        <source xsi:type="ocl.ecore:OperationCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:PropertyCallExp">
+                              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+                              <source xsi:type="ocl.ecore:PropertyCallExp">
+                                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+                                <source xsi:type="ocl.ecore:VariableExp" name="ref" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/ref">
+                                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ReferenceRoleInstance"/>
+                                </source>
+                                <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ReferenceRoleInstance/element"/>
+                              </source>
+                              <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                          </source>
+                          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toString"/>
+                        </source>
+                        <argument xsi:type="ocl.ecore:OperationCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:PropertyCallExp">
+                              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+                              <source xsi:type="ocl.ecore:VariableExp" name="anClassRoleInstance" referredVariable="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/anClassRoleInstance">
+                                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                              </source>
+                              <referredProperty xsi:type="ecore:EReference" href="http://mondo.org/runtimePatterns#//ClassRoleInstance/element"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+                          </source>
+                          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toString"/>
+                        </argument>
+                        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+                      </body>
+                      <iterator xsi:type="ocl.ecore:Variable" name="ref">
+                        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ReferenceRoleInstance"/>
+                      </iterator>
+                    </source>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="0">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/%3E"/>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="anClassRoleInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                </iterator>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/asSequence"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/union"/>
+          </source>
+          <argument xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            <definition href="../../../requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/CreateFolderNewWizardPage/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/excluding"/>
+        </iterSet>
+      </body>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPackageName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPatternInstance">
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="CreateFolderNewWizardPage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/CreateFolderNewWizardPage"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_ProjectClassRoleInstance">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_FolderClassRoleInstance">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../requests/global_queriesModularProject.emtl#/0/Get_FolderClassRoleInstance"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../../../requests/global_queriesModularProject.emtl#/3/Sequence(ClassRoleInstance)"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_ClassRoleInstance_TypeFeature_EAttribute">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_TypeFeature_EAttribute"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+        <eParameters name="anClassRoleInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+        <eParameters name="anAttributeName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstances_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_ClassRoleInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EAttribute_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_Sequence(GenPackage)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../../requests/global_queriesModularProject.emtl#/3/Sequence(GenPackage)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(ClassRoleInstance)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ClassRoleInstance)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(ReferenceRoleInstance)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ReferenceRoleInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(ReferenceRoleInstance)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ReferenceRoleInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(EAttribute)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/CreateFolderNewWizardPage">
+      <details key="start" value="241"/>
+      <details key="end" value="8367"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/CreateFolderNewWizardPage/%">
+      <details key="start" value="371"/>
+      <details key="end" value="373"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/CreateFolderNewWizardPage/%.1">
+      <details key="start" value="373"/>
+      <details key="end" value="8354"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/CreateFolderNewWizardPage/%.1/%">
+      <details key="start" value="861"/>
+      <details key="end" value="863"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/CreateFolderNewWizardPage/%.1/%.1">
+      <details key="start" value="863"/>
+      <details key="end" value="8346"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/CreateFolderNewWizardPage/%.1/%.1/%">
+      <details key="start" value="1160"/>
+      <details key="end" value="1168"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.1">
+      <details key="start" value="1169"/>
+      <details key="end" value="1192"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.1/anProjectName">
+      <details key="start" value="1169"/>
+      <details key="end" value="1182"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.2">
+      <details key="start" value="1194"/>
+      <details key="end" value="1195"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.3">
+      <details key="start" value="1196"/>
+      <details key="end" value="1271"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.3/%">
+      <details key="start" value="1196"/>
+      <details key="end" value="1257"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.3/%/%">
+      <details key="start" value="1196"/>
+      <details key="end" value="1252"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.3/%/%/%">
+      <details key="start" value="1196"/>
+      <details key="end" value="1244"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.3/%/%/%/anPatternInstance">
+      <details key="start" value="1196"/>
+      <details key="end" value="1213"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.4">
+      <details key="start" value="1274"/>
+      <details key="end" value="1300"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.4/%">
+      <details key="start" value="1286"/>
+      <details key="end" value="1299"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.5">
+      <details key="start" value="1302"/>
+      <details key="end" value="2424"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.6">
+      <details key="start" value="2425"/>
+      <details key="end" value="2439"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.6/%">
+      <details key="start" value="2425"/>
+      <details key="end" value="2434"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.6/%/c">
+      <details key="start" value="2425"/>
+      <details key="end" value="2426"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.7">
+      <details key="start" value="2441"/>
+      <details key="end" value="2595"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8">
+      <details key="start" value="2596"/>
+      <details key="end" value="2813"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%">
+      <details key="start" value="2651"/>
+      <details key="end" value="2804"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%">
+      <details key="start" value="2729"/>
+      <details key="end" value="2748"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.1">
+      <details key="start" value="2749"/>
+      <details key="end" value="2758"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.1/attr">
+      <details key="start" value="2749"/>
+      <details key="end" value="2753"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.2">
+      <details key="start" value="2761"/>
+      <details key="end" value="2782"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.3">
+      <details key="start" value="2783"/>
+      <details key="end" value="2792"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.3/attr">
+      <details key="start" value="2783"/>
+      <details key="end" value="2787"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.4">
+      <details key="start" value="2795"/>
+      <details key="end" value="2798"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5">
+      <details key="start" value="2654"/>
+      <details key="end" value="2726"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5/%">
+      <details key="start" value="2655"/>
+      <details key="end" value="2714"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5/%/%">
+      <details key="start" value="2655"/>
+      <details key="end" value="2709"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5/%/%/c">
+      <details key="start" value="2655"/>
+      <details key="end" value="2656"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5/%/%/%">
+      <details key="start" value="2702"/>
+      <details key="end" value="2708"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5/%.1">
+      <details key="start" value="2716"/>
+      <details key="end" value="2725"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%/%.5/%.1/attr">
+      <details key="start" value="2716"/>
+      <details key="end" value="2720"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/attr">
+      <details key="start" value="2602"/>
+      <details key="end" value="2619"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%.1">
+      <details key="start" value="2622"/>
+      <details key="end" value="2646"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%.1/%">
+      <details key="start" value="2622"/>
+      <details key="end" value="2631"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.8/%.1/%/c">
+      <details key="start" value="2622"/>
+      <details key="end" value="2623"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.9">
+      <details key="start" value="2815"/>
+      <details key="end" value="2843"/>
+      <details key="line" value="56"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.10">
+      <details key="start" value="2844"/>
+      <details key="end" value="2858"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.10/%">
+      <details key="start" value="2844"/>
+      <details key="end" value="2853"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.10/%/c">
+      <details key="start" value="2844"/>
+      <details key="end" value="2845"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.11">
+      <details key="start" value="2860"/>
+      <details key="end" value="2926"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.12">
+      <details key="start" value="2927"/>
+      <details key="end" value="2941"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.12/%">
+      <details key="start" value="2927"/>
+      <details key="end" value="2936"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.12/%/c">
+      <details key="start" value="2927"/>
+      <details key="end" value="2928"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.13">
+      <details key="start" value="2943"/>
+      <details key="end" value="4114"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.14">
+      <details key="start" value="4115"/>
+      <details key="end" value="4174"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.14/%">
+      <details key="start" value="4115"/>
+      <details key="end" value="4169"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.14/%/c">
+      <details key="start" value="4115"/>
+      <details key="end" value="4116"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.14/%/%">
+      <details key="start" value="4162"/>
+      <details key="end" value="4168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.15">
+      <details key="start" value="4176"/>
+      <details key="end" value="4474"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16">
+      <details key="start" value="4476"/>
+      <details key="end" value="4922"/>
+      <details key="line" value="110"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%">
+      <details key="start" value="4532"/>
+      <details key="end" value="4908"/>
+      <details key="line" value="111"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%">
+      <details key="start" value="4610"/>
+      <details key="end" value="4651"/>
+      <details key="line" value="112"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.1">
+      <details key="start" value="4652"/>
+      <details key="end" value="4661"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.1/attr">
+      <details key="start" value="4652"/>
+      <details key="end" value="4656"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.2">
+      <details key="start" value="4664"/>
+      <details key="end" value="4706"/>
+      <details key="line" value="113"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.3">
+      <details key="start" value="4707"/>
+      <details key="end" value="4716"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.3/attr">
+      <details key="start" value="4707"/>
+      <details key="end" value="4711"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.4">
+      <details key="start" value="4719"/>
+      <details key="end" value="4729"/>
+      <details key="line" value="114"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.5">
+      <details key="start" value="4730"/>
+      <details key="end" value="4739"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.5/attr">
+      <details key="start" value="4730"/>
+      <details key="end" value="4734"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.6">
+      <details key="start" value="4742"/>
+      <details key="end" value="4755"/>
+      <details key="line" value="114"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.7">
+      <details key="start" value="4756"/>
+      <details key="end" value="4765"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.7/attr">
+      <details key="start" value="4756"/>
+      <details key="end" value="4760"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.8">
+      <details key="start" value="4768"/>
+      <details key="end" value="4825"/>
+      <details key="line" value="115"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.9">
+      <details key="start" value="4826"/>
+      <details key="end" value="4835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.9/attr">
+      <details key="start" value="4826"/>
+      <details key="end" value="4830"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.10">
+      <details key="start" value="4838"/>
+      <details key="end" value="4901"/>
+      <details key="line" value="116"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11">
+      <details key="start" value="4535"/>
+      <details key="end" value="4607"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11/%">
+      <details key="start" value="4536"/>
+      <details key="end" value="4595"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11/%/%">
+      <details key="start" value="4536"/>
+      <details key="end" value="4590"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11/%/%/c">
+      <details key="start" value="4536"/>
+      <details key="end" value="4537"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11/%/%/%">
+      <details key="start" value="4583"/>
+      <details key="end" value="4589"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11/%.1">
+      <details key="start" value="4597"/>
+      <details key="end" value="4606"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%/%.11/%.1/attr">
+      <details key="start" value="4597"/>
+      <details key="end" value="4601"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%.1">
+      <details key="start" value="4910"/>
+      <details key="end" value="4914"/>
+      <details key="line" value="118"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/attr">
+      <details key="start" value="4482"/>
+      <details key="end" value="4499"/>
+      <details key="line" value="110"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%.2">
+      <details key="start" value="4502"/>
+      <details key="end" value="4526"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%.2/%">
+      <details key="start" value="4502"/>
+      <details key="end" value="4511"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.16/%.2/%/c">
+      <details key="start" value="4502"/>
+      <details key="end" value="4503"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.17">
+      <details key="start" value="4924"/>
+      <details key="end" value="4960"/>
+      <details key="line" value="120"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18">
+      <details key="start" value="4962"/>
+      <details key="end" value="5321"/>
+      <details key="line" value="122"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%">
+      <details key="start" value="5018"/>
+      <details key="end" value="5311"/>
+      <details key="line" value="123"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%">
+      <details key="start" value="5096"/>
+      <details key="end" value="5102"/>
+      <details key="line" value="124"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.1">
+      <details key="start" value="5103"/>
+      <details key="end" value="5112"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.1/attr">
+      <details key="start" value="5103"/>
+      <details key="end" value="5107"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.2">
+      <details key="start" value="5115"/>
+      <details key="end" value="5304"/>
+      <details key="line" value="124"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3">
+      <details key="start" value="5021"/>
+      <details key="end" value="5093"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3/%">
+      <details key="start" value="5022"/>
+      <details key="end" value="5081"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3/%/%">
+      <details key="start" value="5022"/>
+      <details key="end" value="5076"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3/%/%/c">
+      <details key="start" value="5022"/>
+      <details key="end" value="5023"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3/%/%/%">
+      <details key="start" value="5069"/>
+      <details key="end" value="5075"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3/%.1">
+      <details key="start" value="5083"/>
+      <details key="end" value="5092"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%/%.3/%.1/attr">
+      <details key="start" value="5083"/>
+      <details key="end" value="5087"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/attr">
+      <details key="start" value="4968"/>
+      <details key="end" value="4985"/>
+      <details key="line" value="122"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%.1">
+      <details key="start" value="4988"/>
+      <details key="end" value="5012"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%.1/%">
+      <details key="start" value="4988"/>
+      <details key="end" value="4997"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.18/%.1/%/c">
+      <details key="start" value="4988"/>
+      <details key="end" value="4989"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.19">
+      <details key="start" value="5323"/>
+      <details key="end" value="6479"/>
+      <details key="line" value="135"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.20">
+      <details key="start" value="6480"/>
+      <details key="end" value="6484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.21">
+      <details key="start" value="6486"/>
+      <details key="end" value="6587"/>
+      <details key="line" value="175"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.22">
+      <details key="start" value="6588"/>
+      <details key="end" value="6593"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.23">
+      <details key="start" value="6595"/>
+      <details key="end" value="7825"/>
+      <details key="line" value="177"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24">
+      <details key="start" value="7827"/>
+      <details key="end" value="8038"/>
+      <details key="line" value="231"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%">
+      <details key="start" value="7883"/>
+      <details key="end" value="8028"/>
+      <details key="line" value="232"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%">
+      <details key="start" value="7961"/>
+      <details key="end" value="7971"/>
+      <details key="line" value="233"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.1">
+      <details key="start" value="7972"/>
+      <details key="end" value="7981"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.1/attr">
+      <details key="start" value="7972"/>
+      <details key="end" value="7976"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.2">
+      <details key="start" value="7984"/>
+      <details key="end" value="8021"/>
+      <details key="line" value="233"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3">
+      <details key="start" value="7886"/>
+      <details key="end" value="7958"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3/%">
+      <details key="start" value="7887"/>
+      <details key="end" value="7946"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3/%/%">
+      <details key="start" value="7887"/>
+      <details key="end" value="7941"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3/%/%/c">
+      <details key="start" value="7887"/>
+      <details key="end" value="7888"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3/%/%/%">
+      <details key="start" value="7934"/>
+      <details key="end" value="7940"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3/%.1">
+      <details key="start" value="7948"/>
+      <details key="end" value="7957"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%/%.3/%.1/attr">
+      <details key="start" value="7948"/>
+      <details key="end" value="7952"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/attr">
+      <details key="start" value="7833"/>
+      <details key="end" value="7850"/>
+      <details key="line" value="231"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%.1">
+      <details key="start" value="7853"/>
+      <details key="end" value="7877"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%.1/%">
+      <details key="start" value="7853"/>
+      <details key="end" value="7862"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.24/%.1/%/c">
+      <details key="start" value="7853"/>
+      <details key="end" value="7854"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.25">
+      <details key="start" value="8040"/>
+      <details key="end" value="8096"/>
+      <details key="line" value="237"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26">
+      <details key="start" value="8097"/>
+      <details key="end" value="8334"/>
+      <details key="line" value="241"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%">
+      <details key="start" value="8153"/>
+      <details key="end" value="8325"/>
+      <details key="line" value="242"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%">
+      <details key="start" value="8231"/>
+      <details key="end" value="8250"/>
+      <details key="line" value="243"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.1">
+      <details key="start" value="8251"/>
+      <details key="end" value="8260"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.1/attr">
+      <details key="start" value="8251"/>
+      <details key="end" value="8255"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.2">
+      <details key="start" value="8263"/>
+      <details key="end" value="8285"/>
+      <details key="line" value="243"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.3">
+      <details key="start" value="8286"/>
+      <details key="end" value="8295"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.3/attr">
+      <details key="start" value="8286"/>
+      <details key="end" value="8290"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.4">
+      <details key="start" value="8297"/>
+      <details key="end" value="8319"/>
+      <details key="line" value="245"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5">
+      <details key="start" value="8156"/>
+      <details key="end" value="8228"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5/%">
+      <details key="start" value="8157"/>
+      <details key="end" value="8216"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5/%/%">
+      <details key="start" value="8157"/>
+      <details key="end" value="8211"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5/%/%/c">
+      <details key="start" value="8157"/>
+      <details key="end" value="8158"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5/%/%/%">
+      <details key="start" value="8204"/>
+      <details key="end" value="8210"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5/%.1">
+      <details key="start" value="8218"/>
+      <details key="end" value="8227"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%/%.5/%.1/attr">
+      <details key="start" value="8218"/>
+      <details key="end" value="8222"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/attr">
+      <details key="start" value="8103"/>
+      <details key="end" value="8120"/>
+      <details key="line" value="241"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%.1">
+      <details key="start" value="8123"/>
+      <details key="end" value="8147"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%.1/%">
+      <details key="start" value="8123"/>
+      <details key="end" value="8132"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.26/%.1/%/c">
+      <details key="start" value="8123"/>
+      <details key="end" value="8124"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.27">
+      <details key="start" value="8336"/>
+      <details key="end" value="8339"/>
+      <details key="line" value="250"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28">
+      <details key="start" value="870"/>
+      <details key="end" value="1141"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%">
+      <details key="start" value="870"/>
+      <details key="end" value="1103"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%">
+      <details key="start" value="870"/>
+      <details key="end" value="1069"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%">
+      <details key="start" value="870"/>
+      <details key="end" value="1043"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%">
+      <details key="start" value="870"/>
+      <details key="end" value="1021"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%">
+      <details key="start" value="870"/>
+      <details key="end" value="876"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1">
+      <details key="start" value="884"/>
+      <details key="end" value="1020"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%">
+      <details key="start" value="884"/>
+      <details key="end" value="991"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%">
+      <details key="start" value="884"/>
+      <details key="end" value="913"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%/%">
+      <details key="start" value="884"/>
+      <details key="end" value="907"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%/%/anProjectName">
+      <details key="start" value="884"/>
+      <details key="end" value="897"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%/%.1">
+      <details key="start" value="910"/>
+      <details key="end" value="913"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%.1">
+      <details key="start" value="916"/>
+      <details key="end" value="991"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%.1/%">
+      <details key="start" value="916"/>
+      <details key="end" value="977"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%.1/%/%">
+      <details key="start" value="916"/>
+      <details key="end" value="972"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%.1/%/%/%">
+      <details key="start" value="916"/>
+      <details key="end" value="964"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%/%.1/%/%/%/anPatternInstance">
+      <details key="start" value="916"/>
+      <details key="end" value="933"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%.1">
+      <details key="start" value="994"/>
+      <details key="end" value="1020"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%/%.1/%.1/%">
+      <details key="start" value="1006"/>
+      <details key="end" value="1019"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%.1">
+      <details key="start" value="1033"/>
+      <details key="end" value="1038"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%/%.2">
+      <details key="start" value="1039"/>
+      <details key="end" value="1042"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%/%.1">
+      <details key="start" value="1051"/>
+      <details key="end" value="1068"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%.1">
+      <details key="start" value="1077"/>
+      <details key="end" value="1102"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.172" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%.1/%">
+      <details key="start" value="1077"/>
+      <details key="end" value="1091"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.173" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%.1/%/%">
+      <details key="start" value="1077"/>
+      <details key="end" value="1086"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%/%.1/%/%/c">
+      <details key="start" value="1077"/>
+      <details key="end" value="1078"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.175" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.28/%.1">
+      <details key="start" value="1111"/>
+      <details key="end" value="1140"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.176" references="/0/CreateFolderNewWizardPage/%.1/%.1/%.29">
+      <details key="start" value="1149"/>
+      <details key="end" value="1156"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.177" references="/0/CreateFolderNewWizardPage/%.1/c">
+      <details key="start" value="378"/>
+      <details key="end" value="399"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.178" references="/0/CreateFolderNewWizardPage/%.1/%.2">
+      <details key="start" value="402"/>
+      <details key="end" value="855"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.179" references="/0/CreateFolderNewWizardPage/%.1/%.2/%">
+      <details key="start" value="402"/>
+      <details key="end" value="791"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.180" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%">
+      <details key="start" value="402"/>
+      <details key="end" value="449"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.181" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%/anPatternInstance">
+      <details key="start" value="402"/>
+      <details key="end" value="419"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.182" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1">
+      <details key="start" value="457"/>
+      <details key="end" value="790"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.183" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select">
+      <details key="start" value="457"/>
+      <details key="end" value="776"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.184" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.185" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%/%/%">
+      <details key="start" value="457"/>
+      <details key="end" value="505"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.186" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%/%/%/anPatternInstance">
+      <details key="start" value="457"/>
+      <details key="end" value="474"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.187" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1">
+      <details key="start" value="581"/>
+      <details key="end" value="775"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.188" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%">
+      <details key="start" value="581"/>
+      <details key="end" value="771"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.189" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select">
+      <details key="start" value="581"/>
+      <details key="end" value="763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.190" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%">
+      <details key="start" value="581"/>
+      <details key="end" value="619"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.191" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%/anClassRoleInstance">
+      <details key="start" value="581"/>
+      <details key="end" value="600"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.192" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1">
+      <details key="start" value="683"/>
+      <details key="end" value="762"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.193" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%">
+      <details key="start" value="683"/>
+      <details key="end" value="716"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.194" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%/%">
+      <details key="start" value="683"/>
+      <details key="end" value="705"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.195" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%/%/%">
+      <details key="start" value="683"/>
+      <details key="end" value="700"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.196" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%/%/%/%">
+      <details key="start" value="683"/>
+      <details key="end" value="694"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.197" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%/%/%/%/ref">
+      <details key="start" value="683"/>
+      <details key="end" value="686"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.198" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%.1">
+      <details key="start" value="719"/>
+      <details key="end" value="762"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.199" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%.1/%">
+      <details key="start" value="719"/>
+      <details key="end" value="751"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.200" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%.1/%/%">
+      <details key="start" value="719"/>
+      <details key="end" value="746"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.201" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/%.1/%.1/%/%/anClassRoleInstance">
+      <details key="start" value="719"/>
+      <details key="end" value="738"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.202" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%/select/ref">
+      <details key="start" value="653"/>
+      <details key="end" value="680"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.203" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/%.1/%.1">
+      <details key="start" value="774"/>
+      <details key="end" value="775"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.204" references="/0/CreateFolderNewWizardPage/%.1/%.2/%/%.1/select/anClassRoleInstance">
+      <details key="start" value="539"/>
+      <details key="end" value="578"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.205" references="/0/CreateFolderNewWizardPage/%.1/%.2/%.1">
+      <details key="start" value="806"/>
+      <details key="end" value="854"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.206" references="/0/CreateFolderNewWizardPage/%.1/%.2/%.1/anPatternInstance">
+      <details key="start" value="806"/>
+      <details key="end" value="823"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.207" references="/0/CreateFolderNewWizardPage/anProjectName">
+      <details key="start" value="284"/>
+      <details key="end" value="306"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.208" references="/0/CreateFolderNewWizardPage/anPackageName">
+      <details key="start" value="308"/>
+      <details key="end" value="330"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.209" references="/0/CreateFolderNewWizardPage/anPatternInstance">
+      <details key="start" value="332"/>
+      <details key="end" value="367"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

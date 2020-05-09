@@ -1,0 +1,1862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="WorkFlowModularProject" nsURI="org::mondo::generate::modular::project::main::WorkFlowModularProject" startHeaderPosition="30" endHeaderPosition="179">
+    <input>
+      <takesTypesFrom href="http://mondo.org/runtimePatterns#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/GenModel#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <imports href="requests/global_queriesModularProject.emtl#/0"/>
+    <imports href="METAINF.emtl#/0"/>
+    <imports href="Activatorjava.emtl#/0"/>
+    <imports href="PluginXML.emtl#/0"/>
+    <imports href="ModularModelJAVA.emtl#/0"/>
+    <imports href="XMI_FileJAVA.emtl#/0"/>
+    <imports href="Package_Explorer_SelectionJAVA.emtl#/0"/>
+    <imports href="pack/actions/generatePackageactions.emtl#/0"/>
+    <imports href="pack/decorator/generatePackagedecorator.emtl#/0"/>
+    <imports href="pack/editors/generatePackageeditors.emtl#/0"/>
+    <imports href="pack/propertysource/generatePackagepropertysource.emtl#/0"/>
+    <imports href="pack/wizard/folder/generatePackagewizardfolder.emtl#/0"/>
+    <imports href="pack/wizard/file/generatePackagewizardfile.emtl#/0"/>
+    <imports href="pack/wizard/generatePackagewizard.emtl#/0"/>
+    <imports href="CreateMenuJava.emtl#/0"/>
+    <imports href="pack/preferences/generatePackpreferences.emtl#/0"/>
+    <imports href="OpenWith.emtl#/0"/>
+    <imports href="initFile.emtl#/0"/>
+    <imports href="schemaFile.emtl#/0"/>
+    <imports href="schemListenerFile.emtl#/0"/>
+    <imports href="pack/ext/modularInterfaceBuilderFile.emtl#/0"/>
+    <imports href="pack/ext/evaluateModularBuilderFile.emtl#/0"/>
+    <imports href="pack/ext/evaluateModularListenerFile.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="WorkFlowModularProject" visibility="Public" main="true">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+      <body xsi:type="mtl:LetBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xD;&#xA;"/>
+        <body xsi:type="mtl:LetBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="METAINF.emtl#/0/METAINF"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectInstance" referredVariable="/0/WorkFlowModularProject/%.1/%.1/anProjectInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="Activatorjava.emtl#/0/Activatorjava"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectInstance" referredVariable="/0/WorkFlowModularProject/%.1/%.1/anProjectInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;    "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="initFile.emtl#/0/generateinitFile"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="PluginXML.emtl#/0/PluginXML"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="ModularModelJAVA.emtl#/0/Modular_DiagramJAVA"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="Package_Explorer_SelectionJAVA.emtl#/0/Package_Explorer_SelectionJAVA"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="XMI_FileJAVA.emtl#/0/XMI_FileJAVA"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;    "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="CreateMenuJava.emtl#/0/CreateMenuJava"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="OpenWith.emtl#/0/generateOpenWith"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectInstance" referredVariable="/0/WorkFlowModularProject/%.1/%.1/anProjectInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  &#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="schemaFile.emtl#/0/generateSchemaFile"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  &#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="schemListenerFile.emtl#/0/generateSchemaListenerFile"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/ext/modularInterfaceBuilderFile.emtl#/0/generateIModularBuilder"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </argument>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/ext/evaluateModularBuilderFile.emtl#/0/generateEvaluateModularBuilder"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </argument>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/ext/evaluateModularListenerFile.emtl#/0/generateEvaluateModularListener"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </argument>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/actions/generatePackageactions.emtl#/0/generatePackageactions"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/decorator/generatePackagedecorator.emtl#/0/generatePackagedecorator"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/editors/generatePackageeditors.emtl#/0/generatePackageeditors"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/propertysource/generatePackagepropertysource.emtl#/0/generatePackagepropertysource"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/wizard/generatePackagewizard.emtl#/0/generatePackagewizard"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/wizard/file/generatePackagewizardfile.emtl#/0/generatePackagewizardfile"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="pack/wizard/folder/generatePackagewizardfolder.emtl#/0/generatePackagewizardfolder"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPackageName" referredVariable="/0/WorkFlowModularProject/anPackageName">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="anEObjectGenModel" referredVariable="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;"/>
+          <body xsi:type="mtl:LetBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="pack/preferences/generatePackpreferences.emtl#/0/generatePackpreferences"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/WorkFlowModularProject/%.1/%.1/%.51/c">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+            <letVariable name="c">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              <initExpression xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+                  <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+                </argument>
+              </initExpression>
+            </letVariable>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+          <letVariable name="anProjectInstance">
+            <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+            <initExpression xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+              <definition href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </argument>
+            </initExpression>
+          </letVariable>
+        </body>
+        <letVariable name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+          <initExpression xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+            <definition href="requests/global_queriesModularProject.emtl#/0/LoadGenModel"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="genModelPath" referredVariable="/0/WorkFlowModularProject/genModelPath">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EResource"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="anPatternInstance" referredVariable="/0/WorkFlowModularProject/anPatternInstance">
+                <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/emf/2002/Ecore#//EObject/eResource"/>
+            </argument>
+          </initExpression>
+        </letVariable>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+      <parameter name="anPatternInstance">
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </parameter>
+      <parameter name="anProjectName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="anPackageName">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <parameter name="genModelPath">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="WorkFlowModularProject">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/WorkFlowModularProject"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="genModelPath">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Get_ProjectClassRoleInstance">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/Get_ProjectClassRoleInstance"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="LoadGenModel">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="requests/global_queriesModularProject.emtl#/0/LoadGenModel"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        <eParameters name="genModelPath">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="eResource">
+          <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EResource"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="METAINF">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="METAINF.emtl#/0/METAINF"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anProjectInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Activatorjava">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="Activatorjava.emtl#/0/Activatorjava"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anProjectInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="PluginXML">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="PluginXML.emtl#/0/PluginXML"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Modular_DiagramJAVA">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="ModularModelJAVA.emtl#/0/Modular_DiagramJAVA"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="XMI_FileJAVA">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="XMI_FileJAVA.emtl#/0/XMI_FileJAVA"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="Package_Explorer_SelectionJAVA">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="Package_Explorer_SelectionJAVA.emtl#/0/Package_Explorer_SelectionJAVA"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackageactions">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/actions/generatePackageactions.emtl#/0/generatePackageactions"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackagedecorator">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/decorator/generatePackagedecorator.emtl#/0/generatePackagedecorator"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackageeditors">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/editors/generatePackageeditors.emtl#/0/generatePackageeditors"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackagepropertysource">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/propertysource/generatePackagepropertysource.emtl#/0/generatePackagepropertysource"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackagewizardfolder">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/wizard/folder/generatePackagewizardfolder.emtl#/0/generatePackagewizardfolder"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackagewizardfile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/wizard/file/generatePackagewizardfile.emtl#/0/generatePackagewizardfile"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackagewizard">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/wizard/generatePackagewizard.emtl#/0/generatePackagewizard"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="CreateMenuJava">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="CreateMenuJava.emtl#/0/CreateMenuJava"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generatePackpreferences">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/preferences/generatePackpreferences.emtl#/0/generatePackpreferences"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="c">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateOpenWith">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="OpenWith.emtl#/0/generateOpenWith"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anProjectInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateinitFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="initFile.emtl#/0/generateinitFile"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateSchemaFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="schemaFile.emtl#/0/generateSchemaFile"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateSchemaListenerFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="schemListenerFile.emtl#/0/generateSchemaListenerFile"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateIModularBuilder">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/ext/modularInterfaceBuilderFile.emtl#/0/generateIModularBuilder"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="c">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEvaluateModularBuilder">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/ext/evaluateModularBuilderFile.emtl#/0/generateEvaluateModularBuilder"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="c">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateEvaluateModularListener">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="pack/ext/evaluateModularListenerFile.emtl#/0/generateEvaluateModularListener"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anProjectName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPackageName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="anPatternInstance">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+        </eParameters>
+        <eParameters name="c">
+          <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+        </eParameters>
+        <eParameters name="anEObjectGenModel">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_PatternInstances_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//PatternInstances"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="runtimePatterns_ClassRoleInstance_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EAttribute_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClass_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EClassifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_Sequence(GenPackage)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="requests/global_queriesModularProject.emtl#/3/Sequence(GenPackage)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="genmodel_GenModel_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/GenModel#//GenModel"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//PatternInstance"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/WorkFlowModularProject">
+      <details key="start" value="2175"/>
+      <details key="end" value="4936"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/WorkFlowModularProject/%">
+      <details key="start" value="2344"/>
+      <details key="end" value="2346"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/WorkFlowModularProject/%.1">
+      <details key="start" value="2347"/>
+      <details key="end" value="4919"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/WorkFlowModularProject/%.1/%">
+      <details key="start" value="2442"/>
+      <details key="end" value="2445"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/WorkFlowModularProject/%.1/%.1">
+      <details key="start" value="2446"/>
+      <details key="end" value="4910"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/WorkFlowModularProject/%.1/%.1/%">
+      <details key="start" value="2542"/>
+      <details key="end" value="2546"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/WorkFlowModularProject/%.1/%.1/%.1">
+      <details key="start" value="2547"/>
+      <details key="end" value="2605"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/WorkFlowModularProject/%.1/%.1/%.1/anProjectName">
+      <details key="start" value="2555"/>
+      <details key="end" value="2568"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/WorkFlowModularProject/%.1/%.1/%.1/anProjectInstance">
+      <details key="start" value="2569"/>
+      <details key="end" value="2586"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/WorkFlowModularProject/%.1/%.1/%.1/anEObjectGenModel">
+      <details key="start" value="2587"/>
+      <details key="end" value="2604"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/WorkFlowModularProject/%.1/%.1/%.2">
+      <details key="start" value="2608"/>
+      <details key="end" value="2611"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/WorkFlowModularProject/%.1/%.1/%.3">
+      <details key="start" value="2612"/>
+      <details key="end" value="2658"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/WorkFlowModularProject/%.1/%.1/%.3/anProjectName">
+      <details key="start" value="2626"/>
+      <details key="end" value="2639"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/WorkFlowModularProject/%.1/%.1/%.3/anProjectInstance">
+      <details key="start" value="2640"/>
+      <details key="end" value="2657"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/WorkFlowModularProject/%.1/%.1/%.4">
+      <details key="start" value="2661"/>
+      <details key="end" value="2667"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/WorkFlowModularProject/%.1/%.1/%.5">
+      <details key="start" value="2668"/>
+      <details key="end" value="2752"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/WorkFlowModularProject/%.1/%.1/%.5/anProjectName">
+      <details key="start" value="2685"/>
+      <details key="end" value="2698"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/WorkFlowModularProject/%.1/%.1/%.5/anPatternInstance">
+      <details key="start" value="2700"/>
+      <details key="end" value="2717"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/WorkFlowModularProject/%.1/%.1/%.5/anPackageName">
+      <details key="start" value="2719"/>
+      <details key="end" value="2732"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/WorkFlowModularProject/%.1/%.1/%.5/anEObjectGenModel">
+      <details key="start" value="2734"/>
+      <details key="end" value="2751"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/WorkFlowModularProject/%.1/%.1/%.6">
+      <details key="start" value="2754"/>
+      <details key="end" value="2757"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/WorkFlowModularProject/%.1/%.1/%.7">
+      <details key="start" value="2758"/>
+      <details key="end" value="2818"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/WorkFlowModularProject/%.1/%.1/%.7/anProjectName">
+      <details key="start" value="2768"/>
+      <details key="end" value="2781"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/WorkFlowModularProject/%.1/%.1/%.7/anPatternInstance">
+      <details key="start" value="2782"/>
+      <details key="end" value="2799"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/WorkFlowModularProject/%.1/%.1/%.7/anEObjectGenModel">
+      <details key="start" value="2800"/>
+      <details key="end" value="2817"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/WorkFlowModularProject/%.1/%.1/%.8">
+      <details key="start" value="2821"/>
+      <details key="end" value="2824"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/WorkFlowModularProject/%.1/%.1/%.9">
+      <details key="start" value="2825"/>
+      <details key="end" value="2911"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/WorkFlowModularProject/%.1/%.1/%.9/anProjectName">
+      <details key="start" value="2845"/>
+      <details key="end" value="2858"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/WorkFlowModularProject/%.1/%.1/%.9/anPackageName">
+      <details key="start" value="2860"/>
+      <details key="end" value="2873"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/WorkFlowModularProject/%.1/%.1/%.9/anPatternInstance">
+      <details key="start" value="2875"/>
+      <details key="end" value="2892"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/WorkFlowModularProject/%.1/%.1/%.9/anEObjectGenModel">
+      <details key="start" value="2893"/>
+      <details key="end" value="2910"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/WorkFlowModularProject/%.1/%.1/%.10">
+      <details key="start" value="2914"/>
+      <details key="end" value="2917"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/WorkFlowModularProject/%.1/%.1/%.11">
+      <details key="start" value="2918"/>
+      <details key="end" value="2982"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/WorkFlowModularProject/%.1/%.1/%.11/anProjectName">
+      <details key="start" value="2949"/>
+      <details key="end" value="2962"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/WorkFlowModularProject/%.1/%.1/%.11/anPatternInstance">
+      <details key="start" value="2964"/>
+      <details key="end" value="2981"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/WorkFlowModularProject/%.1/%.1/%.12">
+      <details key="start" value="2984"/>
+      <details key="end" value="2987"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/WorkFlowModularProject/%.1/%.1/%.13">
+      <details key="start" value="2988"/>
+      <details key="end" value="3034"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/WorkFlowModularProject/%.1/%.1/%.13/anProjectName">
+      <details key="start" value="3001"/>
+      <details key="end" value="3014"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/WorkFlowModularProject/%.1/%.1/%.13/anPatternInstance">
+      <details key="start" value="3016"/>
+      <details key="end" value="3033"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/WorkFlowModularProject/%.1/%.1/%.14">
+      <details key="start" value="3036"/>
+      <details key="end" value="3042"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/WorkFlowModularProject/%.1/%.1/%.15">
+      <details key="start" value="3043"/>
+      <details key="end" value="3123"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/WorkFlowModularProject/%.1/%.1/%.15/anProjectName">
+      <details key="start" value="3058"/>
+      <details key="end" value="3071"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/WorkFlowModularProject/%.1/%.1/%.15/anPatternInstance">
+      <details key="start" value="3073"/>
+      <details key="end" value="3090"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/WorkFlowModularProject/%.1/%.1/%.15/anPackageName">
+      <details key="start" value="3091"/>
+      <details key="end" value="3104"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/WorkFlowModularProject/%.1/%.1/%.15/anEObjectGenModel">
+      <details key="start" value="3105"/>
+      <details key="end" value="3122"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/WorkFlowModularProject/%.1/%.1/%.16">
+      <details key="start" value="3126"/>
+      <details key="end" value="3129"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/WorkFlowModularProject/%.1/%.1/%.17">
+      <details key="start" value="3130"/>
+      <details key="end" value="3179"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/WorkFlowModularProject/%.1/%.1/%.17/anProjectName">
+      <details key="start" value="3147"/>
+      <details key="end" value="3160"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/WorkFlowModularProject/%.1/%.1/%.17/anProjectInstance">
+      <details key="start" value="3161"/>
+      <details key="end" value="3178"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/WorkFlowModularProject/%.1/%.1/%.18">
+      <details key="start" value="3181"/>
+      <details key="end" value="3186"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/WorkFlowModularProject/%.1/%.1/%.19">
+      <details key="start" value="3187"/>
+      <details key="end" value="3258"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/WorkFlowModularProject/%.1/%.1/%.19/anProjectName">
+      <details key="start" value="3206"/>
+      <details key="end" value="3219"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/WorkFlowModularProject/%.1/%.1/%.19/anPatternInstance">
+      <details key="start" value="3221"/>
+      <details key="end" value="3238"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/WorkFlowModularProject/%.1/%.1/%.19/anEObjectGenModel">
+      <details key="start" value="3240"/>
+      <details key="end" value="3257"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/WorkFlowModularProject/%.1/%.1/%.20">
+      <details key="start" value="3260"/>
+      <details key="end" value="3265"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/WorkFlowModularProject/%.1/%.1/%.21">
+      <details key="start" value="3266"/>
+      <details key="end" value="3345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/WorkFlowModularProject/%.1/%.1/%.21/anProjectName">
+      <details key="start" value="3293"/>
+      <details key="end" value="3306"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/WorkFlowModularProject/%.1/%.1/%.21/anPatternInstance">
+      <details key="start" value="3308"/>
+      <details key="end" value="3325"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/WorkFlowModularProject/%.1/%.1/%.21/anEObjectGenModel">
+      <details key="start" value="3327"/>
+      <details key="end" value="3344"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/WorkFlowModularProject/%.1/%.1/%.22">
+      <details key="start" value="3347"/>
+      <details key="end" value="3352"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/WorkFlowModularProject/%.1/%.1/%.23">
+      <details key="start" value="3377"/>
+      <details key="end" value="3378"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/WorkFlowModularProject/%.1/%.1/%.24">
+      <details key="start" value="3379"/>
+      <details key="end" value="3467"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/WorkFlowModularProject/%.1/%.1/%.24/anProjectName">
+      <details key="start" value="3403"/>
+      <details key="end" value="3416"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/WorkFlowModularProject/%.1/%.1/%.24/%">
+      <details key="start" value="3418"/>
+      <details key="end" value="3466"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/WorkFlowModularProject/%.1/%.1/%.24/%/anPatternInstance">
+      <details key="start" value="3418"/>
+      <details key="end" value="3435"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/WorkFlowModularProject/%.1/%.1/%.25">
+      <details key="start" value="3470"/>
+      <details key="end" value="3473"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/WorkFlowModularProject/%.1/%.1/%.26">
+      <details key="start" value="3474"/>
+      <details key="end" value="3622"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/WorkFlowModularProject/%.1/%.1/%.26/anProjectName">
+      <details key="start" value="3505"/>
+      <details key="end" value="3518"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/WorkFlowModularProject/%.1/%.1/%.26/anPackageName">
+      <details key="start" value="3520"/>
+      <details key="end" value="3533"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/WorkFlowModularProject/%.1/%.1/%.26/anPatternInstance">
+      <details key="start" value="3535"/>
+      <details key="end" value="3552"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/WorkFlowModularProject/%.1/%.1/%.26/%">
+      <details key="start" value="3554"/>
+      <details key="end" value="3602"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/WorkFlowModularProject/%.1/%.1/%.26/%/anPatternInstance">
+      <details key="start" value="3554"/>
+      <details key="end" value="3571"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/WorkFlowModularProject/%.1/%.1/%.26/anEObjectGenModel">
+      <details key="start" value="3604"/>
+      <details key="end" value="3621"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/WorkFlowModularProject/%.1/%.1/%.27">
+      <details key="start" value="3624"/>
+      <details key="end" value="3627"/>
+      <details key="line" value="49"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/WorkFlowModularProject/%.1/%.1/%.28">
+      <details key="start" value="3628"/>
+      <details key="end" value="3777"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/WorkFlowModularProject/%.1/%.1/%.28/anProjectName">
+      <details key="start" value="3660"/>
+      <details key="end" value="3673"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/WorkFlowModularProject/%.1/%.1/%.28/anPackageName">
+      <details key="start" value="3675"/>
+      <details key="end" value="3688"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/WorkFlowModularProject/%.1/%.1/%.28/anPatternInstance">
+      <details key="start" value="3690"/>
+      <details key="end" value="3707"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/WorkFlowModularProject/%.1/%.1/%.28/%">
+      <details key="start" value="3709"/>
+      <details key="end" value="3757"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/WorkFlowModularProject/%.1/%.1/%.28/%/anPatternInstance">
+      <details key="start" value="3709"/>
+      <details key="end" value="3726"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/WorkFlowModularProject/%.1/%.1/%.28/anEObjectGenModel">
+      <details key="start" value="3759"/>
+      <details key="end" value="3776"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/WorkFlowModularProject/%.1/%.1/%.29">
+      <details key="start" value="3779"/>
+      <details key="end" value="3783"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/WorkFlowModularProject/%.1/%.1/%.30">
+      <details key="start" value="3813"/>
+      <details key="end" value="3814"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/WorkFlowModularProject/%.1/%.1/%.31">
+      <details key="start" value="3815"/>
+      <details key="end" value="3904"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/WorkFlowModularProject/%.1/%.1/%.31/anProjectName">
+      <details key="start" value="3838"/>
+      <details key="end" value="3851"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/WorkFlowModularProject/%.1/%.1/%.31/anPackageName">
+      <details key="start" value="3852"/>
+      <details key="end" value="3865"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/WorkFlowModularProject/%.1/%.1/%.31/anPatternInstance">
+      <details key="start" value="3867"/>
+      <details key="end" value="3884"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/WorkFlowModularProject/%.1/%.1/%.31/anEObjectGenModel">
+      <details key="start" value="3886"/>
+      <details key="end" value="3903"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/WorkFlowModularProject/%.1/%.1/%.32">
+      <details key="start" value="3906"/>
+      <details key="end" value="3910"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/WorkFlowModularProject/%.1/%.1/%.33">
+      <details key="start" value="3942"/>
+      <details key="end" value="3943"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/WorkFlowModularProject/%.1/%.1/%.34">
+      <details key="start" value="3944"/>
+      <details key="end" value="4035"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/WorkFlowModularProject/%.1/%.1/%.34/anProjectName">
+      <details key="start" value="3969"/>
+      <details key="end" value="3982"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/WorkFlowModularProject/%.1/%.1/%.34/anPackageName">
+      <details key="start" value="3984"/>
+      <details key="end" value="3997"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/WorkFlowModularProject/%.1/%.1/%.34/anPatternInstance">
+      <details key="start" value="3999"/>
+      <details key="end" value="4016"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/WorkFlowModularProject/%.1/%.1/%.34/anEObjectGenModel">
+      <details key="start" value="4017"/>
+      <details key="end" value="4034"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/WorkFlowModularProject/%.1/%.1/%.35">
+      <details key="start" value="4037"/>
+      <details key="end" value="4041"/>
+      <details key="line" value="56"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/WorkFlowModularProject/%.1/%.1/%.36">
+      <details key="start" value="4073"/>
+      <details key="end" value="4074"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/WorkFlowModularProject/%.1/%.1/%.37">
+      <details key="start" value="4075"/>
+      <details key="end" value="4164"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/WorkFlowModularProject/%.1/%.1/%.37/anProjectName">
+      <details key="start" value="4098"/>
+      <details key="end" value="4111"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/WorkFlowModularProject/%.1/%.1/%.37/anPackageName">
+      <details key="start" value="4113"/>
+      <details key="end" value="4126"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/WorkFlowModularProject/%.1/%.1/%.37/anPatternInstance">
+      <details key="start" value="4128"/>
+      <details key="end" value="4145"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/WorkFlowModularProject/%.1/%.1/%.37/anEObjectGenModel">
+      <details key="start" value="4146"/>
+      <details key="end" value="4163"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/WorkFlowModularProject/%.1/%.1/%.38">
+      <details key="start" value="4167"/>
+      <details key="end" value="4171"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/WorkFlowModularProject/%.1/%.1/%.39">
+      <details key="start" value="4208"/>
+      <details key="end" value="4209"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/WorkFlowModularProject/%.1/%.1/%.40">
+      <details key="start" value="4210"/>
+      <details key="end" value="4307"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/WorkFlowModularProject/%.1/%.1/%.40/anProjectName">
+      <details key="start" value="4240"/>
+      <details key="end" value="4253"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/WorkFlowModularProject/%.1/%.1/%.40/anPackageName">
+      <details key="start" value="4255"/>
+      <details key="end" value="4268"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/WorkFlowModularProject/%.1/%.1/%.40/anPatternInstance">
+      <details key="start" value="4270"/>
+      <details key="end" value="4287"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/WorkFlowModularProject/%.1/%.1/%.40/anEObjectGenModel">
+      <details key="start" value="4289"/>
+      <details key="end" value="4306"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/WorkFlowModularProject/%.1/%.1/%.41">
+      <details key="start" value="4309"/>
+      <details key="end" value="4313"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/WorkFlowModularProject/%.1/%.1/%.42">
+      <details key="start" value="4343"/>
+      <details key="end" value="4344"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/WorkFlowModularProject/%.1/%.1/%.43">
+      <details key="start" value="4345"/>
+      <details key="end" value="4434"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/WorkFlowModularProject/%.1/%.1/%.43/anProjectName">
+      <details key="start" value="4367"/>
+      <details key="end" value="4380"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/WorkFlowModularProject/%.1/%.1/%.43/anPackageName">
+      <details key="start" value="4382"/>
+      <details key="end" value="4395"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/WorkFlowModularProject/%.1/%.1/%.43/anPatternInstance">
+      <details key="start" value="4397"/>
+      <details key="end" value="4414"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/WorkFlowModularProject/%.1/%.1/%.43/anEObjectGenModel">
+      <details key="start" value="4416"/>
+      <details key="end" value="4433"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/WorkFlowModularProject/%.1/%.1/%.44">
+      <details key="start" value="4436"/>
+      <details key="end" value="4442"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/WorkFlowModularProject/%.1/%.1/%.45">
+      <details key="start" value="4477"/>
+      <details key="end" value="4478"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/WorkFlowModularProject/%.1/%.1/%.46">
+      <details key="start" value="4479"/>
+      <details key="end" value="4572"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/WorkFlowModularProject/%.1/%.1/%.46/anProjectName">
+      <details key="start" value="4505"/>
+      <details key="end" value="4518"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/WorkFlowModularProject/%.1/%.1/%.46/anPackageName">
+      <details key="start" value="4520"/>
+      <details key="end" value="4533"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/WorkFlowModularProject/%.1/%.1/%.46/anPatternInstance">
+      <details key="start" value="4535"/>
+      <details key="end" value="4552"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/WorkFlowModularProject/%.1/%.1/%.46/anEObjectGenModel">
+      <details key="start" value="4554"/>
+      <details key="end" value="4571"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/WorkFlowModularProject/%.1/%.1/%.47">
+      <details key="start" value="4574"/>
+      <details key="end" value="4579"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/WorkFlowModularProject/%.1/%.1/%.48">
+      <details key="start" value="4616"/>
+      <details key="end" value="4620"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/WorkFlowModularProject/%.1/%.1/%.49">
+      <details key="start" value="4621"/>
+      <details key="end" value="4715"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/WorkFlowModularProject/%.1/%.1/%.49/anProjectName">
+      <details key="start" value="4649"/>
+      <details key="end" value="4662"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/WorkFlowModularProject/%.1/%.1/%.49/anPackageName">
+      <details key="start" value="4664"/>
+      <details key="end" value="4677"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/WorkFlowModularProject/%.1/%.1/%.49/anPatternInstance">
+      <details key="start" value="4679"/>
+      <details key="end" value="4696"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/WorkFlowModularProject/%.1/%.1/%.49/anEObjectGenModel">
+      <details key="start" value="4697"/>
+      <details key="end" value="4714"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/WorkFlowModularProject/%.1/%.1/%.50">
+      <details key="start" value="4717"/>
+      <details key="end" value="4723"/>
+      <details key="line" value="71"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/WorkFlowModularProject/%.1/%.1/%.51">
+      <details key="start" value="4765"/>
+      <details key="end" value="4898"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/WorkFlowModularProject/%.1/%.1/%.51/%">
+      <details key="start" value="4844"/>
+      <details key="end" value="4846"/>
+      <details key="line" value="74"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/WorkFlowModularProject/%.1/%.1/%.51/%.1">
+      <details key="start" value="4847"/>
+      <details key="end" value="4888"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/WorkFlowModularProject/%.1/%.1/%.51/%.1/anProjectName">
+      <details key="start" value="4871"/>
+      <details key="end" value="4884"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/WorkFlowModularProject/%.1/%.1/%.51/%.1/c">
+      <details key="start" value="4886"/>
+      <details key="end" value="4887"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/WorkFlowModularProject/%.1/%.1/%.51/%.2">
+      <details key="start" value="4890"/>
+      <details key="end" value="4891"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/WorkFlowModularProject/%.1/%.1/%.51/c">
+      <details key="start" value="4770"/>
+      <details key="end" value="4842"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/WorkFlowModularProject/%.1/%.1/%.51/c/%">
+      <details key="start" value="4795"/>
+      <details key="end" value="4843"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/WorkFlowModularProject/%.1/%.1/%.51/c/%/anPatternInstance">
+      <details key="start" value="4795"/>
+      <details key="end" value="4812"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/WorkFlowModularProject/%.1/%.1/%.52">
+      <details key="start" value="4901"/>
+      <details key="end" value="4903"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/WorkFlowModularProject/%.1/%.1/anProjectInstance">
+      <details key="start" value="2451"/>
+      <details key="end" value="2539"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/WorkFlowModularProject/%.1/%.1/anProjectInstance/%">
+      <details key="start" value="2492"/>
+      <details key="end" value="2540"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/WorkFlowModularProject/%.1/%.1/anProjectInstance/%/anPatternInstance">
+      <details key="start" value="2492"/>
+      <details key="end" value="2509"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/WorkFlowModularProject/%.1/anEObjectGenModel">
+      <details key="start" value="2352"/>
+      <details key="end" value="2439"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/WorkFlowModularProject/%.1/anEObjectGenModel/%">
+      <details key="start" value="2384"/>
+      <details key="end" value="2440"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/WorkFlowModularProject/%.1/anEObjectGenModel/%/genModelPath">
+      <details key="start" value="2397"/>
+      <details key="end" value="2409"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/WorkFlowModularProject/%.1/anEObjectGenModel/%/%">
+      <details key="start" value="2410"/>
+      <details key="end" value="2439"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/WorkFlowModularProject/%.1/anEObjectGenModel/%/%/anPatternInstance">
+      <details key="start" value="2410"/>
+      <details key="end" value="2427"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/WorkFlowModularProject/%.2">
+      <details key="start" value="4921"/>
+      <details key="end" value="4923"/>
+      <details key="line" value="79"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/WorkFlowModularProject/anPatternInstance">
+      <details key="start" value="2215"/>
+      <details key="end" value="2250"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/WorkFlowModularProject/anProjectName">
+      <details key="start" value="2252"/>
+      <details key="end" value="2274"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/WorkFlowModularProject/anPackageName">
+      <details key="start" value="2276"/>
+      <details key="end" value="2298"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/WorkFlowModularProject/genModelPath">
+      <details key="start" value="2300"/>
+      <details key="end" value="2321"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>
