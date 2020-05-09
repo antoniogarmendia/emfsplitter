@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,6 +22,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.BasicEList;
@@ -54,7 +56,8 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 
 	final private String prop_address = "/org/mondo/acceleo/generate/sirius/properties/default_sirius.properties";
 	static final public String plug_path = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-	static final public String work_path = CreateSiriusPluginProject.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+	//static final public String work_path = CreateSiriusPluginProject.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+	//static final public String work_path = org.mondo.acceleo.generate.sirius.Activator.getDefault().getBundle().getLocation();
 	static final public String runtime_pattern_ext = runtimePatterns.RuntimePatternsPackage.eINSTANCE.getNsPrefix();
 	static final public String graphic_ext = graphic_representation.Graphic_representationPackage.eNS_PREFIX;
 	private String current_project_name;
@@ -94,7 +97,13 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	}
 	
 	public void Copy_Icons(){
-		Copy_Image(work_path.concat("icons/sirius_icon.png"),"sirius_icon.png", "icons");
+		URL siriusiConPath = org.mondo.acceleo.generate.sirius.Activator.getDefault().getBundle().getEntry("icons/sirius_icon.png");
+		try {
+			URL iconURL = FileLocator.resolve(siriusiConPath);
+			Copy_Image(iconURL.getPath(),"sirius_icon.png", "icons");			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}				
 	}
 
 	@Override
