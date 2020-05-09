@@ -37,7 +37,7 @@ public class WorkflowVisibilityProject extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/bin/org/mondo/generate/visibility/project/main/WorkflowVisibilityProject";
+    public static final String MODULE_FILE_NAME = "/org/mondo/generate/visibility/project/main/WorkflowVisibilityProject";
     
     /**
      * The name of the templates that are to be generated.

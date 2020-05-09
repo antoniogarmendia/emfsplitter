@@ -37,7 +37,7 @@ public class GeneralModularProject extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/bin/org/mondo/generate/modular/project/general/create/project/main/generalModularProject";
+    public static final String MODULE_FILE_NAME = "/org/mondo/generate/modular/project/general/create/project/main/generalModularProject";
     
     /**
      * The name of the templates that are to be generated.

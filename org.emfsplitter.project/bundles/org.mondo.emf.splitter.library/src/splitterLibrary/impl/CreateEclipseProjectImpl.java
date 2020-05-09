@@ -368,8 +368,7 @@ public class CreateEclipseProjectImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void Copy_Image(String source,String name, String target) {
-		
+	public void Copy_Image(String source,String name, String target) {		
 		try {
 			IFolder imagesFolder = project.getFolder(target);
 			FileInputStream fileStream = new FileInputStream(source);

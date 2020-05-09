@@ -44,11 +44,8 @@ import org.eclipse.m2m.atl.graphictoviewpoint.files.GraphicToViewPoint;
 
 import org.mondo.acceleo.generate.sirius.main.WorkFlowSiriusProject;
 
-import dslPatterns.impl.DslPatternsFactoryImpl;
 import runtimePatterns.PatternInstance;
 import runtimePatterns.PatternInstances;
-import runtimePatterns.impl.PatternInstanceImpl;
-import runtimePatterns.impl.PatternInstancesImpl;
 import runtimePatterns.impl.RuntimePatternsFactoryImpl;
 import splitterLibrary.EcoreEMF;
 import splitterLibrary.impl.CreateEclipseProjectImpl;
@@ -90,7 +87,6 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	}
 
 	public void CreateAllFoldersProject() {
-		// TODO Auto-generated method stub
 		CreateFolder("src");	
 		CreateFolder("icons");
 		CreateFolder("META-INF");
@@ -98,7 +94,7 @@ public class CreateSiriusPluginProject extends CreateEclipseProjectImpl{
 	}
 	
 	public void Copy_Icons(){
-		Copy_Image(work_path.concat("/icons/sirius_icon.png"),"sirius_icon.png", "icons");
+		Copy_Image(work_path.concat("icons/sirius_icon.png"),"sirius_icon.png", "icons");
 	}
 
 	@Override
