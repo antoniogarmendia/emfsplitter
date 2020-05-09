@@ -37,7 +37,7 @@ public class GeneralModularProject extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/org/mondo/generate/modular/project/general/create/project/main/generalModularProject";
+    public static final String MODULE_FILE_NAME = "/bin/org/mondo/generate/modular/project/general/create/project/main/generalModularProject";
     
     /**
      * The name of the templates that are to be generated.
@@ -352,6 +352,9 @@ public class GeneralModularProject extends AbstractAcceleoGenerator {
         super.registerPackages(resourceSet);
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+        }
+        if (!isInWorkspace(runtimePatterns.RuntimePatternsPackage.class)) {
+            resourceSet.getPackageRegistry().put(runtimePatterns.RuntimePatternsPackage.eINSTANCE.getNsURI(), runtimePatterns.RuntimePatternsPackage.eINSTANCE);
         }
         if (!isInWorkspace(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);

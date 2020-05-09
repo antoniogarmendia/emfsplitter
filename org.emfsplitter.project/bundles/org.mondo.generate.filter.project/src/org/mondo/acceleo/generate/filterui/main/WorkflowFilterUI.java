@@ -35,9 +35,9 @@ public class WorkflowFilterUI extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
-     * @generated
+     * @generated NOT
      */
-    public static final String MODULE_FILE_NAME = "/org/mondo/acceleo/generate/filterui/main/WorkflowFilterUI";
+    public static final String MODULE_FILE_NAME = "/bin/org/mondo/acceleo/generate/filterui/main/WorkflowFilterUI";
     
     /**
      * The name of the templates that are to be generated.
@@ -350,6 +350,9 @@ public class WorkflowFilterUI extends AbstractAcceleoGenerator {
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
+        if (!isInWorkspace(runtimePatterns.RuntimePatternsPackage.class)) {
+            resourceSet.getPackageRegistry().put(runtimePatterns.RuntimePatternsPackage.eINSTANCE.getNsURI(), runtimePatterns.RuntimePatternsPackage.eINSTANCE);
+        }
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
         }

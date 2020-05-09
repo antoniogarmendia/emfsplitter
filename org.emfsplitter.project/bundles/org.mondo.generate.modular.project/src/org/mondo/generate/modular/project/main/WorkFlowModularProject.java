@@ -35,9 +35,9 @@ public class WorkFlowModularProject extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
-     * @generated
+     * @generated NOT
      */
-    public static final String MODULE_FILE_NAME = "/org/mondo/generate/modular/project/main/WorkFlowModularProject";
+    public static final String MODULE_FILE_NAME = "/bin/org/mondo/generate/modular/project/main/WorkFlowModularProject";
     
     /**
      * The name of the templates that are to be generated.
@@ -349,6 +349,9 @@ public class WorkFlowModularProject extends AbstractAcceleoGenerator {
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
+        if (!isInWorkspace(runtimePatterns.RuntimePatternsPackage.class)) {
+            resourceSet.getPackageRegistry().put(runtimePatterns.RuntimePatternsPackage.eINSTANCE.getNsURI(), runtimePatterns.RuntimePatternsPackage.eINSTANCE);
+        }
         if (!isInWorkspace(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
         }

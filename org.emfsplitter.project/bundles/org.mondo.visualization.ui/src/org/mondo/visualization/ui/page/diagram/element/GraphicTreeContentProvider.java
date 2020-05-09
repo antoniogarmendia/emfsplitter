@@ -9,8 +9,7 @@ import graphic_representation.Node;
 import graphic_representation.RepresentationDD;
 import graphic_representation.Root;
 
-import org.apache.commons.lang.ArrayUtils;
-import org.eclipse.emf.common.util.EList;
+import org.apache.commons.lang3.ArrayUtils;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
