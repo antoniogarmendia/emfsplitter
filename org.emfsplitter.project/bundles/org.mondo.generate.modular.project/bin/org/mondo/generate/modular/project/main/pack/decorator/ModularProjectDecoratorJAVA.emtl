@@ -192,65 +192,32 @@
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;);&#xD;&#xA;"/>
             <ifExpr xsi:type="ocl.ecore:OperationCallExp">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-              <source xsi:type="ocl.ecore:OperationCallExp">
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/equalsIgnoreCase">
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/equalsIgnoreCase">
-                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-                  <source xsi:type="mtl:QueryInvocation">
+                <source xsi:type="mtl:QueryInvocation">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <definition href="../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_EAttribute"/>
+                  <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/ModularProjectDecorator/%.1/%.15/c">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                  </argument>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="icon">
                     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    <definition href="../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_EAttribute"/>
-                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/ModularProjectDecorator/%.1/%.15/c">
-                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
-                    </argument>
-                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="icon">
-                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    </argument>
-                  </source>
-                  <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
-                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
-                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
-                    </source>
-                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="def_path_icon">
-                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    </argument>
                   </argument>
                 </source>
-                <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
-                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
+                    <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="def_path_icon">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
                 </argument>
-                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
               </source>
-              <argument xsi:type="ocl.ecore:OperationCallExp">
+              <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/equalsIgnoreCase">
-                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-                  <source xsi:type="mtl:QueryInvocation">
-                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    <definition href="../../requests/global_queriesModularProject.emtl#/0/Get_ClassRoleInstance_EAttribute"/>
-                    <argument xsi:type="ocl.ecore:VariableExp" name="c" referredVariable="/0/ModularProjectDecorator/%.1/%.15/c">
-                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
-                    </argument>
-                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="icon">
-                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    </argument>
-                  </source>
-                  <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/getProperty">
-                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
-                      <eType xsi:type="ecore:EClass" href="http://mondo.org/runtimePatterns#//ClassRoleInstance"/>
-                    </source>
-                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
-                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                    </argument>
-                  </argument>
-                </source>
-                <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
-                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
-                </argument>
-                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
               </argument>
-              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
             </ifExpr>
             <else>
               <body xsi:type="mtl:IfBlock">
@@ -1004,7 +971,7 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/ModularProjectDecorator">
       <details key="start" value="286"/>
-      <details key="end" value="4669"/>
+      <details key="end" value="4686"/>
       <details key="line" value="5"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/ModularProjectDecorator/%">
@@ -1014,7 +981,7 @@
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/ModularProjectDecorator/%.1">
       <details key="start" value="445"/>
-      <details key="end" value="4652"/>
+      <details key="end" value="4669"/>
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/ModularProjectDecorator/%.1/%">
@@ -1214,52 +1181,52 @@
     </eAnnotations>
     <eAnnotations source="positions.42" references="/0/ModularProjectDecorator/%.1/%.15">
       <details key="start" value="2045"/>
-      <details key="end" value="3177"/>
+      <details key="end" value="3194"/>
       <details key="line" value="47"/>
     </eAnnotations>
     <eAnnotations source="positions.43" references="/0/ModularProjectDecorator/%.1/%.15/%">
-      <details key="start" value="2128"/>
-      <details key="end" value="3167"/>
-      <details key="line" value="48"/>
-    </eAnnotations>
-    <eAnnotations source="positions.44" references="/0/ModularProjectDecorator/%.1/%.15/%/%">
-      <details key="start" value="2318"/>
-      <details key="end" value="2329"/>
+      <details key="start" value="2232"/>
+      <details key="end" value="3184"/>
       <details key="line" value="49"/>
     </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/ModularProjectDecorator/%.1/%.15/%/%">
+      <details key="start" value="2335"/>
+      <details key="end" value="2346"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
     <eAnnotations source="positions.45" references="/0/ModularProjectDecorator/%.1/%.15/%/%.1">
-      <details key="start" value="2330"/>
-      <details key="end" value="2344"/>
+      <details key="start" value="2347"/>
+      <details key="end" value="2361"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.46" references="/0/ModularProjectDecorator/%.1/%.15/%/%.1/%">
-      <details key="start" value="2330"/>
-      <details key="end" value="2339"/>
+      <details key="start" value="2347"/>
+      <details key="end" value="2356"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.47" references="/0/ModularProjectDecorator/%.1/%.15/%/%.1/%/c">
-      <details key="start" value="2330"/>
-      <details key="end" value="2331"/>
+      <details key="start" value="2347"/>
+      <details key="end" value="2348"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.48" references="/0/ModularProjectDecorator/%.1/%.15/%/%.2">
-      <details key="start" value="2347"/>
-      <details key="end" value="2394"/>
-      <details key="line" value="49"/>
+      <details key="start" value="2364"/>
+      <details key="end" value="2411"/>
+      <details key="line" value="50"/>
     </eAnnotations>
     <eAnnotations source="positions.49" references="/0/ModularProjectDecorator/%.1/%.15/%/anProjectName">
-      <details key="start" value="2395"/>
-      <details key="end" value="2408"/>
+      <details key="start" value="2412"/>
+      <details key="end" value="2425"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.50" references="/0/ModularProjectDecorator/%.1/%.15/%/%.3">
-      <details key="start" value="2410"/>
-      <details key="end" value="2411"/>
-      <details key="line" value="49"/>
+      <details key="start" value="2427"/>
+      <details key="end" value="2428"/>
+      <details key="line" value="50"/>
     </eAnnotations>
     <eAnnotations source="positions.51" references="/0/ModularProjectDecorator/%.1/%.15/%/%.4">
-      <details key="start" value="2412"/>
-      <details key="end" value="2438"/>
+      <details key="start" value="2429"/>
+      <details key="end" value="2455"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.52" references="/0/ModularProjectDecorator/%.1/%.15/%/%.4/self">
@@ -1268,836 +1235,786 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.53" references="/0/ModularProjectDecorator/%.1/%.15/%/%.4/%">
-      <details key="start" value="2424"/>
-      <details key="end" value="2437"/>
+      <details key="start" value="2441"/>
+      <details key="end" value="2454"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.54" references="/0/ModularProjectDecorator/%.1/%.15/%/%.5">
-      <details key="start" value="2440"/>
-      <details key="end" value="2441"/>
-      <details key="line" value="49"/>
+      <details key="start" value="2457"/>
+      <details key="end" value="2458"/>
+      <details key="line" value="50"/>
     </eAnnotations>
     <eAnnotations source="positions.55" references="/0/ModularProjectDecorator/%.1/%.15/%/%.6">
-      <details key="start" value="2442"/>
-      <details key="end" value="2517"/>
+      <details key="start" value="2459"/>
+      <details key="end" value="2534"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.56" references="/0/ModularProjectDecorator/%.1/%.15/%/%.6/%">
-      <details key="start" value="2442"/>
-      <details key="end" value="2503"/>
+      <details key="start" value="2459"/>
+      <details key="end" value="2520"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.57" references="/0/ModularProjectDecorator/%.1/%.15/%/%.6/%/%">
-      <details key="start" value="2442"/>
-      <details key="end" value="2498"/>
+      <details key="start" value="2459"/>
+      <details key="end" value="2515"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.58" references="/0/ModularProjectDecorator/%.1/%.15/%/%.6/%/%/%">
-      <details key="start" value="2442"/>
-      <details key="end" value="2490"/>
+      <details key="start" value="2459"/>
+      <details key="end" value="2507"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.59" references="/0/ModularProjectDecorator/%.1/%.15/%/%.6/%/%/%/anPatternInstance">
-      <details key="start" value="2442"/>
-      <details key="end" value="2459"/>
+      <details key="start" value="2459"/>
+      <details key="end" value="2476"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.60" references="/0/ModularProjectDecorator/%.1/%.15/%/%.7">
-      <details key="start" value="2519"/>
-      <details key="end" value="2523"/>
-      <details key="line" value="49"/>
+      <details key="start" value="2536"/>
+      <details key="end" value="2540"/>
+      <details key="line" value="50"/>
     </eAnnotations>
     <eAnnotations source="positions.61" references="/0/ModularProjectDecorator/%.1/%.15/%/%.8">
-      <details key="start" value="2524"/>
-      <details key="end" value="2579"/>
+      <details key="start" value="2541"/>
+      <details key="end" value="2596"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.62" references="/0/ModularProjectDecorator/%.1/%.15/%/%.8/%">
-      <details key="start" value="2536"/>
-      <details key="end" value="2578"/>
+      <details key="start" value="2553"/>
+      <details key="end" value="2595"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.63" references="/0/ModularProjectDecorator/%.1/%.15/%/%.8/%/c">
-      <details key="start" value="2536"/>
-      <details key="end" value="2537"/>
+      <details key="start" value="2553"/>
+      <details key="end" value="2554"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.64" references="/0/ModularProjectDecorator/%.1/%.15/%/%.8/%/%">
-      <details key="start" value="2571"/>
-      <details key="end" value="2577"/>
+      <details key="start" value="2588"/>
+      <details key="end" value="2594"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.65" references="/0/ModularProjectDecorator/%.1/%.15/%/%.9">
-      <details key="start" value="2581"/>
-      <details key="end" value="2586"/>
-      <details key="line" value="49"/>
+      <details key="start" value="2598"/>
+      <details key="end" value="2603"/>
+      <details key="line" value="50"/>
     </eAnnotations>
     <eAnnotations source="positions.66" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10">
-      <details key="start" value="2131"/>
-      <details key="end" value="2315"/>
+      <details key="start" value="2235"/>
+      <details key="end" value="2332"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.67" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%">
-      <details key="start" value="2132"/>
-      <details key="end" value="2227"/>
+      <details key="start" value="2236"/>
+      <details key="end" value="2325"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.68" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%">
-      <details key="start" value="2132"/>
-      <details key="end" value="2221"/>
+      <details key="start" value="2236"/>
+      <details key="end" value="2278"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.69" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%">
-      <details key="start" value="2132"/>
-      <details key="end" value="2174"/>
+    <eAnnotations source="positions.69" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/c">
+      <details key="start" value="2236"/>
+      <details key="end" value="2237"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.70" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%/c">
-      <details key="start" value="2132"/>
-      <details key="end" value="2133"/>
+    <eAnnotations source="positions.70" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%">
+      <details key="start" value="2271"/>
+      <details key="end" value="2277"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.71" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%/%">
-      <details key="start" value="2167"/>
-      <details key="end" value="2173"/>
+    <eAnnotations source="positions.71" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%.1">
+      <details key="start" value="2296"/>
+      <details key="end" value="2324"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.72" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%.1">
-      <details key="start" value="2192"/>
-      <details key="end" value="2220"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.73" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%.1/self">
+    <eAnnotations source="positions.72" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%.1/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.74" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%/%.1/%">
-      <details key="start" value="2204"/>
-      <details key="end" value="2219"/>
+    <eAnnotations source="positions.73" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%.1/%">
+      <details key="start" value="2308"/>
+      <details key="end" value="2323"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.75" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%/%.1">
-      <details key="start" value="2222"/>
-      <details key="end" value="2227"/>
+    <eAnnotations source="positions.74" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1">
+      <details key="start" value="2326"/>
+      <details key="end" value="2331"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.76" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1">
-      <details key="start" value="2232"/>
-      <details key="end" value="2314"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.77" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%">
-      <details key="start" value="2232"/>
-      <details key="end" value="2308"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.78" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%/%">
-      <details key="start" value="2232"/>
-      <details key="end" value="2274"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.79" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%/%/c">
-      <details key="start" value="2232"/>
-      <details key="end" value="2233"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.80" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%/%/%">
-      <details key="start" value="2267"/>
-      <details key="end" value="2273"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.81" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%/%.1">
-      <details key="start" value="2292"/>
-      <details key="end" value="2307"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.82" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%/%.1/self">
-      <details key="start" value="-1"/>
-      <details key="end" value="-1"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.83" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%/%.1/%">
-      <details key="start" value="2304"/>
-      <details key="end" value="2306"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.84" references="/0/ModularProjectDecorator/%.1/%.15/%/%.10/%.1/%.1">
-      <details key="start" value="2309"/>
-      <details key="end" value="2314"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.85" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11">
-      <details key="start" value="2588"/>
-      <details key="end" value="3162"/>
-      <details key="line" value="50"/>
-    </eAnnotations>
-    <eAnnotations source="positions.86" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%">
-      <details key="start" value="2599"/>
-      <details key="end" value="3157"/>
+    <eAnnotations source="positions.75" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11">
+      <details key="start" value="2605"/>
+      <details key="end" value="3179"/>
       <details key="line" value="51"/>
     </eAnnotations>
-    <eAnnotations source="positions.87" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%">
-      <details key="start" value="2657"/>
-      <details key="end" value="2667"/>
+    <eAnnotations source="positions.76" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%">
+      <details key="start" value="2616"/>
+      <details key="end" value="3174"/>
       <details key="line" value="52"/>
     </eAnnotations>
-    <eAnnotations source="positions.88" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.1">
-      <details key="start" value="2668"/>
-      <details key="end" value="2682"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.89" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.1/%">
-      <details key="start" value="2668"/>
-      <details key="end" value="2677"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.90" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.1/%/c">
-      <details key="start" value="2668"/>
-      <details key="end" value="2669"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.91" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.2">
-      <details key="start" value="2685"/>
-      <details key="end" value="2732"/>
-      <details key="line" value="52"/>
-    </eAnnotations>
-    <eAnnotations source="positions.92" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/anProjectName">
-      <details key="start" value="2733"/>
-      <details key="end" value="2746"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.93" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.3">
-      <details key="start" value="2748"/>
-      <details key="end" value="2749"/>
-      <details key="line" value="52"/>
-    </eAnnotations>
-    <eAnnotations source="positions.94" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.4">
-      <details key="start" value="2750"/>
-      <details key="end" value="2776"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.95" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.4/self">
-      <details key="start" value="-1"/>
-      <details key="end" value="-1"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.96" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.4/%">
-      <details key="start" value="2762"/>
-      <details key="end" value="2775"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.97" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.5">
-      <details key="start" value="2778"/>
-      <details key="end" value="2779"/>
-      <details key="line" value="52"/>
-    </eAnnotations>
-    <eAnnotations source="positions.98" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6">
-      <details key="start" value="2780"/>
-      <details key="end" value="2855"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.99" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%">
-      <details key="start" value="2780"/>
-      <details key="end" value="2841"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.100" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%/%">
-      <details key="start" value="2780"/>
-      <details key="end" value="2836"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.101" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%/%/%">
-      <details key="start" value="2780"/>
-      <details key="end" value="2828"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.102" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%/%/%/anPatternInstance">
-      <details key="start" value="2780"/>
-      <details key="end" value="2797"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.103" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.7">
-      <details key="start" value="2857"/>
-      <details key="end" value="2861"/>
-      <details key="line" value="52"/>
-    </eAnnotations>
-    <eAnnotations source="positions.104" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.8">
-      <details key="start" value="2862"/>
-      <details key="end" value="2889"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.105" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.8/self">
-      <details key="start" value="-1"/>
-      <details key="end" value="-1"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.106" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.8/%">
-      <details key="start" value="2874"/>
-      <details key="end" value="2888"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.107" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.9">
-      <details key="start" value="2891"/>
-      <details key="end" value="2896"/>
-      <details key="line" value="52"/>
-    </eAnnotations>
-    <eAnnotations source="positions.108" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10">
-      <details key="start" value="2602"/>
-      <details key="end" value="2654"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.109" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10/c">
-      <details key="start" value="2603"/>
-      <details key="end" value="2604"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.110" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10/%">
-      <details key="start" value="2605"/>
-      <details key="end" value="2653"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.111" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10/%/anPatternInstance">
-      <details key="start" value="2605"/>
-      <details key="end" value="2622"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.112" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11">
-      <details key="start" value="2899"/>
-      <details key="end" value="3152"/>
+    <eAnnotations source="positions.77" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%">
+      <details key="start" value="2674"/>
+      <details key="end" value="2684"/>
       <details key="line" value="53"/>
     </eAnnotations>
-    <eAnnotations source="positions.113" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%">
-      <details key="start" value="2907"/>
-      <details key="end" value="2917"/>
+    <eAnnotations source="positions.78" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.1">
+      <details key="start" value="2685"/>
+      <details key="end" value="2699"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.1/%">
+      <details key="start" value="2685"/>
+      <details key="end" value="2694"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.1/%/c">
+      <details key="start" value="2685"/>
+      <details key="end" value="2686"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.2">
+      <details key="start" value="2702"/>
+      <details key="end" value="2749"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/anProjectName">
+      <details key="start" value="2750"/>
+      <details key="end" value="2763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.3">
+      <details key="start" value="2765"/>
+      <details key="end" value="2766"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.4">
+      <details key="start" value="2767"/>
+      <details key="end" value="2793"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.4/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.4/%">
+      <details key="start" value="2779"/>
+      <details key="end" value="2792"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.5">
+      <details key="start" value="2795"/>
+      <details key="end" value="2796"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6">
+      <details key="start" value="2797"/>
+      <details key="end" value="2872"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%">
+      <details key="start" value="2797"/>
+      <details key="end" value="2858"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%/%">
+      <details key="start" value="2797"/>
+      <details key="end" value="2853"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%/%/%">
+      <details key="start" value="2797"/>
+      <details key="end" value="2845"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.6/%/%/%/anPatternInstance">
+      <details key="start" value="2797"/>
+      <details key="end" value="2814"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.7">
+      <details key="start" value="2874"/>
+      <details key="end" value="2878"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.8">
+      <details key="start" value="2879"/>
+      <details key="end" value="2906"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.8/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.8/%">
+      <details key="start" value="2891"/>
+      <details key="end" value="2905"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.9">
+      <details key="start" value="2908"/>
+      <details key="end" value="2913"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10">
+      <details key="start" value="2619"/>
+      <details key="end" value="2671"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10/c">
+      <details key="start" value="2620"/>
+      <details key="end" value="2621"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10/%">
+      <details key="start" value="2622"/>
+      <details key="end" value="2670"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.10/%/anPatternInstance">
+      <details key="start" value="2622"/>
+      <details key="end" value="2639"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11">
+      <details key="start" value="2916"/>
+      <details key="end" value="3169"/>
       <details key="line" value="54"/>
     </eAnnotations>
-    <eAnnotations source="positions.114" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.1">
-      <details key="start" value="2918"/>
-      <details key="end" value="2932"/>
-      <details key="line" value="0"/>
+    <eAnnotations source="positions.103" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%">
+      <details key="start" value="2924"/>
+      <details key="end" value="2934"/>
+      <details key="line" value="55"/>
     </eAnnotations>
-    <eAnnotations source="positions.115" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.1/%">
-      <details key="start" value="2918"/>
-      <details key="end" value="2927"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.116" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.1/%/c">
-      <details key="start" value="2918"/>
-      <details key="end" value="2919"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.117" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.2">
+    <eAnnotations source="positions.104" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.1">
       <details key="start" value="2935"/>
-      <details key="end" value="2982"/>
-      <details key="line" value="54"/>
-    </eAnnotations>
-    <eAnnotations source="positions.118" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/anProjectName">
-      <details key="start" value="2983"/>
-      <details key="end" value="2996"/>
+      <details key="end" value="2949"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.119" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.3">
-      <details key="start" value="2998"/>
+    <eAnnotations source="positions.105" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.1/%">
+      <details key="start" value="2935"/>
+      <details key="end" value="2944"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.1/%/c">
+      <details key="start" value="2935"/>
+      <details key="end" value="2936"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.2">
+      <details key="start" value="2952"/>
       <details key="end" value="2999"/>
-      <details key="line" value="54"/>
+      <details key="line" value="55"/>
     </eAnnotations>
-    <eAnnotations source="positions.120" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.4">
+    <eAnnotations source="positions.108" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/anProjectName">
       <details key="start" value="3000"/>
-      <details key="end" value="3026"/>
+      <details key="end" value="3013"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.121" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.4/self">
+    <eAnnotations source="positions.109" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.3">
+      <details key="start" value="3015"/>
+      <details key="end" value="3016"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.4">
+      <details key="start" value="3017"/>
+      <details key="end" value="3043"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.4/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.122" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.4/%">
-      <details key="start" value="3012"/>
-      <details key="end" value="3025"/>
+    <eAnnotations source="positions.112" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.4/%">
+      <details key="start" value="3029"/>
+      <details key="end" value="3042"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.123" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.5">
-      <details key="start" value="3028"/>
-      <details key="end" value="3029"/>
-      <details key="line" value="54"/>
+    <eAnnotations source="positions.113" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.5">
+      <details key="start" value="3045"/>
+      <details key="end" value="3046"/>
+      <details key="line" value="55"/>
     </eAnnotations>
-    <eAnnotations source="positions.124" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6">
-      <details key="start" value="3030"/>
-      <details key="end" value="3105"/>
+    <eAnnotations source="positions.114" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6">
+      <details key="start" value="3047"/>
+      <details key="end" value="3122"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.125" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%">
-      <details key="start" value="3030"/>
-      <details key="end" value="3091"/>
+    <eAnnotations source="positions.115" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%">
+      <details key="start" value="3047"/>
+      <details key="end" value="3108"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.126" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%/%">
-      <details key="start" value="3030"/>
-      <details key="end" value="3086"/>
+    <eAnnotations source="positions.116" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%/%">
+      <details key="start" value="3047"/>
+      <details key="end" value="3103"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.127" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%/%/%">
-      <details key="start" value="3030"/>
-      <details key="end" value="3078"/>
+    <eAnnotations source="positions.117" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%/%/%">
+      <details key="start" value="3047"/>
+      <details key="end" value="3095"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.128" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%/%/%/anPatternInstance">
-      <details key="start" value="3030"/>
-      <details key="end" value="3047"/>
+    <eAnnotations source="positions.118" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.6/%/%/%/anPatternInstance">
+      <details key="start" value="3047"/>
+      <details key="end" value="3064"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.129" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.7">
-      <details key="start" value="3107"/>
-      <details key="end" value="3111"/>
-      <details key="line" value="54"/>
-    </eAnnotations>
-    <eAnnotations source="positions.130" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.8">
-      <details key="start" value="3112"/>
-      <details key="end" value="3142"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.131" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.8/self">
-      <details key="start" value="-1"/>
-      <details key="end" value="-1"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.132" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.8/%">
+    <eAnnotations source="positions.119" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.7">
       <details key="start" value="3124"/>
-      <details key="end" value="3141"/>
+      <details key="end" value="3128"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.8">
+      <details key="start" value="3129"/>
+      <details key="end" value="3159"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.133" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.9">
-      <details key="start" value="3144"/>
-      <details key="end" value="3149"/>
-      <details key="line" value="54"/>
+    <eAnnotations source="positions.121" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.8/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.134" references="/0/ModularProjectDecorator/%.1/%.15/c">
+    <eAnnotations source="positions.122" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.8/%">
+      <details key="start" value="3141"/>
+      <details key="end" value="3158"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/ModularProjectDecorator/%.1/%.15/%/%.11/%/%.11/%.9">
+      <details key="start" value="3161"/>
+      <details key="end" value="3166"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/ModularProjectDecorator/%.1/%.15/c">
       <details key="start" value="2051"/>
       <details key="end" value="2072"/>
       <details key="line" value="47"/>
     </eAnnotations>
-    <eAnnotations source="positions.135" references="/0/ModularProjectDecorator/%.1/%.15/%.1">
+    <eAnnotations source="positions.125" references="/0/ModularProjectDecorator/%.1/%.15/%.1">
       <details key="start" value="2075"/>
       <details key="end" value="2122"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.136" references="/0/ModularProjectDecorator/%.1/%.15/%.1/anPatternInstance">
+    <eAnnotations source="positions.126" references="/0/ModularProjectDecorator/%.1/%.15/%.1/anPatternInstance">
       <details key="start" value="2075"/>
       <details key="end" value="2092"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.137" references="/0/ModularProjectDecorator/%.1/%.16">
-      <details key="start" value="3183"/>
-      <details key="end" value="3423"/>
-      <details key="line" value="57"/>
+    <eAnnotations source="positions.127" references="/0/ModularProjectDecorator/%.1/%.16">
+      <details key="start" value="3200"/>
+      <details key="end" value="3440"/>
+      <details key="line" value="58"/>
     </eAnnotations>
-    <eAnnotations source="positions.138" references="/0/ModularProjectDecorator/%.1/%.17">
-      <details key="start" value="3424"/>
-      <details key="end" value="3465"/>
+    <eAnnotations source="positions.128" references="/0/ModularProjectDecorator/%.1/%.17">
+      <details key="start" value="3441"/>
+      <details key="end" value="3482"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.139" references="/0/ModularProjectDecorator/%.1/%.17/%">
-      <details key="start" value="3424"/>
-      <details key="end" value="3460"/>
+    <eAnnotations source="positions.129" references="/0/ModularProjectDecorator/%.1/%.17/%">
+      <details key="start" value="3441"/>
+      <details key="end" value="3477"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.140" references="/0/ModularProjectDecorator/%.1/%.17/%/anPatternInstance">
-      <details key="start" value="3424"/>
-      <details key="end" value="3441"/>
+    <eAnnotations source="positions.130" references="/0/ModularProjectDecorator/%.1/%.17/%/anPatternInstance">
+      <details key="start" value="3441"/>
+      <details key="end" value="3458"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.141" references="/0/ModularProjectDecorator/%.1/%.18">
-      <details key="start" value="3467"/>
-      <details key="end" value="3560"/>
-      <details key="line" value="68"/>
+    <eAnnotations source="positions.131" references="/0/ModularProjectDecorator/%.1/%.18">
+      <details key="start" value="3484"/>
+      <details key="end" value="3577"/>
+      <details key="line" value="69"/>
     </eAnnotations>
-    <eAnnotations source="positions.142" references="/0/ModularProjectDecorator/%.1/%.19">
-      <details key="start" value="3561"/>
-      <details key="end" value="3616"/>
+    <eAnnotations source="positions.132" references="/0/ModularProjectDecorator/%.1/%.19">
+      <details key="start" value="3578"/>
+      <details key="end" value="3633"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.143" references="/0/ModularProjectDecorator/%.1/%.19/%">
-      <details key="start" value="3561"/>
-      <details key="end" value="3608"/>
+    <eAnnotations source="positions.133" references="/0/ModularProjectDecorator/%.1/%.19/%">
+      <details key="start" value="3578"/>
+      <details key="end" value="3625"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.144" references="/0/ModularProjectDecorator/%.1/%.19/%/anPatternInstance">
-      <details key="start" value="3561"/>
-      <details key="end" value="3578"/>
+    <eAnnotations source="positions.134" references="/0/ModularProjectDecorator/%.1/%.19/%/anPatternInstance">
+      <details key="start" value="3578"/>
+      <details key="end" value="3595"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.145" references="/0/ModularProjectDecorator/%.1/%.20">
-      <details key="start" value="3618"/>
-      <details key="end" value="3734"/>
-      <details key="line" value="71"/>
+    <eAnnotations source="positions.135" references="/0/ModularProjectDecorator/%.1/%.20">
+      <details key="start" value="3635"/>
+      <details key="end" value="3751"/>
+      <details key="line" value="72"/>
     </eAnnotations>
-    <eAnnotations source="positions.146" references="/0/ModularProjectDecorator/%.1/%.21">
-      <details key="start" value="3741"/>
-      <details key="end" value="4498"/>
-      <details key="line" value="74"/>
-    </eAnnotations>
-    <eAnnotations source="positions.147" references="/0/ModularProjectDecorator/%.1/%.21/%">
-      <details key="start" value="3853"/>
-      <details key="end" value="4035"/>
+    <eAnnotations source="positions.136" references="/0/ModularProjectDecorator/%.1/%.21">
+      <details key="start" value="3758"/>
+      <details key="end" value="4515"/>
       <details key="line" value="75"/>
     </eAnnotations>
-    <eAnnotations source="positions.148" references="/0/ModularProjectDecorator/%.1/%.21/%/%">
-      <details key="start" value="3892"/>
-      <details key="end" value="3950"/>
+    <eAnnotations source="positions.137" references="/0/ModularProjectDecorator/%.1/%.21/%">
+      <details key="start" value="3870"/>
+      <details key="end" value="4052"/>
       <details key="line" value="76"/>
     </eAnnotations>
-    <eAnnotations source="positions.149" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1">
-      <details key="start" value="3952"/>
-      <details key="end" value="3991"/>
+    <eAnnotations source="positions.138" references="/0/ModularProjectDecorator/%.1/%.21/%/%">
+      <details key="start" value="3909"/>
+      <details key="end" value="3967"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1">
+      <details key="start" value="3969"/>
+      <details key="end" value="4008"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.150" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1/%">
-      <details key="start" value="3952"/>
+    <eAnnotations source="positions.140" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1/%">
+      <details key="start" value="3969"/>
+      <details key="end" value="4003"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1/%/%">
+      <details key="start" value="3969"/>
+      <details key="end" value="3995"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1/%/%/anFolderInstances">
+      <details key="start" value="3969"/>
       <details key="end" value="3986"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.151" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1/%/%">
-      <details key="start" value="3952"/>
-      <details key="end" value="3978"/>
+    <eAnnotations source="positions.143" references="/0/ModularProjectDecorator/%.1/%.21/%/%.2">
+      <details key="start" value="4011"/>
+      <details key="end" value="4040"/>
+      <details key="line" value="78"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3">
+      <details key="start" value="3874"/>
+      <details key="end" value="3906"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.152" references="/0/ModularProjectDecorator/%.1/%.21/%/%.1/%/%/anFolderInstances">
-      <details key="start" value="3952"/>
-      <details key="end" value="3969"/>
+    <eAnnotations source="positions.145" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3/%">
+      <details key="start" value="3875"/>
+      <details key="end" value="3900"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.153" references="/0/ModularProjectDecorator/%.1/%.21/%/%.2">
-      <details key="start" value="3994"/>
-      <details key="end" value="4023"/>
-      <details key="line" value="77"/>
-    </eAnnotations>
-    <eAnnotations source="positions.154" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3">
-      <details key="start" value="3857"/>
-      <details key="end" value="3889"/>
+    <eAnnotations source="positions.146" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3/%/anFolderInstances">
+      <details key="start" value="3875"/>
+      <details key="end" value="3892"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.155" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3/%">
-      <details key="start" value="3858"/>
-      <details key="end" value="3883"/>
+    <eAnnotations source="positions.147" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3/%.1">
+      <details key="start" value="3904"/>
+      <details key="end" value="3905"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.156" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3/%/anFolderInstances">
-      <details key="start" value="3858"/>
-      <details key="end" value="3875"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.157" references="/0/ModularProjectDecorator/%.1/%.21/%/%.3/%.1">
-      <details key="start" value="3887"/>
-      <details key="end" value="3888"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.158" references="/0/ModularProjectDecorator/%.1/%.21/%.1">
-      <details key="start" value="4044"/>
-      <details key="end" value="4483"/>
-      <details key="line" value="79"/>
-    </eAnnotations>
-    <eAnnotations source="positions.159" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%">
-      <details key="start" value="4185"/>
-      <details key="end" value="4469"/>
+    <eAnnotations source="positions.148" references="/0/ModularProjectDecorator/%.1/%.21/%.1">
+      <details key="start" value="4061"/>
+      <details key="end" value="4500"/>
       <details key="line" value="80"/>
     </eAnnotations>
-    <eAnnotations source="positions.160" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%">
-      <details key="start" value="4340"/>
-      <details key="end" value="4360"/>
-      <details key="line" value="80"/>
-    </eAnnotations>
-    <eAnnotations source="positions.161" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.1">
-      <details key="start" value="4361"/>
-      <details key="end" value="4364"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.162" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.1/i">
-      <details key="start" value="4361"/>
-      <details key="end" value="4362"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.163" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.1/%">
-      <details key="start" value="4363"/>
-      <details key="end" value="4364"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.164" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.2">
-      <details key="start" value="4366"/>
-      <details key="end" value="4407"/>
+    <eAnnotations source="positions.149" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%">
+      <details key="start" value="4202"/>
+      <details key="end" value="4486"/>
       <details key="line" value="81"/>
     </eAnnotations>
-    <eAnnotations source="positions.165" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.3">
-      <details key="start" value="4409"/>
-      <details key="end" value="4423"/>
+    <eAnnotations source="positions.150" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%">
+      <details key="start" value="4357"/>
+      <details key="end" value="4377"/>
+      <details key="line" value="81"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.1">
+      <details key="start" value="4378"/>
+      <details key="end" value="4381"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.166" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.3/%">
-      <details key="start" value="4409"/>
-      <details key="end" value="4418"/>
+    <eAnnotations source="positions.152" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.1/i">
+      <details key="start" value="4378"/>
+      <details key="end" value="4379"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.167" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.3/%/c">
-      <details key="start" value="4409"/>
-      <details key="end" value="4410"/>
+    <eAnnotations source="positions.153" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.1/%">
+      <details key="start" value="4380"/>
+      <details key="end" value="4381"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.168" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.4">
-      <details key="start" value="4426"/>
-      <details key="end" value="4456"/>
+    <eAnnotations source="positions.154" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.2">
+      <details key="start" value="4383"/>
+      <details key="end" value="4424"/>
       <details key="line" value="82"/>
     </eAnnotations>
-    <eAnnotations source="positions.169" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/c">
+    <eAnnotations source="positions.155" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.3">
+      <details key="start" value="4426"/>
+      <details key="end" value="4440"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.3/%">
+      <details key="start" value="4426"/>
+      <details key="end" value="4435"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.3/%/c">
+      <details key="start" value="4426"/>
+      <details key="end" value="4427"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.4">
+      <details key="start" value="4443"/>
+      <details key="end" value="4473"/>
+      <details key="line" value="83"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/c">
+      <details key="start" value="4207"/>
+      <details key="end" value="4228"/>
+      <details key="line" value="81"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5">
+      <details key="start" value="4231"/>
+      <details key="end" value="4347"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%">
+      <details key="start" value="4231"/>
+      <details key="end" value="4278"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%/anPatternInstance">
+      <details key="start" value="4231"/>
+      <details key="end" value="4248"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%.1">
+      <details key="start" value="4290"/>
+      <details key="end" value="4346"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%.1/%">
+      <details key="start" value="4290"/>
+      <details key="end" value="4337"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%.1/%/anPatternInstance">
+      <details key="start" value="4290"/>
+      <details key="end" value="4307"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1">
+      <details key="start" value="4065"/>
+      <details key="end" value="4192"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%">
+      <details key="start" value="4066"/>
+      <details key="end" value="4126"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%">
+      <details key="start" value="4066"/>
+      <details key="end" value="4121"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%/%">
+      <details key="start" value="4066"/>
+      <details key="end" value="4113"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%/%/anPatternInstance">
+      <details key="start" value="4066"/>
+      <details key="end" value="4083"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%.1">
+      <details key="start" value="4125"/>
+      <details key="end" value="4126"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.172" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1">
+      <details key="start" value="4131"/>
+      <details key="end" value="4191"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.173" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%">
+      <details key="start" value="4131"/>
+      <details key="end" value="4186"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%/%">
+      <details key="start" value="4131"/>
+      <details key="end" value="4178"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.175" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%/%/anPatternInstance">
+      <details key="start" value="4131"/>
+      <details key="end" value="4148"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.176" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%.1">
       <details key="start" value="4190"/>
-      <details key="end" value="4211"/>
-      <details key="line" value="80"/>
-    </eAnnotations>
-    <eAnnotations source="positions.170" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5">
-      <details key="start" value="4214"/>
-      <details key="end" value="4330"/>
+      <details key="end" value="4191"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.171" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%">
-      <details key="start" value="4214"/>
-      <details key="end" value="4261"/>
+    <eAnnotations source="positions.177" references="/0/ModularProjectDecorator/%.1/%.21/anFolderInstances">
+      <details key="start" value="3763"/>
+      <details key="end" value="3860"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.178" references="/0/ModularProjectDecorator/%.1/%.21/anFolderInstances/%">
+      <details key="start" value="3814"/>
+      <details key="end" value="3861"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.172" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%/anPatternInstance">
-      <details key="start" value="4214"/>
-      <details key="end" value="4231"/>
+    <eAnnotations source="positions.179" references="/0/ModularProjectDecorator/%.1/%.21/anFolderInstances/%/anPatternInstance">
+      <details key="start" value="3814"/>
+      <details key="end" value="3831"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.173" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%.1">
-      <details key="start" value="4273"/>
-      <details key="end" value="4329"/>
-      <details key="line" value="0"/>
+    <eAnnotations source="positions.180" references="/0/ModularProjectDecorator/%.1/%.22">
+      <details key="start" value="4517"/>
+      <details key="end" value="4662"/>
+      <details key="line" value="87"/>
     </eAnnotations>
-    <eAnnotations source="positions.174" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%.1/%">
-      <details key="start" value="4273"/>
-      <details key="end" value="4320"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.175" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%/%.5/%.1/%/anPatternInstance">
-      <details key="start" value="4273"/>
-      <details key="end" value="4290"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.176" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1">
-      <details key="start" value="4048"/>
-      <details key="end" value="4175"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.177" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%">
-      <details key="start" value="4049"/>
-      <details key="end" value="4109"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.178" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%">
-      <details key="start" value="4049"/>
-      <details key="end" value="4104"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.179" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%/%">
-      <details key="start" value="4049"/>
-      <details key="end" value="4096"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.180" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%/%/anPatternInstance">
-      <details key="start" value="4049"/>
-      <details key="end" value="4066"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.181" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%/%.1">
-      <details key="start" value="4108"/>
-      <details key="end" value="4109"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.182" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1">
-      <details key="start" value="4114"/>
-      <details key="end" value="4174"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.183" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%">
-      <details key="start" value="4114"/>
-      <details key="end" value="4169"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.184" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%/%">
-      <details key="start" value="4114"/>
-      <details key="end" value="4161"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.185" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%/%/anPatternInstance">
-      <details key="start" value="4114"/>
-      <details key="end" value="4131"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.186" references="/0/ModularProjectDecorator/%.1/%.21/%.1/%.1/%.1/%.1">
-      <details key="start" value="4173"/>
-      <details key="end" value="4174"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.187" references="/0/ModularProjectDecorator/%.1/%.21/anFolderInstances">
-      <details key="start" value="3746"/>
-      <details key="end" value="3843"/>
-      <details key="line" value="74"/>
-    </eAnnotations>
-    <eAnnotations source="positions.188" references="/0/ModularProjectDecorator/%.1/%.21/anFolderInstances/%">
-      <details key="start" value="3797"/>
-      <details key="end" value="3844"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.189" references="/0/ModularProjectDecorator/%.1/%.21/anFolderInstances/%/anPatternInstance">
-      <details key="start" value="3797"/>
-      <details key="end" value="3814"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.190" references="/0/ModularProjectDecorator/%.1/%.22">
-      <details key="start" value="4500"/>
-      <details key="end" value="4645"/>
-      <details key="line" value="86"/>
-    </eAnnotations>
-    <eAnnotations source="positions.191" references="/0/ModularProjectDecorator/%.1/%.23">
+    <eAnnotations source="positions.181" references="/0/ModularProjectDecorator/%.1/%.23">
       <details key="start" value="452"/>
       <details key="end" value="686"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.192" references="/0/ModularProjectDecorator/%.1/%.23/%">
+    <eAnnotations source="positions.182" references="/0/ModularProjectDecorator/%.1/%.23/%">
       <details key="start" value="452"/>
       <details key="end" value="647"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.193" references="/0/ModularProjectDecorator/%.1/%.23/%/%">
+    <eAnnotations source="positions.183" references="/0/ModularProjectDecorator/%.1/%.23/%/%">
       <details key="start" value="452"/>
       <details key="end" value="625"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.194" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%">
+    <eAnnotations source="positions.184" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%">
       <details key="start" value="452"/>
       <details key="end" value="603"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.195" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%">
+    <eAnnotations source="positions.185" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%">
       <details key="start" value="452"/>
       <details key="end" value="458"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.196" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1">
+    <eAnnotations source="positions.186" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1">
       <details key="start" value="466"/>
       <details key="end" value="602"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.197" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%">
+    <eAnnotations source="positions.187" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%">
       <details key="start" value="466"/>
       <details key="end" value="573"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.198" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%">
+    <eAnnotations source="positions.188" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%">
       <details key="start" value="466"/>
       <details key="end" value="495"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.199" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%/%">
+    <eAnnotations source="positions.189" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%/%">
       <details key="start" value="466"/>
       <details key="end" value="489"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.200" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%/%/anProjectName">
+    <eAnnotations source="positions.190" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%/%/anProjectName">
       <details key="start" value="466"/>
       <details key="end" value="479"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.201" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%/%.1">
+    <eAnnotations source="positions.191" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%/%.1">
       <details key="start" value="492"/>
       <details key="end" value="495"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.202" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1">
+    <eAnnotations source="positions.192" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1">
       <details key="start" value="498"/>
       <details key="end" value="573"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.203" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%">
+    <eAnnotations source="positions.193" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%">
       <details key="start" value="498"/>
       <details key="end" value="559"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.204" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%/%">
+    <eAnnotations source="positions.194" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%/%">
       <details key="start" value="498"/>
       <details key="end" value="554"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.205" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%/%/%">
+    <eAnnotations source="positions.195" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%/%/%">
       <details key="start" value="498"/>
       <details key="end" value="546"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.206" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%/%/%/anPatternInstance">
+    <eAnnotations source="positions.196" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%/%.1/%/%/%/anPatternInstance">
       <details key="start" value="498"/>
       <details key="end" value="515"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.207" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%.1">
+    <eAnnotations source="positions.197" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%.1">
       <details key="start" value="576"/>
       <details key="end" value="602"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.208" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%.1/self">
+    <eAnnotations source="positions.198" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%.1/self">
       <details key="start" value="-1"/>
       <details key="end" value="-1"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.209" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%.1/%">
+    <eAnnotations source="positions.199" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%/%.1/%.1/%">
       <details key="start" value="588"/>
       <details key="end" value="601"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.210" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%.1">
+    <eAnnotations source="positions.200" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%.1">
       <details key="start" value="615"/>
       <details key="end" value="620"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.211" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%.2">
+    <eAnnotations source="positions.201" references="/0/ModularProjectDecorator/%.1/%.23/%/%/%.2">
       <details key="start" value="621"/>
       <details key="end" value="624"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.212" references="/0/ModularProjectDecorator/%.1/%.23/%/%.1">
+    <eAnnotations source="positions.202" references="/0/ModularProjectDecorator/%.1/%.23/%/%.1">
       <details key="start" value="633"/>
       <details key="end" value="646"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.213" references="/0/ModularProjectDecorator/%.1/%.23/%.1">
+    <eAnnotations source="positions.203" references="/0/ModularProjectDecorator/%.1/%.23/%.1">
       <details key="start" value="655"/>
       <details key="end" value="685"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.214" references="/0/ModularProjectDecorator/%.1/%.24">
+    <eAnnotations source="positions.204" references="/0/ModularProjectDecorator/%.1/%.24">
       <details key="start" value="694"/>
       <details key="end" value="701"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.215" references="/0/ModularProjectDecorator/%.2">
-      <details key="start" value="4654"/>
-      <details key="end" value="4656"/>
-      <details key="line" value="99"/>
+    <eAnnotations source="positions.205" references="/0/ModularProjectDecorator/%.2">
+      <details key="start" value="4671"/>
+      <details key="end" value="4673"/>
+      <details key="line" value="100"/>
     </eAnnotations>
-    <eAnnotations source="positions.216" references="/0/ModularProjectDecorator/anProjectName">
+    <eAnnotations source="positions.206" references="/0/ModularProjectDecorator/anProjectName">
       <details key="start" value="327"/>
       <details key="end" value="349"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.217" references="/0/ModularProjectDecorator/anPackageName">
+    <eAnnotations source="positions.207" references="/0/ModularProjectDecorator/anPackageName">
       <details key="start" value="351"/>
       <details key="end" value="373"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.218" references="/0/ModularProjectDecorator/anPatternInstance">
+    <eAnnotations source="positions.208" references="/0/ModularProjectDecorator/anPatternInstance">
       <details key="start" value="375"/>
       <details key="end" value="410"/>
       <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.219" references="/0/ModularProjectDecorator/anEObjectGenModel">
+    <eAnnotations source="positions.209" references="/0/ModularProjectDecorator/anEObjectGenModel">
       <details key="start" value="411"/>
       <details key="end" value="439"/>
       <details key="line" value="5"/>

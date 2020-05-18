@@ -101,6 +101,8 @@ public class GraphicToViewPoint {
 	public GraphicToViewPoint() throws IOException {
 		properties = new Properties();
 		properties.load(getFileURL("GraphicToViewPoint.properties").openStream());
+		EPackage.Registry.INSTANCE.put(getMetamodelUri("diagram"), mondoSirius.MondoSiriusPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(getMetamodelUri("graphicR"), graphic_representation.Graphic_representationPackage.eINSTANCE);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 	}
 	

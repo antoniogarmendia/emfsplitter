@@ -12,19 +12,19 @@
       <takesTypesFrom href="http://mondo.org/runtimePatterns#/"/>
     </input>
     <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/requests/global_queriesModularProject.emtl#/0"/>
-    <imports href="METAINF.emtl#/0"/>
-    <imports href="Activatorjava.emtl#/0"/>
-    <imports href="PluginXML.emtl#/0"/>
-    <imports href="pack/editor/generatePackageeditor.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/METAINF.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/Activatorjava.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/PluginXML.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/editor/generatePackageeditor.emtl#/0"/>
     <imports href="platform:/resource/org.mondo.generate.filter.project/bin/org/mondo/acceleo/generate/filterui/requests/global_queriesFilterUI.emtl#/0"/>
-    <imports href="external/actions/generatePackageExternalActions.emtl#/0"/>
-    <imports href="pack/dialog/generatePackageDialog.emtl#/0"/>
-    <imports href="pack/label/packLabel.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/external/actions/generatePackageExternalActions.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/dialog/generatePackageDialog.emtl#/0"/>
+    <imports href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/label/packLabel.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="WorkFlowSiriusProject" visibility="Public" main="true">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xD;&#xA;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="Activatorjava.emtl#/0/Activatorjava"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/Activatorjava.emtl#/0/Activatorjava"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -32,7 +32,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="METAINF.emtl#/0/METAINF"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/METAINF.emtl#/0/METAINF"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -43,7 +43,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="pack/editor/generatePackageeditor.emtl#/0/generatePackageeditor"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/editor/generatePackageeditor.emtl#/0/generatePackageeditor"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -51,7 +51,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="PluginXML.emtl#/0/PluginXML"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/PluginXML.emtl#/0/PluginXML"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -66,7 +66,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="external/actions/generatePackageExternalActions.emtl#/0/generatePackageExternalActions"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/external/actions/generatePackageExternalActions.emtl#/0/generatePackageExternalActions"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -75,7 +75,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="pack/dialog/generatePackageDialog.emtl#/0/generatePackageDialog"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/dialog/generatePackageDialog.emtl#/0/generatePackageDialog"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -84,7 +84,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    "/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="pack/label/packLabel.emtl#/0/generatePackLabel"/>
+        <definition href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/label/packLabel.emtl#/0/generatePackLabel"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowSiriusProject/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -148,7 +148,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="METAINF.emtl#/0/METAINF"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/METAINF.emtl#/0/METAINF"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -163,7 +163,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="Activatorjava.emtl#/0/Activatorjava"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/Activatorjava.emtl#/0/Activatorjava"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -175,7 +175,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="PluginXML.emtl#/0/PluginXML"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/PluginXML.emtl#/0/PluginXML"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProject">
@@ -193,7 +193,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="pack/editor/generatePackageeditor.emtl#/0/generatePackageeditor"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/editor/generatePackageeditor.emtl#/0/generatePackageeditor"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -205,7 +205,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="external/actions/generatePackageExternalActions.emtl#/0/generatePackageExternalActions"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/external/actions/generatePackageExternalActions.emtl#/0/generatePackageExternalActions"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -217,7 +217,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="pack/dialog/generatePackageDialog.emtl#/0/generatePackageDialog"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/dialog/generatePackageDialog.emtl#/0/generatePackageDialog"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -229,7 +229,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="pack/label/packLabel.emtl#/0/generatePackLabel"/>
+          <references href="platform:/resource/org.mondo.generate.sirius/bin/org/mondo/acceleo/generate/sirius/main/pack/label/packLabel.emtl#/0/generatePackLabel"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">

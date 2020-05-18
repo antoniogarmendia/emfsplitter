@@ -38,12 +38,12 @@
 [query public Get_ClassRoleInstance_Folder_Icon(anClassRoleInstance : ClassRoleInstance) : 
 			String = if(anClassRoleInstance.Get_ClassRoleInstance_EAttribute('icon') = false) then 
 							getProperty('def_folder_icon') 
-					 else if(anClassRoleInstance.Get_ClassRoleInstance_EAttribute('icon').equalsIgnoreCase('') = true) then
-							getProperty('def_folder_icon')
-						   else
-							anClassRoleInstance.Get_ClassRoleInstance_EAttribute('icon')
-							endif
+					 else 
+						anClassRoleInstance.Get_ClassRoleInstance_EAttribute('icon')
 					 endif/]
+[comment if(anClassRoleInstance.Get_ClassRoleInstance_EAttribute('icon').equalsIgnoreCase('') = true) then
+							getProperty('def_folder_icon')
+						   else/]
 
 [query public Get_ClassRoleInstance_File_Icon(anClassRoleInstance : ClassRoleInstance) : 
 			String = if(existIcon(anClassRoleInstance.Get_ClassRoleInstance_EAttribute('icon')) = false) then 
@@ -255,12 +255,13 @@
 				'PackageDeclaration(org.eclipse.emf.ecore.EClass)',Sequence{anEClass}).oclAsType(String)/]
 
 [query public existIcon(string : String) : 
-				EBoolean = if(string.equalsIgnoreCase(getProperty('def_pro_icon')) or string.equalsIgnoreCase('')) then
+				EBoolean = if(string.equalsIgnoreCase(getProperty('def_pro_icon'))) then
 								false
 							else
 								true
 							endif
 				/]
+[comment or string.equalsIgnoreCase('')/]
 
 
 [comment Create Import String/]

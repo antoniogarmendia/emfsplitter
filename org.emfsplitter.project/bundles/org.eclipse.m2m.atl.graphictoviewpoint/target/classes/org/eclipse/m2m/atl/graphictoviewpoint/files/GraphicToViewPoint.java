@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.m2m.atl.common.ATLExecutionException;
@@ -95,6 +96,8 @@ public class GraphicToViewPoint {
 	public GraphicToViewPoint() throws IOException {
 		properties = new Properties();
 		properties.load(getFileURL("GraphicToViewPoint.properties").openStream());
+		EPackage.Registry.INSTANCE.put(getMetamodelUri("diagram"), mondoSirius.MondoSiriusPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(getMetamodelUri("graphicR"), graphic_representation.Graphic_representationPackage.eINSTANCE);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 	}
 	

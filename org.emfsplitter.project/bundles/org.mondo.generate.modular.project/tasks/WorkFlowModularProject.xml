@@ -25,9 +25,6 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.common_3.7.10.202002210922.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.model_3.7.10.202002210922.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.profiler_3.7.10.202002210922.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.engine_3.7.10.202002210922.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen.ecore_2.21.0.v20200112-0705.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/com.google.guava_27.1.0.v20190517-1946.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.mondo.dsl_0.1.0.201602251610.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.resources_3.13.700.v20200209-1624.jar"/>
@@ -38,6 +35,9 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jface_3.19.0.v20200218-1607.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt_3.114.0.v20200304-0601.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.win32.win32.x86_64_3.114.0.v20200304-0601.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.engine_3.7.10.202002210922.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen.ecore_2.21.0.v20200112-0705.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.core.manipulation_1.13.100.v20200224-2108.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.core_3.21.0.v20200304-1404.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jdt.compiler.apt_1.3.900.v20200303-1624.jar"/>
