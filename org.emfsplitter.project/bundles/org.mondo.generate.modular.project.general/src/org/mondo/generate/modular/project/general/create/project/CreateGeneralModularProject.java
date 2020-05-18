@@ -131,8 +131,7 @@ public class CreateGeneralModularProject extends CreateEclipseProjectImpl{
 		
 	}	
 	
-	public void generateFiles() {
-		
+	public void generateFiles() {		
 		//Get Workspace Path
 		String current_plug_path = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 		File targetFolder = new File(current_plug_path + '/' + project.getName() + "/");
@@ -155,8 +154,7 @@ public class CreateGeneralModularProject extends CreateEclipseProjectImpl{
 			
 		} catch (IOException e) {				
 				e.printStackTrace();
-		}	
-		
+		}			
 	}
 	
 	public String getGenModel() {
