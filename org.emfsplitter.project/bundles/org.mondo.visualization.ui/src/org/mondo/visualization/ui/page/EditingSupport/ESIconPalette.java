@@ -178,8 +178,7 @@ public class ESIconPalette extends EditingSupport{
 		public Composite compImagePreview;
 		public Map<Label, String> imageToPath;
 						
-		public LoadResourceDialog(Shell parent, String title, int style, IconElement iconElement) {
-			
+		public LoadResourceDialog(Shell parent, String title, int style, IconElement iconElement) {			
 			super(parent, title, style);
 			this.fileURI = iconElement.getFilepath();
 			this.iconElement = iconElement;

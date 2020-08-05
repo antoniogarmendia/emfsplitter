@@ -25,6 +25,8 @@ import org.json.simple.parser.ParseException;
 import graphic_representation.rest.Parameter;
 import graphic_representation.rest.impl.RestFactoryImpl;
 
+//https://developers.google.com/custom-search/v1/overview
+// URL: https://cse.google.com/cse/all
 public class GoogleImageServer {
 	
 	public static String CUSTOM_PATH = "customsearch/v1";
@@ -33,9 +35,12 @@ public class GoogleImageServer {
 	//Google Key
 	public static String PARAMETER_KEY = "key";
 	public static String GOOGLE_API_KEY = "AIzaSyB0pHwS24QJXyiqVvITenIx-UZ8KN5Fxa8"; // api key
+	
 	// Id Searcher (Google Custom Search)
 	public static String CX_KEY = "cx";
 	public static String GOOGLE_CX = "009327322615305133704:sb2qxbprrac";// id searcher
+	
+	
 	
 	public static String PARAMETER_QUERY = "q";
 	public static String PARAMETER_SEARCH_TYPE = "searchType";//default image

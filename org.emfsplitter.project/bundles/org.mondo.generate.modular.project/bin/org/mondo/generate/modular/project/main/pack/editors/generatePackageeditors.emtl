@@ -11,20 +11,20 @@
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/GenModel#/"/>
     </input>
     <imports href="../../requests/global_queriesModularProject.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/MultiPageEditorJAVA.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/MultiPageEditorContributorJAVA.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularPropertySource.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/CustomPropertyDescriptor.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularCrossReferences.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/CreateWizardForCrossReferences.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularPossibleValues.emtl#/0"/>
+    <imports href="MultiPageEditorJAVA.emtl#/0"/>
+    <imports href="MultiPageEditorContributorJAVA.emtl#/0"/>
+    <imports href="ModularPropertySource.emtl#/0"/>
+    <imports href="CustomPropertyDescriptor.emtl#/0"/>
+    <imports href="ModularCrossReferences.emtl#/0"/>
+    <imports href="CreateWizardForCrossReferences.emtl#/0"/>
+    <imports href="ModularPossibleValues.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generatePackageeditors" visibility="Public">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
       <body xsi:type="mtl:LetBlock">
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
         <body xsi:type="mtl:TemplateInvocation">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/CreateWizardForCrossReferences.emtl#/0/generateCreateWizardForCrossReferences"/>
+          <definition href="CreateWizardForCrossReferences.emtl#/0/generateCreateWizardForCrossReferences"/>
           <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           </argument>
@@ -38,7 +38,7 @@
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
         <body xsi:type="mtl:TemplateInvocation">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularPossibleValues.emtl#/0/generateModularPossibleValues"/>
+          <definition href="ModularPossibleValues.emtl#/0/generateModularPossibleValues"/>
           <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           </argument>
@@ -66,7 +66,7 @@
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
         <body xsi:type="mtl:TemplateInvocation">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularCrossReferences.emtl#/0/ModularCrossReferences"/>
+          <definition href="ModularCrossReferences.emtl#/0/ModularCrossReferences"/>
           <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           </argument>
@@ -88,7 +88,7 @@
       </body>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/MultiPageEditorContributorJAVA.emtl#/0/MultiPageEditorContributorJAVA"/>
+        <definition href="MultiPageEditorContributorJAVA.emtl#/0/MultiPageEditorContributorJAVA"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -105,7 +105,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/MultiPageEditorJAVA.emtl#/0/MultiPageEditorJAVA"/>
+        <definition href="MultiPageEditorJAVA.emtl#/0/MultiPageEditorJAVA"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -122,7 +122,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularPropertySource.emtl#/0/ModularPropertySource"/>
+        <definition href="ModularPropertySource.emtl#/0/ModularPropertySource"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -133,7 +133,7 @@
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/CustomPropertyDescriptor.emtl#/0/CustomPropertyDescriptor"/>
+        <definition href="CustomPropertyDescriptor.emtl#/0/CustomPropertyDescriptor"/>
         <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/generatePackageeditors/anProjectName">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </argument>
@@ -212,7 +212,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/MultiPageEditorJAVA.emtl#/0/MultiPageEditorJAVA"/>
+          <references href="MultiPageEditorJAVA.emtl#/0/MultiPageEditorJAVA"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -233,7 +233,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/MultiPageEditorContributorJAVA.emtl#/0/MultiPageEditorContributorJAVA"/>
+          <references href="MultiPageEditorContributorJAVA.emtl#/0/MultiPageEditorContributorJAVA"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -254,7 +254,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularPropertySource.emtl#/0/ModularPropertySource"/>
+          <references href="ModularPropertySource.emtl#/0/ModularPropertySource"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -269,7 +269,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/CustomPropertyDescriptor.emtl#/0/CustomPropertyDescriptor"/>
+          <references href="CustomPropertyDescriptor.emtl#/0/CustomPropertyDescriptor"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -284,7 +284,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularCrossReferences.emtl#/0/ModularCrossReferences"/>
+          <references href="ModularCrossReferences.emtl#/0/ModularCrossReferences"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -299,7 +299,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/CreateWizardForCrossReferences.emtl#/0/generateCreateWizardForCrossReferences"/>
+          <references href="CreateWizardForCrossReferences.emtl#/0/generateCreateWizardForCrossReferences"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProName">
@@ -317,7 +317,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/ModularPossibleValues.emtl#/0/generateModularPossibleValues"/>
+          <references href="ModularPossibleValues.emtl#/0/generateModularPossibleValues"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProName">

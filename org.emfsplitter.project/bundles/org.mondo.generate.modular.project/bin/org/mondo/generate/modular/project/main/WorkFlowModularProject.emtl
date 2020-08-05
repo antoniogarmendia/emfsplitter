@@ -11,28 +11,28 @@
       <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </input>
     <imports href="requests/global_queriesModularProject.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/METAINF.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/Activatorjava.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/PluginXML.emtl#/0"/>
+    <imports href="METAINF.emtl#/0"/>
+    <imports href="Activatorjava.emtl#/0"/>
+    <imports href="PluginXML.emtl#/0"/>
     <imports href="ModularModelJAVA.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/XMI_FileJAVA.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/Package_Explorer_SelectionJAVA.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/actions/generatePackageactions.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/decorator/generatePackagedecorator.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/generatePackageeditors.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/propertysource/generatePackagepropertysource.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/folder/generatePackagewizardfolder.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/file/generatePackagewizardfile.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/generatePackagewizard.emtl#/0"/>
+    <imports href="XMI_FileJAVA.emtl#/0"/>
+    <imports href="Package_Explorer_SelectionJAVA.emtl#/0"/>
+    <imports href="pack/actions/generatePackageactions.emtl#/0"/>
+    <imports href="pack/decorator/generatePackagedecorator.emtl#/0"/>
+    <imports href="pack/editors/generatePackageeditors.emtl#/0"/>
+    <imports href="pack/propertysource/generatePackagepropertysource.emtl#/0"/>
+    <imports href="pack/wizard/folder/generatePackagewizardfolder.emtl#/0"/>
+    <imports href="pack/wizard/file/generatePackagewizardfile.emtl#/0"/>
+    <imports href="pack/wizard/generatePackagewizard.emtl#/0"/>
     <imports href="CreateMenuJava.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/preferences/generatePackpreferences.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/OpenWith.emtl#/0"/>
+    <imports href="pack/preferences/generatePackpreferences.emtl#/0"/>
+    <imports href="OpenWith.emtl#/0"/>
     <imports href="initFile.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/schemaFile.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/schemListenerFile.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/modularInterfaceBuilderFile.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/evaluateModularBuilderFile.emtl#/0"/>
-    <imports href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/evaluateModularListenerFile.emtl#/0"/>
+    <imports href="schemaFile.emtl#/0"/>
+    <imports href="schemListenerFile.emtl#/0"/>
+    <imports href="pack/ext/modularInterfaceBuilderFile.emtl#/0"/>
+    <imports href="pack/ext/evaluateModularBuilderFile.emtl#/0"/>
+    <imports href="pack/ext/evaluateModularListenerFile.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="WorkFlowModularProject" visibility="Public" main="true">
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
       <body xsi:type="mtl:LetBlock">
@@ -41,7 +41,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/METAINF.emtl#/0/METAINF"/>
+            <definition href="METAINF.emtl#/0/METAINF"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -55,7 +55,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/Activatorjava.emtl#/0/Activatorjava"/>
+            <definition href="Activatorjava.emtl#/0/Activatorjava"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -83,7 +83,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/PluginXML.emtl#/0/PluginXML"/>
+            <definition href="PluginXML.emtl#/0/PluginXML"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -114,7 +114,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/Package_Explorer_SelectionJAVA.emtl#/0/Package_Explorer_SelectionJAVA"/>
+            <definition href="Package_Explorer_SelectionJAVA.emtl#/0/Package_Explorer_SelectionJAVA"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -125,7 +125,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/XMI_FileJAVA.emtl#/0/XMI_FileJAVA"/>
+            <definition href="XMI_FileJAVA.emtl#/0/XMI_FileJAVA"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -153,7 +153,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/OpenWith.emtl#/0/generateOpenWith"/>
+            <definition href="OpenWith.emtl#/0/generateOpenWith"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -164,7 +164,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  &#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/schemaFile.emtl#/0/generateSchemaFile"/>
+            <definition href="schemaFile.emtl#/0/generateSchemaFile"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -178,7 +178,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  &#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/schemListenerFile.emtl#/0/generateSchemaListenerFile"/>
+            <definition href="schemListenerFile.emtl#/0/generateSchemaListenerFile"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -193,7 +193,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/modularInterfaceBuilderFile.emtl#/0/generateIModularBuilder"/>
+            <definition href="pack/ext/modularInterfaceBuilderFile.emtl#/0/generateIModularBuilder"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -208,7 +208,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/evaluateModularBuilderFile.emtl#/0/generateEvaluateModularBuilder"/>
+            <definition href="pack/ext/evaluateModularBuilderFile.emtl#/0/generateEvaluateModularBuilder"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -232,7 +232,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/evaluateModularListenerFile.emtl#/0/generateEvaluateModularListener"/>
+            <definition href="pack/ext/evaluateModularListenerFile.emtl#/0/generateEvaluateModularListener"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -257,7 +257,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/actions/generatePackageactions.emtl#/0/generatePackageactions"/>
+            <definition href="pack/actions/generatePackageactions.emtl#/0/generatePackageactions"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -275,7 +275,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/decorator/generatePackagedecorator.emtl#/0/generatePackagedecorator"/>
+            <definition href="pack/decorator/generatePackagedecorator.emtl#/0/generatePackagedecorator"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -293,7 +293,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/generatePackageeditors.emtl#/0/generatePackageeditors"/>
+            <definition href="pack/editors/generatePackageeditors.emtl#/0/generatePackageeditors"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -311,7 +311,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/propertysource/generatePackagepropertysource.emtl#/0/generatePackagepropertysource"/>
+            <definition href="pack/propertysource/generatePackagepropertysource.emtl#/0/generatePackagepropertysource"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -329,7 +329,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/generatePackagewizard.emtl#/0/generatePackagewizard"/>
+            <definition href="pack/wizard/generatePackagewizard.emtl#/0/generatePackagewizard"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -347,7 +347,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/file/generatePackagewizardfile.emtl#/0/generatePackagewizardfile"/>
+            <definition href="pack/wizard/file/generatePackagewizardfile.emtl#/0/generatePackagewizardfile"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -365,7 +365,7 @@
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    "/>
           <body xsi:type="mtl:TemplateInvocation">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/folder/generatePackagewizardfolder.emtl#/0/generatePackagewizardfolder"/>
+            <definition href="pack/wizard/folder/generatePackagewizardfolder.emtl#/0/generatePackagewizardfolder"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             </argument>
@@ -384,7 +384,7 @@
             <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
             <body xsi:type="mtl:TemplateInvocation">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-              <definition href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/preferences/generatePackpreferences.emtl#/0/generatePackpreferences"/>
+              <definition href="pack/preferences/generatePackpreferences.emtl#/0/generatePackpreferences"/>
               <argument xsi:type="ocl.ecore:VariableExp" name="anProjectName" referredVariable="/0/WorkFlowModularProject/anProjectName">
                 <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
               </argument>
@@ -520,7 +520,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/METAINF.emtl#/0/METAINF"/>
+          <references href="METAINF.emtl#/0/METAINF"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -538,7 +538,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/Activatorjava.emtl#/0/Activatorjava"/>
+          <references href="Activatorjava.emtl#/0/Activatorjava"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -553,7 +553,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/PluginXML.emtl#/0/PluginXML"/>
+          <references href="PluginXML.emtl#/0/PluginXML"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -592,7 +592,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/XMI_FileJAVA.emtl#/0/XMI_FileJAVA"/>
+          <references href="XMI_FileJAVA.emtl#/0/XMI_FileJAVA"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -607,7 +607,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/Package_Explorer_SelectionJAVA.emtl#/0/Package_Explorer_SelectionJAVA"/>
+          <references href="Package_Explorer_SelectionJAVA.emtl#/0/Package_Explorer_SelectionJAVA"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -622,7 +622,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/actions/generatePackageactions.emtl#/0/generatePackageactions"/>
+          <references href="pack/actions/generatePackageactions.emtl#/0/generatePackageactions"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -643,7 +643,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/decorator/generatePackagedecorator.emtl#/0/generatePackagedecorator"/>
+          <references href="pack/decorator/generatePackagedecorator.emtl#/0/generatePackagedecorator"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -664,7 +664,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/editors/generatePackageeditors.emtl#/0/generatePackageeditors"/>
+          <references href="pack/editors/generatePackageeditors.emtl#/0/generatePackageeditors"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -685,7 +685,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/propertysource/generatePackagepropertysource.emtl#/0/generatePackagepropertysource"/>
+          <references href="pack/propertysource/generatePackagepropertysource.emtl#/0/generatePackagepropertysource"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -706,7 +706,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/folder/generatePackagewizardfolder.emtl#/0/generatePackagewizardfolder"/>
+          <references href="pack/wizard/folder/generatePackagewizardfolder.emtl#/0/generatePackagewizardfolder"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -727,7 +727,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/file/generatePackagewizardfile.emtl#/0/generatePackagewizardfile"/>
+          <references href="pack/wizard/file/generatePackagewizardfile.emtl#/0/generatePackagewizardfile"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -748,7 +748,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/wizard/generatePackagewizard.emtl#/0/generatePackagewizard"/>
+          <references href="pack/wizard/generatePackagewizard.emtl#/0/generatePackagewizard"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -790,7 +790,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/preferences/generatePackpreferences.emtl#/0/generatePackpreferences"/>
+          <references href="pack/preferences/generatePackpreferences.emtl#/0/generatePackpreferences"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -805,7 +805,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/OpenWith.emtl#/0/generateOpenWith"/>
+          <references href="OpenWith.emtl#/0/generateOpenWith"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -841,7 +841,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/schemaFile.emtl#/0/generateSchemaFile"/>
+          <references href="schemaFile.emtl#/0/generateSchemaFile"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -859,7 +859,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/schemListenerFile.emtl#/0/generateSchemaListenerFile"/>
+          <references href="schemListenerFile.emtl#/0/generateSchemaListenerFile"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -877,7 +877,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/modularInterfaceBuilderFile.emtl#/0/generateIModularBuilder"/>
+          <references href="pack/ext/modularInterfaceBuilderFile.emtl#/0/generateIModularBuilder"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -892,7 +892,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/evaluateModularBuilderFile.emtl#/0/generateEvaluateModularBuilder"/>
+          <references href="pack/ext/evaluateModularBuilderFile.emtl#/0/generateEvaluateModularBuilder"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">
@@ -916,7 +916,7 @@
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="platform:/resource/org.mondo.generate.modular.project/bin/org/mondo/generate/modular/project/main/pack/ext/evaluateModularListenerFile.emtl#/0/generateEvaluateModularListener"/>
+          <references href="pack/ext/evaluateModularListenerFile.emtl#/0/generateEvaluateModularListener"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="anProjectName">

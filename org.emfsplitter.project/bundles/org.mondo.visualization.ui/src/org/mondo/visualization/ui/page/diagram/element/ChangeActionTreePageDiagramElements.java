@@ -24,6 +24,7 @@ import graphic_representation.Edge;
 import graphic_representation.Edge_Direction;
 import graphic_representation.Ellipse;
 import graphic_representation.Graphic_representationFactory;
+import graphic_representation.IconElement;
 import graphic_representation.Layer;
 import graphic_representation.Link;
 import graphic_representation.Node;
@@ -48,12 +49,10 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 		
 	public ChangeActionTreePageDiagramElements(TreeViewer treeViewer, Shell shell, HeuristicStrategy heuristicStrategy,
 			HeuristicStrategySettings heuristicStrategySettings, List listOfWarning) {
-		super(treeViewer, shell, heuristicStrategy, heuristicStrategySettings, listOfWarning);
-		// TODO Auto-generated constructor stub
+		super(treeViewer, shell, heuristicStrategy, heuristicStrategySettings, listOfWarning);		
 	}
 
-	public void makeActions() {
-		// TODO Auto-generated method stub
+	public void makeActions() {		
 		makeActionChangeToAffixed();
 		makeActionChangeToCompartment();
 		makeActionChangeToLink();	
@@ -66,8 +65,7 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 		actionChangeToAffixed = new Action() { //Change to Affixed(Bordered)
 
 			@Override
-			public void run() {
-				// TODO Auto-generated method stub
+			public void run() {				
 				Object obj = GetSelectedTreeViewerObject();
 				EObject parentElement = null;
 				EReference ref = null;
@@ -91,11 +89,13 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 					node_Element.getAffixedCompartmentElements().add(affixed);
 					EObject parent = node_Element.eContainer();
 					if(parent instanceof Node)
-					{
-						ShapeCompartmentParallelogram parallelogram = Graphic_representationFactoryImpl.eINSTANCE.createShapeCompartmentParallelogram();
-						parallelogram.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						parallelogram.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						((Node) parent).setNode_shape(parallelogram);
+					{	
+						if (!(((Node) parent).getNode_shape() instanceof IconElement)) {
+							ShapeCompartmentParallelogram parallelogram = Graphic_representationFactoryImpl.eINSTANCE.createShapeCompartmentParallelogram();
+							parallelogram.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+							parallelogram.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+							((Node) parent).setNode_shape(parallelogram);
+						}
 					}					
 					EcoreUtil.remove((EObject) obj);				
 					getTreeViewer().remove(obj);
@@ -116,8 +116,7 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 		actionChangeToCompartment = new Action() { //Change to Compartment
 
 			@Override
-			public void run() {
-				// TODO Auto-generated method stub
+			public void run() {				
 				Object obj = GetSelectedTreeViewerObject();
 				EObject parentElement = null;
 				EReference ref = null;
@@ -150,10 +149,12 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 					}
 					if(containerElement instanceof Node)
 					{
-						Rectangle shape = Graphic_representationFactoryImpl.eINSTANCE.createRectangle();
-						shape.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						shape.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
-						((Node) containerElement).setNode_shape(shape);
+						if (!(((Node) containerElement).getNode_shape() instanceof IconElement)) {
+							Rectangle shape = Graphic_representationFactoryImpl.eINSTANCE.createRectangle();
+							shape.setColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+							shape.setBorderColor(Graphic_representationFactoryImpl.eINSTANCE.createSiriusSystemColors());
+							((Node) containerElement).setNode_shape(shape);
+						}
 					}
 					
 					getTreeViewer().remove(obj);
@@ -173,8 +174,7 @@ public class ChangeActionTreePageDiagramElements extends AActionPageDiagramEleme
 		actionChangeToLink = new Action() {
 
 			@Override
-			public void run() {
-				// TODO Auto-generated method stub
+			public void run() {				
 				Object obj = GetSelectedTreeViewerObject();
 				EObject parentElement = null;
 				EReference ref = null;

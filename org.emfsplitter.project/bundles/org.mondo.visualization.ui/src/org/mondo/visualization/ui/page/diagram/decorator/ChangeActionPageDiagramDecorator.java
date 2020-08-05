@@ -45,8 +45,7 @@ public class ChangeActionPageDiagramDecorator {
 				System.out.println("Copy Layout");
 			}
 
-			private void CopyLayoutEdge(Object[] inputArray, Edge obj) {
-				// TODO Auto-generated method stub
+			private void CopyLayoutEdge(Object[] inputArray, Edge obj) {				
 				for (int i = 0; i < inputArray.length; i++) {
 					Object object = inputArray[i];
 					if(object instanceof Edge)
@@ -59,8 +58,7 @@ public class ChangeActionPageDiagramDecorator {
 				}
 			}
 
-			private void CopyLayoutNode(Object[] inputArray, Node objCopy) {
-				
+			private void CopyLayoutNode(Object[] inputArray, Node objCopy) {				
 				for (int i = 0; i < inputArray.length; i++) {
 					Object object = inputArray[i];
 					if(object instanceof Node)
