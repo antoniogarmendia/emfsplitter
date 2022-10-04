@@ -86,8 +86,8 @@ public class DiagramEditorServer {
 	private JSONObject getRestDiagram(String path)
 	{
 		JSONObject result = null;
-		ClientConfig config = new ClientConfig();
-		Client client = ClientBuilder.newClient(config);
+		//ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(/*config*/);
 		WebTarget target = client.target(getBaseURI());
 		
 		Response response =  target.path(path).
@@ -266,8 +266,8 @@ public class DiagramEditorServer {
 	
 	public int PostEcore(EcoreEMF ecore)
 	{
-		ClientConfig config = new ClientConfig();
-		Client client = ClientBuilder.newClient(config);
+		//ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(/*config*/);
 		WebTarget target = client.target(getBaseURI());
 					
 		Form formEcore = PostEcoreForm(ecore);
@@ -289,8 +289,8 @@ public class DiagramEditorServer {
 	
 	public int PostGraphicRepresentation(Resource graph) {
 		
-		ClientConfig config = new ClientConfig();
-		Client client = ClientBuilder.newClient(config);
+		//ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(/*config*/);
 		WebTarget target = client.target(getBaseURI());
 		
 		Form formGraphic = PostGraphicRepresentationForm(graph);

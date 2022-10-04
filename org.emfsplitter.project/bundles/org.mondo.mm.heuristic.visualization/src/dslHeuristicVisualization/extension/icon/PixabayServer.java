@@ -50,7 +50,7 @@ public class PixabayServer {
 		
 		JSONObject result = null;
 		ClientConfig config = new ClientConfig();
-		Client client = ClientBuilder.newClient(config);
+		Client client = ClientBuilder.newClient(/*config*/);
 		WebTarget target = client.target(getBaseURI());
 		
 		WebTarget webTarget = target.path(CUSTOM_PATH);

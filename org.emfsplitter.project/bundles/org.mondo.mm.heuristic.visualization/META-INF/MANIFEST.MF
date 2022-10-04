@@ -18,9 +18,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.mondo.graphic.representation;visibility:=reexport,
  org.mondo.emf.splitter.library;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.sirius;visibility:=reexport,
- org.uam.eps.miso.diagram.editor.jersey;bundle-version="1.0.0",
  org.eclipse.e4.core.di.annotations,
- com.googlecode.json-simple;bundle-version="1.1.1"
+ com.googlecode.json-simple;bundle-version="1.1.1",
+ org.glassfish.jersey.core.jersey-client;bundle-version="2.13.0",
+ org.glassfish.jersey.core.jersey-common;bundle-version="3.0.8",
+ javax.ws.rs-api;bundle-version="2.1.99"
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.common.base,
  org.eclipse.core.resources,

@@ -1,0 +1,33 @@
+[comment encoding = UTF-8 /]
+[module WorkFlowSiriusProject('http://mondo.org/graphic_representation/1.0.3','http://www.eclipse.org/emf/2002/Ecore', 'http://mondo.org/runtimePatterns')/]
+[import org::mondo::generate::modular::project::main::requests::global_queriesModularProject /]
+[import org::mondo::acceleo::generate::sirius::main::METAINF /]
+[import org::mondo::acceleo::generate::sirius::main::Activatorjava /]
+[import org::mondo::acceleo::generate::sirius::main::PluginXML /]
+[import org::mondo::acceleo::generate::sirius::main::pack::editor::generatePackageeditor /]
+[import org::mondo::acceleo::generate::filterui::requests::global_queriesFilterUI /]
+[import org::mondo::acceleo::generate::sirius::main::external::actions::generatePackageExternalActions /]
+[import org::mondo::acceleo::generate::sirius::main::pack::dialog::generatePackageDialog/]
+[import org::mondo::acceleo::generate::sirius::main::pack::label::packLabel /]
+
+[template public WorkFlowSiriusProject(anRepresentation : GraphicRepresentation,anProjectName : String, anEPackageURI : String, modularInstance : PatternInstance)]
+[comment @main /]
+	
+	[Activatorjava(anProjectName)/]
+	[METAINF(anProjectName,modularInstance)/]
+	[generatePackageeditor(anProjectName)/]	
+
+
+	[PluginXML(anProjectName, anRepresentation, modularInstance)/]
+	
+	[comment Package External Actions /]
+	[generatePackageExternalActions(anProjectName)/]	
+
+	[comment Package dialog /]
+	[generatePackageDialog(anProjectName)/]
+	
+	[comment Package Label /]
+    [generatePackLabel(anProjectName)/]
+	
+	
+[/template]

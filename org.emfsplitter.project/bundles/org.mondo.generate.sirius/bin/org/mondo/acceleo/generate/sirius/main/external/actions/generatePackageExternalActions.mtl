@@ -1,0 +1,15 @@
+[comment encoding = UTF-8 /]
+[module generatePackageExternalActions('http://www.eclipse.org/emf/2002/Ecore')]
+
+[import org::mondo::acceleo::generate::sirius::main::external::actions::generateDeleteInstanceFile /]
+[import org::mondo::acceleo::generate::sirius::main::external::actions::deleteEObjectFromCrossReference /]
+[import org::mondo::acceleo::generate::sirius::main::external::actions::generateShowRealObjectFile/]
+
+
+[template public generatePackageExternalActions(anProjectName : String)]
+
+[generateDeleteEObjectFromCrossReference(anProjectName) /]
+[generateDeleteInstance(anProjectName) /]
+[generateShowRealObject(anProjectName) /]
+
+[/template]

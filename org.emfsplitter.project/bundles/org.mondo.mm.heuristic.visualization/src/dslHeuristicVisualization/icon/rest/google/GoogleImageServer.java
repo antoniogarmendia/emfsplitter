@@ -66,8 +66,8 @@ public class GoogleImageServer {
 	public JSONObject getRestImages() {
 		
 		JSONObject result = null;
-		ClientConfig config = new ClientConfig();
-		Client client = ClientBuilder.newClient(config);
+		//ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(/*config*/);
 		WebTarget target = client.target(getBaseURI());
 		
 		WebTarget webTarget = target.path(CUSTOM_PATH);
