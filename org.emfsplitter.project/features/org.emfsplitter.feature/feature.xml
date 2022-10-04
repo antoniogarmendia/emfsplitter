@@ -116,13 +116,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.uam.eps.miso.diagram.editor.json"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.mondo.emf.splitter"
          download-size="0"
          install-size="0"
@@ -243,6 +236,13 @@
 
    <plugin
          id="org.miso.ecore.statistics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.googlecode.json-simple"
          download-size="0"
          install-size="0"
          version="0.0.0"

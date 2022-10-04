@@ -36,5 +36,15 @@
 			<repository location="http://jdelara.github.io/DSL-tao/update-site/"/>
 			<unit id="org.mondo.editor.feature.feature.group" version="0.3.16.201602251610"/>
 		</location>
+		<location includeDependencyDepth="none" includeSource="true" missingManifest="generate" type="Maven">
+			<dependencies>
+				<dependency>
+					<groupId>com.googlecode.json-simple</groupId>
+					<artifactId>json-simple</artifactId>
+					<version>1.1.1</version>
+					<type>jar</type>
+				</dependency>
+			</dependencies>
+		</location>
 	</locations>
 </target>
